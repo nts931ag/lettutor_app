@@ -35,8 +35,17 @@ class DashboardScreen extends BaseScreen<DashBoardController> {
               SizedBox(
                 height: 15.h,
               ),
-              InformationTutorContainer(controller: controller),
-              InformationTutorContainer(controller: controller)
+              InformationTutorContainer(
+                controller: controller,
+                countRating: 0,
+              ),
+              SizedBox(
+                height: 15.h,
+              ),
+              InformationTutorContainer(
+                controller: controller,
+                countRating: 4,
+              )
             ],
           ),
           SizedBox(

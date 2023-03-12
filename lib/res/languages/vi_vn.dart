@@ -23,6 +23,12 @@ final Map<String, String> viVN = {
   'account': 'Tài khoản',
   'save': 'Lưu',
   'book': 'Đặt lịch',
+  'favorite': 'Yêu thích',
+  'reviews': 'Xem đánh giá',
+  'report': 'Báo cáo',
+  'languages': 'Ngôn ngữ',
+  'specialties': 'Chuyên ngành',
+  'interests': 'Sở thích',
 
   // Warning
   'warning.empty.email': 'Vui lòng nhập Email',
@@ -68,4 +74,12 @@ final Map<String, String> viVN = {
   'dash.board.recommend.tutor': 'Gia sư được đề xuất',
   'dash.board.no.review': 'Chưa có đánh giá',
   'dash.board.select.available.time': 'Chọn thời gian dạy kèm có lịch trống:',
+
+  //Change password
+  'change.password.new': 'Mật khẩu mới',
+  'change.password.confirm': 'Nhập lại mật khẩu mới',
+
+  //Tutor Detail
+  'tutor.detail.suggested.course': 'Các khóa học kham khảo',
+  'tutor.detail.ex': 'Kinh nghiệm giảng dạy',
 };

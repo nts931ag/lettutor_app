@@ -41,11 +41,11 @@ class DrawerPage extends StatelessWidget {
         listTitle(
             iconData: Icons.key,
             title: LocalString.drawerChangePassword,
-            named: ''),
+            named: AppRoutes.CHANGE_PASSWORD),
         listTitle(
             iconData: Icons.contacts,
             title: LocalString.drawerTutor,
-            named: ''),
+            named: AppRoutes.DASHBOARD),
         listTitle(
             iconData: Icons.event_available,
             title: LocalString.drawerSchedule,

@@ -2,13 +2,13 @@ final Map<String, String> enUS = {
   // Login
   'login.title': 'Say hello to your English tutors',
   'login.sub.title':
-  'Become fluent faster through one on one video chat lessons tailored to your goals.',
+      'Become fluent faster through one on one video chat lessons tailored to your goals.',
   'login.continue': 'Or continue with',
   'login.not.member': 'Not a member yet?',
   'login': 'Log in',
   'forgot.password.title': 'Reset Password',
   'forgot.password.sub.title':
-  'Please enter your email address to search for your account.',
+      'Please enter your email address to search for your account.',
   'login.already.have.account': 'Already have an account?',
 
   // Common
@@ -23,6 +23,12 @@ final Map<String, String> enUS = {
   'account': 'Account',
   'save': 'Save',
   'book': 'Book',
+  'favorite': 'Favorite',
+  'reviews': 'Reviews',
+  'report': 'Report',
+  'languages': 'Languages',
+  'specialties': 'Specialties',
+  'interests': 'Interests',
 
   // Warning
   'warning.empty.email': 'Please input your Email!',
@@ -68,4 +74,12 @@ final Map<String, String> enUS = {
   'dash.board.recommend.tutor': 'Recommended Tutors',
   'dash.board.no.review': 'No reviews yet',
   'dash.board.select.available.time': 'Select available tutoring time:',
+
+  //Change password
+  'change.password.new': 'New Password',
+  'change.password.confirm': 'Confirm Password',
+
+  //Tutor Detail
+  'tutor.detail.suggested.course': 'Suggested courses',
+  'tutor.detail.ex': 'Teaching experience',
 };

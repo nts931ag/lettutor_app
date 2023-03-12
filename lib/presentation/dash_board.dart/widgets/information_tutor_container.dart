@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+
+import 'package:lettutor_app/app/app_pages.dart';
 import 'package:lettutor_app/presentation/common/widgets/buttons/loading_button_widget.dart';
 import 'package:lettutor_app/presentation/common/widgets/icon/circle_box_widget.dart';
 import 'package:lettutor_app/presentation/common/widgets/text/text_container_widget.dart';
@@ -12,8 +15,10 @@ import 'package:lettutor_app/res/gen/colors.gen.dart';
 import 'package:lettutor_app/res/theme/text_theme.dart';
 
 class InformationTutorContainer extends StatelessWidget {
-  const InformationTutorContainer({
+  double countRating;
+  InformationTutorContainer({
     Key? key,
+    required this.countRating,
     required this.controller,
   }) : super(key: key);
 
@@ -60,9 +65,27 @@ class InformationTutorContainer extends StatelessWidget {
                 SizedBox(
                   height: 10.h,
                 ),
-                Text(
+                countRating == 0
+                    ? Text(
                   LocalString.dashBoardNoReview,
                   style: text16.copyWith(color: Colors.grey),
+                )
+                    : RatingBar.builder(
+                  initialRating: countRating,
+                  minRating: countRating,
+                  maxRating: countRating,
+                  direction: Axis.horizontal,
+                  allowHalfRating: true,
+                  itemCount: 5,
+                  itemSize: 20,
+                  itemPadding:
+                  const EdgeInsets.symmetric(horizontal: 4.0),
+                  itemBuilder: (context, _) => const Icon(
+                    Icons.star,
+                    color: Colors.amber,
+                    size: 5,
+                  ),
+                  onRatingUpdate: (rating) {},
                 ),
                 SizedBox(
                   height: 15.h,
@@ -73,10 +96,10 @@ class InformationTutorContainer extends StatelessWidget {
                   children: [
                     ...controller.listType
                         .map((e) => TextContainer(
-                              title: e,
-                              textColor: primaryColor,
-                              color: primaryColor.withOpacity(0.2),
-                            ))
+                      title: e,
+                      textColor: primaryColor,
+                      color: primaryColor.withOpacity(0.2),
+                    ))
                         .toList()
                   ],
                 ),
@@ -88,7 +111,9 @@ class InformationTutorContainer extends StatelessWidget {
                   child: SizedBox(
                     width: Get.width / 2 - 30.w,
                     child: LoadingButtonWidget(
-                        submit: () {},
+                        submit: () {
+                          Get.toNamed(AppRoutes.TUTOR_DETAIL);
+                        },
                         height: 30.h,
                         isLoading: false,
                         primaryColor: primaryColor.withOpacity(0.5),
