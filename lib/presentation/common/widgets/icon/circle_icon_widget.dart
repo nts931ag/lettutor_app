@@ -28,17 +28,16 @@ class CircleIconWidget extends StatelessWidget {
         onTap!();
       },
       child: Container(
-        height: 38.w,
-        width: 38.w,
+        height: 40.w,
+        width: 40.w,
         padding: padding == null ? null : EdgeInsets.all(padding!),
         decoration: BoxDecoration(
             shape: BoxShape.circle,
             color: backgroundColor,
             border: Border.all(color: borderColor, width: width)),
-        child: CircleAvatar(
-          radius: 48.r,
-          backgroundColor: backgroundColor,
+        child: ClipRRect(
           child: child,
+          borderRadius: BorderRadius.circular(1000),
         ),
       ),
     );

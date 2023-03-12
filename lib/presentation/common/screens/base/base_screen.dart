@@ -29,7 +29,7 @@ abstract class BaseScreen<C extends BaseController> extends GetWidget<C> {
                 onTap: () {
                   controller.handleOnTapDrawer();
                 },
-                child: const Icon(Icons.list),
+                child: Icon(Icons.list, size: 20.w,),
               )
           ],
           body: IndexedStack(

@@ -74,7 +74,7 @@ class InputFieldArea extends StatelessWidget {
         Obx(
               () => LoadingButtonWidget(
               submit: () {
-                Get.offNamed(AppRoutes.PROFILE);
+                Get.offNamed(AppRoutes.DASHBOARD);
               },
               isLoading: false,
               label: loginController.isLogin.value

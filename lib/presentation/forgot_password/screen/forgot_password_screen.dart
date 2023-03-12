@@ -7,7 +7,7 @@ import 'package:lettutor_app/res/constants/local_string.dart';
 import 'package:lettutor_app/res/dimens.dart';
 import 'package:lettutor_app/res/theme/text_theme.dart';
 
-class ForgotPasswordPage extends BaseScreen<ForgotPasswordController> {
+class ForgotPasswordScreen extends BaseScreen<ForgotPasswordController> {
   @override
   Widget buildContentView(BuildContext context) {
     return SingleChildScrollView(

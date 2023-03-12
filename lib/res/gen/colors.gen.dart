@@ -28,5 +28,5 @@ class ColorName {
   static const Color steelGrey = Color(0xFF7F8489);
   static const Color textGreyColor = Color(0xFF777777);
   static const Color white = Color(0xFFFFFFFF);
-  static const Color yellowColor = Color(0xFFFABB57);
+  static const Color yellowColor = Color(0xFFFFFF00);
 }

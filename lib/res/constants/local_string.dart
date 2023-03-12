@@ -26,11 +26,13 @@ class LocalString {
   static final String logout = 'log.out'.tr;
   static final String account = 'account'.tr;
   static final String save = 'save'.tr;
+  static final String book = 'book'.tr;
 
   // Warning
   static final String warningEmptyEmail = 'warning.empty.email'.tr;
   static final String warningEmptyPassword = 'warning.empty.password'.tr;
   static final String warningWrongEmail = 'warning.wrong.email'.tr;
+
   //static final String warningWrongPassword = 'warning.wrong.password'.tr;
   static final String warningLoginFail = 'warning.login.fail'.tr;
 
@@ -55,4 +57,21 @@ class LocalString {
   static final String profileMyLevel = 'profile.my.level'.tr;
   static final String profileWantToLearn = 'profile.want.learn'.tr;
   static final String profileStudySchedule = 'profile.study.schedule'.tr;
+
+  //Đashboard
+  static final String dashBoardUpComing = 'dash.board.up.coming'.tr;
+  static final String dashBoardEnterRoom = 'dash.board.enter.room'.tr;
+  static final String dashBoardTotalTime = 'dash.board.total.time'.tr;
+  static final String dashBoardFindTutor = 'dash.board.find.tutor'.tr;
+  static final String dashBoardEnterTutorName =
+      'dash.board.enter.tutor.name'.tr;
+  static final String dashBoardSelectTutorNation = 'dash.board.tutor.nation'.tr;
+  static final String dashBoardSelectDay = 'dash.board.select.day'.tr;
+  static final String dashBoardStartTime = 'dash.board.start.time'.tr;
+  static final String dashBoardEndTime = 'dash.board.end.time'.tr;
+  static final String dashBoardResetFilter = 'dash.board.reset.filter'.tr;
+  static final String dashBoardRecommendTutor = 'dash.board.recommend.tutor'.tr;
+  static final String dashBoardNoReview = 'dash.board.no.review'.tr;
+  static final String dashBoardSelectAvailableTime =
+      'dash.board.select.available.time'.tr;
 }

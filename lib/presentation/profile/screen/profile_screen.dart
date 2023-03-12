@@ -10,7 +10,7 @@ import 'package:lettutor_app/res/dimens.dart';
 import 'package:lettutor_app/res/gen/colors.gen.dart';
 import 'package:lettutor_app/res/theme/text_theme.dart';
 
-class ProfilePage extends BaseScreen<ProfileController> {
+class ProfileScreen extends BaseScreen<ProfileController> {
   @override
   Widget buildContentView(BuildContext context) {
     return SingleChildScrollView(

@@ -22,6 +22,7 @@ final Map<String, String> enUS = {
   'log.out': 'Logout',
   'account': 'Account',
   'save': 'Save',
+  'book': 'Book',
 
   // Warning
   'warning.empty.email': 'Please input your Email!',
@@ -51,4 +52,20 @@ final Map<String, String> enUS = {
   'profile.my.level': 'My Level',
   'profile.want.learn': 'Want to learn',
   'profile.study.schedule': 'Study Schedule',
+
+  //DashBoard
+
+  'dash.board.up.coming': 'Upcoming lesson',
+  'dash.board.enter.room': 'Enter lesson room',
+  'dash.board.total.time': 'Total lesson time is 154 hours 10 minutes',
+  'dash.board.find.tutor': 'Find a tutor',
+  'dash.board.enter.tutor.name': 'Enter tutor name',
+  'dash.board.tutor.nation': 'Select tutor nation',
+  'dash.board.select.day': 'Select a day',
+  'dash.board.start.time': 'start time',
+  'dash.board.end.time': 'End time',
+  'dash.board.reset.filter': 'Reset Filters',
+  'dash.board.recommend.tutor': 'Recommended Tutors',
+  'dash.board.no.review': 'No reviews yet',
+  'dash.board.select.available.time': 'Select available tutoring time:',
 };

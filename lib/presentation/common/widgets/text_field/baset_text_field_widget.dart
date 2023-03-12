@@ -15,11 +15,12 @@ TextFormField baseTextField(
     int maxLine = 1,
     int? maxLength,
     Widget? icon,
+    double radius = 5.0,
     FormFieldValidator<String>? validator}) {
   return TextFormField(
     onTap: onTap,
-    maxLines: maxLine,
     readOnly: readOnly,
+    maxLines: maxLine,
     inputFormatters: [
       LengthLimitingTextInputFormatter(maxLength),
     ],
@@ -39,8 +40,10 @@ TextFormField baseTextField(
       fillColor: whiteColor,
       hintText: hintText,
       suffixIcon: icon,
-      focusedBorder: underLineIntputBorder(width: 2, color: greyBorderColor),
-      enabledBorder: underLineIntputBorder(width: 2, color: greyBorderColor),
+      focusedBorder: underLineIntputBorder(
+          width: 2, color: greyBorderColor, radius: radius),
+      enabledBorder: underLineIntputBorder(
+          width: 2, color: greyBorderColor, radius: radius),
       contentPadding: EdgeInsets.symmetric(
         horizontal: 15.w,
         vertical: 15.w,
@@ -51,9 +54,9 @@ TextFormField baseTextField(
 }
 
 OutlineInputBorder underLineIntputBorder(
-    {required double width, required color}) {
+    {required double width, required color, required radius}) {
   return OutlineInputBorder(
-    borderRadius: BorderRadius.circular(5.0.r),
+    borderRadius: BorderRadius.circular(radius),
     borderSide: BorderSide(
       color: color,
     ),
