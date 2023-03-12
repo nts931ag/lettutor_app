@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:lettutor_app/res/dimens.dart';
 import 'package:lettutor_app/res/gen/fonts.gen.dart';
 
-const fontApp = TextStyle(fontFamily: FontFamily.mulish, fontWeight: FontWeight.w400);
+const fontApp =
+    TextStyle(fontFamily: FontFamily.mulish, fontWeight: FontWeight.w500);
 
 TextStyle get text10 => fontApp.copyWith(fontSize: 10.sp);
 
