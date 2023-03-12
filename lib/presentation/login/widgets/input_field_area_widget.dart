@@ -1,14 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:lettutor_app/app/app_pages.dart';
 import 'package:lettutor_app/presentation/common/widgets/buttons/loading_button_widget.dart';
 import 'package:lettutor_app/presentation/common/widgets/text_field/baset_text_field_widget.dart';
+import 'package:lettutor_app/presentation/login/screen/login_controller.dart';
 import 'package:lettutor_app/res/colors/colors_core.dart';
 import 'package:lettutor_app/res/constants/local_string.dart';
 import 'package:lettutor_app/res/dimens.dart';
 import 'package:lettutor_app/res/theme/text_theme.dart';
 
 class InputFieldArea extends StatelessWidget {
-  const InputFieldArea({
+  late LoginController loginController;
+  InputFieldArea({
     Key? key,
+    required this.loginController,
   }) : super(key: key);
 
   @override
@@ -54,7 +59,9 @@ class InputFieldArea extends StatelessWidget {
           height: 10.h,
         ),
         InkWell(
-          onTap: () {},
+          onTap: () {
+            Get.toNamed(AppRoutes.FORGOT_PASSWORD);
+          },
           child: Text(
             LocalString.forgetPassword,
             style:
@@ -64,8 +71,16 @@ class InputFieldArea extends StatelessWidget {
         SizedBox(
           height: 15.h,
         ),
-        LoadingButtonWidget(
-            submit: () {}, isLoading: false, label: LocalString.login),
+        Obx(
+              () => LoadingButtonWidget(
+              submit: () {
+                Get.offNamed(AppRoutes.PROFILE);
+              },
+              isLoading: false,
+              label: loginController.isLogin.value
+                  ? LocalString.login
+                  : LocalString.signUp),
+        )
       ],
     );
   }

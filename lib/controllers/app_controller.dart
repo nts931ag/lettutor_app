@@ -7,8 +7,10 @@ import 'package:lettutor_app/res/theme/app_theme.dart';
 import 'package:lettutor_app/res/theme/theme_service.dart';
 
 class AppController extends GetxController {
-  Rx<Locale?>? locale;
-  Rx<ThemeData?>? themeData;
+  late Rx<Locale?> locale;
+  late Rx<ThemeData?> themeData;
+
+
 
   init() async {
     await Future.wait([initStorage()]);
@@ -30,7 +32,11 @@ class AppController extends GetxController {
 
     // Listen to the change of locale
     localeService.appStorage.box.listenKey(AppStorage.APP_LANGUAGE, (value) {
-      if (value != null) locale!.value = Locale(value);
+      if (value != null) {
+
+        final newLocale = Locale(value);
+        locale.value = newLocale;
+      }
     });
   }
 
@@ -41,8 +47,8 @@ class AppController extends GetxController {
 
     // Listen to the change of Theme
     storage.box.listenKey(AppStorage.APP_THEME, (value) {
-      if (value != null && themeData != null) {
-        themeData!.value = appThemeData[themeService.getAppTheme(value)];
+      if (value != null) {
+        themeData.value = appThemeData[themeService.getAppTheme(value)];
       } else {
         themeData = appThemeData[themeService.getAppTheme(value)].obs;
       }

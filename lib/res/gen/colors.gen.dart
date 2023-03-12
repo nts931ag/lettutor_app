@@ -20,6 +20,7 @@ class ColorName {
   static const Color dividerColor = Color(0xFFE7E7EA);
   static const Color greenColor = Color(0xFF0C7C59);
   static const Color greenLightColor = Color(0xFF5AC07D);
+  static const Color greyColor = Color(0xFFF5F6FA);
   static const Color orangeColor = Color(0xFFFB5427);
   static const Color pinkishGrey = Color(0xCCCCCCFF);
   static const Color primaryColor = Color(0xFF0071F0);

@@ -20,6 +20,7 @@ class $AssetsImagesGen {
   const $AssetsImagesGen();
 
   AssetGenImage get imageLogin => const AssetGenImage('assets/images/image_login.png');
+  AssetGenImage get img => const AssetGenImage('assets/images/img.jpg');
 }
 
 class $AssetsSvgGen {

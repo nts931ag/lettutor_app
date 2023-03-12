@@ -2,8 +2,9 @@
 import 'package:flutter/material.dart';
 import 'package:lettutor_app/presentation/common/widgets/app_bar/main_app_bar_widget.dart';
 import 'package:lettutor_app/res/colors/colors_core.dart';
+import 'package:lettutor_app/res/dimens.dart';
 
-class BaseScaffold extends StatelessWidget {
+class BaseScaffoldWidget extends StatelessWidget {
   final Widget body;
   final Widget? bottomSheet;
   final Widget? bottomNavigationBar;
@@ -17,21 +18,21 @@ class BaseScaffold extends StatelessWidget {
   final EdgeInsetsGeometry? marginCustom;
   final EdgeInsetsGeometry? paddingCustom;
   final List<Widget> actions;
-  const BaseScaffold(
+  const BaseScaffoldWidget(
       {Key? key,
-      required this.body,
-      this.bottomSheet,
-      this.bottomNavigationBar,
-      this.floatingActionButton,
-      this.background,
-      this.backgroundChild,
-      this.resizeToAvoidBottomInset = false,
-      this.isPaddingDefault = false,
-      this.isBaseDrawer = true,
-      this.appbar,
-      this.marginCustom,
-      this.paddingCustom,
-      this.actions = const []})
+        required this.body,
+        this.bottomSheet,
+        this.bottomNavigationBar,
+        this.floatingActionButton,
+        this.background,
+        this.backgroundChild,
+        this.resizeToAvoidBottomInset = false,
+        this.isPaddingDefault = true,
+        this.isBaseDrawer = true,
+        this.appbar,
+        this.marginCustom,
+        this.paddingCustom,
+        this.actions = const []})
       : super(key: key);
 
   @override
@@ -43,12 +44,11 @@ class BaseScaffold extends StatelessWidget {
         backgroundColor: background,
         body: isPaddingDefault
             ? Container(
-                color: backgroundColor,
-                margin: marginCustom,
-                padding:
-                    paddingCustom ?? const EdgeInsets.symmetric(horizontal: 10),
-                child: body,
-              )
+          margin: marginCustom,
+          padding:
+          paddingCustom ?? EdgeInsets.symmetric(horizontal: 20.w),
+          child: body,
+        )
             : body,
         bottomSheet: bottomSheet,
         bottomNavigationBar: bottomNavigationBar,

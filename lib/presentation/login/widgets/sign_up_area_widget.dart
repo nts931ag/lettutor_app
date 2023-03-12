@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:lettutor_app/presentation/common/widgets/icon/circle_icon_widget.dart';
+import 'package:lettutor_app/presentation/login/screen/login_controller.dart';
 import 'package:lettutor_app/res/constants/local_string.dart';
 import 'package:lettutor_app/res/dimens.dart';
 import 'package:lettutor_app/res/gen/assets.gen.dart';
@@ -7,8 +9,11 @@ import 'package:lettutor_app/res/gen/colors.gen.dart';
 import 'package:lettutor_app/res/theme/text_theme.dart';
 
 class SignUpArea extends StatelessWidget {
-  const SignUpArea({
+  late LoginController loginController;
+
+  SignUpArea({
     Key? key,
+    required this.loginController,
   }) : super(key: key);
 
   @override
@@ -52,7 +57,7 @@ class SignUpArea extends StatelessWidget {
           SizedBox(
             height: 25.h,
           ),
-          Row(
+          Obx(() => Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
@@ -63,14 +68,18 @@ class SignUpArea extends StatelessWidget {
                 width: 1.w,
               ),
               InkWell(
-                onTap: () {},
+                onTap: () {
+                  loginController.changeLogin();
+                },
                 child: Text(
-                  LocalString.signUp,
+                  loginController.isLogin.value
+                      ? LocalString.signUp
+                      : LocalString.login,
                   style: text14.copyWith(color: ColorName.primaryColor),
                 ),
               ),
             ],
-          ),
+          ))
         ],
       ),
     );

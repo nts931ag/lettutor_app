@@ -25,7 +25,7 @@ class CircleIconWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        onTap?.call();
+        onTap!();
       },
       child: Container(
         height: 38.w,

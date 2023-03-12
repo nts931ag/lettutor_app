@@ -11,31 +11,32 @@ class LettutorApp extends GetWidget<AppController> {
   @override
   Widget build(BuildContext context) {
     return Obx(
-      () => GestureDetector(
-        onTap: () {
-          FocusManager.instance.primaryFocus?.unfocus();
-        },
-        child: GetMaterialApp(
-          title: LocalString.appName,
-          debugShowCheckedModeBanner: false,
-          getPages: AppPages.pages,
-          translations: LocalizationService(),
-          locale: controller.locale?.value,
-          theme: controller.themeData?.value,
-          initialRoute: AppRoutes.LOGIN,
-          defaultTransition: Transition.rightToLeft,
-          transitionDuration: const Duration(milliseconds: 200),
-          localizationsDelegates: const [
-            GlobalMaterialLocalizations.delegate,
-            GlobalWidgetsLocalizations.delegate,
-            GlobalCupertinoLocalizations.delegate,
-          ],
-          supportedLocales: const [
-            Locale('en'),
-            Locale('vi'),
-          ],
-        ),
-      ),
+          () {
+        return GestureDetector(
+          onTap: () {
+            FocusManager.instance.primaryFocus?.unfocus();
+          },
+          child: GetMaterialApp(
+            title: LocalString.appName,
+            debugShowCheckedModeBanner: false,
+            useInheritedMediaQuery: true,
+            getPages: AppPages.pages,
+            translations: Get.find<LocalizationService>(),
+            locale: controller.locale.value,
+            theme: controller.themeData.value,
+            initialRoute: AppRoutes.LOGIN,
+            defaultTransition: Transition.rightToLeft,
+            transitionDuration: const Duration(milliseconds: 200),
+            localizationsDelegates: const [
+              GlobalMaterialLocalizations.delegate,
+              GlobalWidgetsLocalizations.delegate,
+              GlobalCupertinoLocalizations.delegate,
+            ],
+            fallbackLocale: const Locale('en'),
+            supportedLocales: LocalizationService.supportLocale,
+          ),
+        );
+      },
     );
   }
 }
