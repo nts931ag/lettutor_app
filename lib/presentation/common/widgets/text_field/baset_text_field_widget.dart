@@ -12,6 +12,7 @@ TextFormField baseTextField(
     bool readOnly = false,
     bool isObscure = false,
     bool isPhone = false,
+    bool isHaveBorder = true,
     int maxLine = 1,
     int? maxLength,
     Widget? icon,
@@ -40,14 +41,17 @@ TextFormField baseTextField(
       fillColor: whiteColor,
       hintText: hintText,
       suffixIcon: icon,
-      focusedBorder: underLineIntputBorder(
-          width: 2, color: greyBorderColor, radius: radius),
-      enabledBorder: underLineIntputBorder(
-          width: 2, color: greyBorderColor, radius: radius),
-      contentPadding: EdgeInsets.symmetric(
-        horizontal: 15.w,
-        vertical: 15.w,
-      ),
+      focusedBorder: isHaveBorder
+          ? underLineIntputBorder(
+          width: 2, color: greyBorderColor, radius: radius)
+          : null,
+      enabledBorder: isHaveBorder
+          ? underLineIntputBorder(
+          width: 2, color: greyBorderColor, radius: radius)
+          : null,
+      // contentPadding: isHaveBorder
+      //     ? EdgeInsets.symmetric(horizontal: 15.w, vertical: 15.h)
+      //     : null,
       isDense: true,
     ),
   );

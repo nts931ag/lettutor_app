@@ -24,6 +24,7 @@ class TutorDetailController extends BaseController {
   @override
   void onInit() {
     super.onInit();
+    isHaveDrawer = false;
     videoController.initialize().then((value) {
       isLoadingVideo.value = false;
     });

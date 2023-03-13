@@ -29,6 +29,9 @@ final Map<String, String> enUS = {
   'languages': 'Languages',
   'specialties': 'Specialties',
   'interests': 'Interests',
+  'course': 'Course',
+  'e.book': 'E-Book',
+  'i.e.book': 'Interactive E-book',
 
   // Warning
   'warning.empty.email': 'Please input your Email!',
@@ -82,4 +85,12 @@ final Map<String, String> enUS = {
   //Tutor Detail
   'tutor.detail.suggested.course': 'Suggested courses',
   'tutor.detail.ex': 'Teaching experience',
+
+  //course
+  'course.title': 'Discover Courses',
+  'course.content':
+      'LiveTutor has built the most quality, methodical and scientific courses in the fields of life for those who are in need of improving their knowledge of the fields.',
+  'course.level': 'Select level',
+  'course.sort.lv': 'Sort by level',
+  'course.category': 'Select category',
 };
