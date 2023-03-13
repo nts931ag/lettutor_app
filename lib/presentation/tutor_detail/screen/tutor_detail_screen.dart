@@ -7,7 +7,7 @@ import 'package:lettutor_app/presentation/tutor_detail/widget/tutor_main_detail.
 import 'package:lettutor_app/presentation/tutor_detail/widget/tutor_video.dart';
 import 'package:lettutor_app/res/dimens.dart';
 
-class TutorDetailPage extends BaseScreen<TutorDetailController> {
+class TutorDetailScreen extends BaseScreen<TutorDetailController> {
   @override
   Widget buildContentView(BuildContext context) {
     return SingleChildScrollView(

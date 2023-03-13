@@ -2,9 +2,11 @@
 
 import 'package:get/get.dart';
 import 'package:lettutor_app/presentation/change_password/screen/change_password_binding.dart';
-import 'package:lettutor_app/presentation/change_password/screen/change_password_page.dart';
+import 'package:lettutor_app/presentation/change_password/screen/change_password_screen.dart';
 import 'package:lettutor_app/presentation/course/screen/course_binding.dart';
-import 'package:lettutor_app/presentation/course/screen/course_page.dart';
+import 'package:lettutor_app/presentation/course/screen/course_screen.dart';
+import 'package:lettutor_app/presentation/course_detail/screen/course_detail_binding.dart';
+import 'package:lettutor_app/presentation/course_detail/screen/course_detail_screen.dart';
 import 'package:lettutor_app/presentation/dash_board.dart/screen/dashboard_binding.dart';
 import 'package:lettutor_app/presentation/dash_board.dart/screen/dashboard_screen.dart';
 import 'package:lettutor_app/presentation/forgot_password/screen/forgot_password_binding.dart';
@@ -14,9 +16,9 @@ import 'package:lettutor_app/presentation/login/screen/login_screen.dart';
 import 'package:lettutor_app/presentation/profile/screen/profile_binding.dart';
 import 'package:lettutor_app/presentation/profile/screen/profile_screen.dart';
 import 'package:lettutor_app/presentation/review/screen/review_binding.dart';
-import 'package:lettutor_app/presentation/review/screen/review_page.dart';
+import 'package:lettutor_app/presentation/review/screen/review_screen.dart';
 import 'package:lettutor_app/presentation/tutor_detail/screen/tutor_detail_binding.dart';
-import 'package:lettutor_app/presentation/tutor_detail/screen/tutor_detail_page.dart';
+import 'package:lettutor_app/presentation/tutor_detail/screen/tutor_detail_screen.dart';
 
 class AppRoutes {
   static String LOGIN = '/login';
@@ -26,7 +28,8 @@ class AppRoutes {
   static String CHANGE_PASSWORD = '/change_password';
   static String TUTOR_DETAIL = '/tutor_detail';
   static String COURSE = '/course';
-  static String REVIEW = '/review';
+  static String REVIEW = '/tutor_detail/review';
+  static String COURSE_DETAIL = "/course/detail";
 }
 
 class AppPages {
@@ -54,15 +57,19 @@ class AppPages {
         binding: ChangePasswordBinding()),
     GetPage(
         name: AppRoutes.TUTOR_DETAIL,
-        page: () => TutorDetailPage(),
+        page: () => TutorDetailScreen(),
         binding: TutorDetailBinding()),
     GetPage(
         name: AppRoutes.COURSE,
-        page: () => CoursePage(),
+        page: () => CourseScreen(),
         binding: CourseBinding()),
     GetPage(
         name: AppRoutes.REVIEW,
-        page: () => ReviewPage(),
+        page: () => ReviewScreen(),
         binding: ReviewBinding()),
+    GetPage(
+        name: AppRoutes.COURSE_DETAIL,
+        page: () => CourseDetailScreen(),
+        binding: CourseDetailBinding()),
   ];
 }

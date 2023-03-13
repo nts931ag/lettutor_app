@@ -32,6 +32,7 @@ final Map<String, String> viVN = {
   'course': 'khóa học',
   'e.book': 'E-Book',
   'i.e.book': 'Interactive E-book',
+  'overview': 'Tổng quan',
 
   // Warning
   'warning.empty.email': 'Vui lòng nhập Email',
@@ -93,4 +94,11 @@ final Map<String, String> viVN = {
   'course.level': 'Chọn cấp độ',
   'course.sort.lv': 'Chọn danh mục',
   'course.category': 'Sắp xếp theo độ khó',
+
+  //course detail
+  'course.detail.discover': 'Khám phá',
+  'course.detail.ex.lv': 'Trình độ yêu cầu',
+  'course.detail.len': 'Thời lượng khóa học',
+  'course.detail.topics': 'Danh sách chủ đề',
+  'course.detail.sug.tutors': 'Gợi ý gia sư',
 };

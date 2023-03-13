@@ -37,6 +37,7 @@ class LocalString {
   static final String course = 'course'.tr;
   static final String eBook = 'e.book'.tr;
   static final String ieBook = 'i.e.book'.tr;
+  static final String overview = 'overview'.tr;
 
   // Warning
   static final String warningEmptyEmail = 'warning.empty.email'.tr;
@@ -100,4 +101,12 @@ class LocalString {
   static final String courseLevel = 'course.level'.tr;
   static final String courseSortlv = 'course.sort.lv'.tr;
   static final String courseCategory = 'course.category'.tr;
+
+  //course detail
+
+  static final String courseDetailDiscover = 'course.detail.discover'.tr;
+  static final String courseDetailExlv = 'course.detail.ex.lv'.tr;
+  static final String courseDetailCourseLen = 'course.detail.len'.tr;
+  static final String courseDetailTopics = 'course.detail.topics'.tr;
+  static final String courseDetailSugTutor = 'course.detail.sug.tutors'.tr;
 }

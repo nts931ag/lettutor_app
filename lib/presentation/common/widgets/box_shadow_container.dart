@@ -11,30 +11,36 @@ class BoxShadowContainer extends StatelessWidget {
   BorderRadiusGeometry? borderRadius;
   Color? borderColor;
   double width;
+
+  Function()? onTap;
   BoxShadowContainer({
     Key? key,
-    required this.child,
-    required this.width,
     this.padding,
     this.borderRadius,
     this.borderColor,
+    this.onTap,
+    required this.width,
+    required this.child,
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return Container(
-        width: width,
-        padding: padding ?? EdgeInsets.only(bottom: 20.h),
-        decoration: BoxDecoration(
-            color: Colors.white,
-            boxShadow: [
-              BoxShadow(
-                color: Colors.grey.withOpacity(0.5),
-                spreadRadius: 4,
-                blurRadius: 4, 
-              ),
-            ],
-            borderRadius: borderRadius ?? BorderRadius.circular(20.r),
-            border: Border.all(color: borderColor ?? ColorName.greyColor)),
-        child: child);
+    return InkWell(
+      onTap: onTap,
+      child: Container(
+          width: width,
+          padding: padding ?? EdgeInsets.only(bottom: 20.h),
+          decoration: BoxDecoration(
+              color: Colors.white,
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.grey.withOpacity(0.3),
+                  spreadRadius: 1,
+                  blurRadius: 1,
+                ),
+              ],
+              borderRadius: borderRadius ?? BorderRadius.circular(20.r),
+              border: Border.all(color: borderColor ?? ColorName.greyColor)),
+          child: child),
+    );
   }
 }

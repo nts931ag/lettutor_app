@@ -32,6 +32,7 @@ final Map<String, String> enUS = {
   'course': 'Course',
   'e.book': 'E-Book',
   'i.e.book': 'Interactive E-book',
+  'overview': 'Overview',
 
   // Warning
   'warning.empty.email': 'Please input your Email!',
@@ -93,4 +94,11 @@ final Map<String, String> enUS = {
   'course.level': 'Select level',
   'course.sort.lv': 'Sort by level',
   'course.category': 'Select category',
+
+  //course detail
+  'course.detail.discover': 'Discover',
+  'course.detail.ex.lv': 'Experience Level',
+  'course.detail.len': 'Course Length',
+  'course.detail.topics': 'List Topics',
+  'course.detail.sug.tutors': 'Suggested Tutors',
 };

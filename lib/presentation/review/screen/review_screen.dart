@@ -1,6 +1,5 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
-import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:get/get.dart';
 import 'package:lettutor_app/presentation/common/screens/base/base_screen.dart';
 import 'package:lettutor_app/presentation/review/screen/review_controller.dart';
@@ -9,7 +8,7 @@ import 'package:lettutor_app/res/dimens.dart';
 import 'package:lettutor_app/res/gen/assets.gen.dart';
 
 
-class ReviewPage extends BaseScreen<ReviewController> {
+class ReviewScreen extends BaseScreen<ReviewController> {
   @override
   Widget buildContentView(BuildContext context) {
     return SingleChildScrollView(

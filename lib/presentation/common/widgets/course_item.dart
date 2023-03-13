@@ -6,13 +6,13 @@ class CourseItem extends StatelessWidget {
   Widget image;
   String mainTitle;
   String subTitle;
-  String bottomTitle;
+  Widget bottomWidget;
   CourseItem({
     Key? key,
     required this.image,
     required this.mainTitle,
     required this.subTitle,
-    required this.bottomTitle,
+    required this.bottomWidget,
   }) : super(key: key);
 
   @override
@@ -31,7 +31,7 @@ class CourseItem extends StatelessWidget {
             children: [
               Text(
                 mainTitle,
-                style: text16.copyWith(fontWeight: FontWeight.w600),
+                style: text16.copyWith(fontWeight: FontWeight.w700),
               ),
               SizedBox(
                 height: 10.h,
@@ -43,10 +43,7 @@ class CourseItem extends StatelessWidget {
               SizedBox(
                 height: 15.h,
               ),
-              Text(
-                bottomTitle,
-                style: text14,
-              ),
+              bottomWidget,
             ],
           ),
         )

@@ -7,7 +7,7 @@ import 'package:lettutor_app/presentation/course/widgets/information_course.dart
 import 'package:lettutor_app/presentation/course/widgets/tab_bar_view.dart';
 import 'package:lettutor_app/res/dimens.dart';
 
-class CoursePage extends BaseScreen<CourseController> {
+class CourseScreen extends BaseScreen<CourseController> {
   @override
   Widget buildContentView(BuildContext context) {
     return SingleChildScrollView(
