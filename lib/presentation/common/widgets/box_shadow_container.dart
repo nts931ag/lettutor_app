@@ -28,6 +28,7 @@ class BoxShadowContainer extends StatelessWidget {
       onTap: onTap,
       child: Container(
           width: width,
+          margin: EdgeInsets.symmetric(horizontal: 2.w),
           padding: padding ?? EdgeInsets.only(bottom: 20.h),
           decoration: BoxDecoration(
               color: Colors.white,

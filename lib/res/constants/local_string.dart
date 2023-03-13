@@ -38,6 +38,11 @@ class LocalString {
   static final String eBook = 'e.book'.tr;
   static final String ieBook = 'i.e.book'.tr;
   static final String overview = 'overview'.tr;
+  static final String schedule = 'schedule'.tr;
+  static final String cancel = 'cancel'.tr;
+  static final String page = 'page'.tr;
+  static final String record = 'record'.tr;
+  static final String addRating = 'add.rating'.tr;
 
   // Warning
   static final String warningEmptyEmail = 'warning.empty.email'.tr;
@@ -109,4 +114,23 @@ class LocalString {
   static final String courseDetailCourseLen = 'course.detail.len'.tr;
   static final String courseDetailTopics = 'course.detail.topics'.tr;
   static final String courseDetailSugTutor = 'course.detail.sug.tutors'.tr;
+
+  // Schedule
+  static final String scheduleTitle = 'schedule.title'.tr;
+  static final String scheduleSubTitle = 'schedule.sub.title'.tr;
+  static final String scheduleLatest = 'schedule.latest'.tr;
+  static final String scheduleName = 'schedule.name'.tr;
+  static final String scheduleDes = 'schedule.des'.tr;
+  static final String scheduleDirectMessage = 'schedule.direct'.tr;
+  static final String scheduleRequest = 'schedule.request'.tr;
+  static final String scheduleEditRequest = 'schedule.edit.request'.tr;
+  static final String scheduleRequestContent = 'schedule.request.content'.tr;
+  static final String scheduleGotoMeeting = 'schedule.go.meeting'.tr;
+
+  // History
+  static final String historyTitle = 'history.title'.tr;
+  static final String historySubTitle = 'history.sub.title'.tr;
+  static final String historyLessonTime = 'history.lesson.time'.tr;
+  static final String historyNoRquest = 'history.no.request'.tr;
+  static final String historyTutorHaventRv = 'history.tutor.rv'.tr;
 }

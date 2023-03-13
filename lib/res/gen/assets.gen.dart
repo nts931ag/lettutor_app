@@ -43,7 +43,25 @@ class $AssetsSvgGen {
 
   $AssetsSvgCourseGen get course => const $AssetsSvgCourseGen();
 
+  $AssetsSvgHistoryGen get history => const $AssetsSvgHistoryGen();
+
   $AssetsSvgLoginGen get login => const $AssetsSvgLoginGen();
+
+  $AssetsSvgScheduleGen get schedule => const $AssetsSvgScheduleGen();
+}
+
+class $AssetsSvgHistoryGen {
+  const $AssetsSvgHistoryGen();
+
+  SvgGenImage get iconHistory =>
+      const SvgGenImage('assets/svg/history/icon_history.svg');
+}
+
+class $AssetsSvgScheduleGen {
+  const $AssetsSvgScheduleGen();
+
+  SvgGenImage get iconSchedule =>
+      const SvgGenImage('assets/svg/schedule/icon_schedule.svg');
 }
 
 class $AssetsSvgCourseGen {

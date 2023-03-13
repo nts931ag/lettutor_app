@@ -17,6 +17,8 @@ import 'package:lettutor_app/presentation/profile/screen/profile_binding.dart';
 import 'package:lettutor_app/presentation/profile/screen/profile_screen.dart';
 import 'package:lettutor_app/presentation/review/screen/review_binding.dart';
 import 'package:lettutor_app/presentation/review/screen/review_screen.dart';
+import 'package:lettutor_app/presentation/schedule/screen/schedule_binding.dart';
+import 'package:lettutor_app/presentation/schedule/screen/schedule_page.dart';
 import 'package:lettutor_app/presentation/tutor_detail/screen/tutor_detail_binding.dart';
 import 'package:lettutor_app/presentation/tutor_detail/screen/tutor_detail_screen.dart';
 
@@ -30,6 +32,8 @@ class AppRoutes {
   static String COURSE = '/course';
   static String REVIEW = '/tutor_detail/review';
   static String COURSE_DETAIL = "/course/detail";
+  static String SCHEDULE = '/schedule';
+  static String HISTORY = '/history';
 }
 
 class AppPages {
@@ -71,5 +75,13 @@ class AppPages {
         name: AppRoutes.COURSE_DETAIL,
         page: () => CourseDetailScreen(),
         binding: CourseDetailBinding()),
+    GetPage(
+        name: AppRoutes.SCHEDULE,
+        page: () => ScheduleScreen(),
+        binding: ScheduleBinding()),
+    GetPage(
+        name: AppRoutes.HISTORY,
+        page: () => HistoryPage(),
+        binding: HistoryBinding()),
   ];
 }
