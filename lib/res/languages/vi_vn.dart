@@ -33,6 +33,11 @@ final Map<String, String> viVN = {
   'e.book': 'E-Book',
   'i.e.book': 'Interactive E-book',
   'overview': 'Tổng quan',
+  'schedule': 'Lịch đã đặt',
+  'cancel': 'Hủy',
+  'page': 'Page',
+  'record': 'Bản ghi',
+  'add.rating': 'Đánh giá',
 
   // Warning
   'warning.empty.email': 'Vui lòng nhập Email',
@@ -101,4 +106,26 @@ final Map<String, String> viVN = {
   'course.detail.len': 'Thời lượng khóa học',
   'course.detail.topics': 'Danh sách chủ đề',
   'course.detail.sug.tutors': 'Gợi ý gia sư',
+
+  // Schedule
+  'schedule.title': 'Đây là danh sách những khung giờ bạn đã đặt',
+  'schedule.sub.title':
+      'Bạn có thể theo dõi khi nào buổi học bắt đầu, tham gia buổi học bằng một cú nhấp chuột hoặc có thể hủy buổi học trước 2 tiếng.',
+  'schedule.latest': 'Latest Book',
+  'schedule.name': 'Tên',
+  'schedule.des': 'Mô tả',
+  'schedule.direct': 'Nhắn tin',
+  'schedule.request': 'Yêu cầu cho buổi học',
+  'schedule.edit.request': 'Chỉnh sửa yêu cầu',
+  'schedule.request.content':
+      'Hiện tại không có yêu cầu cho lớp học này. Xin vui lòng viết ra bất kỳ yêu cầu nào cho giáo viên nếu có.',
+  'schedule.go.meeting': 'Vào buổi học',
+
+  // History
+  'history.title': 'Đây là danh sách các bài học bạn đã tham gia',
+  'history.sub.title':
+      'Bạn có thể xem lại thông tin chi tiết về các buổi học đã tham gia đã tham gia',
+  'history.lesson.time': 'Thời gian bài học:',
+  'history.no.request': 'Không có yêu cầu cho buổi học',
+  'history.tutor.rv': 'Gia sư chưa có đánh giá',
 };

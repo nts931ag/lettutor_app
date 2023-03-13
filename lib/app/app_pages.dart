@@ -11,6 +11,8 @@ import 'package:lettutor_app/presentation/dash_board.dart/screen/dashboard_bindi
 import 'package:lettutor_app/presentation/dash_board.dart/screen/dashboard_screen.dart';
 import 'package:lettutor_app/presentation/forgot_password/screen/forgot_password_binding.dart';
 import 'package:lettutor_app/presentation/forgot_password/screen/forgot_password_screen.dart';
+import 'package:lettutor_app/presentation/history/screen/history_binding.dart';
+import 'package:lettutor_app/presentation/history/screen/history_page.dart';
 import 'package:lettutor_app/presentation/login/screen/login_binding.dart';
 import 'package:lettutor_app/presentation/login/screen/login_screen.dart';
 import 'package:lettutor_app/presentation/profile/screen/profile_binding.dart';

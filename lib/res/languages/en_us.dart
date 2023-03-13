@@ -33,6 +33,11 @@ final Map<String, String> enUS = {
   'e.book': 'E-Book',
   'i.e.book': 'Interactive E-book',
   'overview': 'Overview',
+  'schedule': 'Schedule',
+  'cancel': 'Cancel',
+  'page': 'Page',
+  'record': 'Record',
+  'add.rating': 'Add rating',
 
   // Warning
   'warning.empty.email': 'Please input your Email!',
@@ -101,4 +106,26 @@ final Map<String, String> enUS = {
   'course.detail.len': 'Course Length',
   'course.detail.topics': 'List Topics',
   'course.detail.sug.tutors': 'Suggested Tutors',
+
+  // Schedule
+  'schedule.title': 'Here is a list of the sessions you have booked',
+  'schedule.sub.title':
+      'You can track when the meeting starts, join the meeting with one click or can cancel the meeting before 2 hours',
+  'schedule.latest': 'Latest Book',
+  'schedule.name': 'Name',
+  'schedule.des': 'Description',
+  'schedule.direct': 'Direct Message',
+  'schedule.request': 'Request for lesson',
+  'schedule.edit.request': 'Edit Request',
+  'schedule.request.content':
+      'Currently there are no requests for this class. Please write down any requests for the teacher.',
+  'schedule.go.meeting': 'Go to meeting',
+
+  // History
+  'history.title': 'The following is a list of lessons you have attended',
+  'history.sub.title':
+      'You can review the details of the lessons you have attended',
+  'history.lesson.time': 'Lesson Time:',
+  'history.no.request': 'No request for lesson',
+  'history.tutor.rv': 'Tutor havent reviewed yet',
 };
