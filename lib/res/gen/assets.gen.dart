@@ -11,24 +11,46 @@ class $AssetsFontsGen {
   const $AssetsFontsGen();
 
   String get mulishBold => 'assets/fonts/Mulish-Bold.ttf';
+
   String get mulishExtraBold => 'assets/fonts/Mulish-ExtraBold.ttf';
+
   String get mulishRegular => 'assets/fonts/Mulish-Regular.ttf';
+
   String get mulishSemiBold => 'assets/fonts/Mulish-SemiBold.ttf';
 }
 
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
-  AssetGenImage get imageLogin => const AssetGenImage('assets/images/image_login.png');
+  AssetGenImage get imageLogin =>
+      const AssetGenImage('assets/images/image_login.png');
+
   AssetGenImage get img => const AssetGenImage('assets/images/img.jpg');
+
+  AssetGenImage get imgCourse1 =>
+      const AssetGenImage('assets/images/img_course1.png');
+
+  AssetGenImage get imgCourse2 =>
+      const AssetGenImage('assets/images/img_course2.png');
 }
 
 class $AssetsSvgGen {
   const $AssetsSvgGen();
 
   $AssetsSvgAppGen get app => const $AssetsSvgAppGen();
+
   $AssetsSvgCommonGen get common => const $AssetsSvgCommonGen();
+
+  $AssetsSvgCourseGen get course => const $AssetsSvgCourseGen();
+
   $AssetsSvgLoginGen get login => const $AssetsSvgLoginGen();
+}
+
+class $AssetsSvgCourseGen {
+  const $AssetsSvgCourseGen();
+
+  SvgGenImage get iconCourse =>
+      const SvgGenImage('assets/svg/course/icon_course.svg');
 }
 
 class $AssetsSvgAppGen {
@@ -41,15 +63,21 @@ class $AssetsSvgCommonGen {
   const $AssetsSvgCommonGen();
 
   SvgGenImage get iconUs => const SvgGenImage('assets/svg/common/icon_us.svg');
+
   SvgGenImage get iconVn => const SvgGenImage('assets/svg/common/icon_vn.svg');
 }
 
 class $AssetsSvgLoginGen {
   const $AssetsSvgLoginGen();
 
-  SvgGenImage get iconFacebook => const SvgGenImage('assets/svg/login/icon_facebook.svg');
-  SvgGenImage get iconGoogle => const SvgGenImage('assets/svg/login/icon_google.svg');
-  SvgGenImage get iconPhone => const SvgGenImage('assets/svg/login/icon_phone.svg');
+  SvgGenImage get iconFacebook =>
+      const SvgGenImage('assets/svg/login/icon_facebook.svg');
+
+  SvgGenImage get iconGoogle =>
+      const SvgGenImage('assets/svg/login/icon_google.svg');
+
+  SvgGenImage get iconPhone =>
+      const SvgGenImage('assets/svg/login/icon_phone.svg');
 }
 
 class Assets {

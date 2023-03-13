@@ -3,6 +3,8 @@
 import 'package:get/get.dart';
 import 'package:lettutor_app/presentation/change_password/screen/change_password_binding.dart';
 import 'package:lettutor_app/presentation/change_password/screen/change_password_page.dart';
+import 'package:lettutor_app/presentation/course/screen/course_binding.dart';
+import 'package:lettutor_app/presentation/course/screen/course_page.dart';
 import 'package:lettutor_app/presentation/dash_board.dart/screen/dashboard_binding.dart';
 import 'package:lettutor_app/presentation/dash_board.dart/screen/dashboard_screen.dart';
 import 'package:lettutor_app/presentation/forgot_password/screen/forgot_password_binding.dart';
@@ -11,6 +13,8 @@ import 'package:lettutor_app/presentation/login/screen/login_binding.dart';
 import 'package:lettutor_app/presentation/login/screen/login_screen.dart';
 import 'package:lettutor_app/presentation/profile/screen/profile_binding.dart';
 import 'package:lettutor_app/presentation/profile/screen/profile_screen.dart';
+import 'package:lettutor_app/presentation/review/screen/review_binding.dart';
+import 'package:lettutor_app/presentation/review/screen/review_page.dart';
 import 'package:lettutor_app/presentation/tutor_detail/screen/tutor_detail_binding.dart';
 import 'package:lettutor_app/presentation/tutor_detail/screen/tutor_detail_page.dart';
 
@@ -21,6 +25,8 @@ class AppRoutes {
   static String DASHBOARD = '/dashboard';
   static String CHANGE_PASSWORD = '/change_password';
   static String TUTOR_DETAIL = '/tutor_detail';
+  static String COURSE = '/course';
+  static String REVIEW = '/review';
 }
 
 class AppPages {
@@ -50,6 +56,13 @@ class AppPages {
         name: AppRoutes.TUTOR_DETAIL,
         page: () => TutorDetailPage(),
         binding: TutorDetailBinding()),
-
+    GetPage(
+        name: AppRoutes.COURSE,
+        page: () => CoursePage(),
+        binding: CourseBinding()),
+    GetPage(
+        name: AppRoutes.REVIEW,
+        page: () => ReviewPage(),
+        binding: ReviewBinding()),
   ];
 }

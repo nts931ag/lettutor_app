@@ -29,6 +29,9 @@ final Map<String, String> viVN = {
   'languages': 'Ngôn ngữ',
   'specialties': 'Chuyên ngành',
   'interests': 'Sở thích',
+  'course': 'khóa học',
+  'e.book': 'E-Book',
+  'i.e.book': 'Interactive E-book',
 
   // Warning
   'warning.empty.email': 'Vui lòng nhập Email',
@@ -82,4 +85,12 @@ final Map<String, String> viVN = {
   //Tutor Detail
   'tutor.detail.suggested.course': 'Các khóa học kham khảo',
   'tutor.detail.ex': 'Kinh nghiệm giảng dạy',
+
+  //course
+  'course.title': 'Khám phá các khóa học',
+  'course.content':
+      'LiveTutor đã xây dựng nên các khóa học của các lĩnh vực trong cuộc sống chất lượng, bài bản và khoa học nhất cho những người đang có nhu cầu trau dồi thêm kiến thức về các lĩnh vực.',
+  'course.level': 'Chọn cấp độ',
+  'course.sort.lv': 'Chọn danh mục',
+  'course.category': 'Sắp xếp theo độ khó',
 };

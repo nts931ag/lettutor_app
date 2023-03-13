@@ -57,7 +57,7 @@ class DrawerPage extends StatelessWidget {
         listTitle(
             iconData: Icons.school,
             title: LocalString.drawerCourses,
-            named: ''),
+            named: AppRoutes.COURSE),
         listTitle(
             iconData: Icons.import_contacts,
             title: LocalString.drawerMyCourse,
@@ -66,7 +66,7 @@ class DrawerPage extends StatelessWidget {
             iconData: Icons.hail,
             title: LocalString.drawerBecomeAtutor,
             named: ''),
-        listTitle(iconData: Icons.logout, title: LocalString.logout, named: ''),
+        listTitle(iconData: Icons.logout, title: LocalString.logout, named: AppRoutes.LOGIN),
       ]),
     );
   }
