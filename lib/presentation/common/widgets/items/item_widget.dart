@@ -1,6 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:lettutor_app/app/app_pages.dart';
 import 'package:lettutor_app/presentation/common/widgets/buttons/loading_button_widget.dart';
 import 'package:lettutor_app/presentation/common/widgets/icon/circle_box_widget.dart';
 import 'package:lettutor_app/presentation/common/widgets/information_area.dart';
@@ -28,6 +29,7 @@ class ItemWidget extends StatelessWidget {
     required this.imgNation,
     required this.child,
   }) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -99,7 +101,9 @@ class ItemWidget extends StatelessWidget {
                       height: 40.h,
                       child: LoadingButtonWidget(
                           primaryColor: primaryColor,
-                          submit: () {},
+                          submit: () {
+                            Get.toNamed(AppRoutes.VIDEO_CALL);
+                          },
                           isLoading: false,
                           label: LocalString.scheduleGotoMeeting),
                     ),

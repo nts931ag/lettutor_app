@@ -23,6 +23,7 @@ import 'package:lettutor_app/presentation/schedule/screen/schedule_binding.dart'
 import 'package:lettutor_app/presentation/schedule/screen/schedule_page.dart';
 import 'package:lettutor_app/presentation/tutor_detail/screen/tutor_detail_binding.dart';
 import 'package:lettutor_app/presentation/tutor_detail/screen/tutor_detail_screen.dart';
+import 'package:lettutor_app/presentation/video_call/screen/video_call_screen.dart';
 
 class AppRoutes {
   static String LOGIN = '/login';
@@ -36,6 +37,7 @@ class AppRoutes {
   static String COURSE_DETAIL = "/course/detail";
   static String SCHEDULE = '/schedule';
   static String HISTORY = '/history';
+  static String VIDEO_CALL = '/video_call';
 }
 
 class AppPages {
@@ -85,5 +87,6 @@ class AppPages {
         name: AppRoutes.HISTORY,
         page: () => HistoryPage(),
         binding: HistoryBinding()),
+    GetPage(name: AppRoutes.VIDEO_CALL, page: () => VideoCallScreen())
   ];
 }
