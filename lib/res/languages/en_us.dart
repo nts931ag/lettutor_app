@@ -91,6 +91,7 @@ final Map<String, String> enUS = {
   //Tutor Detail
   'tutor.detail.suggested.course': 'Suggested courses',
   'tutor.detail.ex': 'Teaching experience',
+  'tutor.detail.about.me': 'About me',
 
   //course
   'course.title': 'Discover Courses',

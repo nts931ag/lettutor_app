@@ -99,6 +99,7 @@ class LocalString {
   static final String tutorDetailSuggestedCourse =
       'tutor.detail.suggested.course'.tr;
   static final String tutorDetailEx = 'tutor.detail.ex'.tr;
+  static final String tutorAboutMe = 'tutor.detail.about.me'.tr;
 
   //course
   static final String courseTitle = 'course.title'.tr;

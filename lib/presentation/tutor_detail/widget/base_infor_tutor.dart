@@ -93,7 +93,7 @@ class BaseInforTutor extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  "About me",
+                  LocalString.tutorAboutMe,
                   style: text20.copyWith(fontWeight: FontWeight.w700),
                 ),
                 SizedBox(

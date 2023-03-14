@@ -91,6 +91,7 @@ final Map<String, String> viVN = {
   //Tutor Detail
   'tutor.detail.suggested.course': 'Các khóa học kham khảo',
   'tutor.detail.ex': 'Kinh nghiệm giảng dạy',
+  'tutor.detail.about.me': 'Thông tin về tôi',
 
   //course
   'course.title': 'Khám phá các khóa học',
