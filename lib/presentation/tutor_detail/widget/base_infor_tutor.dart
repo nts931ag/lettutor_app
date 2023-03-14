@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:lettutor_app/app/app_pages.dart';
 import 'package:lettutor_app/presentation/common/widgets/icon/circle_box_widget.dart';
 import 'package:lettutor_app/presentation/common/widgets/icon/icon_text_widget.dart';
+import 'package:lettutor_app/res/colors/colors_core.dart';
 import 'package:lettutor_app/res/constants/local_string.dart';
 import 'package:lettutor_app/res/dimens.dart';
 import 'package:lettutor_app/res/gen/assets.gen.dart';
@@ -76,12 +77,37 @@ class BaseInforTutor extends StatelessWidget {
           SizedBox(
             height: 15.h,
           ),
-          Text(
-            'I am passionate about running and fitness, I often compete in trail/mountain running events and I love pushing myself. I am training to one day take part in ultra-endurance events. I also enjoy watching rugby on the weekends, reading and watching podcasts on Youtube. My most memorable life experience would be living in and traveling around Southeast Asia.',
-            style: text16.copyWith(color: Colors.grey),
+          Container(
+            padding: EdgeInsets.symmetric(horizontal: 15.h, vertical: 10.w),
+            decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(10.r),
+                boxShadow: [
+                  BoxShadow(
+                      color: Colors.grey.withOpacity(0.8),
+                      spreadRadius: 2.r,
+                      blurRadius: 3.r,
+                      offset: Offset(0, 3))
+                ]),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "About me",
+                  style: text20.copyWith(fontWeight: FontWeight.w700),
+                ),
+                SizedBox(
+                  height: 15.h,
+                ),
+                Text(
+                  'I am passionate about running and fitness, I often compete in trail/mountain running events and I love pushing myself. I am training to one day take part in ultra-endurance events. I also enjoy watching rugby on the weekends, reading and watching podcasts on Youtube. My most memorable life experience would be living in and traveling around Southeast Asia.',
+                  style: text16.copyWith(color: Colors.grey),
+                ),
+              ],
+            ),
           ),
           SizedBox(
-            height: 10.h,
+            height: 15.h,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
