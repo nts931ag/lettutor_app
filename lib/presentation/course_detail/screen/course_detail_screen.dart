@@ -1,6 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:lettutor_app/app/app_pages.dart';
 import 'package:lettutor_app/presentation/common/screens/base/base_screen.dart';
 import 'package:lettutor_app/presentation/common/widgets/box_shadow_container.dart';
 import 'package:lettutor_app/presentation/common/widgets/buttons/loading_button_widget.dart';
@@ -32,7 +33,9 @@ class CourseDetailScreen extends BaseScreen<CourseDetailController> {
                 subTitle:
                     'Lets discuss how technology is changing the way we live',
                 bottomWidget: LoadingButtonWidget(
-                    submit: () {},
+                    submit: () {
+                      Get.toNamed(AppRoutes.PDF_READER_VIEW);
+                    },
                     isLoading: false,
                     label: LocalString.courseDetailDiscover),
                 image: Assets.images.imgCourse1.image(fit: BoxFit.cover),
@@ -107,7 +110,7 @@ class CourseDetailScreen extends BaseScreen<CourseDetailController> {
             ],
           ),
           SectionCourseDetail(
-            title: LocalString.courseDetailCourseLen,
+            title: LocalString.courseDetailTopics,
             children: [
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 5.0.w),

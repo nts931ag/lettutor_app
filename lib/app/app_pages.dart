@@ -3,6 +3,7 @@
 import 'package:get/get.dart';
 import 'package:lettutor_app/presentation/change_password/screen/change_password_binding.dart';
 import 'package:lettutor_app/presentation/change_password/screen/change_password_screen.dart';
+import 'package:lettutor_app/presentation/course/screen/course_screen.dart';
 import 'package:lettutor_app/presentation/course_detail/screen/course_detail_binding.dart';
 import 'package:lettutor_app/presentation/course_detail/screen/course_detail_screen.dart';
 import 'package:lettutor_app/presentation/course_list/screen/course_list_binding.dart';
@@ -15,6 +16,7 @@ import 'package:lettutor_app/presentation/history/screen/history_binding.dart';
 import 'package:lettutor_app/presentation/history/screen/history_page.dart';
 import 'package:lettutor_app/presentation/login/screen/login_binding.dart';
 import 'package:lettutor_app/presentation/login/screen/login_screen.dart';
+import 'package:lettutor_app/presentation/pdf_reader/screen/pdf_reader_screen.dart';
 import 'package:lettutor_app/presentation/profile/screen/profile_binding.dart';
 import 'package:lettutor_app/presentation/profile/screen/profile_screen.dart';
 import 'package:lettutor_app/presentation/review/screen/review_binding.dart';
@@ -38,6 +40,8 @@ class AppRoutes {
   static String SCHEDULE = '/schedule';
   static String HISTORY = '/history';
   static String VIDEO_CALL = '/video_call';
+  static String DISCOVERY_COURSE = '/course/discovery';
+  static String PDF_READER_VIEW = '/pdf_reader_view';
 }
 
 class AppPages {
@@ -87,6 +91,8 @@ class AppPages {
         name: AppRoutes.HISTORY,
         page: () => HistoryPage(),
         binding: HistoryBinding()),
-    GetPage(name: AppRoutes.VIDEO_CALL, page: () => VideoCallScreen())
+    GetPage(name: AppRoutes.VIDEO_CALL, page: () => VideoCallScreen()),
+    GetPage(name: AppRoutes.DISCOVERY_COURSE, page: () => CourseScreen()),
+    GetPage(name: AppRoutes.PDF_READER_VIEW, page: () => PdfReaderScreen()),
   ];
 }
