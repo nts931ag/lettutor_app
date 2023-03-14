@@ -64,7 +64,7 @@ class BaseInforTutor extends StatelessWidget {
                         Assets.svg.common.iconUs.svg(height: 15.w, width: 25.w),
                         SizedBox(width: 15.w),
                         Text(
-                          'Taiwan',
+                          'United States',
                           style: text16,
                         ),
                       ],
