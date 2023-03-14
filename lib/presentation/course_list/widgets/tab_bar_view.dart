@@ -5,14 +5,14 @@ import 'package:lettutor_app/app/app_pages.dart';
 import 'package:lettutor_app/presentation/common/widgets/box_shadow_container.dart';
 import 'package:lettutor_app/presentation/common/widgets/course_item.dart';
 import 'package:lettutor_app/presentation/common/widgets/tab_bar/tab_bar_item.dart';
-import 'package:lettutor_app/presentation/course/screen/course_controller.dart';
+import 'package:lettutor_app/presentation/course_list/screen/course_list_controller.dart';
 import 'package:lettutor_app/res/constants/local_string.dart';
 import 'package:lettutor_app/res/dimens.dart';
 import 'package:lettutor_app/res/gen/assets.gen.dart';
 import 'package:lettutor_app/res/theme/text_theme.dart';
 
 class TabBarview extends StatelessWidget {
-  CourseController controller;
+  CourseListController controller;
   TabBarview({
     Key? key,
     required this.controller,

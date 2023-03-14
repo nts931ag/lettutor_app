@@ -5,6 +5,5 @@ class ScheduleBinding implements Bindings {
   @override
   void dependencies() {
     Get.put(ScheduleController());
-
   }
 }

@@ -3,10 +3,10 @@
 import 'package:get/get.dart';
 import 'package:lettutor_app/presentation/change_password/screen/change_password_binding.dart';
 import 'package:lettutor_app/presentation/change_password/screen/change_password_screen.dart';
-import 'package:lettutor_app/presentation/course/screen/course_binding.dart';
-import 'package:lettutor_app/presentation/course/screen/course_screen.dart';
 import 'package:lettutor_app/presentation/course_detail/screen/course_detail_binding.dart';
 import 'package:lettutor_app/presentation/course_detail/screen/course_detail_screen.dart';
+import 'package:lettutor_app/presentation/course_list/screen/course_list_binding.dart';
+import 'package:lettutor_app/presentation/course_list/screen/course_list_screen.dart';
 import 'package:lettutor_app/presentation/dash_board.dart/screen/dashboard_binding.dart';
 import 'package:lettutor_app/presentation/dash_board.dart/screen/dashboard_screen.dart';
 import 'package:lettutor_app/presentation/forgot_password/screen/forgot_password_binding.dart';
@@ -69,7 +69,7 @@ class AppPages {
         binding: TutorDetailBinding()),
     GetPage(
         name: AppRoutes.COURSE,
-        page: () => CourseScreen(),
+        page: () => CourseListScreen(),
         binding: CourseBinding()),
     GetPage(
         name: AppRoutes.REVIEW,

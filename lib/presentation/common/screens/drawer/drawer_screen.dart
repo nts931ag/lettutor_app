@@ -28,7 +28,7 @@ class DrawerPage extends StatelessWidget {
                 width: 15.w,
               ),
               Text(
-                'Long Long',
+                'Anonymous',
                 style: text18.copyWith(fontWeight: FontWeight.w600),
               ),
             ],

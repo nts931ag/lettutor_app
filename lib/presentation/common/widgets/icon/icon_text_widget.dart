@@ -12,6 +12,7 @@ class IconText extends StatelessWidget {
     Key? key,
     required this.title,
     required this.iconData,
+    this.color
   }) : super(key: key);
 
   @override
@@ -25,7 +26,7 @@ class IconText extends StatelessWidget {
         ),
         Text(
           title,
-          style: text16.copyWith(color: primaryColor),
+          style: text16.copyWith(color: color ?? primaryColor),
         )
       ],
     );
