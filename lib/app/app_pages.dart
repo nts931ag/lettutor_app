@@ -41,7 +41,6 @@ class AppRoutes {
   static String HISTORY = '/history';
   static String VIDEO_CALL = '/video_call';
   static String DISCOVERY_COURSE = '/course/discovery';
-  static String PDF_READER_VIEW = '/pdf_reader_view';
 }
 
 class AppPages {
@@ -93,6 +92,5 @@ class AppPages {
         binding: HistoryBinding()),
     GetPage(name: AppRoutes.VIDEO_CALL, page: () => VideoCallScreen()),
     GetPage(name: AppRoutes.DISCOVERY_COURSE, page: () => CourseScreen()),
-    GetPage(name: AppRoutes.PDF_READER_VIEW, page: () => PdfReaderScreen()),
   ];
 }

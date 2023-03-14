@@ -6,6 +6,7 @@ import 'package:lettutor_app/presentation/common/widgets/buttons/loading_button_
 import 'package:lettutor_app/presentation/common/widgets/course_item.dart';
 import 'package:lettutor_app/presentation/course_detail/screen/course_detail_screen.dart';
 import 'package:lettutor_app/presentation/course_list/screen/course_list_controller.dart';
+import 'package:lettutor_app/presentation/pdf_reader/screen/pdf_reader_screen.dart';
 import 'package:lettutor_app/res/constants/local_string.dart';
 import 'package:lettutor_app/res/dimens.dart';
 import 'package:lettutor_app/res/gen/assets.gen.dart';
@@ -57,6 +58,10 @@ class CourseScreen extends BaseScreen<CourseListController> {
               ),
             ),
           ),
+          SizedBox(
+            height: 20.h,
+          ),
+          PdfReaderScreen(),
         ],
       ),
     );

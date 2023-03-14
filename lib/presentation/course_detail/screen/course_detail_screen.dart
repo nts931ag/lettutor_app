@@ -34,7 +34,7 @@ class CourseDetailScreen extends BaseScreen<CourseDetailController> {
                     'Lets discuss how technology is changing the way we live',
                 bottomWidget: LoadingButtonWidget(
                     submit: () {
-                      Get.toNamed(AppRoutes.PDF_READER_VIEW);
+                      Get.toNamed(AppRoutes.DISCOVERY_COURSE);
                     },
                     isLoading: false,
                     label: LocalString.courseDetailDiscover),
