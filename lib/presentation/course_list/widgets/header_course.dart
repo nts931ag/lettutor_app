@@ -20,14 +20,14 @@ class HeaderCourse extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         CircleBox(
-            size: 110.w, child: Assets.svg.course.iconCourse.svg()),
+            size: 80.w, child: Assets.svg.course.iconCourse.svg()),
         Column(
           crossAxisAlignment: CrossAxisAlignment.end,
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Text(
               LocalString.courseTitle,
-              style: text26.copyWith(fontWeight: FontWeight.w700),
+              style: text24.copyWith(fontWeight: FontWeight.w700),
             ),
             SizedBox(
               height: 15.h,
