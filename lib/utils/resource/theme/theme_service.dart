@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:lettutor_app/resource/theme/app_theme.dart';
+import 'package:lettutor_app/utils/resource/theme/app_theme.dart';
 
 class ThemeService {
   static const LIGHT_THEME = 0;

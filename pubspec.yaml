@@ -42,6 +42,7 @@ dependencies:
   font_awesome_flutter: ^10.4.0
   provider: ^6.0.5
   intl: ^0.18.0
+  equatable: ^2.0.5
 
 dev_dependencies:
   flutter_test:
@@ -50,6 +51,7 @@ dev_dependencies:
   flutter_lints: ^2.0.0
   flutter_gen_runner: ^5.2.0
   build_runner: ^2.4.0
+  lint: ^2.1.1
 
 
 flutter_gen:

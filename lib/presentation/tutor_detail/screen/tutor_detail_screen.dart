@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:lettutor_app/presentation/tutor_detail/widget/base_infor_tutor.dart';
 import 'package:lettutor_app/presentation/tutor_detail/widget/tutor_main_detail.dart';
 import 'package:lettutor_app/presentation/tutor_detail/widget/tutor_video.dart';
-import 'package:lettutor_app/resource/dimens.dart';
+import 'package:lettutor_app/utils/resource/dimens.dart';
 
 class TutorDetailScreen extends StatelessWidget {
   const TutorDetailScreen({Key? key}) : super(key: key);

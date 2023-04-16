@@ -5,10 +5,10 @@ import 'package:lettutor_app/presentation/commons/widgets/box_shadow_container.d
 import 'package:lettutor_app/presentation/commons/widgets/buttons/loading_button_widget.dart';
 import 'package:lettutor_app/presentation/commons/widgets/course_item.dart';
 import 'package:lettutor_app/presentation/course_overall/widgets/overview_title.dart';
-import 'package:lettutor_app/resource/colors/colors_core.dart';
-import 'package:lettutor_app/resource/dimens.dart';
-import 'package:lettutor_app/resource/gen/assets.gen.dart';
-import 'package:lettutor_app/resource/theme/text_theme.dart';
+import 'package:lettutor_app/utils/resource/colors/colors_core.dart';
+import 'package:lettutor_app/utils/resource/dimens.dart';
+import 'package:lettutor_app/utils/resource/gen/assets.gen.dart';
+import 'package:lettutor_app/utils/resource/theme/text_theme.dart';
 
 class CourseOverallScreen extends StatelessWidget {
   const CourseOverallScreen({Key? key}) : super(key: key);
