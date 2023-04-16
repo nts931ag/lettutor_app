@@ -1,10 +1,9 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:lettutor_app/res/constants/local_string.dart';
-import 'package:lettutor_app/res/dimens.dart';
-import 'package:lettutor_app/res/gen/assets.gen.dart';
-import 'package:lettutor_app/res/theme/text_theme.dart';
+import 'package:lettutor_app/resource/dimens.dart';
+import 'package:lettutor_app/resource/gen/assets.gen.dart';
+import 'package:lettutor_app/resource/theme/text_theme.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class HeaderSchedule extends StatelessWidget {
   const HeaderSchedule({
@@ -18,7 +17,7 @@ class HeaderSchedule extends StatelessWidget {
       children: [
         Assets.svg.schedule.iconSchedule.svg(height: 80.w, width: 80.w),
         Text(
-          LocalString.schedule,
+          AppLocalizations.of(context)!.schedule,
           style: text28.copyWith(fontWeight: FontWeight.w800),
         ),
         Row(
@@ -32,23 +31,23 @@ class HeaderSchedule extends StatelessWidget {
               width: 3.w,
             ),
             SizedBox(
-              width: Get.width - 50.w,
+              width: MediaQuery.of(context).size.width - 50.w,
               height: 100.h,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   SizedBox(
-                    width: Get.width - 50.w,
+                    width: MediaQuery.of(context).size.width - 50.w,
                     child: Text(
-                      LocalString.scheduleTitle,
+                      AppLocalizations.of(context)!.schedule_title,
                       style: text16.copyWith(color: Colors.grey),
                     ),
                   ),
                   const Spacer(),
                   SizedBox(
-                    width: Get.width - 50.w,
+                    width: MediaQuery.of(context).size.width - 50.w,
                     child: Text(
-                      LocalString.scheduleSubTitle,
+                      AppLocalizations.of(context)!.schedule_sub_title,
                       style: text16.copyWith(color: Colors.grey),
                     ),
                   ),

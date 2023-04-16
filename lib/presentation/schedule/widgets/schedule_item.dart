@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:lettutor_app/presentation/common/widgets/buttons/loading_button_widget.dart';
-import 'package:lettutor_app/presentation/common/widgets/items/item_widget.dart';
-import 'package:lettutor_app/res/colors/colors_core.dart';
-import 'package:lettutor_app/res/constants/local_string.dart';
-import 'package:lettutor_app/res/dimens.dart';
-import 'package:lettutor_app/res/gen/assets.gen.dart';
-import 'package:lettutor_app/res/theme/text_theme.dart';
+import 'package:lettutor_app/presentation/commons/widgets/buttons/loading_button_widget.dart';
+import 'package:lettutor_app/presentation/commons/widgets/items/item_widget.dart';
+import 'package:lettutor_app/resource/colors/colors_core.dart';
+import 'package:lettutor_app/resource/dimens.dart';
+import 'package:lettutor_app/resource/gen/assets.gen.dart';
+import 'package:lettutor_app/resource/theme/text_theme.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ScheduleItem extends StatelessWidget {
   const ScheduleItem({
@@ -38,10 +37,11 @@ class ScheduleItem extends StatelessWidget {
                   width: 80.w,
                   height: 30.h,
                   child: LoadingButtonWidget(
-                      submit: () {},
-                      isLoading: false,
-                      primaryColor: Colors.red,
-                      label: LocalString.cancel),
+                    submit: () {},
+                    isLoading: false,
+                    primaryColor: Colors.red,
+                    label: AppLocalizations.of(context)!.cancel,
+                  ),
                 )
               ],
             ),
@@ -66,11 +66,11 @@ class ScheduleItem extends StatelessWidget {
                           size: 15.w,
                         ),
                         Text(
-                          LocalString.scheduleRequest,
+                          AppLocalizations.of(context)!.schedule_request,
                           style: text14,
                         ),
                         Text(
-                          LocalString.scheduleEditRequest,
+                          AppLocalizations.of(context)!.schedule_edit_request,
                           style: text14.copyWith(color: primaryColor),
                         )
                       ],
@@ -80,7 +80,7 @@ class ScheduleItem extends StatelessWidget {
                     color: Colors.white,
                     padding: EdgeInsets.all(10.w),
                     child: Text(
-                      LocalString.scheduleRequestContent,
+                      AppLocalizations.of(context)!.schedule_request_content,
                       style: text14.copyWith(color: Colors.grey),
                     ),
                   ),

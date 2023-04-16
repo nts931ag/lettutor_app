@@ -1,21 +1,16 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
-import 'package:lettutor_app/presentation/common/widgets/buttons/loading_button_widget.dart';
-import 'package:lettutor_app/presentation/common/widgets/text_field/baset_text_field_widget.dart';
-import 'package:lettutor_app/presentation/common/widgets/text_field/input_field_profile_widget.dart';
-import 'package:lettutor_app/presentation/profile/screen/profile_controller.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:lettutor_app/presentation/commons/widgets/buttons/loading_button_widget.dart';
+import 'package:lettutor_app/presentation/commons/widgets/text_field/baset_text_field_widget.dart';
+import 'package:lettutor_app/presentation/commons/widgets/text_field/input_field_profile_widget.dart';
 import 'package:lettutor_app/presentation/profile/widgets/want_to_learn_wrap.dart';
-import 'package:lettutor_app/res/constants/local_string.dart';
-import 'package:lettutor_app/res/constants/string_constants.dart';
-import 'package:lettutor_app/res/dimens.dart';
+import 'package:lettutor_app/resource/dimens.dart';
 
 class ProfileField extends StatelessWidget {
   const ProfileField({
     Key? key,
-    required this.controller,
   }) : super(key: key);
-
-  final ProfileController controller;
 
   @override
   Widget build(BuildContext context) {
@@ -24,58 +19,65 @@ class ProfileField extends StatelessWidget {
       child: Column(children: [
         //
         InputFieldProfile(
-          title: LocalString.profileName,
+          title: AppLocalizations.of(context)!.profile_name,
           isImportant: true,
           child: baseTextField(
+              // TODO: fill data
               onChanged: (value) {},
-              controller: controller.controllers[nameField],
+              controller: null,
+
+              // controller: controller.controllers[nameField],
               hintText: ''),
         ),
         SizedBox(height: 15.h),
         //
         InputFieldProfile(
-          title: LocalString.profileEmailAddress,
+          title: AppLocalizations.of(context)!.profile_email_address,
           child: baseTextField(
               readOnly: true,
               onChanged: (value) {},
-              controller: controller.controllers[emailField],
+              controller: null,
+              // controller: controller.controllers[emailField],
               hintText: ''),
         ),
         SizedBox(height: 15.h),
         //
         InputFieldProfile(
-          title: LocalString.profileCountry,
+          title: AppLocalizations.of(context)!.profile_country,
           isImportant: true,
           child: baseTextField(
               onChanged: (value) {},
+              controller: null,
               icon: IconButton(
                   onPressed: () {},
                   icon: const Icon(
                     Icons.expand_more,
                     size: 25,
                   )),
-              controller: controller.controllers[countryField],
+              // controller: controller.controllers[countryField],
               hintText: ''),
         ),
         SizedBox(height: 15.h),
         //
         InputFieldProfile(
-          title: LocalString.profilePhone,
+          title: AppLocalizations.of(context)!.profile_phone,
           isImportant: true,
           child: baseTextField(
               readOnly: true,
               onChanged: (value) {},
-              controller: controller.controllers[phoneField],
+              controller: null,
+              // controller: controller.controllers[phoneField],
               hintText: ''),
         ),
         SizedBox(height: 15.h),
         //
         InputFieldProfile(
-          title: LocalString.profileBirthday,
+          title: AppLocalizations.of(context)!.profile_birthday,
           isImportant: true,
           child: baseTextField(
               onChanged: (value) {},
-              controller: controller.controllers[birthayDayField],
+              controller: null,
+              // controller: controller.controllers[birthayDayField],
               icon: IconButton(
                   onPressed: () {},
                   icon: const Icon(
@@ -87,7 +89,7 @@ class ProfileField extends StatelessWidget {
         SizedBox(height: 15.h),
         //
         InputFieldProfile(
-          title: LocalString.profileMyLevel,
+          title: AppLocalizations.of(context)!.profile_my_level,
           isImportant: true,
           child: baseTextField(
               icon: IconButton(
@@ -97,24 +99,26 @@ class ProfileField extends StatelessWidget {
                     size: 25,
                   )),
               onChanged: (value) {},
-              controller: controller.controllers[levelField],
+              controller: null,
+              // controller: controller.controllers[levelField],
               hintText: ''),
         ),
         SizedBox(height: 15.h),
         //
         InputFieldProfile(
-          title: LocalString.profileWantToLearn,
+          title: AppLocalizations.of(context)!.profile_want_learn,
           isImportant: true,
           child: const WantToLearnWrap(),
         ),
         SizedBox(height: 15.h),
         //
         InputFieldProfile(
-          title: LocalString.profileStudySchedule,
+          title: AppLocalizations.of(context)!.profile_study_schedule,
           child: baseTextField(
               maxLine: 4,
               onChanged: (value) {},
-              controller: controller.controllers[studyScheduleField],
+              controller: null,
+              // controller: controller.controllers[studyScheduleField],
               hintText:
                   'Note the time of the week you want to study on LetTutor'),
         ),
@@ -126,11 +130,12 @@ class ProfileField extends StatelessWidget {
             height: 40.h,
             width: 130.w,
             child: LoadingButtonWidget(
-                submit: () {}, isLoading: false, label: LocalString.save),
+                submit: () {},
+                isLoading: false,
+                label: AppLocalizations.of(context)!.save),
           ),
         )
       ]),
     );
   }
 }
-

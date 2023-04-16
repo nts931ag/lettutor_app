@@ -1,15 +1,14 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:lettutor_app/presentation/common/screens/base/base_screen.dart';
-import 'package:lettutor_app/presentation/course_list/screen/course_list_controller.dart';
 import 'package:lettutor_app/presentation/course_list/widgets/information_course.dart';
 import 'package:lettutor_app/presentation/course_list/widgets/tab_bar_view.dart';
-import 'package:lettutor_app/res/dimens.dart';
+import 'package:lettutor_app/resource/dimens.dart';
 
-class CourseListScreen extends BaseScreen<CourseListController> {
+class CourseListScreen extends StatelessWidget {
+  const CourseListScreen({Key? key}) : super(key: key);
+
   @override
-  Widget buildContentView(BuildContext context) {
+  Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -21,9 +20,7 @@ class CourseListScreen extends BaseScreen<CourseListController> {
           SizedBox(
             height: 20.h,
           ),
-          TabBarview(
-            controller: controller,
-          ),
+          TabBarview(),
           SizedBox(
             height: 25.h,
           ),

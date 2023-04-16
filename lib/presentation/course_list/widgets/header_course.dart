@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:lettutor_app/presentation/common/widgets/icon/circle_box_widget.dart';
-import 'package:lettutor_app/presentation/common/widgets/text_field/baset_text_field_widget.dart';
-import 'package:lettutor_app/res/constants/local_string.dart';
-import 'package:lettutor_app/res/dimens.dart';
-import 'package:lettutor_app/res/gen/assets.gen.dart';
-import 'package:lettutor_app/res/theme/text_theme.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:lettutor_app/presentation/commons/widgets/icon/circle_box_widget.dart';
+import 'package:lettutor_app/presentation/commons/widgets/text_field/baset_text_field_widget.dart';
+import 'package:lettutor_app/resource/dimens.dart';
+import 'package:lettutor_app/resource/gen/assets.gen.dart';
+import 'package:lettutor_app/resource/theme/text_theme.dart';
 
 class HeaderCourse extends StatelessWidget {
   const HeaderCourse({
@@ -26,7 +24,7 @@ class HeaderCourse extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Text(
-              LocalString.courseTitle,
+              AppLocalizations.of(context)!.course_title,
               style: text24.copyWith(fontWeight: FontWeight.w700),
             ),
             SizedBox(

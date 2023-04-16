@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:lettutor_app/presentation/profile/widgets/logo_profile.dart';
-import 'package:lettutor_app/res/colors/colors_core.dart';
-import 'package:lettutor_app/res/constants/local_string.dart';
-import 'package:lettutor_app/res/dimens.dart';
-import 'package:lettutor_app/res/theme/text_theme.dart';
+import 'package:lettutor_app/resource/colors/colors_core.dart';
+import 'package:lettutor_app/resource/dimens.dart';
+import 'package:lettutor_app/resource/theme/text_theme.dart';
 
 class HeaderProfile extends StatelessWidget {
   const HeaderProfile({
@@ -27,7 +27,7 @@ class HeaderProfile extends StatelessWidget {
           height: 5.0.h,
         ),
         Text(
-          '${LocalString.profileAccountID} f569c202-7bbf-0903-bg77-ecc1419a6b28',
+          '${AppLocalizations.of(context)!.profile_account_id} f569c202-7bbf-0903-bg77-ecc1419a6b28',
           style: text14.copyWith(color: greyColor),
         ),
         SizedBox(
@@ -36,7 +36,7 @@ class HeaderProfile extends StatelessWidget {
         InkWell(
           onTap: () {},
           child: Text(
-            LocalString.profileOtherReviews,
+            AppLocalizations.of(context)!.profile_others_review,
             style: text14.copyWith(color: primaryColor),
           ),
         ),
@@ -44,4 +44,3 @@ class HeaderProfile extends StatelessWidget {
     );
   }
 }
-

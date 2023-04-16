@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:lettutor_app/presentation/common/widgets/buttons/loading_button_widget.dart';
-import 'package:lettutor_app/presentation/common/widgets/items/item_widget.dart';
-import 'package:lettutor_app/res/colors/colors_core.dart';
-import 'package:lettutor_app/res/constants/local_string.dart';
-import 'package:lettutor_app/res/dimens.dart';
-import 'package:lettutor_app/res/gen/assets.gen.dart';
-import 'package:lettutor_app/res/theme/text_theme.dart';
+import 'package:lettutor_app/presentation/commons/widgets/buttons/loading_button_widget.dart';
+import 'package:lettutor_app/presentation/commons/widgets/items/item_widget.dart';
+import 'package:lettutor_app/resource/colors/colors_core.dart';
+import 'package:lettutor_app/resource/dimens.dart';
+import 'package:lettutor_app/resource/gen/assets.gen.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:lettutor_app/resource/theme/text_theme.dart';
 
 class HistoryItem extends StatelessWidget {
   const HistoryItem({
@@ -31,16 +31,17 @@ class HistoryItem extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    LocalString.historyLessonTime,
+                    AppLocalizations.of(context)!.history_lesson_time,
                     style: text18,
                   ),
                   SizedBox(
                     width: 100.w,
                     child: LoadingButtonWidget(
-                        height: 25.w,
-                        submit: () {},
-                        isLoading: false,
-                        label: LocalString.record),
+                      height: 25.w,
+                      submit: () {},
+                      isLoading: false,
+                      label: AppLocalizations.of(context)!.record,
+                    ),
                   ),
                 ],
               ),
@@ -53,7 +54,7 @@ class HistoryItem extends StatelessWidget {
               padding: EdgeInsets.all(10.w),
               color: Colors.white,
               child: Text(
-                LocalString.historyNoRquest,
+                AppLocalizations.of(context)!.history_no_request,
                 style: text14.copyWith(color: Colors.grey),
               ),
             ),
@@ -65,7 +66,7 @@ class HistoryItem extends StatelessWidget {
               padding: EdgeInsets.all(10.w),
               color: Colors.white,
               child: Text(
-                LocalString.historyTutorHaventRv,
+                AppLocalizations.of(context)!.history_tutor_rv,
                 style: text14.copyWith(color: Colors.grey),
               ),
             ),
@@ -80,11 +81,11 @@ class HistoryItem extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      LocalString.addRating,
+                      AppLocalizations.of(context)!.add_rating,
                       style: text14.copyWith(color: primaryColor),
                     ),
                     Text(
-                      LocalString.report,
+                      AppLocalizations.of(context)!.report,
                       style: text14.copyWith(color: primaryColor),
                     ),
                   ],

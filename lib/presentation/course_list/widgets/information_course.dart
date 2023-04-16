@@ -1,11 +1,11 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:lettutor_app/presentation/common/widgets/text_field/baset_text_field_widget.dart';
+import 'package:lettutor_app/presentation/commons/widgets/text_field/baset_text_field_widget.dart';
 import 'package:lettutor_app/presentation/course_list/widgets/header_course.dart';
-import 'package:lettutor_app/res/constants/local_string.dart';
-import 'package:lettutor_app/res/dimens.dart';
-import 'package:lettutor_app/res/theme/text_theme.dart';
+import 'package:lettutor_app/resource/dimens.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:lettutor_app/resource/theme/text_theme.dart';
 
 class InformationCourse extends StatelessWidget {
   const InformationCourse({
@@ -22,7 +22,7 @@ class InformationCourse extends StatelessWidget {
           height: 20.h,
         ),
         Text(
-          LocalString.courseContent,
+          AppLocalizations.of(context)!.course_content,
           style: text15,
         ),
         SizedBox(
@@ -39,7 +39,7 @@ class InformationCourse extends StatelessWidget {
                   child: baseTextField(
                       onChanged: (value) {},
                       controller: null,
-                      hintText: LocalString.courseLevel,
+                      hintText: AppLocalizations.of(context)!.course_level,
                       icon: const Icon(Icons.expand_more)),
                 ),
                 SizedBox(
@@ -50,7 +50,7 @@ class InformationCourse extends StatelessWidget {
                   child: baseTextField(
                       onChanged: (value) {},
                       controller: null,
-                      hintText: LocalString.courseSortlv,
+                      hintText: AppLocalizations.of(context)!.course_sort_lv,
                       icon: const Icon(Icons.expand_more)),
                 ),
               ],
@@ -61,7 +61,7 @@ class InformationCourse extends StatelessWidget {
               child: baseTextField(
                   onChanged: (value) {},
                   controller: null,
-                  hintText: LocalString.courseCategory,
+                  hintText: AppLocalizations.of(context)!.course_category,
                   icon: const Icon(Icons.expand_more)),
             ),
           ],

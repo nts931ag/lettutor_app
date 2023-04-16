@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:get/get.dart';
-import 'package:lettutor_app/app/app_pages.dart';
-import 'package:lettutor_app/presentation/common/widgets/icon/circle_box_widget.dart';
-import 'package:lettutor_app/presentation/common/widgets/icon/icon_text_widget.dart';
-import 'package:lettutor_app/res/colors/colors_core.dart';
-import 'package:lettutor_app/res/constants/local_string.dart';
-import 'package:lettutor_app/res/dimens.dart';
-import 'package:lettutor_app/res/gen/assets.gen.dart';
-import 'package:lettutor_app/res/theme/text_theme.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:lettutor_app/presentation/commons/widgets/icon/circle_box_widget.dart';
+import 'package:lettutor_app/presentation/commons/widgets/icon/icon_text_widget.dart';
+import 'package:lettutor_app/resource/dimens.dart';
+import 'package:lettutor_app/resource/gen/assets.gen.dart';
+import 'package:lettutor_app/resource/theme/text_theme.dart';
 
 class BaseInforTutor extends StatelessWidget {
   const BaseInforTutor({
@@ -93,7 +91,7 @@ class BaseInforTutor extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  LocalString.tutorAboutMe,
+                  AppLocalizations.of(context)!.tutor_detail_about_me,
                   style: text20.copyWith(fontWeight: FontWeight.w700),
                 ),
                 SizedBox(
@@ -114,19 +112,20 @@ class BaseInforTutor extends StatelessWidget {
             children: [
               IconText(
                 iconData: Icons.favorite,
-                title: LocalString.favorite,
+                title: AppLocalizations.of(context)!.favorite,
               ),
               IconText(
                 iconData: Icons.report,
-                title: LocalString.report,
+                title: AppLocalizations.of(context)!.report,
               ),
               InkWell(
                 onTap: () {
-                  Get.toNamed(AppRoutes.REVIEW);
+                  // TODO: Navigation to Review screen
+                  // Get.toNamed(AppRoutes.REVIEW);
                 },
                 child: IconText(
                   iconData: Icons.star,
-                  title: LocalString.reviews,
+                  title: AppLocalizations.of(context)!.reviews,
                 ),
               ),
             ],

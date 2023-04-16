@@ -1,17 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:lettutor_app/presentation/common/screens/base/base_scaffold_widget.dart';
-import 'package:lettutor_app/res/colors/colors_core.dart';
-import 'package:lettutor_app/res/dimens.dart';
 import 'package:get/get.dart';
-
+import 'package:lettutor_app/resource/colors/colors_core.dart';
+import 'package:lettutor_app/resource/dimens.dart';
 
 class VideoCallScreen extends StatelessWidget {
   const VideoCallScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return BaseScaffoldWidget(
-      appbar: AppBar(
+    return Scaffold(
+      appBar: AppBar(
         actions: [
           IconButton(onPressed: () {}, icon: Icon(Icons.message_outlined))
         ],
@@ -22,7 +20,6 @@ class VideoCallScreen extends StatelessWidget {
           children: [_viewRows(), _toolBar()],
         ),
       ),
-      background: blackColor,
     );
   }
 

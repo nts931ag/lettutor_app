@@ -1,18 +1,18 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
-import 'package:lettutor_app/presentation/common/screens/base/base_screen.dart';
-import 'package:lettutor_app/presentation/profile/screen/profile_controller.dart';
 import 'package:lettutor_app/presentation/profile/widgets/header_profile.dart';
 import 'package:lettutor_app/presentation/profile/widgets/profile_field.dart';
-import 'package:lettutor_app/res/colors/colors_core.dart';
-import 'package:lettutor_app/res/constants/local_string.dart';
-import 'package:lettutor_app/res/dimens.dart';
-import 'package:lettutor_app/res/gen/colors.gen.dart';
-import 'package:lettutor_app/res/theme/text_theme.dart';
+import 'package:lettutor_app/resource/colors/colors_core.dart';
+import 'package:lettutor_app/resource/dimens.dart';
+import 'package:lettutor_app/resource/gen/colors.gen.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:lettutor_app/resource/theme/text_theme.dart';
 
-class ProfileScreen extends BaseScreen<ProfileController> {
+class ProfileScreen extends StatelessWidget {
+  const ProfileScreen({Key? key}) : super(key: key);
+
   @override
-  Widget buildContentView(BuildContext context) {
+  Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Container(
         margin: EdgeInsets.only(top: 30.h),
@@ -41,12 +41,11 @@ class ProfileScreen extends BaseScreen<ProfileController> {
               alignment: Alignment.centerLeft,
               padding: EdgeInsets.all(12.0.w),
               child: Text(
-                LocalString.account,
+                AppLocalizations.of(context)!.account,
                 style: text14,
               ),
             ),
             ProfileField(
-              controller: controller,
             )
           ],
         ),
@@ -54,4 +53,3 @@ class ProfileScreen extends BaseScreen<ProfileController> {
     );
   }
 }
-

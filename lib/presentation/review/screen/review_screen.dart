@@ -1,16 +1,15 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:lettutor_app/presentation/common/screens/base/base_screen.dart';
-import 'package:lettutor_app/presentation/review/screen/review_controller.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:lettutor_app/presentation/review/widgets/comment_item.dart';
-import 'package:lettutor_app/res/dimens.dart';
-import 'package:lettutor_app/res/gen/assets.gen.dart';
+import 'package:lettutor_app/resource/dimens.dart';
+import 'package:lettutor_app/resource/gen/assets.gen.dart';
 
+class ReviewScreen extends StatelessWidget {
+  const ReviewScreen({Key? key}) : super(key: key);
 
-class ReviewScreen extends BaseScreen<ReviewController> {
   @override
-  Widget buildContentView(BuildContext context) {
+  Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -19,22 +18,23 @@ class ReviewScreen extends BaseScreen<ReviewController> {
             height: 25.h,
           ),
           ...[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((e) => Column(
-                children: [
-                  CommentItem(
-                    image: Assets.images.img.image(fit: BoxFit.cover),
-                    message:
-                        'good course',
-                    name: 'Anonymous',
-                    time: '4 months ago',
-                    rating: 5,
-                  ),
-                  SizedBox(
-                    height: 15.h,
-                  ),
-                ],
-              ))
+            children: [
+              CommentItem(
+                image: Assets.images.img.image(fit: BoxFit.cover),
+                message:
+                'good course',
+                name: 'Anonymous',
+                time: '4 months ago',
+                rating: 5,
+              ),
+              SizedBox(
+                height: 15.h,
+              ),
+            ],
+          ))
         ],
       ),
     );
   }
 }
+
