@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:lettutor_app/resource/colors/colors_core.dart';
+import 'package:lettutor_app/utils/resource/colors/colors_core.dart';
 
 class ErrorPage extends StatefulWidget {
   const ErrorPage({super.key, required this.screenName});
