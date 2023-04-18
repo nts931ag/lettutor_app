@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lettutor_app/utils/resource/dimens.dart';
 import 'package:lettutor_app/utils/resource/gen/colors.gen.dart';
-import 'package:lettutor_app/utils/resource/theme/text_theme.dart';
+import 'package:lettutor_app/config/theme/text_theme.dart';
 
 class TextContainer extends StatelessWidget {
   String title;

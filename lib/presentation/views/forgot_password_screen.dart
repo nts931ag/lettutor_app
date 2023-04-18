@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:lettutor_app/presentation/widgets/authentication/input_field_area_widget.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:lettutor_app/utils/resource/dimens.dart';
-import 'package:lettutor_app/utils/resource/theme/text_theme.dart';
+import 'package:lettutor_app/config/theme/text_theme.dart';
 
 class ForgotPasswordScreen extends StatelessWidget {
   const ForgotPasswordScreen({Key? key}) : super(key: key);

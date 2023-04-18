@@ -4,7 +4,7 @@ import 'package:lettutor_app/presentation/widgets/commons/buttons/loading_button
 import 'package:lettutor_app/presentation/widgets/commons/text_field/baset_text_field_widget.dart';
 import 'package:lettutor_app/utils/resource/colors/colors_core.dart';
 import 'package:lettutor_app/utils/resource/dimens.dart';
-import 'package:lettutor_app/utils/resource/theme/text_theme.dart';
+import 'package:lettutor_app/config/theme/text_theme.dart';
 
 class InputFieldArea extends StatelessWidget {
   InputFieldArea({

@@ -3,8 +3,8 @@ import 'package:get/get.dart';
 import 'package:lettutor_app/presentation/widgets/commons/icon/circle_icon_widget.dart';
 import 'package:lettutor_app/utils/resource/dimens.dart';
 import 'package:lettutor_app/utils/resource/gen/assets.gen.dart';
-import 'package:lettutor_app/utils/resource//gen/colors.gen.dart';
-import 'package:lettutor_app/utils/resource/theme/text_theme.dart';
+import 'package:lettutor_app/utils/resource/gen/colors.gen.dart';
+import 'package:lettutor_app/config/theme/text_theme.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SignUpArea extends StatelessWidget {

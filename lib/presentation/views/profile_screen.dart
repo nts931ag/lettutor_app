@@ -6,7 +6,7 @@ import 'package:lettutor_app/utils/resource/colors/colors_core.dart';
 import 'package:lettutor_app/utils/resource/dimens.dart';
 import 'package:lettutor_app/utils/resource/gen/colors.gen.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:lettutor_app/utils/resource/theme/text_theme.dart';
+import 'package:lettutor_app/config/theme/text_theme.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({Key? key}) : super(key: key);

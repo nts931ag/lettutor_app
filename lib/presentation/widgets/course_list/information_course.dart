@@ -5,7 +5,7 @@ import 'package:lettutor_app/presentation/widgets/commons/text_field/baset_text_
 import 'package:lettutor_app/presentation/widgets/course_list/header_course.dart';
 import 'package:lettutor_app/utils/resource/dimens.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:lettutor_app/utils/resource/theme/text_theme.dart';
+import 'package:lettutor_app/config/theme/text_theme.dart';
 
 class InformationCourse extends StatelessWidget {
   const InformationCourse({

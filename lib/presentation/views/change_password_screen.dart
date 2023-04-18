@@ -6,7 +6,7 @@ import 'package:lettutor_app/presentation/widgets/commons/text_field/baset_text_
 import 'package:lettutor_app/presentation/widgets/commons/text_field/input_field_profile_widget.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:lettutor_app/utils/resource/dimens.dart';
-import 'package:lettutor_app/utils/resource/theme/text_theme.dart';
+import 'package:lettutor_app/config/theme/text_theme.dart';
 
 class ChangePasswordScreen extends StatelessWidget {
   const ChangePasswordScreen({Key? key}) : super(key: key);

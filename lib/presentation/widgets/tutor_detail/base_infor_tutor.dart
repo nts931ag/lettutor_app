@@ -6,7 +6,7 @@ import 'package:lettutor_app/presentation/widgets/commons/icon/circle_box_widget
 import 'package:lettutor_app/presentation/widgets/commons/icon/icon_text_widget.dart';
 import 'package:lettutor_app/utils/resource/dimens.dart';
 import 'package:lettutor_app/utils/resource/gen/assets.gen.dart';
-import 'package:lettutor_app/utils/resource/theme/text_theme.dart';
+import 'package:lettutor_app/config/theme/text_theme.dart';
 
 class BaseInforTutor extends StatelessWidget {
   const BaseInforTutor({
