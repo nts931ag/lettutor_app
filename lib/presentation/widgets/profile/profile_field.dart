@@ -4,7 +4,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:lettutor_app/presentation/commons/widgets/buttons/loading_button_widget.dart';
 import 'package:lettutor_app/presentation/commons/widgets/text_field/baset_text_field_widget.dart';
 import 'package:lettutor_app/presentation/commons/widgets/text_field/input_field_profile_widget.dart';
-import 'package:lettutor_app/presentation/profile/widgets/want_to_learn_wrap.dart';
+import 'package:lettutor_app/presentation/widgets/profile/want_to_learn_wrap.dart';
 import 'package:lettutor_app/utils/resource/dimens.dart';
 
 class ProfileField extends StatelessWidget {

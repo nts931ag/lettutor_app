@@ -1,8 +1,8 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
-import 'package:lettutor_app/presentation/tutor_detail/widget/base_infor_tutor.dart';
-import 'package:lettutor_app/presentation/tutor_detail/widget/tutor_main_detail.dart';
-import 'package:lettutor_app/presentation/tutor_detail/widget/tutor_video.dart';
+import 'package:lettutor_app/presentation/widgets/tutor_detail/base_infor_tutor.dart';
+import 'package:lettutor_app/presentation/widgets/tutor_detail/tutor_main_detail.dart';
+import 'package:lettutor_app/presentation/widgets/tutor_detail/tutor_video.dart';
 import 'package:lettutor_app/utils/resource/dimens.dart';
 
 class TutorDetailScreen extends StatelessWidget {

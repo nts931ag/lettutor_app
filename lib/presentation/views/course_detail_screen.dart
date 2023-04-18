@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:lettutor_app/presentation/commons/widgets/box_shadow_container.dart';
 import 'package:lettutor_app/presentation/commons/widgets/course_item.dart';
-import 'package:lettutor_app/presentation/course_overall/screen/course_detail_screen.dart';
-import 'package:lettutor_app/presentation/pdf_reader/screen/pdf_reader_screen.dart';
+import 'package:lettutor_app/presentation/views/course_overall_screen.dart';
+import 'package:lettutor_app/presentation/views/pdf_reader_screen.dart';
 import 'package:lettutor_app/utils/resource/dimens.dart';
 import 'package:lettutor_app/utils/resource/gen/assets.gen.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';

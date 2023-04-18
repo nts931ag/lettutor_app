@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lettutor_app/presentation/commons/widgets/text_field/baset_text_field_widget.dart';
-import 'package:lettutor_app/presentation/course_list/widgets/header_course.dart';
+import 'package:lettutor_app/presentation/widgets/course_list/header_course.dart';
 import 'package:lettutor_app/utils/resource/dimens.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:lettutor_app/utils/resource/theme/text_theme.dart';

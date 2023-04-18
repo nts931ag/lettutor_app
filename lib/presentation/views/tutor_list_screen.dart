@@ -1,9 +1,9 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:lettutor_app/presentation/tutor_list/widgets/filter_area.dart';
-import 'package:lettutor_app/presentation/tutor_list/widgets/header_dash_board.dart';
-import 'package:lettutor_app/presentation/tutor_list/widgets/information_tutor_container.dart';
+import 'package:lettutor_app/presentation/widgets/tutor_list/filter_area.dart';
+import 'package:lettutor_app/presentation/widgets/tutor_list/header_dash_board.dart';
+import 'package:lettutor_app/presentation/widgets/tutor_list/information_tutor_container.dart';
 import 'package:lettutor_app/utils/resource/dimens.dart';
 import 'package:lettutor_app/utils/resource/theme/text_theme.dart';
 

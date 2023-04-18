@@ -1,8 +1,8 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
-import 'package:lettutor_app/presentation/authentication/widgets/input_field_area_widget.dart';
-import 'package:lettutor_app/presentation/authentication/widgets/login_title_area_widget.dart';
-import 'package:lettutor_app/presentation/authentication/widgets/sign_up_area_widget.dart';
+import 'package:lettutor_app/presentation/widgets/authentication/input_field_area_widget.dart';
+import 'package:lettutor_app/presentation/widgets/authentication/login_title_area_widget.dart';
+import 'package:lettutor_app/presentation/widgets/authentication/sign_up_area_widget.dart';
 import 'package:lettutor_app/utils/resource/dimens.dart';
 import 'package:lettutor_app/utils/resource/gen/assets.gen.dart';
 

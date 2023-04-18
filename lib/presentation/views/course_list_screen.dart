@@ -1,7 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
-import 'package:lettutor_app/presentation/course_list/widgets/information_course.dart';
-import 'package:lettutor_app/presentation/course_list/widgets/tab_bar_view.dart';
+import 'package:lettutor_app/presentation/widgets/course_list/information_course.dart';
+import 'package:lettutor_app/presentation/widgets/course_list/tab_bar_view.dart';
 import 'package:lettutor_app/utils/resource/dimens.dart';
 
 class CourseListScreen extends StatelessWidget {

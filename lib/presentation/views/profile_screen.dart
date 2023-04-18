@@ -1,7 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
-import 'package:lettutor_app/presentation/profile/widgets/header_profile.dart';
-import 'package:lettutor_app/presentation/profile/widgets/profile_field.dart';
+import 'package:lettutor_app/presentation/widgets/profile/header_profile.dart';
+import 'package:lettutor_app/presentation/widgets/profile/profile_field.dart';
 import 'package:lettutor_app/utils/resource/colors/colors_core.dart';
 import 'package:lettutor_app/utils/resource/dimens.dart';
 import 'package:lettutor_app/utils/resource/gen/colors.gen.dart';
