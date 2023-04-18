@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:lettutor_app/config/router/error_page.dart';
 import 'package:lettutor_app/presentation/course_list/screen/course_list_screen.dart';
 import 'package:lettutor_app/presentation/history/screen/history_screen.dart';
 import 'package:lettutor_app/presentation/schedule/screen/schedule_screen.dart';
 import 'package:lettutor_app/presentation/settings/settings_screen.dart';
 import 'package:lettutor_app/presentation/tutor_list/tutor_list_screen.dart';
-import 'package:lettutor_app/routes/error_page.dart';
 
 class MyRouter {
   static const String home = 'Homepage';

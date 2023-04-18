@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:lettutor_app/routes/router.dart';
+import 'package:lettutor_app/config/router/router.dart';
 
 void pushNamedAndRemoveUntilHome(BuildContext context, {String? newRoute}) {
   int reachedHome = 0;

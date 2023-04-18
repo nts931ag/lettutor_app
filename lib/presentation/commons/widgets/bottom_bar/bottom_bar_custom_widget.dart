@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:lettutor_app/config/router/router.dart';
 import 'package:lettutor_app/constant/const_value.dart';
 import 'package:lettutor_app/providers/bottom_bar_provider.dart';
 import 'package:lettutor_app/utils/resource/colors/colors_core.dart';
 import 'package:lettutor_app/utils/resource/dimens.dart';
-import 'package:lettutor_app/routes/router.dart';
 import 'package:lettutor_app/utils/utils.dart';
 import 'package:provider/provider.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
