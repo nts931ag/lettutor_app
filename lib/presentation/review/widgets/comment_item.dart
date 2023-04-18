@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:lettutor_app/presentation/commons/widgets/icon/circle_box_widget.dart';
-import 'package:lettutor_app/resource/dimens.dart';
-import 'package:lettutor_app/resource/theme/text_theme.dart';
+import 'package:lettutor_app/utils/resource/dimens.dart';
+import 'package:lettutor_app/utils/resource/theme/text_theme.dart';
 
 class CommentItem extends StatelessWidget {
   Widget image;

@@ -2,8 +2,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:lettutor_app/resource/languages/en_us.dart';
-import 'package:lettutor_app/resource/languages/vi_vn.dart';
+import 'package:lettutor_app/utils/resource/languages/en_us.dart';
+import 'package:lettutor_app/utils/resource/languages/vi_vn.dart';
 
 class LocalizationService extends Translations {
   @override

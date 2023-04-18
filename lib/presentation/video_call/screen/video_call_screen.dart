@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:lettutor_app/resource/colors/colors_core.dart';
-import 'package:lettutor_app/resource/dimens.dart';
+import 'package:lettutor_app/utils/resource/colors/colors_core.dart';
+import 'package:lettutor_app/utils/resource/dimens.dart';
 
 class VideoCallScreen extends StatelessWidget {
   const VideoCallScreen({Key? key}) : super(key: key);

@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lettutor_app/presentation/commons/widgets/buttons/loading_button_widget.dart';
 import 'package:lettutor_app/presentation/commons/widgets/items/item_widget.dart';
-import 'package:lettutor_app/resource/colors/colors_core.dart';
-import 'package:lettutor_app/resource/dimens.dart';
-import 'package:lettutor_app/resource/gen/assets.gen.dart';
+import 'package:lettutor_app/utils/resource/colors/colors_core.dart';
+import 'package:lettutor_app/utils/resource/dimens.dart';
+import 'package:lettutor_app/utils/resource/gen/assets.gen.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:lettutor_app/resource/theme/text_theme.dart';
+import 'package:lettutor_app/utils/resource/theme/text_theme.dart';
 
 class HistoryItem extends StatelessWidget {
   const HistoryItem({

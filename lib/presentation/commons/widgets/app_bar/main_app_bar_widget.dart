@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:lettutor_app/resource/dimens.dart';
-import 'package:lettutor_app/resource/gen/assets.gen.dart';
+import 'package:lettutor_app/utils/resource/dimens.dart';
+import 'package:lettutor_app/utils/resource/gen/assets.gen.dart';
 
 class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
   const MainAppBar({

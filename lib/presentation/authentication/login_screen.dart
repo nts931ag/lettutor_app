@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:lettutor_app/presentation/authentication/widgets/input_field_area_widget.dart';
 import 'package:lettutor_app/presentation/authentication/widgets/login_title_area_widget.dart';
 import 'package:lettutor_app/presentation/authentication/widgets/sign_up_area_widget.dart';
-import 'package:lettutor_app/resource/dimens.dart';
-import 'package:lettutor_app/resource/gen/assets.gen.dart';
+import 'package:lettutor_app/utils/resource/dimens.dart';
+import 'package:lettutor_app/utils/resource/gen/assets.gen.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({Key? key}) : super(key: key);

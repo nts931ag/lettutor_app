@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:lettutor_app/presentation/base/base_screen.dart';
 import 'package:lettutor_app/providers/bottom_bar_provider.dart';
-import 'package:lettutor_app/resource/constants/local_string.dart';
 import 'package:lettutor_app/routes/router.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -57,7 +56,7 @@ class _MyAppState extends State<MyApp> {
         ],
         child: MaterialApp(
           locale: _locale,
-          title: LocalString.appName,
+          title: "Lettutor",
           debugShowCheckedModeBanner: false,
           localizationsDelegates: AppLocalizations.localizationsDelegates,
           supportedLocales: AppLocalizations.supportedLocales,

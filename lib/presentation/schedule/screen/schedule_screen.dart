@@ -5,8 +5,8 @@ import 'package:lettutor_app/constant/const_value.dart';
 import 'package:lettutor_app/presentation/commons/widgets/bottom_bar/bottom_bar_custom_widget.dart';
 import 'package:lettutor_app/presentation/schedule/widgets/header_item.dart';
 import 'package:lettutor_app/presentation/schedule/widgets/schedule_item.dart';
-import 'package:lettutor_app/resource/dimens.dart';
-import 'package:lettutor_app/resource/gen/assets.gen.dart';
+import 'package:lettutor_app/utils/resource/dimens.dart';
+import 'package:lettutor_app/utils/resource/gen/assets.gen.dart';
 
 class ScheduleScreen extends StatelessWidget {
   const ScheduleScreen({Key? key}) : super(key: key);
