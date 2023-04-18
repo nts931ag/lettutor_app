@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:lettutor_app/config/router/router.dart';
-import 'package:lettutor_app/presentation/views/base_screen.dart';
+import 'package:lettutor_app/config/routes/router.dart';
+import 'package:lettutor_app/presentation/base/base_screen.dart';
 import 'package:lettutor_app/providers/bottom_bar_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -10,7 +10,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 void main() {
   MyApp.initSystemDefault();
 
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatefulWidget {
