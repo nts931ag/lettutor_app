@@ -1,9 +1,9 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:lettutor_app/presentation/commons/widgets/box_shadow_container.dart';
-import 'package:lettutor_app/presentation/commons/widgets/buttons/loading_button_widget.dart';
-import 'package:lettutor_app/presentation/commons/widgets/course_item.dart';
+import 'package:lettutor_app/presentation/widgets/commons/box_shadow_container.dart';
+import 'package:lettutor_app/presentation/widgets/commons/buttons/loading_button_widget.dart';
+import 'package:lettutor_app/presentation/widgets/commons/course_item.dart';
 import 'package:lettutor_app/presentation/widgets/course_overall/overview_title.dart';
 import 'package:lettutor_app/utils/resource/colors/colors_core.dart';
 import 'package:lettutor_app/utils/resource/dimens.dart';

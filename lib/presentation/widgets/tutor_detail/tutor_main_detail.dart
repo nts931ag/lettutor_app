@@ -1,7 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
-import 'package:lettutor_app/presentation/commons/widgets/text/text_container_widget.dart';
-import 'package:lettutor_app/presentation/commons/widgets/text/text_link_widget.dart';
+import 'package:lettutor_app/presentation/widgets/commons/text/text_container_widget.dart';
+import 'package:lettutor_app/presentation/widgets/commons/text/text_link_widget.dart';
 import 'package:lettutor_app/presentation/widgets/tutor_detail/section_detail.dart';
 import 'package:lettutor_app/utils/resource/colors/colors_core.dart';
 import 'package:lettutor_app/utils/resource/dimens.dart';

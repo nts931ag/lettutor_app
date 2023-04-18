@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:lettutor_app/presentation/widgets/base/base_scaffold_custom_widget.dart';
-import 'package:lettutor_app/presentation/commons/widgets/icon/circle_icon_widget.dart';
+import 'package:lettutor_app/presentation/widgets/commons/icon/circle_icon_widget.dart';
 import 'package:lettutor_app/presentation/views/course_list_screen.dart';
 import 'package:lettutor_app/presentation/views/history_screen.dart';
 import 'package:lettutor_app/presentation/views/schedule_screen.dart';

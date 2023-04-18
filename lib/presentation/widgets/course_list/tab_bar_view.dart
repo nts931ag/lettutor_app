@@ -1,8 +1,8 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
-import 'package:lettutor_app/presentation/commons/widgets/box_shadow_container.dart';
-import 'package:lettutor_app/presentation/commons/widgets/course_item.dart';
-import 'package:lettutor_app/presentation/commons/widgets/tab_bar/tab_bar_item.dart';
+import 'package:lettutor_app/presentation/widgets/commons/box_shadow_container.dart';
+import 'package:lettutor_app/presentation/widgets/commons/course_item.dart';
+import 'package:lettutor_app/presentation/widgets/commons/tab_bar/tab_bar_item.dart';
 import 'package:lettutor_app/utils/resource/dimens.dart';
 import 'package:lettutor_app/utils/resource/gen/assets.gen.dart';
 import 'package:lettutor_app/utils/resource/theme/text_theme.dart';

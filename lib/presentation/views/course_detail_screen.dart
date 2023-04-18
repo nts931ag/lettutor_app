@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:lettutor_app/presentation/commons/widgets/box_shadow_container.dart';
-import 'package:lettutor_app/presentation/commons/widgets/course_item.dart';
+import 'package:lettutor_app/presentation/widgets/commons/box_shadow_container.dart';
+import 'package:lettutor_app/presentation/widgets/commons/course_item.dart';
 import 'package:lettutor_app/presentation/views/course_overall_screen.dart';
 import 'package:lettutor_app/presentation/views/pdf_reader_screen.dart';
 import 'package:lettutor_app/utils/resource/dimens.dart';

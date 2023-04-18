@@ -1,7 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:lettutor_app/presentation/commons/widgets/text_field/baset_text_field_widget.dart';
+import 'package:lettutor_app/presentation/widgets/commons/text_field/baset_text_field_widget.dart';
 import 'package:lettutor_app/presentation/widgets/course_list/header_course.dart';
 import 'package:lettutor_app/utils/resource/dimens.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';

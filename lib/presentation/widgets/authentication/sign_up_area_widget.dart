@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:lettutor_app/presentation/commons/widgets/icon/circle_icon_widget.dart';
+import 'package:lettutor_app/presentation/widgets/commons/icon/circle_icon_widget.dart';
 import 'package:lettutor_app/utils/resource/dimens.dart';
 import 'package:lettutor_app/utils/resource/gen/assets.gen.dart';
 import 'package:lettutor_app/utils/resource//gen/colors.gen.dart';

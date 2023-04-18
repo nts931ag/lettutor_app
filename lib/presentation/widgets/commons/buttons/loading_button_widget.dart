@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:lettutor_app/presentation/commons/widgets/buttons/base_button_widget.dart';
-import 'package:lettutor_app/presentation/commons/widgets/buttons/loading/three_bounce_widget.dart';
+import 'package:lettutor_app/presentation/widgets/commons/buttons/base_button_widget.dart';
+import 'package:lettutor_app/presentation/widgets/commons/buttons/loading/three_bounce_widget.dart';
 
 class LoadingButtonWidget extends StatelessWidget {
   const LoadingButtonWidget({

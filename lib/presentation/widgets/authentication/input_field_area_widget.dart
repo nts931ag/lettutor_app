@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:lettutor_app/presentation/commons/widgets/buttons/loading_button_widget.dart';
-import 'package:lettutor_app/presentation/commons/widgets/text_field/baset_text_field_widget.dart';
+import 'package:lettutor_app/presentation/widgets/commons/buttons/loading_button_widget.dart';
+import 'package:lettutor_app/presentation/widgets/commons/text_field/baset_text_field_widget.dart';
 import 'package:lettutor_app/utils/resource/colors/colors_core.dart';
 import 'package:lettutor_app/utils/resource/dimens.dart';
 import 'package:lettutor_app/utils/resource/theme/text_theme.dart';
