@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:lettutor_app/presentation/course_list/widgets/information_course.dart';
 import 'package:lettutor_app/presentation/course_list/widgets/tab_bar_view.dart';
-import 'package:lettutor_app/utils/resource/dimens.dart';
+import 'package:lettutor_app/resource/dimens.dart';
 
 class CourseListScreen extends StatelessWidget {
   const CourseListScreen({Key? key}) : super(key: key);

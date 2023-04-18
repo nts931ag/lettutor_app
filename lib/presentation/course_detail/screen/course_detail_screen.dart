@@ -3,9 +3,9 @@ import 'package:lettutor_app/presentation/commons/widgets/box_shadow_container.d
 import 'package:lettutor_app/presentation/commons/widgets/course_item.dart';
 import 'package:lettutor_app/presentation/course_overall/screen/course_detail_screen.dart';
 import 'package:lettutor_app/presentation/pdf_reader/screen/pdf_reader_screen.dart';
+import 'package:lettutor_app/resource/dimens.dart';
+import 'package:lettutor_app/resource/gen/assets.gen.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:lettutor_app/utils/resource/dimens.dart';
-import 'package:lettutor_app/utils/resource/gen/assets.gen.dart';
 
 class CourseDetailScreen extends StatelessWidget {
   const CourseDetailScreen({Key? key}) : super(key: key);
@@ -29,7 +29,7 @@ class CourseDetailScreen extends StatelessWidget {
                     'Lets discuss how technology is changing the way we live',
                 bottomWidget: SectionCourseOverall(
                   title: AppLocalizations.of(context)!.course_detail_topics,
-                  children: const [
+                  children: [
                     ListTile(
                       leading: Text('1'),
                       title: Text('Topic 1'),

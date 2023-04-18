@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:lettutor_app/utils/resource/dimens.dart';
-import 'package:lettutor_app/utils/resource/gen/fonts.gen.dart';
+import 'package:lettutor_app/resource/dimens.dart';
+import 'package:lettutor_app/resource/gen/fonts.gen.dart';
 
 const fontApp =
     TextStyle(fontFamily: FontFamily.mulish, fontWeight: FontWeight.w500);

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lettutor_app/presentation/commons/widgets/text_field/label_english_type_widget.dart';
-import 'package:lettutor_app/utils/resource/colors/colors_core.dart';
-import 'package:lettutor_app/utils/resource/dimens.dart';
+import 'package:lettutor_app/resource/colors/colors_core.dart';
+import 'package:lettutor_app/resource/dimens.dart';
 
 class WantToLearnWrap extends StatelessWidget {
   const WantToLearnWrap({

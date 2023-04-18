@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:lettutor_app/utils/resource/dimens.dart';
-import 'package:lettutor_app/utils/resource/theme/text_theme.dart';
+import 'package:lettutor_app/resource/dimens.dart';
+import 'package:lettutor_app/resource/theme/text_theme.dart';
 
 
 class InputFieldProfile extends StatelessWidget {

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:lettutor_app/utils/resource/dimens.dart';
+import 'package:lettutor_app/resource/dimens.dart';
 import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
 
 class PdfReaderScreen extends StatelessWidget {

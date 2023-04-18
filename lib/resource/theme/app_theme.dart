@@ -2,8 +2,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:lettutor_app/utils/resource/colors/colors_core.dart';
-import 'package:lettutor_app/utils/resource/gen/fonts.gen.dart';
+import 'package:lettutor_app/resource/colors/colors_core.dart';
+import 'package:lettutor_app/resource/gen/fonts.gen.dart';
 
 enum AppTheme { LIGHT, DARK }
 

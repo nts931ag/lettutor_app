@@ -2,8 +2,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:lettutor_app/presentation/review/widgets/comment_item.dart';
-import 'package:lettutor_app/utils/resource/dimens.dart';
-import 'package:lettutor_app/utils/resource/gen/assets.gen.dart';
+import 'package:lettutor_app/resource/dimens.dart';
+import 'package:lettutor_app/resource/gen/assets.gen.dart';
 
 class ReviewScreen extends StatelessWidget {
   const ReviewScreen({Key? key}) : super(key: key);

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:lettutor_app/utils/resource/theme/text_theme.dart';
+import 'package:lettutor_app/constant/const_value.dart';
+import 'package:lettutor_app/presentation/commons/widgets/bottom_bar/bottom_bar_custom_widget.dart';
+import 'package:lettutor_app/resource/theme/text_theme.dart';
 
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({Key? key}) : super(key: key);

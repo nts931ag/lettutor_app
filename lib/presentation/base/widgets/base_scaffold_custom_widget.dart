@@ -1,7 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:lettutor_app/presentation/commons/widgets/app_bar/main_app_bar_widget.dart';
-import 'package:lettutor_app/utils/resource/dimens.dart';
+import 'package:lettutor_app/resource/dimens.dart';
 
 class BaseScaffoldWidgetCustom extends StatelessWidget {
   final Widget body;
