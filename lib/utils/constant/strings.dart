@@ -1,3 +1,6 @@
+const defaultApiKey = "";
+const baseUrl="https://sandbox.api.lettutor.com/";
+
 const String nameField = 'nameField';
 const String emailField = 'emailField';
 const String countryField = 'countryField';

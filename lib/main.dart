@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:lettutor_app/config/router/router.dart';
+import 'package:lettutor_app/locator.dart';
 import 'package:lettutor_app/presentation/views/base_screen.dart';
 import 'package:lettutor_app/presentation/providers/bottom_bar_provider.dart';
+import 'package:lettutor_app/presentation/views/login_screen.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 
-void main() {
+Future<void> main() async {
   MyApp.initSystemDefault();
-
+  await initializeDependencies();
   runApp(const MyApp());
 }
 
@@ -61,8 +63,10 @@ class _MyAppState extends State<MyApp> {
           localizationsDelegates: AppLocalizations.localizationsDelegates,
           supportedLocales: AppLocalizations.supportedLocales,
           onGenerateRoute: MyRouter.generateRoute,
-          home: const SafeArea(
-            child: BaseScreen(),
+          home: Scaffold(
+            body: const SafeArea(
+              child: LoginScreen(),
+            ),
           ),
           theme: ThemeData(
             colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),

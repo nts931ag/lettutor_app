@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:lettutor_app/presentation/widgets/commons/buttons/loading_button_widget.dart';
@@ -56,6 +58,7 @@ class InputFieldArea extends StatelessWidget {
         InkWell(
           onTap: () {
             // TODO: Navigation to FORGOT PASSWORD
+            log("hello");
           },
           child: Text(
             AppLocalizations.of(context)!.forgot_password,
