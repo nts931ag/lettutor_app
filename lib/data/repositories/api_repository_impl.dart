@@ -11,8 +11,8 @@ class ApiRepositoryImpl extends BaseApiRepository implements ApiRepository {
   @override
   Future<DataState<UserData>> loginManually({required String email, required password}) {
     return getStateOf<UserData>(request: () => _authenticationService.loginByEmailPassword({
-      email: email,
-      password: password
+      "email": email,
+      "password": password
     }));
   }
   

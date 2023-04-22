@@ -1,7 +1,9 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:lettutor_app/presentation/cubits/authentication_cubit.dart';
 import 'package:lettutor_app/presentation/widgets/commons/buttons/loading_button_widget.dart';
 import 'package:lettutor_app/presentation/widgets/commons/text_field/baset_text_field_widget.dart';
 import 'package:lettutor_app/utils/resource/colors/colors_core.dart';
@@ -15,6 +17,7 @@ class InputFieldArea extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final authenticationCubit = BlocProvider.of<AuthenticationCubit>(context);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -72,6 +75,7 @@ class InputFieldArea extends StatelessWidget {
         LoadingButtonWidget(
             submit: () {
               // TODO: Navigation to DASHBOARD
+              authenticationCubit.loginMannually(email: "student@lettutor.com", password: "123456");
             },
             isLoading: false,
             // TODO: Navigation to DASHBOARD

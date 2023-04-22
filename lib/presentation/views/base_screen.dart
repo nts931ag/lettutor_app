@@ -24,15 +24,20 @@ class BaseScreen extends StatefulWidget {
 }
 
 class _BaseScreenState extends State<BaseScreen> {
+  late int selectedIndex;
+  @override
+  void initState() {
+    // TODO: implement initState
+    selectedIndex = 0;
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
-    final bottomBarProvider = Provider.of<BottomBarProvider>(
-      context,
-    );
+
     // return Scaffold(
     //   backgroundColor: whiteColor,
     //   body: IndexedStack(
-    //     index: bottomBarProvider.selectedIndex,
+    //     index: selectedIndex,
     //     children: [
     //       TutorListScreen(),
     //       CourseListScreen(),
@@ -42,9 +47,9 @@ class _BaseScreenState extends State<BaseScreen> {
     //     ],
     //   ),
     //   bottomNavigationBar: SalomonBottomBar(
-    //     currentIndex: bottomBarProvider.selectedIndex,
+    //     currentIndex: selectedIndex,
     //     onTap: (i) {
-    //       bottomBarProvider.selectedIndex = i;
+    //       selectedIndex = i;
     //     },
     //     items: [
     //       SalomonBottomBarItem(
@@ -106,7 +111,7 @@ class _BaseScreenState extends State<BaseScreen> {
         //   )
       ],
       body: IndexedStack(
-        index: bottomBarProvider.selectedIndex,
+        index: selectedIndex,
         children: const [
           TutorListScreen(),
           CourseListScreen(),
@@ -116,9 +121,11 @@ class _BaseScreenState extends State<BaseScreen> {
         ],
       ),
       bottomNavigationBar: SalomonBottomBar(
-        currentIndex: bottomBarProvider.selectedIndex,
+        currentIndex: selectedIndex,
         onTap: (i) {
-          bottomBarProvider.selectedIndex = i;
+          setState(() {
+            selectedIndex = i;
+          });
         },
         items: [
           SalomonBottomBarItem(

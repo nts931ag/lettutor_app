@@ -7,3 +7,6 @@ Design your application structure and draw main screens widget tree. After that,
 Requirement 1: Draw your widget tree on https://drive.google.com/file/d/1PG_azoC8uGmoKe1Zh8hD5KPzxotQ2siC/view?usp=sharing
 
 Requirement 2 & 3: Implement in code (branch "milestone-1-mockup-ui")
+
+# Generate resources
+flutter pub run build_runner build --delete-conflicting-outputs

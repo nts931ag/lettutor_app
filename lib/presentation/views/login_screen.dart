@@ -11,41 +11,43 @@ class LoginScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          SizedBox(
-            height: 35.h,
-          ),
-          Assets.images.imageLogin.image(),
-          SizedBox(
-            height: 15.h,
-          ),
-          Padding(
-            padding: EdgeInsets.only(bottom: 35.h),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const LoginTitleArea(),
-                SizedBox(
-                  height: 15.h,
-                ),
-                InputFieldArea(
-                  // TODO: controller to login
-                  // loginController: controller,
-                ),
-                SizedBox(
-                  height: 25.h,
-                ),
-                SignUpArea(
-                  // TODO: Controller to signup
-                  // loginController: controller,
-                )
-              ],
+    return Scaffold(
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            SizedBox(
+              height: 35.h,
             ),
-          )
-        ],
+            Assets.images.imageLogin.image(),
+            SizedBox(
+              height: 15.h,
+            ),
+            Padding(
+              padding: EdgeInsets.only(bottom: 35.h),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const LoginTitleArea(),
+                  SizedBox(
+                    height: 15.h,
+                  ),
+                  InputFieldArea(
+                    // TODO: controller to login
+                    // loginController: controller,
+                  ),
+                  SizedBox(
+                    height: 25.h,
+                  ),
+                  SignUpArea(
+                    // TODO: Controller to signup
+                    // loginController: controller,
+                  )
+                ],
+              ),
+            )
+          ],
+        ),
       ),
     );
 

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lettutor_app/config/router/error_page.dart';
+import 'package:lettutor_app/presentation/views/base_screen.dart';
 import 'package:lettutor_app/presentation/views/course_list_screen.dart';
 import 'package:lettutor_app/presentation/views/history_screen.dart';
 import 'package:lettutor_app/presentation/views/schedule_screen.dart';
@@ -7,6 +8,9 @@ import 'package:lettutor_app/presentation/views/settings_screen.dart';
 import 'package:lettutor_app/presentation/views/tutor_list_screen.dart';
 
 class MyRouter {
+  // Base
+  static const String baseScreen = "BaseScreen";
+
   static const String home = 'Homepage';
 
   //Courses
@@ -41,6 +45,8 @@ class MyRouter {
   static Route<dynamic> generateRoute(RouteSettings settings) {
     var args = settings.arguments;
     switch (settings.name) {
+      case baseScreen:
+        return successRoute(const BaseScreen(), settings);
       case tutors:
         return successRoute(const TutorListScreen(), settings);
       case courses:
