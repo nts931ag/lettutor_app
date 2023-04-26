@@ -4,7 +4,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lettutor_app/config/router/router.dart';
 import 'package:lettutor_app/domain/repositories/api_repository.dart';
 import 'package:lettutor_app/locator.dart';
-import 'package:lettutor_app/presentation/cubits/authentication_cubit.dart';
+import 'package:lettutor_app/presentation/cubits/authentication/auth_cubit.dart';
+import 'package:lettutor_app/presentation/cubits/authentication/login_cubit.dart';
 import 'package:lettutor_app/presentation/views/base_screen.dart';
 import 'package:lettutor_app/presentation/views/login_screen.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -53,10 +54,11 @@ class _MyAppState extends State<MyApp> {
       child: MultiBlocProvider(
         providers: [
           BlocProvider(
-            create: (context) => AuthenticationCubit(
-              locator<ApiRepository>(),
-            ),
-          )
+            create: (context) =>
+                AuthCubit(
+                  // locator<ApiRepository>(),
+                ),
+          ),
         ],
         child: MaterialApp(
           locale: _locale,
@@ -65,18 +67,21 @@ class _MyAppState extends State<MyApp> {
           localizationsDelegates: AppLocalizations.localizationsDelegates,
           supportedLocales: AppLocalizations.supportedLocales,
           onGenerateRoute: MyRouter.generateRoute,
-          home: BlocBuilder<AuthenticationCubit, AuthenticationState>(
+          home: BlocBuilder<AuthCubit, AuthState>(
             buildWhen: (preState, curState) {
-              return preState.authState != curState.authState;
+              return preState.authStatus != curState.authStatus;
             },
             builder: (context, state) {
               switch (state.runtimeType) {
-                case AuthenticationUnknown:
-                  return const SafeArea(child: LoginScreen());
-                case AuthenticationSuccess:
+                case UnknownState:
+                  return SafeArea(
+                    child: BlocProvider(
+                      create: (context) => LoginCubit(locator<ApiRepository>(), BlocProvider.of<AuthCubit>(context)),
+                      child: LoginScreen(),
+                    ),
+                  );
+                case AuthenticatedState:
                   return const SafeArea(child: BaseScreen());
-                case AuthenticationFailed:
-                  return const SafeArea(child: LoginScreen());
                 default:
                   return const SizedBox();
               }

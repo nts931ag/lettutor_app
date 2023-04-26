@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:lettutor_app/domain/models/authentication/UserData.dart';
+import 'package:lettutor_app/domain/models/responses/UserDataResponse.dart';
 import 'package:lettutor_app/utils/constant/strings.dart';
 import 'package:retrofit/retrofit.dart';
 
@@ -11,5 +11,5 @@ abstract class AuthenticationService {
       {String baseUrl}) = _AuthenticationService;
 
   @POST('auth/login')
-  Future<HttpResponse<UserData>> loginByEmailPassword(@Body() request);
+  Future<HttpResponse<UserDataResponse>> loginByEmailPassword(@Body() request);
 }

@@ -1,8 +1,10 @@
-class Refresh {
-  final String token;
-  final String expires;
+import 'package:equatable/equatable.dart';
 
-  const Refresh({
+class Refresh extends Equatable{
+  String token;
+  String expires;
+
+  Refresh({
     required this.token,
     required this.expires,
   });
@@ -20,4 +22,8 @@ class Refresh {
       expires: map['expires'] as String,
     );
   }
+
+  @override
+  // TODO: implement props
+  List<Object?> get props => [token, expires];
 }

@@ -7,7 +7,6 @@ import 'package:lettutor_app/presentation/views/history_screen.dart';
 import 'package:lettutor_app/presentation/views/schedule_screen.dart';
 import 'package:lettutor_app/presentation/views/settings_screen.dart';
 import 'package:lettutor_app/presentation/views/tutor_list_screen.dart';
-import 'package:lettutor_app/presentation/providers/bottom_bar_provider.dart';
 import 'package:lettutor_app/utils/resource/colors/colors_core.dart';
 import 'package:lettutor_app/utils/resource/dimens.dart';
 import 'package:lettutor_app/utils/resource/gen/assets.gen.dart';

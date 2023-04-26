@@ -1,8 +1,10 @@
-class Access {
-  final String token;
-  final String expires;
+import 'package:equatable/equatable.dart';
 
-  const Access({
+class Access extends Equatable {
+  String token;
+  String expires;
+
+  Access({
     required this.token,
     required this.expires,
   });
@@ -20,4 +22,8 @@ class Access {
       expires: map['expires'] as String,
     );
   }
+
+  @override
+  // TODO: implement props
+  List<Object?> get props => [token, expires];
 }

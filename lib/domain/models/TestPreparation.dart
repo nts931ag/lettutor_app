@@ -1,13 +1,18 @@
-class TestPreparations {
-  final int id;
-  final String key;
-  final String name;
+import 'package:equatable/equatable.dart';
 
-  const TestPreparations({
+class TestPreparation extends Equatable {
+  int id;
+  String key;
+  String name;
+
+  TestPreparation({
     required this.id,
     required this.key,
     required this.name,
   });
+
+  @override
+  List<Object> get props => [id, key, name];
 
   Map<String, dynamic> toMap() {
     return {
@@ -17,8 +22,8 @@ class TestPreparations {
     };
   }
 
-  factory TestPreparations.fromMap(Map<String, dynamic> map) {
-    return TestPreparations(
+  factory TestPreparation.fromMap(Map<String, dynamic> map) {
+    return TestPreparation(
       id: map['id'] as int,
       key: map['key'] as String,
       name: map['name'] as String,

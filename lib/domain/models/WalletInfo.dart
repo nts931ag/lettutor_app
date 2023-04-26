@@ -1,13 +1,15 @@
-class WalletInfo {
-  final String id;
-  final String userId;
-  final String amount;
-  final bool isBlocked;
-  final String createdAt;
-  final String updatedAt;
-  final int bonus;
+import 'package:equatable/equatable.dart';
 
-  const WalletInfo({
+class WalletInfo extends Equatable {
+  String id;
+  String userId;
+  String amount;
+  bool isBlocked;
+  String createdAt;
+  String updatedAt;
+  int bonus;
+
+  WalletInfo({
     required this.id,
     required this.userId,
     required this.amount,
@@ -40,4 +42,8 @@ class WalletInfo {
       bonus: map['bonus'] as int,
     );
   }
+
+  @override
+  // TODO: implement props
+  List<Object?> get props => [id, userId, amount, createdAt, updatedAt, bonus];
 }

@@ -1,9 +1,11 @@
-class LearnTopics {
-  final int id;
-  final String key;
-  final String name;
+import 'package:equatable/equatable.dart';
 
-  const LearnTopics({
+class LearnTopic extends Equatable{
+  int id;
+  String key;
+  String name;
+
+  LearnTopic({
     required this.id,
     required this.key,
     required this.name,
@@ -17,11 +19,15 @@ class LearnTopics {
     };
   }
 
-  factory LearnTopics.fromMap(Map<String, dynamic> map) {
-    return LearnTopics(
+  factory LearnTopic.fromMap(Map<String, dynamic> map) {
+    return LearnTopic(
       id: map['id'] as int,
       key: map['key'] as String,
       name: map['name'] as String,
     );
   }
+
+  @override
+  // TODO: implement props
+  List<Object?> get props => [id, key, name];
 }

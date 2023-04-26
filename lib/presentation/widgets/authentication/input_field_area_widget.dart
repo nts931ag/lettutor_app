@@ -1,9 +1,7 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:lettutor_app/presentation/cubits/authentication_cubit.dart';
 import 'package:lettutor_app/presentation/widgets/commons/buttons/loading_button_widget.dart';
 import 'package:lettutor_app/presentation/widgets/commons/text_field/baset_text_field_widget.dart';
 import 'package:lettutor_app/utils/resource/colors/colors_core.dart';
@@ -14,10 +12,11 @@ class InputFieldArea extends StatelessWidget {
   InputFieldArea({
     Key? key,
   }) : super(key: key);
+  final emailTextFieldController = TextEditingController();
+  final passwordTextFieldController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-    final authenticationCubit = BlocProvider.of<AuthenticationCubit>(context);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -34,7 +33,7 @@ class InputFieldArea extends StatelessWidget {
         ),
         baseTextField(
             onChanged: (value) {},
-            controller: null,
+            controller: emailTextFieldController,
             hintText: 'email@example.com'),
         SizedBox(
           height: 15.h,
@@ -49,7 +48,7 @@ class InputFieldArea extends StatelessWidget {
         ),
         baseTextField(
             onChanged: (value) {},
-            controller: null,
+            controller: passwordTextFieldController,
             hintText: '',
             icon: InkWell(
               onTap: () {},
@@ -75,7 +74,6 @@ class InputFieldArea extends StatelessWidget {
         LoadingButtonWidget(
             submit: () {
               // TODO: Navigation to DASHBOARD
-              authenticationCubit.loginMannually(email: "student@lettutor.com", password: "123456");
             },
             isLoading: false,
             // TODO: Navigation to DASHBOARD
