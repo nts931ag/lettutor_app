@@ -6,4 +6,8 @@ part 'auth_state.dart';
 
 class AuthCubit extends Cubit<AuthState> {
   AuthCubit() : super(UnknownState());
+
+  void onSuccessAuthentication(user, tokens) {
+    emit(AuthenticatedState(user: user, tokens: tokens));
+  }
 }

@@ -21,7 +21,7 @@ class ProfileField extends StatelessWidget {
         InputFieldProfile(
           title: AppLocalizations.of(context)!.profile_name,
           isImportant: true,
-          child: baseTextField(
+          child: BaseTextField(
               // TODO: fill data
               onChanged: (value) {},
               controller: null,
@@ -33,7 +33,7 @@ class ProfileField extends StatelessWidget {
         //
         InputFieldProfile(
           title: AppLocalizations.of(context)!.profile_email_address,
-          child: baseTextField(
+          child: BaseTextField(
               readOnly: true,
               onChanged: (value) {},
               controller: null,
@@ -45,7 +45,7 @@ class ProfileField extends StatelessWidget {
         InputFieldProfile(
           title: AppLocalizations.of(context)!.profile_country,
           isImportant: true,
-          child: baseTextField(
+          child: BaseTextField(
               onChanged: (value) {},
               controller: null,
               icon: IconButton(
@@ -62,7 +62,7 @@ class ProfileField extends StatelessWidget {
         InputFieldProfile(
           title: AppLocalizations.of(context)!.profile_phone,
           isImportant: true,
-          child: baseTextField(
+          child: BaseTextField(
               readOnly: true,
               onChanged: (value) {},
               controller: null,
@@ -74,7 +74,7 @@ class ProfileField extends StatelessWidget {
         InputFieldProfile(
           title: AppLocalizations.of(context)!.profile_birthday,
           isImportant: true,
-          child: baseTextField(
+          child: BaseTextField(
               onChanged: (value) {},
               controller: null,
               // controller: controller.controllers[birthayDayField],
@@ -91,7 +91,7 @@ class ProfileField extends StatelessWidget {
         InputFieldProfile(
           title: AppLocalizations.of(context)!.profile_my_level,
           isImportant: true,
-          child: baseTextField(
+          child: BaseTextField(
               icon: IconButton(
                   onPressed: () {},
                   icon: const Icon(
@@ -114,7 +114,7 @@ class ProfileField extends StatelessWidget {
         //
         InputFieldProfile(
           title: AppLocalizations.of(context)!.profile_study_schedule,
-          child: baseTextField(
+          child: BaseTextField(
               maxLine: 4,
               onChanged: (value) {},
               controller: null,

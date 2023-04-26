@@ -31,7 +31,7 @@ class InputFieldArea extends StatelessWidget {
         SizedBox(
           height: 8.h,
         ),
-        baseTextField(
+        BaseTextField(
             onChanged: (value) {},
             controller: emailTextFieldController,
             hintText: 'email@example.com'),
@@ -46,7 +46,7 @@ class InputFieldArea extends StatelessWidget {
         SizedBox(
           height: 8.h,
         ),
-        baseTextField(
+        BaseTextField(
             onChanged: (value) {},
             controller: passwordTextFieldController,
             hintText: '',

@@ -24,7 +24,7 @@ class InputFieldArea extends StatelessWidget {
         SizedBox(
           height: 8.h,
         ),
-        baseTextField(onChanged: (value) {}, controller: null, hintText: ''),
+        BaseTextField(onChanged: (value) {}, controller: null, hintText: ''),
         SizedBox(
           height: 20.h,
         ),

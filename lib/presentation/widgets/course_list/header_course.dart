@@ -32,7 +32,7 @@ class HeaderCourse extends StatelessWidget {
             ),
             SizedBox(
               width: 200.w,
-              child: baseTextField(
+              child: BaseTextField(
                   onChanged: (value) {},
                   controller: null,
                   hintText: 'Course',

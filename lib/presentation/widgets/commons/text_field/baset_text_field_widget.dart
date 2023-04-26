@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:lettutor_app/utils/resource/colors/colors_core.dart';
 import 'package:lettutor_app/config/theme/text_theme.dart';
 
-TextFormField baseTextField(
+TextFormField BaseTextField(
     {required Function(String) onChanged,
     required TextEditingController? controller,
     required String hintText,

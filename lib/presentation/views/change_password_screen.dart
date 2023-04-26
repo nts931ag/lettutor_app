@@ -28,7 +28,7 @@ class ChangePasswordScreen extends StatelessWidget {
           InputFieldProfile(
             isImportant: true,
             title: AppLocalizations.of(context)!.password_title,
-            child: baseTextField(
+            child: BaseTextField(
                 onChanged: (value) {}, controller: null, hintText: ''),
           ),
           SizedBox(
@@ -37,7 +37,7 @@ class ChangePasswordScreen extends StatelessWidget {
           InputFieldProfile(
             isImportant: true,
             title: AppLocalizations.of(context)!.change_password_new,
-            child: baseTextField(
+            child: BaseTextField(
                 onChanged: (value) {}, controller: null, hintText: ''),
           ),
           SizedBox(
@@ -46,7 +46,7 @@ class ChangePasswordScreen extends StatelessWidget {
           InputFieldProfile(
             isImportant: true,
             title: AppLocalizations.of(context)!.change_password_confirm,
-            child: baseTextField(
+            child: BaseTextField(
                 onChanged: (value) {}, controller: null, hintText: ''),
           ),
           SizedBox(

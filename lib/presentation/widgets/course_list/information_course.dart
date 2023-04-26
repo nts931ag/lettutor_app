@@ -36,7 +36,7 @@ class InformationCourse extends StatelessWidget {
               children: [
                 SizedBox(
                   width: Get.width / 2 - 25.w,
-                  child: baseTextField(
+                  child: BaseTextField(
                       onChanged: (value) {},
                       controller: null,
                       hintText: AppLocalizations.of(context)!.course_level,
@@ -47,7 +47,7 @@ class InformationCourse extends StatelessWidget {
                 ),
                 SizedBox(
                   width: Get.width / 2 - 25.w,
-                  child: baseTextField(
+                  child: BaseTextField(
                       onChanged: (value) {},
                       controller: null,
                       hintText: AppLocalizations.of(context)!.course_sort_lv,
@@ -58,7 +58,7 @@ class InformationCourse extends StatelessWidget {
             const Spacer(),
             SizedBox(
               width: Get.width / 2 - 25.w,
-              child: baseTextField(
+              child: BaseTextField(
                   onChanged: (value) {},
                   controller: null,
                   hintText: AppLocalizations.of(context)!.course_category,
