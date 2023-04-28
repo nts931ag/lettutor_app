@@ -42,14 +42,14 @@ class Feedback extends Equatable {
   factory Feedback.fromMap(Map<String, dynamic> map) {
     return Feedback(
       id: map['id'] as String,
-      bookingId: map['bookingId'] as String,
+      bookingId: map['bookingId'] ?? '',
       firstId: map['firstId'] as String,
       secondId: map['secondId'] as String,
       rating: map['rating'] as int,
       content: map['content'] as String,
       createdAt: map['createdAt'] as String,
       updatedAt: map['updatedAt'] as String,
-      firstInfo: map['firstInfo'] as FirstInfo,
+      firstInfo: FirstInfo.fromMap(map['firstInfo']),
     );
   }
 

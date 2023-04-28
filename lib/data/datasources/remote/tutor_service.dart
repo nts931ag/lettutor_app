@@ -10,7 +10,7 @@ abstract class TutorService {
   factory TutorService(Dio dio,
       {String baseUrl}) = _TutorService;
 
-  @POST('tutor/more')
+  @GET('tutor/more')
   Future<HttpResponse<TutorsDataResponse>> getListTutorWithPagination(
       @Query("perPage") int perPage,
       @Query("page") int page,

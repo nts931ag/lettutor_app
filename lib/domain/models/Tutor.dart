@@ -17,7 +17,7 @@ class Tutor extends Equatable {
   bool isActivated;
   dynamic isPhoneActivated;
   dynamic requireNote;
-  int timezone;
+  int? timezone;
   dynamic phoneAuth;
   bool isPhoneAuthActivated;
   String studySchedule;
@@ -63,7 +63,7 @@ class Tutor extends Equatable {
     required this.isActivated,
     required this.isPhoneActivated,
     required this.requireNote,
-    required this.timezone,
+    this.timezone,
     required this.phoneAuth,
     required this.isPhoneAuthActivated,
     required this.studySchedule,
@@ -145,25 +145,25 @@ class Tutor extends Equatable {
 
   factory Tutor.fromMap(Map<String, dynamic> map) {
     return Tutor(
-      level: map['level'] as String,
+      level: map['level'] ?? '',
       email: map['email'] as String,
       google: map['google'] as dynamic,
       facebook: map['facebook'] as dynamic,
       apple: map['apple'] as dynamic,
-      avatar: map['avatar'] as String,
+      avatar: map['avatar'] ?? '',
       name: map['name'] as String,
-      country: map['country'] as String,
-      phone: map['phone'] as String,
-      language: map['language'] as String,
-      birthday: map['birthday'] as String,
+      country: map['country'] ?? '',
+      phone: map['phone'] ?? '',
+      language: map['language'] ?? '',
+      birthday: map['birthday'] ?? '',
       requestPassword: map['requestPassword'] as bool,
       isActivated: map['isActivated'] as bool,
-      isPhoneActivated: map['isPhoneActivated'] as dynamic,
+      isPhoneActivated: map['isPhoneActivated'] ?? '',
       requireNote: map['requireNote'] as dynamic,
-      timezone: map['timezone'] as int,
+      timezone: map['timezone'],
       phoneAuth: map['phoneAuth'] as dynamic,
       isPhoneAuthActivated: map['isPhoneAuthActivated'] as bool,
-      studySchedule: map['studySchedule'] as String,
+      studySchedule: map['studySchedule'] ?? '',
       canSendMessage: map['canSendMessage'] as bool,
       isPublicRecord: map['isPublicRecord'] as bool,
       caredByStaffId: map['caredByStaffId'] as dynamic,
@@ -184,11 +184,15 @@ class Tutor extends Equatable {
       languages: map['languages'] as String,
       specialties: map['specialties'] as String,
       resume: map['resume'] as dynamic,
-      rating: map['rating'] as double,
+      rating: map['rating'] ?? 0.0,
       isNative: map['isNative'] as dynamic,
       price: map['price'] as int,
       isOnline: map['isOnline'] as bool,
-      feedbacks: map['feedbacks'] as List<Feedback>,
+      feedbacks: List<Feedback>.from(
+        map['feedbacks'].map<Feedback>(
+          (x) => Feedback.fromMap(x as Map<String, dynamic>),
+        ),
+      ),
     );
   }
 

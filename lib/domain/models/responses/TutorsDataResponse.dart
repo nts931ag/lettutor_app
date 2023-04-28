@@ -9,18 +9,17 @@ class TutorsDataResponse extends Equatable {
   const TutorsDataResponse({
     this.tutors,
     required this.tutorCount,
-    required this.favoriteTutor,
+    this.favoriteTutor,
   });
 
   factory TutorsDataResponse.fromMap(Map<String, dynamic> map) {
     return TutorsDataResponse(
       tutors: List<Tutor>.from(
-        map['tutor']['rows'].map<Tutor>(
+        map['tutors']['rows'].map<Tutor>(
           (x) => Tutor.fromMap(x as Map<String, dynamic>),
         ),
       ),
-      tutorCount: map['tokens'] as int,
-      favoriteTutor: map['favorite'] as String,
+      tutorCount: map['tutors']['count'] as int,
     );
   }
 

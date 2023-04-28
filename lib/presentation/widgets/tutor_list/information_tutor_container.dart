@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:lettutor_app/domain/models/Tutor.dart';
 import 'package:lettutor_app/presentation/widgets/commons/box_shadow_container.dart';
 import 'package:lettutor_app/presentation/widgets/commons/buttons/loading_button_widget.dart';
 import 'package:lettutor_app/presentation/widgets/commons/icon/circle_box_widget.dart';
@@ -11,13 +12,14 @@ import 'package:lettutor_app/utils/resource/gen/assets.gen.dart';
 import 'package:lettutor_app/config/theme/text_theme.dart';
 
 class InformationTutorContainer extends StatelessWidget {
+  final Tutor tutor;
   double countRating;
 
   InformationTutorContainer({
     Key? key,
     required this.countRating,
+    required this.tutor,
   }) : super(key: key);
-
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +44,7 @@ class InformationTutorContainer extends StatelessWidget {
                   height: 10.h,
                 ),
                 Text(
-                  'Jennie',
+                  tutor.name,
                   style: text20.copyWith(fontWeight: FontWeight.w600),
                 ),
                 SizedBox(
@@ -53,7 +55,7 @@ class InformationTutorContainer extends StatelessWidget {
                     Assets.svg.common.iconUs.svg(height: 15.w, width: 25.w),
                     SizedBox(width: 15.w),
                     Text(
-                      'United States',
+                      tutor.country,
                       style: text16,
                     ),
                   ],
@@ -63,7 +65,7 @@ class InformationTutorContainer extends StatelessWidget {
                 ),
                 countRating == 0
                     ? Text(
-                  AppLocalizations.of(context)!.dash_board_no_review,
+                        AppLocalizations.of(context)!.dash_board_no_review,
                         style: text16.copyWith(color: Colors.grey),
                       )
                     : RatingBar.builder(

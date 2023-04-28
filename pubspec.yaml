@@ -49,6 +49,8 @@ dependencies:
   awesome_dio_interceptor: ^0.0.2+4
   flutter_bloc: ^8.1.2
   formz: ^0.6.0
+  flutter_hooks: ^0.18.6
+  ionicons: ^0.2.2
 
 dev_dependencies:
   flutter_test:

@@ -32,7 +32,7 @@ class LoginCubit extends BaseCubit<LoginState, UserDataResponse> {
         username: state.username, password: password));
   }
 
-  Future<void> loginMannually({required email, required password}) async {
+  Future<void> loginMannually() async {
     if (isBusy) return;
 
     await run(() async {
