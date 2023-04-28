@@ -6,6 +6,7 @@ import 'package:lettutor_app/domain/repositories/api_repository.dart';
 import 'package:lettutor_app/locator.dart';
 import 'package:lettutor_app/presentation/cubits/authentication/auth_cubit.dart';
 import 'package:lettutor_app/presentation/cubits/authentication/login_cubit.dart';
+import 'package:lettutor_app/presentation/cubits/tutor/tutor_list_cubit.dart';
 import 'package:lettutor_app/presentation/views/base_screen.dart';
 import 'package:lettutor_app/presentation/views/login_screen.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -54,9 +55,8 @@ class _MyAppState extends State<MyApp> {
       child: MultiBlocProvider(
         providers: [
           BlocProvider(
-            create: (context) =>
-                AuthCubit(
-                  // locator<ApiRepository>(),
+            create: (context) => AuthCubit(
+                // locator<ApiRepository>(),
                 ),
           ),
         ],
@@ -76,12 +76,23 @@ class _MyAppState extends State<MyApp> {
                 case UnknownState:
                   return SafeArea(
                     child: BlocProvider(
-                      create: (context) => LoginCubit(locator<ApiRepository>(), BlocProvider.of<AuthCubit>(context)),
+                      create: (context) => LoginCubit(locator<ApiRepository>(),
+                          BlocProvider.of<AuthCubit>(context)),
                       child: LoginScreen(),
                     ),
                   );
                 case AuthenticatedState:
-                  return const SafeArea(child: BaseScreen());
+                  return SafeArea(
+                      child: MultiBlocProvider(
+                    providers: [
+                      BlocProvider(
+                        create: (context) => TutorListCubit(
+                            locator<ApiRepository>(),
+                            )..getTutorWithPagination(9, 1),
+                      ),
+                    ],
+                    child: BaseScreen(),
+                  ));
                 default:
                   return const SizedBox();
               }

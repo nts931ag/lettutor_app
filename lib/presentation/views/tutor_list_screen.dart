@@ -1,6 +1,8 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:lettutor_app/presentation/cubits/tutor/tutor_list_cubit.dart';
 import 'package:lettutor_app/presentation/widgets/tutor_list/filter_area.dart';
 import 'package:lettutor_app/presentation/widgets/tutor_list/header_dash_board.dart';
 import 'package:lettutor_app/presentation/widgets/tutor_list/information_tutor_container.dart';
@@ -12,6 +14,7 @@ class TutorListScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final tutorListCubit = BlocProvider.of<TutorListCubit>(context);
     return SingleChildScrollView(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

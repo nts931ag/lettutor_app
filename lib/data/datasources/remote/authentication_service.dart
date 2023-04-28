@@ -12,4 +12,7 @@ abstract class AuthenticationService {
 
   @POST('auth/login')
   Future<HttpResponse<UserDataResponse>> loginByEmailPassword(@Body() request);
+
+  @POST('auth/login')
+  Future<HttpResponse<String>> forgotPassword(@Body() email);
 }

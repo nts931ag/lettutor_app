@@ -36,7 +36,7 @@ class CircleIconWidget extends StatelessWidget {
             border: Border.all(color: borderColor, width: width)),
         child: ClipRRect(
           child: child,
-          borderRadius: BorderRadius.circular(1000),
+          borderRadius: BorderRadius.circular(50),
         ),
       ),
     );
