@@ -6,8 +6,8 @@ class Category extends Equatable{
   dynamic description;
   String key;
   dynamic displayOrder;
-  String createdAt;
-  String updatedAt;
+  DateTime createdAt;
+  DateTime updatedAt;
 
   Category({
     required this.id,
@@ -38,8 +38,8 @@ class Category extends Equatable{
       description: map['description'] as dynamic,
       key: map['key'] as String,
       displayOrder: map['displayOrder'] as dynamic,
-      createdAt: map['createdAt'] as String,
-      updatedAt: map['updatedAt'] as String,
+      createdAt: DateTime.parse(map['createdAt'] as String) ,
+      updatedAt: DateTime.parse(map['updatedAt'] as String) ,
     );
   }
 

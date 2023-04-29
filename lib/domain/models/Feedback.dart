@@ -7,10 +7,10 @@ class Feedback extends Equatable {
   String bookingId;
   String firstId;
   String secondId;
-  int rating;
+  double rating;
   String content;
-  String createdAt;
-  String updatedAt;
+  DateTime createdAt;
+  DateTime updatedAt;
   FirstInfo firstInfo;
 
   Feedback({
@@ -45,10 +45,10 @@ class Feedback extends Equatable {
       bookingId: map['bookingId'] ?? '',
       firstId: map['firstId'] as String,
       secondId: map['secondId'] as String,
-      rating: map['rating'] as int,
+      rating: (map['rating'] as int).toDouble(),
       content: map['content'] as String,
-      createdAt: map['createdAt'] as String,
-      updatedAt: map['updatedAt'] as String,
+      createdAt: DateTime.parse(map['createdAt'] as String),
+      updatedAt: DateTime.parse(map['updatedAt'] as String),
       firstInfo: FirstInfo.fromMap(map['firstInfo']),
     );
   }

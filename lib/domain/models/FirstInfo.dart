@@ -23,8 +23,8 @@ class FirstInfo extends Equatable {
   bool canSendMessage;
   bool isPublicRecord;
   dynamic caredByStaffId;
-  String createdAt;
-  String updatedAt;
+  DateTime createdAt;
+  DateTime updatedAt;
   dynamic deletedAt;
   dynamic studentGroupId;
 
@@ -112,8 +112,8 @@ class FirstInfo extends Equatable {
       canSendMessage: map['canSendMessage'] as bool,
       isPublicRecord: map['isPublicRecord'] as bool,
       caredByStaffId: map['caredByStaffId'] as dynamic,
-      createdAt: map['createdAt'] as String,
-      updatedAt: map['updatedAt'] as String,
+      createdAt: DateTime.parse(map['createdAt'] as String),
+      updatedAt: DateTime.parse(map['updatedAt'] as String),
       deletedAt: map['deletedAt'] as dynamic,
       studentGroupId: map['studentGroupId'] as dynamic,
     );

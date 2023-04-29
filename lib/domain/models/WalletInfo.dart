@@ -5,8 +5,8 @@ class WalletInfo extends Equatable {
   String userId;
   String amount;
   bool isBlocked;
-  String createdAt;
-  String updatedAt;
+  DateTime createdAt;
+  DateTime updatedAt;
   int bonus;
 
   WalletInfo({
@@ -37,8 +37,8 @@ class WalletInfo extends Equatable {
       userId: map['userId'] as String,
       amount: map['amount'] as String,
       isBlocked: map['isBlocked'] as bool,
-      createdAt: map['createdAt'] as String,
-      updatedAt: map['updatedAt'] as String,
+      createdAt: DateTime.parse(map['createdAt'] as String),
+      updatedAt: DateTime.parse(map['updatedAt'] as String),
       bonus: map['bonus'] as int,
     );
   }

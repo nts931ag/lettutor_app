@@ -17,8 +17,8 @@ class Course extends Equatable {
   dynamic sectionType;
   bool visible;
   dynamic displayOrder;
-  String createdAt;
-  String updatedAt;
+  DateTime createdAt;
+  DateTime updatedAt;
   List<Topic>? topics;
   List<Category>? categories;
 
@@ -91,8 +91,8 @@ class Course extends Equatable {
       sectionType: map['sectionType'] as dynamic,
       visible: map['visible'] != null ? map['visible'] as bool : false,
       displayOrder: map['displayOrder'] as dynamic,
-      createdAt: map['createdAt'] as String,
-      updatedAt: map['updatedAt'] as String,
+      createdAt: DateTime.parse(map['createdAt'] as String),
+      updatedAt: DateTime.parse(map['updatedAt'] as String),
       topics: map['topics'] != null
           ? List<Topic>.from(
               map['topics'].map<Topic>(

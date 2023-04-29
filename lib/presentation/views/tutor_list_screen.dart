@@ -9,6 +9,7 @@ import 'package:lettutor_app/presentation/cubits/tutor/tutor_list_cubit.dart';
 import 'package:lettutor_app/presentation/widgets/tutor_list/filter_area.dart';
 import 'package:lettutor_app/presentation/widgets/tutor_list/header_dash_board.dart';
 import 'package:lettutor_app/presentation/widgets/tutor_list/information_tutor_container.dart';
+import 'package:lettutor_app/utils/extensions/scroll_controller_extensions.dart';
 import 'package:lettutor_app/utils/resource/dimens.dart';
 
 class TutorListScreen extends HookWidget {
@@ -18,6 +19,15 @@ class TutorListScreen extends HookWidget {
   Widget build(BuildContext context) {
     final scrollController = useScrollController();
     final tutorListCubit = BlocProvider.of<TutorListCubit>(context);
+
+    useEffect(() {
+      scrollController.onScrollEndsListener(() {
+        tutorListCubit.getTutorWithPagination();
+      });
+
+      return scrollController.dispose;
+    }, const []);
+
     return BlocBuilder<TutorListCubit, TutorListState>(
       builder: (_, state) {
         switch (state.runtimeType) {

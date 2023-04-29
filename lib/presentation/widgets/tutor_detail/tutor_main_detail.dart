@@ -1,5 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+import 'package:lettutor_app/domain/models/Tutor.dart';
 import 'package:lettutor_app/presentation/widgets/commons/text/text_container_widget.dart';
 import 'package:lettutor_app/presentation/widgets/commons/text/text_link_widget.dart';
 import 'package:lettutor_app/presentation/widgets/tutor_detail/section_detail.dart';
@@ -11,9 +12,11 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class TutorMainDetail extends StatelessWidget {
   const TutorMainDetail({
+    required this.tutor,
     Key? key,
   }) : super(key: key);
 
+  final Tutor tutor;
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +26,7 @@ class TutorMainDetail extends StatelessWidget {
         SectionTutorDetail(
           title: AppLocalizations.of(context)!.languages,
           child: TextContainer(
-            title: 'English',
+            title: tutor.languages,
             color: primaryColor.withOpacity(0.2),
             textColor: primaryColor,
           ),
@@ -74,7 +77,7 @@ class TutorMainDetail extends StatelessWidget {
         SectionTutorDetail(
           title: AppLocalizations.of(context)!.interests,
           child: Text(
-            'I loved the weather, the scenery and the laid-back lifestyle of the locals.',
+            tutor.interests,
             style: text15.copyWith(color: Colors.grey),
           ),
         ),
@@ -84,7 +87,7 @@ class TutorMainDetail extends StatelessWidget {
         SectionTutorDetail(
           title: AppLocalizations.of(context)!.tutor_detail_ex,
           child: Text(
-            'I have more than 10 years of teaching english experience',
+            tutor.experience,
             style: text15.copyWith(color: Colors.grey),
           ),
         ),

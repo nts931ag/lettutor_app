@@ -1,22 +1,19 @@
-/*
-import '../model/course_model.dart';
-import '../model/tutor_model.dart';
+import 'package:lettutor_app/domain/models/Feedback.dart';
+import 'package:lettutor_app/domain/models/Tutor.dart';
 
 class TutorDetailArguments {
-  final TutorModel tutorModel;
+  final Tutor tutor;
 
-  const TutorDetailArguments({required this.tutorModel});
+  const TutorDetailArguments({
+    required this.tutor,
+  });
 }
 
-class CourseDetailArguments {
-  final CourseModel courseModel;
 
-  const CourseDetailArguments({required this.courseModel});
+class ReviewsArguments {
+  final List<Feedback>? feedbacks;
+
+  const ReviewsArguments({
+    required this.feedbacks,
+  });
 }
-
-class LessonDetailArguments {
-  final String title;
-  final String pdfUrl;
-
-  const LessonDetailArguments({required this.title, required this.pdfUrl});
-}*/

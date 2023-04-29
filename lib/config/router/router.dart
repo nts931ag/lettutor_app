@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:lettutor_app/config/router/error_page.dart';
+import 'package:lettutor_app/config/router/router_arguments.dart';
 import 'package:lettutor_app/presentation/views/base_screen.dart';
 import 'package:lettutor_app/presentation/views/course_list_screen.dart';
 import 'package:lettutor_app/presentation/views/history_screen.dart';
+import 'package:lettutor_app/presentation/views/review_screen.dart';
 import 'package:lettutor_app/presentation/views/schedule_screen.dart';
 import 'package:lettutor_app/presentation/views/settings_screen.dart';
+import 'package:lettutor_app/presentation/views/tutor_detail_screen.dart';
 import 'package:lettutor_app/presentation/views/tutor_list_screen.dart';
 
 class MyRouter {
@@ -30,6 +33,7 @@ class MyRouter {
   static const String tutors = 'Online Tutors';
   static const String tutorDetail = 'Tutor Details';
   static const String bookingDetail = 'Booking Details';
+  static const String reviews = 'Review';
 
   //Schedule
   static const String schedule = 'Schedule';
@@ -47,6 +51,14 @@ class MyRouter {
     switch (settings.name) {
       case baseScreen:
         return successRoute(const BaseScreen(), settings);
+      case tutorDetail:
+        if (args is TutorDetailArguments) {
+          return successRoute(TutorDetailScreen(tutor: args.tutor), settings);
+        } else {
+          return errorRoute(
+              'Input for Tutor detail page is not TutorDetailArguments',
+              settings);
+        }
       case tutors:
         return successRoute(const TutorListScreen(), settings);
       case courses:
@@ -57,6 +69,14 @@ class MyRouter {
         return successRoute(const ScheduleScreen(), settings);
       case setting:
         return successRoute(const SettingsScreen(), settings);
+      case reviews:
+        if (args is ReviewsArguments) {
+          return successRoute(ReviewScreen(feedbacks: args.feedbacks,), settings);
+        } else {
+          return errorRoute(
+              'Input for Tutor detail page is not TutorDetailArguments',
+              settings);
+        }
       default:
         return successRoute(const TutorListScreen(), settings);
     }

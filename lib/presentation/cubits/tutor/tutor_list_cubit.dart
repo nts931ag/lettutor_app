@@ -13,16 +13,16 @@ class TutorListCubit extends BaseCubit<TutorListState, List<Tutor>> {
   TutorListCubit(this._apiRepository) : super(const TutorListLoading(), []);
   int _page = 1;
 
-  Future<void> getTutorWithPagination(int perPage, int page) async {
+  Future<void> getTutorWithPagination() async {
     if (isBusy) return;
 
     await run(() async {
       final response = await _apiRepository.getTutorsWithPagination(
-          perPage: perPage, page: page);
+          perPage: 5, page: _page);
 
       if (response is DataSuccess) {
-        final tutors = response.data!.tutors;
-        final noMoreData = tutors!.length < 20;
+        final tutors = response. data!.tutors;
+        final noMoreData = tutors!.length < 5;
 
         data!.addAll(tutors);
         _page++;

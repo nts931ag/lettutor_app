@@ -88,7 +88,7 @@ class _MyAppState extends State<MyApp> {
                       BlocProvider(
                         create: (context) => TutorListCubit(
                             locator<ApiRepository>(),
-                            )..getTutorWithPagination(9, 1),
+                            )..getTutorWithPagination(),
                       ),
                     ],
                     child: BaseScreen(),

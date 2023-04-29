@@ -10,8 +10,8 @@ class Topic extends Equatable {
   String description;
   dynamic videoUrl;
   dynamic type;
-  String createdAt;
-  String updatedAt;
+  DateTime createdAt;
+  DateTime updatedAt;
 
   Topic({
     required this.id,
@@ -54,8 +54,8 @@ class Topic extends Equatable {
       description: map['description'] as String,
       videoUrl: map['videoUrl'] as dynamic,
       type: map['type'] as dynamic,
-      createdAt: map['createdAt'] as String,
-      updatedAt: map['updatedAt'] as String,
+      createdAt: DateTime.parse(map['createdAt'] as String),
+      updatedAt: DateTime.parse(map['updatedAt'] as String),
     );
   }
 
