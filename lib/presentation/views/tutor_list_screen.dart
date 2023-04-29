@@ -17,8 +17,8 @@ class TutorListScreen extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final scrollController = useScrollController();
     final tutorListCubit = BlocProvider.of<TutorListCubit>(context);
+    final scrollController = useScrollController();
 
     useEffect(() {
       scrollController.onScrollEndsListener(() {

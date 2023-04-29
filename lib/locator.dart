@@ -2,6 +2,7 @@ import 'package:awesome_dio_interceptor/awesome_dio_interceptor.dart';
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:lettutor_app/data/datasources/remote/authentication_service.dart';
+import 'package:lettutor_app/data/datasources/remote/course_service.dart';
 import 'package:lettutor_app/data/datasources/remote/tutor_service.dart';
 
 import 'data/repositories/api_repository_impl.dart';
@@ -25,7 +26,12 @@ Future<void> initializeDependencies() async {
     TutorService(locator<Dio>()),
   );
 
+  locator.registerSingleton<CourseService>(
+    CourseService(locator<Dio>()),
+  );
+
+
   locator.registerSingleton<ApiRepository>(
-    ApiRepositoryImpl(locator<AuthenticationService>(), locator<TutorService>()),
+    ApiRepositoryImpl(locator<AuthenticationService>(), locator<TutorService>(), locator<CourseService>()),
   );
 }

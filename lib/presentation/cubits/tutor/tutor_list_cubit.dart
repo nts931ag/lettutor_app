@@ -21,13 +21,13 @@ class TutorListCubit extends BaseCubit<TutorListState, List<Tutor>> {
           perPage: 5, page: _page);
 
       if (response is DataSuccess) {
-        final tutors = response. data!.tutors;
-        final noMoreData = tutors!.length < 5;
+        final tutors = response.data!.tutors;
+        final noMoreData = response.data!.tutorCount < 5;
 
-        data!.addAll(tutors);
+        data!.addAll(tutors!);
         _page++;
 
-        emit(TutorListSuccess(tutors: data!, noMoreData: noMoreData));
+        emit(TutorListSuccess(tutors: List.of(data!), noMoreData: noMoreData));
       } else if (response is DataFailed) {
         emit(TutorListFailed(error: response.error));
       }

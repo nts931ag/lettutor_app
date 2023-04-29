@@ -6,6 +6,7 @@ import 'package:lettutor_app/domain/repositories/api_repository.dart';
 import 'package:lettutor_app/locator.dart';
 import 'package:lettutor_app/presentation/cubits/authentication/auth_cubit.dart';
 import 'package:lettutor_app/presentation/cubits/authentication/login_cubit.dart';
+import 'package:lettutor_app/presentation/cubits/course/course_list_cubit.dart';
 import 'package:lettutor_app/presentation/cubits/tutor/tutor_list_cubit.dart';
 import 'package:lettutor_app/presentation/views/base_screen.dart';
 import 'package:lettutor_app/presentation/views/login_screen.dart';
@@ -90,8 +91,13 @@ class _MyAppState extends State<MyApp> {
                             locator<ApiRepository>(),
                             )..getTutorWithPagination(),
                       ),
+                      BlocProvider(
+                        create: (context) => CourseListCubit(
+                          locator<ApiRepository>(),
+                        )..getCourseWithPagination(),
+                      ),
                     ],
-                    child: BaseScreen(),
+                    child: const BaseScreen(),
                   ));
                 default:
                   return const SizedBox();

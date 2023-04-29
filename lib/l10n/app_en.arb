@@ -90,6 +90,7 @@
   "course_level": "Select level",
   "course_sort_lv": "Sort by level",
   "course_category": "Select category",
+  "course_lessons": "lessons",
 
   "course_detail_discover": "Discover",
   "course_detail_ex_lv": "Experience Level",
