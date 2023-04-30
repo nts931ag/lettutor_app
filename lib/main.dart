@@ -7,6 +7,7 @@ import 'package:lettutor_app/locator.dart';
 import 'package:lettutor_app/presentation/cubits/authentication/auth_cubit.dart';
 import 'package:lettutor_app/presentation/cubits/authentication/login_cubit.dart';
 import 'package:lettutor_app/presentation/cubits/course/course_list_cubit.dart';
+import 'package:lettutor_app/presentation/cubits/schedule/schedule_list_cubit.dart';
 import 'package:lettutor_app/presentation/cubits/tutor/tutor_list_cubit.dart';
 import 'package:lettutor_app/presentation/views/base_screen.dart';
 import 'package:lettutor_app/presentation/views/login_screen.dart';
@@ -88,13 +89,20 @@ class _MyAppState extends State<MyApp> {
                     providers: [
                       BlocProvider(
                         create: (context) => TutorListCubit(
-                            locator<ApiRepository>(),
-                            )..getTutorWithPagination(),
+                          locator<ApiRepository>(),
+                        )..getTutorWithPagination(),
                       ),
                       BlocProvider(
                         create: (context) => CourseListCubit(
                           locator<ApiRepository>(),
                         )..getCourseWithPagination(),
+                      ),
+                      BlocProvider(
+                        create: (context) => ScheduleListCubit(
+                          locator<ApiRepository>(),
+                        )
+                          ..getScheduleListWithPagination()
+                          ..getHistoryScheduleListWithPagination(),
                       ),
                     ],
                     child: const BaseScreen(),
