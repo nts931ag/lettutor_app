@@ -1,1 +1,1 @@
-const defaultPageSize = 0;
+const defaultPageSize = 10;

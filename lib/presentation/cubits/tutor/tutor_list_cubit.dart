@@ -3,6 +3,7 @@ import 'package:equatable/equatable.dart';
 import 'package:lettutor_app/domain/models/Tutor.dart';
 import 'package:lettutor_app/domain/repositories/api_repository.dart';
 import 'package:lettutor_app/presentation/cubits/base/base_cubit.dart';
+import 'package:lettutor_app/utils/constant/nums.dart';
 import 'package:lettutor_app/utils/resource/data_state.dart';
 
 part 'tutor_list_state.dart';
@@ -18,11 +19,11 @@ class TutorListCubit extends BaseCubit<TutorListState, List<Tutor>> {
 
     await run(() async {
       final response = await _apiRepository.getTutorsWithPagination(
-          perPage: 5, page: _page);
+          perPage: defaultPageSize, page: _page);
 
       if (response is DataSuccess) {
         final tutors = response.data!.tutors;
-        final noMoreData = response.data!.tutorCount < 5;
+        final noMoreData = response.data!.tutorCount < defaultPageSize;
 
         data!.addAll(tutors!);
         _page++;

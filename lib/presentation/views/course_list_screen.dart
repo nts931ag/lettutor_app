@@ -5,6 +5,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:ionicons/ionicons.dart';
+import 'package:lettutor_app/config/router/router.dart';
+import 'package:lettutor_app/config/router/router_arguments.dart';
 import 'package:lettutor_app/config/theme/text_theme.dart';
 import 'package:lettutor_app/domain/models/Course.dart';
 import 'package:lettutor_app/gen/assets.gen.dart';
@@ -178,8 +180,9 @@ class CourseListScreen extends HookWidget {
                 ),
                 BoxShadowContainer(
                   onTap: () {
-                    // TODO: Navigation to COURSE OVERALL SCREEN
-                    // Get.toNamed(AppRoutes.COURSE_DETAIL);
+                    Navigator.pushNamed(context, MyRouter.courseDetail,
+                        arguments:
+                            CourseDetailArguments(course: courses[index]));
                   },
                   width: 280.w,
                   padding: EdgeInsets.only(bottom: 20.h),

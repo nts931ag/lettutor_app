@@ -1,3 +1,4 @@
+import 'package:lettutor_app/domain/models/Course.dart';
 import 'package:lettutor_app/domain/models/Feedback.dart';
 import 'package:lettutor_app/domain/models/Tutor.dart';
 
@@ -15,5 +16,14 @@ class ReviewsArguments {
 
   const ReviewsArguments({
     required this.feedbacks,
+  });
+}
+
+
+class CourseDetailArguments {
+  final Course course;
+
+  const CourseDetailArguments({
+    required this.course,
   });
 }

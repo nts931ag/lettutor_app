@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:lettutor_app/config/router/error_page.dart';
 import 'package:lettutor_app/config/router/router_arguments.dart';
 import 'package:lettutor_app/presentation/views/base_screen.dart';
+import 'package:lettutor_app/presentation/views/course_detail_screen.dart';
 import 'package:lettutor_app/presentation/views/course_list_screen.dart';
+import 'package:lettutor_app/presentation/views/course_overall_screen.dart';
 import 'package:lettutor_app/presentation/views/history_screen.dart';
 import 'package:lettutor_app/presentation/views/review_screen.dart';
 import 'package:lettutor_app/presentation/views/schedule_screen.dart';
@@ -63,6 +65,15 @@ class MyRouter {
         return successRoute(const TutorListScreen(), settings);
       case courses:
         return successRoute(const CourseListScreen(), settings);
+      case courseDetail:
+        if (args is CourseDetailArguments) {
+          return successRoute(
+              CourseOverallScreen(course: args.course), settings);
+        } else {
+          return errorRoute(
+              'Input for Tutor detail page is not TutorDetailArguments',
+              settings);
+        }
       case learningHistory:
         return successRoute(const HistoryScreen(), settings);
       case schedule:
@@ -71,7 +82,11 @@ class MyRouter {
         return successRoute(const SettingsScreen(), settings);
       case reviews:
         if (args is ReviewsArguments) {
-          return successRoute(ReviewScreen(feedbacks: args.feedbacks,), settings);
+          return successRoute(
+              ReviewScreen(
+                feedbacks: args.feedbacks,
+              ),
+              settings);
         } else {
           return errorRoute(
               'Input for Tutor detail page is not TutorDetailArguments',

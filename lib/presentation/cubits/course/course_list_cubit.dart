@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:equatable/equatable.dart';
 import 'package:lettutor_app/domain/models/Course.dart';
 import 'package:lettutor_app/domain/repositories/api_repository.dart';
+import 'package:lettutor_app/utils/constant/nums.dart';
 import 'package:lettutor_app/utils/resource/data_state.dart';
 
 import '../base/base_cubit.dart';
@@ -19,11 +20,11 @@ class CourseListCubit extends BaseCubit<CourseListState, List<Course>> {
 
     await run(() async {
       final response =
-          await _apiRepository.getCoursesWithPagination(page: _page, size: 5);
+          await _apiRepository.getCoursesWithPagination(page: _page, size: defaultPageSize);
 
       if (response is DataSuccess) {
         final courses = response.data!.courses;
-        final noMoreData = response.data!.courseCount < 5;
+        final noMoreData = response.data!.courseCount < defaultPageSize;
 
         data!.addAll(courses!);
         _page++;
