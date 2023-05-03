@@ -2,7 +2,9 @@ import 'package:lettutor_app/data/datasources/remote/authentication_service.dart
 import 'package:lettutor_app/data/datasources/remote/course_service.dart';
 import 'package:lettutor_app/data/datasources/remote/schedule_service.dart';
 import 'package:lettutor_app/data/datasources/remote/tutor_service.dart';
+import 'package:lettutor_app/data/datasources/remote/user_service.dart';
 import 'package:lettutor_app/data/repositories/base/base_api_repository.dart';
+import 'package:lettutor_app/domain/models/User.dart';
 import 'package:lettutor_app/domain/models/responses/CoursesDataResponse.dart';
 import 'package:lettutor_app/domain/models/responses/SchedulesDataResponse.dart';
 import 'package:lettutor_app/domain/models/responses/TutorsDataResponse.dart';
@@ -15,9 +17,10 @@ class ApiRepositoryImpl extends BaseApiRepository implements ApiRepository {
   final TutorService _tutorService;
   final CourseService _courseService;
   final ScheduleService _scheduleService;
+  final UserService _userService;
 
   ApiRepositoryImpl(this._authenticationService, this._tutorService,
-      this._courseService, this._scheduleService);
+      this._courseService, this._scheduleService, this._userService);
 
   @override
   Future<DataState<UserDataResponse>> loginManually(
@@ -65,7 +68,7 @@ class ApiRepositoryImpl extends BaseApiRepository implements ApiRepository {
   }) {
     return getStateOf<SchedulesDataResponse>(
         request: () => _scheduleService.getListHistoryScheduleWithPagination(
-            page, perPage, dateTimeLte, orderBy, sortBy));
+            perPage, page, dateTimeLte, orderBy, sortBy));
   }
 
   @override
@@ -78,6 +81,31 @@ class ApiRepositoryImpl extends BaseApiRepository implements ApiRepository {
   }) {
     return getStateOf<SchedulesDataResponse>(
         request: () => _scheduleService.getListScheduleWithPagination(
-            page, perPage, dateTimeGte, orderBy, sortBy));
+            perPage, page, dateTimeGte, orderBy, sortBy));
+  }
+
+  @override
+  Future<DataState<UserDataResponse>> updateUserInformation(User user) {
+    var learnTopics = [];
+    user.learnTopics?.forEach((element) {
+      learnTopics.add(element.id);
+    });
+    var testPreparations = [];
+    user.testPreparations?.forEach((element) {
+      testPreparations.add(element.id);
+    });
+    return getStateOf(
+      request: () => _userService.updateUserInformation(
+        {
+          "name": user.name,
+          "country": user.country,
+          "phone": user.phone,
+          "birthday": user.birthday,
+          "level": user.level,
+          "learnTopics": learnTopics,
+          "testPreparations": testPreparations
+        },
+      ),
+    );
   }
 }

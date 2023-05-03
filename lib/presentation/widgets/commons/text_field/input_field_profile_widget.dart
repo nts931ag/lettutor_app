@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:lettutor_app/utils/resource/dimens.dart';
 import 'package:lettutor_app/config/theme/text_theme.dart';
 
@@ -28,7 +29,7 @@ class InputFieldProfile extends StatelessWidget {
             SizedBox(
               width: 1.0.w,
             ),
-            if (isImportant) const Icon(Icons.tag, color: Colors.red, size: 10)
+            if (isImportant) const Icon(FontAwesomeIcons.asterisk, color: Colors.red, size: 10)
           ],
         ),
         SizedBox(

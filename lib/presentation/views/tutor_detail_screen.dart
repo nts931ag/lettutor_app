@@ -14,26 +14,28 @@ class TutorDetailScreen extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BaseScaffoldWidgetCustom(
-      body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            BaseInforTutor(tutor: tutor),
-            SizedBox(
-              height: 20.h,
-            ),
-            TutorVideo(
-              tutor: tutor,
-            ),
-            SizedBox(
-              height: 20.h,
-            ),
-            TutorMainDetail(tutor: tutor),
-            SizedBox(
-              height: 50.h,
-            ),
-          ],
+    return SafeArea(
+      child: BaseScaffoldWidgetCustom(
+        body: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              BaseInforTutor(tutor: tutor),
+              SizedBox(
+                height: 20.h,
+              ),
+              TutorVideo(
+                tutor: tutor,
+              ),
+              SizedBox(
+                height: 20.h,
+              ),
+              TutorMainDetail(tutor: tutor),
+              SizedBox(
+                height: 50.h,
+              ),
+            ],
+          ),
         ),
       ),
     );

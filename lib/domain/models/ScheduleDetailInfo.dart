@@ -49,7 +49,7 @@ class ScheduleDetailInfo extends Equatable {
       endPeriod: map['endPeriod'] as String,
       createdAt: map['createdAt'] as String,
       updatedAt: map['updatedAt'] as String,
-      scheduleInfo: map['scheduleInfo'] as ScheduleInfo,
+      scheduleInfo: ScheduleInfo.fromMap(map['scheduleInfo']),
     );
   }
 

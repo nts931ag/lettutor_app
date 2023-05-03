@@ -1,6 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:lettutor_app/config/router/router.dart';
 import 'package:lettutor_app/presentation/widgets/commons/buttons/loading_button_widget.dart';
 import 'package:lettutor_app/presentation/widgets/commons/icon/circle_box_widget.dart';
 import 'package:lettutor_app/presentation/widgets/commons/information_area.dart';
@@ -102,7 +103,7 @@ class ItemWidget extends StatelessWidget {
                       child: LoadingButtonWidget(
                           primaryColor: primaryColor,
                           submit: () {
-                            // TODO: Navigation to VIDEO_CALL
+                            _goMeeting(context);
                           },
                           isLoading: false,
                           label: AppLocalizations.of(context)!.schedule_go_meeting),
@@ -111,5 +112,9 @@ class ItemWidget extends StatelessWidget {
                 : const SizedBox()
           ],
         ));
+  }
+
+  _goMeeting(BuildContext context) async {
+    Navigator.pushNamed(context, MyRouter.joinMeeting);
   }
 }

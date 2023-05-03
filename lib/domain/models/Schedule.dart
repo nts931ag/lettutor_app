@@ -9,11 +9,11 @@ class Schedule extends Equatable {
   String scheduleDetailId;
   String tutorMeetingLink;
   String studentMeetingLink;
-  String studentRequest;
-  String tutorReview;
-  int scoreByTutor;
-  String createdAt;
-  String updatedAt;
+  String? studentRequest;
+  String? tutorReview;
+  int? scoreByTutor;
+  DateTime createdAt;
+  DateTime updatedAt;
   String recordUrl;
   dynamic cancelReasonId;
   dynamic lessonPlanId;
@@ -33,9 +33,9 @@ class Schedule extends Equatable {
     required this.scheduleDetailId,
     required this.tutorMeetingLink,
     required this.studentMeetingLink,
-    required this.studentRequest,
-    required this.tutorReview,
-    required this.scoreByTutor,
+    this.studentRequest,
+    this.tutorReview,
+    this.scoreByTutor,
     required this.createdAt,
     required this.updatedAt,
     required this.recordUrl,
@@ -86,18 +86,18 @@ class Schedule extends Equatable {
       scheduleDetailId: map['scheduleDetailId'] as String,
       tutorMeetingLink: map['tutorMeetingLink'] as String,
       studentMeetingLink: map['studentMeetingLink'] as String,
-      studentRequest: map['studentRequest'] as String,
-      tutorReview: map['tutorReview'] as String,
-      scoreByTutor: map['scoreByTutor'] as int,
-      createdAt: map['createdAt'] as String,
-      updatedAt: map['updatedAt'] as String,
-      recordUrl: map['recordUrl'] as String,
+      studentRequest: map['studentRequest'] as String?,
+      tutorReview: map['tutorReview'] as String?,
+      scoreByTutor: map['scoreByTutor'] as int?,
+      createdAt: DateTime.parse(map['createdAt'] as String),
+      updatedAt: DateTime.parse(map['updatedAt'] as String),
+      recordUrl: map['recordUrl'] ?? '',
       cancelReasonId: map['cancelReasonId'] as dynamic,
       lessonPlanId: map['lessonPlanId'] as dynamic,
       cancelNote: map['cancelNote'] as dynamic,
       calendarId: map['calendarId'] as dynamic,
       isDeleted: map['isDeleted'] as bool,
-      scheduleDetailInfo: map['scheduleDetailInfo'] as ScheduleDetailInfo,
+      scheduleDetailInfo: ScheduleDetailInfo.fromMap(map['scheduleDetailInfo']),
       classReview: map['classReview'] as dynamic,
       showRecordUrl: map['showRecordUrl'] as bool,
       studentMaterials: map['studentMaterials'] as List<dynamic>,

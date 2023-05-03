@@ -41,6 +41,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.0.2+4"
+  awesome_select:
+    dependency: "direct main"
+    description:
+      name: awesome_select
+      sha256: b7ea3886c29f07db559688feca329961aa8115c97ecc0615b11db8b8705160c3
+      url: "https://pub.dev"
+    source: hosted
+    version: "6.0.0"
   bloc:
     dependency: transitive
     description:
@@ -209,6 +217,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.1.1"
+  country_code_picker:
+    dependency: "direct main"
+    description:
+      name: country_code_picker
+      sha256: "92818885f0e47486539f80463b66f649970506a91dd3c0731ca3ba5308324a4d"
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.0.0"
   crypto:
     dependency: transitive
     description:
@@ -257,6 +273,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.0.6"
+  dropdown_button2:
+    dependency: "direct main"
+    description:
+      name: dropdown_button2
+      sha256: "13bf78b6e5b6ca7256701988b22e078cd94b41bfab8d68a128651734702e0d1b"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.1.2"
   equatable:
     dependency: "direct main"
     description:
@@ -517,6 +541,22 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.2.2"
+  jitsi_meet_wrapper:
+    dependency: "direct main"
+    description:
+      name: jitsi_meet_wrapper
+      sha256: "7459a792215042e05b4e2380fb1f5467df8bccc82a254c674cd325812fbe219f"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.0.6"
+  jitsi_meet_wrapper_platform_interface:
+    dependency: transitive
+    description:
+      name: jitsi_meet_wrapper_platform_interface
+      sha256: "3ad496e47b6f4de81bf52847b965fe967ca94a5a08cb68c3498dfb1e6beb0d86"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.0.4"
   js:
     dependency: transitive
     description:

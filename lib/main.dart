@@ -7,6 +7,7 @@ import 'package:lettutor_app/locator.dart';
 import 'package:lettutor_app/presentation/cubits/authentication/auth_cubit.dart';
 import 'package:lettutor_app/presentation/cubits/authentication/login_cubit.dart';
 import 'package:lettutor_app/presentation/cubits/course/course_list_cubit.dart';
+import 'package:lettutor_app/presentation/cubits/history/history_list_cubit.dart';
 import 'package:lettutor_app/presentation/cubits/schedule/schedule_list_cubit.dart';
 import 'package:lettutor_app/presentation/cubits/tutor/tutor_list_cubit.dart';
 import 'package:lettutor_app/presentation/views/base_screen.dart';
@@ -58,7 +59,7 @@ class _MyAppState extends State<MyApp> {
         providers: [
           BlocProvider(
             create: (context) => AuthCubit(
-                // locator<ApiRepository>(),
+                locator<ApiRepository>(),
                 ),
           ),
         ],
@@ -76,37 +77,39 @@ class _MyAppState extends State<MyApp> {
             builder: (context, state) {
               switch (state.runtimeType) {
                 case UnknownState:
-                  return SafeArea(
-                    child: BlocProvider(
-                      create: (context) => LoginCubit(locator<ApiRepository>(),
-                          BlocProvider.of<AuthCubit>(context)),
-                      child: LoginScreen(),
-                    ),
+                  return BlocProvider(
+                    create: (context) => LoginCubit(locator<ApiRepository>(),
+                        BlocProvider.of<AuthCubit>(context)),
+                    child: const LoginScreen(),
                   );
                 case AuthenticatedState:
-                  return SafeArea(
-                      child: MultiBlocProvider(
+                  return MultiBlocProvider(
                     providers: [
-                      BlocProvider(
-                        create: (context) => TutorListCubit(
-                          locator<ApiRepository>(),
-                        )..getTutorWithPagination(),
-                      ),
-                      BlocProvider(
-                        create: (context) => CourseListCubit(
-                          locator<ApiRepository>(),
-                        )..getCourseWithPagination(),
-                      ),
-                      BlocProvider(
-                        create: (context) => ScheduleListCubit(
-                          locator<ApiRepository>(),
-                        )
-                          ..getScheduleListWithPagination()
-                          ..getHistoryScheduleListWithPagination(),
-                      ),
+                  BlocProvider(
+                    create: (context) => TutorListCubit(
+                      locator<ApiRepository>(),
+                    )..getTutorWithPagination(),
+                  ),
+                  BlocProvider(
+                    create: (context) => CourseListCubit(
+                      locator<ApiRepository>(),
+                    )..getCourseWithPagination(),
+                  ),
+                  BlocProvider(
+                    create: (context) => ScheduleListCubit(
+                      locator<ApiRepository>(),
+                    )
+                      ..getScheduleListWithPagination()
+                  ),
+                  BlocProvider(
+                    create: (context) => HistoryListCubit(
+                      locator<ApiRepository>(),
+                    )
+                      ..getHistoryScheduleListWithPagination(),
+                  ),
                     ],
                     child: const BaseScreen(),
-                  ));
+                  );
                 default:
                   return const SizedBox();
               }

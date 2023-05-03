@@ -1,3 +1,4 @@
+import 'package:lettutor_app/domain/models/User.dart';
 import 'package:lettutor_app/domain/models/responses/CoursesDataResponse.dart';
 import 'package:lettutor_app/domain/models/responses/SchedulesDataResponse.dart';
 import 'package:lettutor_app/domain/models/responses/TutorsDataResponse.dart';
@@ -23,6 +24,8 @@ abstract class ApiRepository {
     required orderBy,
     required sortBy,
   });
+
+  Future<DataState<UserDataResponse>> updateUserInformation(User user);
 
   Future<DataState<SchedulesDataResponse>> getListHistoryScheduleWithPagination({
     required perPage,

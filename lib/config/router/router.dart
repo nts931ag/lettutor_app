@@ -6,6 +6,8 @@ import 'package:lettutor_app/presentation/views/course_detail_screen.dart';
 import 'package:lettutor_app/presentation/views/course_list_screen.dart';
 import 'package:lettutor_app/presentation/views/course_overall_screen.dart';
 import 'package:lettutor_app/presentation/views/history_screen.dart';
+import 'package:lettutor_app/presentation/views/meeting_screen.dart';
+import 'package:lettutor_app/presentation/views/profile_screen.dart';
 import 'package:lettutor_app/presentation/views/review_screen.dart';
 import 'package:lettutor_app/presentation/views/schedule_screen.dart';
 import 'package:lettutor_app/presentation/views/settings_screen.dart';
@@ -48,6 +50,8 @@ class MyRouter {
   static const String becomeTutor = 'Become A Tutor';
   static const String account = 'Edit Account';
 
+  static const String profile = 'profile';
+
   static Route<dynamic> generateRoute(RouteSettings settings) {
     var args = settings.arguments;
     switch (settings.name) {
@@ -80,6 +84,10 @@ class MyRouter {
         return successRoute(const ScheduleScreen(), settings);
       case setting:
         return successRoute(const SettingsScreen(), settings);
+      case profile:
+        return successRoute(const ProfileScreen(), settings);
+      case joinMeeting:
+        return successRoute(const Meeting(), settings);
       case reviews:
         if (args is ReviewsArguments) {
           return successRoute(

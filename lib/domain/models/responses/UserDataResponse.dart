@@ -5,7 +5,7 @@ import 'package:lettutor_app/domain/models/User.dart';
 class UserDataResponse extends Equatable {
 
   final User user;
-  final Tokens tokens;
+  final Tokens? tokens;
 
   @override
   // TODO: implement props
@@ -13,7 +13,7 @@ class UserDataResponse extends Equatable {
 
   const UserDataResponse({
     required this.user,
-    required this.tokens,
+    this.tokens,
   });
 
   Map<String, dynamic> toMap() {
@@ -26,7 +26,7 @@ class UserDataResponse extends Equatable {
   factory UserDataResponse.fromMap(Map<String, dynamic> map) {
     return UserDataResponse(
       user:  User.fromMap(map['user']),
-      tokens: Tokens.fromMap(map['tokens']),
+      tokens: map['tokens'] != null ? Tokens.fromMap(map['tokens']) : null,
     );
   }
 }

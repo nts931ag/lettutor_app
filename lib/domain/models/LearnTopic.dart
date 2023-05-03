@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'package:lettutor_app/utils/constant/const_value.dart';
 
 class LearnTopic extends Equatable{
   int id;
@@ -30,4 +31,8 @@ class LearnTopic extends Equatable{
   @override
   // TODO: implement props
   List<Object?> get props => [id, key, name];
+
+  Specialities toSpecialities() {
+    return Specialities(id: id, key: key, title: name, group: SpecialitiesGroup.topic);
+  }
 }

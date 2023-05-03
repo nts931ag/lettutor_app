@@ -32,7 +32,7 @@ class LoginCubit extends BaseCubit<LoginState, UserDataResponse> {
         username: state.username, password: password));
   }
 
-  Future<void> loginMannually() async {
+  Future<void> loginManually() async {
     if (isBusy) return;
 
     await run(() async {
@@ -46,7 +46,7 @@ class LoginCubit extends BaseCubit<LoginState, UserDataResponse> {
 
           data = user;
           emit(LoginSubmitSuccess(username: state.username, password: state.password));
-          _authCubit.onSuccessAuthentication(data!.user, data!.tokens);
+          _authCubit.onSuccessAuthentication(data!.user, data!.tokens!);
         } else if (response is DataFailed) {
           emit(LoginSubmitFailure(username: state.username, password: state.password, error: response.error));
         }

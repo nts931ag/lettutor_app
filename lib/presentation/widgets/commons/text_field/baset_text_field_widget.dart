@@ -16,7 +16,8 @@ TextFormField BaseTextField(
     int? maxLength,
     Widget? icon,
     double radius = 5.0,
-    FormFieldValidator<String>? validator}) {
+    FormFieldValidator<String>? validator,
+    String? initialValue}) {
   return TextFormField(
     onTap: onTap,
     readOnly: readOnly,
@@ -32,6 +33,7 @@ TextFormField BaseTextField(
     textCapitalization: TextCapitalization.words,
     keyboardType: isPhone ? TextInputType.phone : TextInputType.text,
     style: text12,
+    initialValue: initialValue,
     //focusNode: focusNode,
     onChanged: onChanged,
     decoration: InputDecoration(

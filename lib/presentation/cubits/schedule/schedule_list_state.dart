@@ -13,7 +13,7 @@ abstract class ScheduleListState extends Equatable {
   });
 
   @override
-  List<Object> get props => [];
+  List<Object?> get props => [schedules, noMoreData, error];
 }
 
 class ScheduleListLoading extends ScheduleListState {

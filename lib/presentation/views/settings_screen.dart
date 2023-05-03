@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:lettutor_app/utils/constant/const_value.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:lettutor_app/config/router/router.dart';
 import 'package:lettutor_app/config/theme/text_theme.dart';
+import 'package:lettutor_app/presentation/cubits/authentication/auth_cubit.dart';
+import 'package:lettutor_app/presentation/widgets/profile/header_profile.dart';
+import 'package:lettutor_app/utils/resource/colors/colors_core.dart';
+import 'package:lettutor_app/utils/resource/dimens.dart';
 
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({Key? key}) : super(key: key);
@@ -25,13 +30,19 @@ class _SettingsScreenState extends State<SettingsScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisSize: MainAxisSize.min,
               children: [
+                const HeaderProfile(),
+                SizedBox(height: 35.h),
                 Text(
                   "Account",
                   style: text18,
                   textAlign: TextAlign.start,
                   softWrap: true,
                 ),
-                MenuWidget(title: 'Account settings', callback: () {}),
+                MenuWidget(
+                    title: 'Edit Profile',
+                    callback: () {
+                      Navigator.pushNamed(context, MyRouter.profile);
+                    }),
                 MenuWidget(title: 'My wallet', callback: () {}),
                 MenuWidget(
                     title: 'Become a tutor',

@@ -32,80 +32,82 @@ class _BaseScreenState extends State<BaseScreen> {
   @override
   Widget build(BuildContext context) {
 
-    return BaseScaffoldWidgetCustom(
-      resizeToAvoidBottomInset: true,
-      actions: [
-        circleIconNation(),
-        // if (controller.isHaveDrawer)
-        //   SizedBox(
-        //     width: 15.w,
-        //   ),
-        // if (controller.isHaveDrawer)
-        //   CircleIconWidget(
-        //     backgroundColor: ColorName.disabledColor,
-        //     borderColor: ColorName.disabledColor,
-        //     padding: 10.w,
-        //     onTap: () {
-        //       controller.handleOnTapDrawer();
-        //     },
-        //     child: Icon(
-        //       Icons.list,
-        //       size: 20.w,
-        //     ),
-        //   )
-      ],
-      body: IndexedStack(
-        index: selectedIndex,
-        children: const [
-          TutorListScreen(),
-          CourseListScreen(),
-          ScheduleScreen(),
-          HistoryScreen(),
-          SettingsScreen(),
+    return SafeArea(
+      child: BaseScaffoldWidgetCustom(
+        resizeToAvoidBottomInset: true,
+        actions: [
+          circleIconNation(),
+          // if (controller.isHaveDrawer)
+          //   SizedBox(
+          //     width: 15.w,
+          //   ),
+          // if (controller.isHaveDrawer)
+          //   CircleIconWidget(
+          //     backgroundColor: ColorName.disabledColor,
+          //     borderColor: ColorName.disabledColor,
+          //     padding: 10.w,
+          //     onTap: () {
+          //       controller.handleOnTapDrawer();
+          //     },
+          //     child: Icon(
+          //       Icons.list,
+          //       size: 20.w,
+          //     ),
+          //   )
         ],
-      ),
-      bottomNavigationBar: SalomonBottomBar(
-        currentIndex: selectedIndex,
-        onTap: (i) {
-          setState(() {
-            selectedIndex = i;
-          });
-        },
-        items: [
-          SalomonBottomBarItem(
-              icon: Icon(
-                FontAwesomeIcons.users,
-                size: 16.w,
-              ),
-              title: Text(AppLocalizations.of(context)!.bottom_bar_tutors)),
-          SalomonBottomBarItem(
-              icon: Icon(
-                FontAwesomeIcons.book,
-                size: 16.w,
-              ),
-              title: Text(AppLocalizations.of(context)!.bottom_bar_courses)),
-          SalomonBottomBarItem(
-              icon: Icon(
-                FontAwesomeIcons.calendarDays,
-                size: 16.w,
-              ),
-              title: Text(AppLocalizations.of(context)!.bottom_bar_schedule)),
-          SalomonBottomBarItem(
-              icon: Icon(
-                FontAwesomeIcons.history,
-                size: 16.w,
-              ),
-              title: Text(AppLocalizations.of(context)!.bottom_bar_history)),
-          SalomonBottomBarItem(
-              icon: Icon(
-                FontAwesomeIcons.gears,
-                size: 16.w,
-              ),
-              title: Text(AppLocalizations.of(context)!.bottom_bar_settings))
-        ],
-        margin: EdgeInsets.symmetric(horizontal: 16.h, vertical: 16.w),
-        selectedItemColor: blueColor,
-        unselectedItemColor: blueColor.withOpacity(0.2),
+        body: IndexedStack(
+          index: selectedIndex,
+          children: const [
+            TutorListScreen(),
+            CourseListScreen(),
+            ScheduleScreen(),
+            HistoryScreen(),
+            SettingsScreen(),
+          ],
+        ),
+        bottomNavigationBar: SalomonBottomBar(
+          currentIndex: selectedIndex,
+          onTap: (i) {
+            setState(() {
+              selectedIndex = i;
+            });
+          },
+          items: [
+            SalomonBottomBarItem(
+                icon: Icon(
+                  FontAwesomeIcons.users,
+                  size: 16.w,
+                ),
+                title: Text(AppLocalizations.of(context)!.bottom_bar_tutors)),
+            SalomonBottomBarItem(
+                icon: Icon(
+                  FontAwesomeIcons.book,
+                  size: 16.w,
+                ),
+                title: Text(AppLocalizations.of(context)!.bottom_bar_courses)),
+            SalomonBottomBarItem(
+                icon: Icon(
+                  FontAwesomeIcons.calendarDays,
+                  size: 16.w,
+                ),
+                title: Text(AppLocalizations.of(context)!.bottom_bar_schedule)),
+            SalomonBottomBarItem(
+                icon: Icon(
+                  FontAwesomeIcons.history,
+                  size: 16.w,
+                ),
+                title: Text(AppLocalizations.of(context)!.bottom_bar_history)),
+            SalomonBottomBarItem(
+                icon: Icon(
+                  FontAwesomeIcons.gears,
+                  size: 16.w,
+                ),
+                title: Text(AppLocalizations.of(context)!.bottom_bar_settings))
+          ],
+          margin: EdgeInsets.symmetric(horizontal: 16.h, vertical: 16.w),
+          selectedItemColor: blueColor,
+          unselectedItemColor: blueColor.withOpacity(0.2),
+        ),
       ),
     );
   }

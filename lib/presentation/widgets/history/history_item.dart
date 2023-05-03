@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:lettutor_app/domain/models/Schedule.dart';
 import 'package:lettutor_app/presentation/widgets/commons/buttons/loading_button_widget.dart';
 import 'package:lettutor_app/presentation/widgets/commons/items/item_widget.dart';
 import 'package:lettutor_app/utils/resource/colors/colors_core.dart';
@@ -7,21 +8,32 @@ import 'package:lettutor_app/utils/resource/dimens.dart';
 import 'package:lettutor_app/utils/resource/gen/assets.gen.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:lettutor_app/config/theme/text_theme.dart';
+import 'package:lettutor_app/utils/utils.dart';
 
 class HistoryItem extends StatelessWidget {
   const HistoryItem({
     Key? key,
+    required this.schedule,
   }) : super(key: key);
+
+  final Schedule schedule;
 
   @override
   Widget build(BuildContext context) {
     return ItemWidget(
-        avatar: Assets.images.img.image(fit: BoxFit.cover),
-        date: 'Thu, 20 Oct 22',
+        avatar: Image.network(
+          schedule.scheduleDetailInfo.scheduleInfo.tutorInfo.avatar,
+          errorBuilder: (context, exception, stackTrace) {
+            return Assets.images.img.image(fit: BoxFit.cover);
+          },
+        ),
+        date: formatDayOfWeekAndDateFromTimestamp(
+            schedule.scheduleDetailInfo.startPeriodTimestamp),
         imgNation: Assets.svg.common.iconUs.svg(height: 22.w, width: 22.w),
         isDisableButton: false,
-        name: 'Keegan',
-        subTime: '1 hour ago',
+        name: schedule.scheduleDetailInfo.scheduleInfo.tutorInfo.name,
+        subTime:
+            '${formatMinusFrom2Timestamp(schedule.scheduleDetailInfo.startPeriodTimestamp, schedule.scheduleDetailInfo.endPeriodTimestamp)} Minutes',
         child: Column(
           children: [
             Container(
@@ -54,7 +66,7 @@ class HistoryItem extends StatelessWidget {
               padding: EdgeInsets.all(10.w),
               color: Colors.white,
               child: Text(
-                AppLocalizations.of(context)!.history_no_request,
+                schedule.studentRequest ?? AppLocalizations.of(context)!.history_no_request,
                 style: text14.copyWith(color: Colors.grey),
               ),
             ),
@@ -66,7 +78,7 @@ class HistoryItem extends StatelessWidget {
               padding: EdgeInsets.all(10.w),
               color: Colors.white,
               child: Text(
-                AppLocalizations.of(context)!.history_tutor_rv,
+                schedule.tutorReview ?? AppLocalizations.of(context)!.history_tutor_rv,
                 style: text14.copyWith(color: Colors.grey),
               ),
             ),

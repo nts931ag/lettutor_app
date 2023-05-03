@@ -24,7 +24,7 @@ class LoginScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     BlocProvider.of<LoginCubit>(context).onUsernameChanged('student@lettutor.com');
     BlocProvider.of<LoginCubit>(context).onPasswordChanged('123456');
-    BlocProvider.of<LoginCubit>(context).loginMannually();
+    BlocProvider.of<LoginCubit>(context).loginManually();
     return BaseScaffoldWidgetCustom(
       body: SingleChildScrollView(
         child: Column(
@@ -67,7 +67,8 @@ class LoginScreen extends StatelessWidget {
                                 .onUsernameChanged(value);
                           },
                           controller: null,
-                          hintText: 'email@example.com');
+                          hintText: 'email@example.com',
+                      );
                     },
                   ),
                   SizedBox(
@@ -117,7 +118,7 @@ class LoginScreen extends StatelessWidget {
                   LoadingButtonWidget(
                       submit: () {
                         // TODO: Navigation to DASHBOARD
-                        BlocProvider.of<LoginCubit>(context).loginMannually();
+                        BlocProvider.of<LoginCubit>(context).loginManually();
                       },
                       isLoading: false,
                       // TODO: Navigation to DASHBOARD

@@ -8,7 +8,10 @@ import 'package:lettutor_app/utils/resource/gen/assets.gen.dart';
 class LogoProfile extends StatelessWidget {
   const LogoProfile({
     Key? key,
+    this.url,
   }) : super(key: key);
+
+  final url;
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +19,12 @@ class LogoProfile extends StatelessWidget {
       children: [
         CircleBox(
           size: 130.w,
-          child: Assets.images.img.image(fit: BoxFit.cover),
+          child: Image.network(
+            url,
+            errorBuilder: (context, exception, stackTrace) {
+              return Assets.images.img.image(fit: BoxFit.cover);
+            },
+          ),
         ),
         Positioned(
           left: 90.w,

@@ -54,9 +54,9 @@ class ScheduleInfo extends Equatable {
       startTime: map['startTime'] as String,
       endTime: map['endTime'] as String,
       isDeleted: map['isDeleted'] as bool,
-      createdAt: map['createdAt'] as DateTime,
-      updatedAt: map['updatedAt'] as DateTime,
-      tutorInfo: map['tutorInfo'] as Tutor,
+      createdAt: DateTime.parse(map['createdAt'] as String),
+      updatedAt: DateTime.parse(map['updatedAt'] as String),
+      tutorInfo: Tutor.fromMap(map['tutorInfo']),
     );
   }
 
