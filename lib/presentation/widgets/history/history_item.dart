@@ -30,7 +30,7 @@ class HistoryItem extends StatelessWidget {
         date: formatDayOfWeekAndDateFromTimestamp(
             schedule.scheduleDetailInfo.startPeriodTimestamp),
         imgNation: Assets.svg.common.iconUs.svg(height: 22.w, width: 22.w),
-        isDisableButton: false,
+        isDisableButton: true,
         name: schedule.scheduleDetailInfo.scheduleInfo.tutorInfo.name,
         subTime:
             '${formatMinusFrom2Timestamp(schedule.scheduleDetailInfo.startPeriodTimestamp, schedule.scheduleDetailInfo.endPeriodTimestamp)} Minutes',

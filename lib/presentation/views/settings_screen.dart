@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lettutor_app/config/router/router.dart';
 import 'package:lettutor_app/config/theme/text_theme.dart';
-import 'package:lettutor_app/presentation/cubits/authentication/auth_cubit.dart';
 import 'package:lettutor_app/presentation/widgets/profile/header_profile.dart';
-import 'package:lettutor_app/utils/resource/colors/colors_core.dart';
 import 'package:lettutor_app/utils/resource/dimens.dart';
 
 class SettingsScreen extends StatefulWidget {

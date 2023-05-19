@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:lettutor_app/data/datasources/remote/authentication_service.dart';
 import 'package:lettutor_app/data/datasources/remote/course_service.dart';
 import 'package:lettutor_app/data/datasources/remote/schedule_service.dart';
@@ -10,6 +11,7 @@ import 'package:lettutor_app/domain/models/responses/SchedulesDataResponse.dart'
 import 'package:lettutor_app/domain/models/responses/TutorsDataResponse.dart';
 import 'package:lettutor_app/domain/models/responses/UserDataResponse.dart';
 import 'package:lettutor_app/domain/repositories/api_repository.dart';
+import 'package:lettutor_app/utils/constant/const_value.dart';
 import 'package:lettutor_app/utils/resource/data_state.dart';
 
 class ApiRepositoryImpl extends BaseApiRepository implements ApiRepository {
@@ -85,15 +87,17 @@ class ApiRepositoryImpl extends BaseApiRepository implements ApiRepository {
   }
 
   @override
-  Future<DataState<UserDataResponse>> updateUserInformation(User user) {
+  Future<DataState<UserDataResponse>> updateUserInformation(
+      User user, List<Specialities> specialities) {
     var learnTopics = [];
-    user.learnTopics?.forEach((element) {
-      learnTopics.add(element.id);
-    });
     var testPreparations = [];
-    user.testPreparations?.forEach((element) {
-      testPreparations.add(element.id);
-    });
+    for (var element in specialities) {
+      if (element.group == SpecialitiesGroup.topic) {
+        learnTopics.add(element.id);
+      } else {
+        testPreparations.add(element.id);
+      }
+    }
     return getStateOf(
       request: () => _userService.updateUserInformation(
         {
@@ -107,5 +111,16 @@ class ApiRepositoryImpl extends BaseApiRepository implements ApiRepository {
         },
       ),
     );
+  }
+
+  @override
+  Future<DataState<User>> uploadAvatar(String imagePath) async {
+    final formDataImage = FormData.fromMap({
+      'avatar': await MultipartFile.fromFile(
+        imagePath,
+      ),
+    });
+    return getStateOf<User>(
+        request: () => _userService.uploadAvatar(formDataImage));
   }
 }

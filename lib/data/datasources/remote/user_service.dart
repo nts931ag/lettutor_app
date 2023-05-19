@@ -13,4 +13,7 @@ abstract class UserService {
 
   @PUT('user/info')
   Future<HttpResponse<UserDataResponse>> updateUserInformation(@Body() request);
+  
+  @POST('user/uploadAvatar')
+  Future<HttpResponse<User>> uploadAvatar(@Body() request);
 }

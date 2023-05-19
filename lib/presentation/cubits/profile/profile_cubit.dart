@@ -21,18 +21,6 @@ class ProfileCubit extends BaseCubit<ProfileState, UserDataResponse> {
   ProfileCubit(this._apiRepository, this._authCubit)
       : super(ProfileInitial(), null);
 
-  void getInformationOfCurrentUser() {
-    User currentUser = _authCubit.state.user!;
-    emit(ProfileInitial(
-      name: currentUser.name,
-      email: currentUser.email,
-      phone: currentUser.phone,
-      level: currentUser.level,
-      birthday: currentUser.birthday,
-      country: currentUser.country,
-    ));
-  }
-
   void onUsernameChanged(String value) {
     emit(ProfileInitial(
       name: value,
@@ -41,7 +29,7 @@ class ProfileCubit extends BaseCubit<ProfileState, UserDataResponse> {
       level: state.level,
       birthday: state.birthday,
       country: state.country,
-      specialies: state.specialies,
+      specialities: state.specialities,
     ));
   }
 
@@ -53,7 +41,7 @@ class ProfileCubit extends BaseCubit<ProfileState, UserDataResponse> {
       level: state.level,
       birthday: state.birthday,
       country: state.country,
-      specialies: state.specialies,
+      specialities: state.specialities,
     ));
   }
 
@@ -65,7 +53,7 @@ class ProfileCubit extends BaseCubit<ProfileState, UserDataResponse> {
       level: state.level,
       birthday: state.birthday,
       country: state.country,
-      specialies: state.specialies,
+      specialities: state.specialities,
     ));
   }
 
@@ -77,7 +65,7 @@ class ProfileCubit extends BaseCubit<ProfileState, UserDataResponse> {
       level: value,
       birthday: state.birthday,
       country: state.country,
-      specialies: state.specialies,
+      specialities: state.specialities,
     ));
   }
 
@@ -89,7 +77,7 @@ class ProfileCubit extends BaseCubit<ProfileState, UserDataResponse> {
       level: state.level,
       birthday: value,
       country: state.country,
-      specialies: state.specialies,
+      specialities: state.specialities,
     ));
   }
 
@@ -101,7 +89,7 @@ class ProfileCubit extends BaseCubit<ProfileState, UserDataResponse> {
       level: state.level,
       birthday: state.birthday,
       country: value,
-      specialies: state.specialies,
+      specialities: state.specialities,
     ));
   }
 
@@ -113,12 +101,12 @@ class ProfileCubit extends BaseCubit<ProfileState, UserDataResponse> {
       level: state.level,
       birthday: state.birthday,
       country: state.country,
-      specialies: value,
+      specialities: value,
     ));
   }
 
   void onSpecialitiesRemoved(Specialities? removedObj) {
-    state.specialies!.remove(removedObj);
+    state.specialities!.remove(removedObj);
     emit(ProfileInitial(
       name: state.name,
       email: state.email,
@@ -126,8 +114,62 @@ class ProfileCubit extends BaseCubit<ProfileState, UserDataResponse> {
       level: state.level,
       birthday: state.birthday,
       country: state.country,
-      specialies: List.of(state.specialies!),
+      specialities: state.specialities!,
     ));
+  }
+
+  void getInformationOfCurrentUser() {
+    User currentUser = _authCubit.state.user!;
+
+    List<Specialities> specialitiesInitial = [];
+
+    if (currentUser.testPreparations != null &&
+        currentUser.testPreparations!.isNotEmpty) {
+      specialitiesInitial.addAll(currentUser.testPreparations!
+          .map((e) => e.toSpecialities())
+          .toList());
+    }
+
+    if (currentUser.learnTopics != null &&
+        currentUser.learnTopics!.isNotEmpty) {
+      specialitiesInitial.addAll(
+          currentUser.learnTopics!.map((e) => e.toSpecialities()).toList());
+    }
+
+    emit(ProfileInitial(
+        name: currentUser.name,
+        email: currentUser.email,
+        phone: currentUser.phone,
+        level: currentUser.level,
+        birthday: currentUser.birthday,
+        country: currentUser.country,
+        specialities: specialitiesInitial,
+        avatar: currentUser.avatar));
+  }
+
+  Future<void> onUploadAvatar(String avatarUpload) async {
+    if (isBusy) return;
+
+    await run(() async {
+
+      final response = await _apiRepository.uploadAvatar(avatarUpload);
+
+      if (response is DataSuccess) {
+        final updatedUser = response.data!;
+        emit(
+          ProfileSubmitSuccess(
+            name: state.name,
+            email: state.email,
+            phone: state.phone,
+            birthday: state.birthday,
+            country: state.country,
+            level: state.level,
+            avatar: updatedUser.avatar,
+          ),
+        );
+        await _authCubit.onSuccessUploadAvatarUser(updatedUser.avatar!);
+      }
+    });
   }
 
   Future<void> onEditUserInformation() async {
@@ -150,13 +192,15 @@ class ProfileCubit extends BaseCubit<ProfileState, UserDataResponse> {
       //   }
       // }
 
-      final response = await _apiRepository.updateUserInformation(User(
-        name: state.name,
-        country: state.country,
-        phone: state.phone,
-        birthday: state.birthday,
-        level: state.level,
-      ));
+      final response = await _apiRepository.updateUserInformation(
+          User(
+            name: state.name,
+            country: state.country,
+            phone: state.phone,
+            birthday: state.birthday,
+            level: state.level,
+          ),
+          state.specialities!);
 
       if (response is DataSuccess) {
         final updatedUser = response.data!.user;
@@ -171,7 +215,7 @@ class ProfileCubit extends BaseCubit<ProfileState, UserDataResponse> {
             level: updatedUser.level,
           ),
         );
-        _authCubit.onSuccessUpdateUserInformation(updatedUser);
+        await _authCubit.onSuccessUpdateUserInformation(updatedUser);
       }
     });
   }

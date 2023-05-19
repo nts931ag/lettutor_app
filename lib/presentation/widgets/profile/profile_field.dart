@@ -4,6 +4,7 @@ import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:lettutor_app/domain/models/TestPreparation.dart';
 import 'package:lettutor_app/domain/models/User.dart';
 import 'package:lettutor_app/presentation/cubits/authentication/auth_cubit.dart';
 import 'package:lettutor_app/presentation/cubits/profile/profile_cubit.dart';
@@ -25,15 +26,6 @@ class ProfileField extends StatefulWidget {
 }
 
 class _ProfileFieldState extends State<ProfileField> {
-  // final List<String> levelItems = [
-  //   'Pre A1 (Beginner)',
-  //   'A1 (Higher Beginner)',
-  //   'A2 (Pre-Intermediate)',
-  //   'B1 (Intermediate)',
-  //   'B2 (Upper-Intermediate)',
-  //   'C1 (Advanced)',
-  //   'C2 (Proficiency)',
-  // ];
   final List<String> levelItems = [
     "BEGINNER",
     "HIGHER_BEGINNER",
@@ -45,40 +37,10 @@ class _ProfileFieldState extends State<ProfileField> {
   ];
   final _formKey = GlobalKey<FormState>();
 
-  // final _txtNameController = TextEditingController();
-  // final _txtEmailController = TextEditingController();
-
-  // final _txtPhoneController = TextEditingController();
   final _txtBirthdayController = TextEditingController();
   List<Specialities> _selectedSpecialities = [];
-  String? _selectedLevel;
   late bool isInitValue = false;
   late User userModel;
-
-  void initValues(AuthCubit authCubit) {
-    setState(() {
-      userModel = authCubit.state.user!;
-      //Set values for form
-      // _txtNameController.text = userModel.name!;
-      // _txtEmailController.text = userModel.email!;
-      // _txtCountryController.text = userModel.country!;
-      // _txtPhoneController.text = userModel.phone!;
-      _selectedLevel = userModel.level;
-
-      if (userModel.birthday != null) {
-        // _txtBirthdayController.text = userModel.birthday!;
-      }
-      // if (isInitValue == false) {
-      //   for (var element in ConstValue.levelList) {
-      //     _levelList.add(DropdownMenuItem(
-      //       value: element,
-      //       child: Text(element),
-      //     ));
-      //   }
-      // }
-      isInitValue = true;
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -87,7 +49,6 @@ class _ProfileFieldState extends State<ProfileField> {
     //   initValues(authCubit);
     // }
     final profileCubit = BlocProvider.of<ProfileCubit>(context);
-
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 25.w, vertical: 25.h),
       child: Form(
@@ -310,64 +271,62 @@ class _ProfileFieldState extends State<ProfileField> {
             title: AppLocalizations.of(context)!.profile_want_learn,
             isImportant: true,
             child: BlocBuilder<ProfileCubit, ProfileState>(
+                buildWhen: (prev, cur) =>
+                    prev.specialities != prev.specialities,
                 builder: (context, state) {
-              return SmartSelect<Specialities>.multiple(
-                title: '',
-                selectedValue: /*_selectedSpecialities*/
-                    state.specialies ?? [],
-                choiceItems: S2Choice.listFrom<Specialities, Specialities>(
-                  source: specialitiesCutom,
-                  value: (index, item) => item,
-                  title: (index, item) => item.title,
-                  group: (index, item) => item.group.toString(),
-                ),
-                onChange: (selected) => {
-                  // setState(() => _selectedSpecialities = selected.value)
-                  BlocProvider.of<ProfileCubit>(context)
-                      .onSpecialitiesChanged(selected.value)
-                },
-                modalType: S2ModalType.bottomSheet,
-                modalConfirm: true,
-                modalFilter: true,
-                choiceGrouped: true,
-                tileBuilder: (context, state) {
-                  return Card(
-                    elevation: 3,
-                    margin: const EdgeInsets.all(5),
-                    shape: const RoundedRectangleBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(5.0)),
+                  return SmartSelect<Specialities>.multiple(
+                    title: '',
+                    selectedValue: state.specialities!,
+                    choiceItems: S2Choice.listFrom<Specialities, Specialities>(
+                      source: specialitiesCutom,
+                      value: (index, item) => item,
+                      title: (index, item) => item.title,
+                      group: (index, item) => item.group.value,
                     ),
-                    child: S2Tile.fromState(
-                      state,
-                      hideValue: true,
-                      trailing: const Icon(Icons.add_circle_outline),
-                      body: S2TileChips(
-                        chipLength: state.selected.length,
-                        chipLabelBuilder: (context, i) {
-                          return Text(state.selected.choice?[i].title ?? '');
-                        },
-                        chipOnDelete: (i) {
-                          state.selected.value
-                              .remove(state.selected.choice?[i].value);
-                          BlocProvider.of<ProfileCubit>(context)
-                              .onSpecialitiesChanged(state.selected.value);
-
-                          // BlocProvider.of<ProfileCubit>(context)
-                          //     .onSpecialitiesRemoved(state.selected.choice?[i].value);
-
-                          // setState(() {
-                          //   _selectedSpecialities
-                          //       .remove(state.selected.choice?[i].value);
-                          // });
-                        },
-                        chipColor: primaryColor,
-                        chipRaised: true,
-                      ),
-                    ),
+                    onChange: (selected) => {
+                      // setState(() => _selectedSpecialities = selected.value),
+                      BlocProvider.of<ProfileCubit>(context)
+                          .onSpecialitiesChanged(selected.value)
+                    },
+                    modalType: S2ModalType.bottomSheet,
+                    modalConfirm: true,
+                    modalFilter: true,
+                    choiceGrouped: true,
+                    tileBuilder: (context, state) {
+                      return Card(
+                        elevation: 3,
+                        margin: const EdgeInsets.all(5),
+                        shape: const RoundedRectangleBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(5.0)),
+                        ),
+                        child: S2Tile.fromState(
+                          state,
+                          hideValue: true,
+                          trailing: const Icon(Icons.add_circle_outline),
+                          body: S2TileChips(
+                            chipLength: state.selected.length,
+                                // profileCubit.state.specialities!.length,
+                            chipLabelBuilder: (context, i) {
+                              return Text(
+                                  state.selected.choice?[i].title ?? '');
+                            },
+                            // chipOnDelete: (i) {
+                            //   setState(() {
+                            //     // _selectedSpecialities
+                            //     //     .remove(state.selected.choice?[i].value);
+                            //     BlocProvider.of<ProfileCubit>(context)
+                            //         .onSpecialitiesRemoved(
+                            //             state.selected.choice?[i].value);
+                            //   });
+                            // },
+                            chipColor: primaryColor,
+                            chipRaised: true,
+                          ),
+                        ),
+                      );
+                    },
                   );
-                },
-              );
-            }),
+                }),
           ),
           SizedBox(height: 15.h),
           Align(

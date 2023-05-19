@@ -7,7 +7,8 @@ abstract class ProfileState extends Equatable {
   final String country;
   final String birthday;
   final String level;
-  final List<Specialities>? specialies;
+  final String avatar;
+  final List<Specialities>? specialities;
   final formzSubmissionStatus;
   final DioError? error;
 
@@ -20,7 +21,8 @@ abstract class ProfileState extends Equatable {
         country,
         birthday,
         level,
-        specialies,
+        specialities,
+        avatar,
         formzSubmissionStatus,
         error,
       ];
@@ -32,7 +34,8 @@ abstract class ProfileState extends Equatable {
     required this.country,
     required this.birthday,
     required this.level,
-    this.specialies,
+    required this.avatar,
+    this.specialities,
     this.formzSubmissionStatus = FormzSubmissionStatus.initial,
     this.error,
   });
@@ -40,7 +43,7 @@ abstract class ProfileState extends Equatable {
 
 class ProfileInitial extends ProfileState {
   const ProfileInitial(
-      {name, email, phone, country, birthday, level, specialies, learnTopic})
+      {name, avatar, email, phone, country, birthday, level, specialities})
       : super(
     name: name ?? '',
     email: email ?? '',
@@ -48,13 +51,14 @@ class ProfileInitial extends ProfileState {
     country: country ?? '',
     birthday: birthday ?? '',
     level: level ?? '',
-    specialies: specialies ?? const [],
+    avatar: avatar ?? '',
+    specialities: specialities ?? const [],
   );
 }
 
 class ProfileInProgress extends ProfileState {
   const ProfileInProgress(
-      {name, email, phone, country, birthday, level, specialies, learnTopic})
+      {name, avatar, email, phone, country, birthday, level, specialities})
       : super(
     name: name,
     email: email,
@@ -62,14 +66,15 @@ class ProfileInProgress extends ProfileState {
     country: country,
     birthday: birthday,
     level: level,
-    specialies: specialies,
+    specialities: specialities,
+    avatar: avatar,
     formzSubmissionStatus: FormzSubmissionStatus.inProgress,
   );
 }
 
 class ProfileSubmitSuccess extends ProfileState {
   const ProfileSubmitSuccess(
-      {name, email, phone, country, birthday, level, specialies, learnTopic})
+      {name, avatar, email, phone, country, birthday, level, specialities})
       : super(
       name: name,
       email: email,
@@ -77,13 +82,14 @@ class ProfileSubmitSuccess extends ProfileState {
       country: country,
       birthday: birthday,
       level: level,
-      specialies: specialies,
+      specialities: specialities,
+      avatar: avatar,
       formzSubmissionStatus: FormzSubmissionStatus.success);
 }
 
 class ProfileSubmitFailure extends ProfileState {
   const ProfileSubmitFailure(
-      {name, email, phone, country, birthday, level, specialies, learnTopic, error})
+      {name, avatar, email, phone, country, birthday, level, specialities, error})
       : super(
       name: name,
       email: email,
@@ -91,7 +97,8 @@ class ProfileSubmitFailure extends ProfileState {
       country: country,
       birthday: birthday,
       level: level,
-      specialies: specialies,
+      specialities: specialities,
+      avatar: avatar,
       error: error,
       formzSubmissionStatus: FormzSubmissionStatus.failure);
 }

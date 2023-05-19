@@ -1,10 +1,12 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:lettutor_app/domain/repositories/api_repository.dart';
 import 'package:lettutor_app/locator.dart';
 import 'package:lettutor_app/presentation/cubits/authentication/auth_cubit.dart';
 import 'package:lettutor_app/presentation/cubits/profile/profile_cubit.dart';
+import 'package:lettutor_app/presentation/widgets/commons/circle_network_image.dart';
 import 'package:lettutor_app/presentation/widgets/profile/header_profile.dart';
 import 'package:lettutor_app/presentation/widgets/profile/profile_field.dart';
 import 'package:lettutor_app/utils/resource/colors/colors_core.dart';
@@ -19,8 +21,10 @@ class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => ProfileCubit(
-          locator<ApiRepository>(), BlocProvider.of<AuthCubit>(context))..getInformationOfCurrentUser(),
+      create: (context) =>
+      ProfileCubit(
+          locator<ApiRepository>(), BlocProvider.of<AuthCubit>(context))
+        ..getInformationOfCurrentUser(),
       child: Scaffold(
         body: SingleChildScrollView(
           child: Container(
@@ -42,7 +46,53 @@ class ProfileScreen extends StatelessWidget {
                       )),
                 ),
                 SizedBox(height: 35.h),
-                const HeaderProfile(),
+                Row(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Stack(
+                      alignment: Alignment.bottomCenter,
+                      children: [
+                        Container(
+                          padding: const EdgeInsets.all(2),
+                          decoration: const BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: Colors.blue,
+                          ),
+                          child: BlocBuilder<ProfileCubit, ProfileState>(
+                            buildWhen: (pre, cur) => pre.avatar != cur.avatar,
+                            builder: (context, state) {
+                              return CircleNetworkImage(
+                                  url: state.avatar, size: 150.w);
+                            },
+                          ),
+                        ),
+                        Container(
+                            decoration: BoxDecoration(
+                                color: Colors.white,
+                                shape: BoxShape.circle,
+                                border:
+                                Border.all(color: Colors.blue, width: 2)),
+                            margin: const EdgeInsets.only(left: 100),
+                            child: BlocBuilder<ProfileCubit, ProfileState>(
+                              builder: (context, state) {
+                                return IconButton(
+                                  onPressed: () {
+                                    _getFromGallery(context);
+                                  },
+                                  icon: const Icon(
+                                    Icons.photo_camera,
+                                    color: Colors.blue,
+                                  ),
+                                  iconSize: 24,
+                                );
+                              },
+                            )),
+                      ],
+                    ),
+                  ],
+                ),
                 SizedBox(height: 35.h),
                 Container(
                   height: 46.h,
@@ -61,5 +111,16 @@ class ProfileScreen extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  _getFromGallery(context) async {
+    XFile? pickedFile = await ImagePicker().pickImage(
+      source: ImageSource.gallery,
+      maxWidth: 1800,
+      maxHeight: 1800,
+    );
+    if (pickedFile != null) {
+      BlocProvider.of<ProfileCubit>(context).onUploadAvatar(pickedFile.path);
+    }
   }
 }

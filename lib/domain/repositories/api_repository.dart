@@ -3,6 +3,7 @@ import 'package:lettutor_app/domain/models/responses/CoursesDataResponse.dart';
 import 'package:lettutor_app/domain/models/responses/SchedulesDataResponse.dart';
 import 'package:lettutor_app/domain/models/responses/TutorsDataResponse.dart';
 import 'package:lettutor_app/domain/models/responses/UserDataResponse.dart';
+import 'package:lettutor_app/utils/constant/const_value.dart';
 import 'package:lettutor_app/utils/resource/data_state.dart';
 
 abstract class ApiRepository {
@@ -25,7 +26,7 @@ abstract class ApiRepository {
     required sortBy,
   });
 
-  Future<DataState<UserDataResponse>> updateUserInformation(User user);
+  Future<DataState<UserDataResponse>> updateUserInformation(User user, List<Specialities> specialities);
 
   Future<DataState<SchedulesDataResponse>> getListHistoryScheduleWithPagination({
     required perPage,
@@ -34,4 +35,6 @@ abstract class ApiRepository {
     required orderBy,
     required sortBy,
   });
+
+  Future<DataState<User>> uploadAvatar(String imagePath);
 }

@@ -21,43 +21,27 @@ class AuthCubit extends Cubit<AuthState> {
     emit(AuthenticatedState(user: user, tokens: tokens));
   }
 
-  Future<void> onEditUserInformation(User user) async {
-    final response = await _apiRepository.updateUserInformation(User(
-        name: user.name,
-        country: user.country,
-        phone: user.phone,
-        birthday: user.birthday,
-        level: user.level,
-        learnTopics: state.user!.learnTopics,
-        testPreparations: state.user!.testPreparations));
-    if (response is DataSuccess) {
-      final updatedUser = response.data!.user;
-
-      emit(AuthenticatedState(
-          user: state.user!.copyWith(
-            name: updatedUser.name,
-            country: updatedUser.country,
-            phone: updatedUser.phone,
-            birthday: updatedUser.birthday,
-            level: updatedUser.level,
-            learnTopics: updatedUser.learnTopics,
-            testPreparations: updatedUser.testPreparations,
-          ),
-          tokens: state.tokens));
-    }
+  Future<void> onSuccessUpdateUserInformation(User updatedUser) async {
+    User user = state.user!.copyWith(
+      name: updatedUser.name,
+      country: updatedUser.country,
+      phone: updatedUser.phone,
+      birthday: updatedUser.birthday,
+      level: updatedUser.level,
+      learnTopics: updatedUser.learnTopics,
+      testPreparations: updatedUser.testPreparations,
+    );
+    emit(
+      AuthenticatedState(user: user, tokens: state.tokens),
+    );
   }
 
-  Future<void> onSuccessUpdateUserInformation(User updatedUser) async {
-    emit(AuthenticatedState(
-        user: state.user!.copyWith(
-          name: updatedUser.name,
-          country: updatedUser.country,
-          phone: updatedUser.phone,
-          birthday: updatedUser.birthday,
-          level: updatedUser.level,
-          learnTopics: updatedUser.learnTopics,
-          testPreparations: updatedUser.testPreparations,
-        ),
-        tokens: state.tokens));
+  Future<void> onSuccessUploadAvatarUser(String avatarUrl) async {
+    User user = state.user!.copyWith(
+      avatar: avatarUrl
+    );
+    emit(
+      AuthenticatedState(user: user, tokens: state.tokens),
+    );
   }
 }

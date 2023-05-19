@@ -167,6 +167,7 @@ class User extends Equatable {
     List<LearnTopic>? learnTopics,
     List<Course>? courses,
   }) {
+    var temp = 0;
     return User(
       id: id ?? this.id,
       email: email ?? this.email,
