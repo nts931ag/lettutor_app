@@ -45,54 +45,55 @@ class Tutor extends Equatable {
   dynamic isNative;
   int price;
   bool isOnline;
+  bool? isFavoriteTutor;
   List<Feedback>? feedbacks;
 
-  Tutor({
-    required this.level,
-    required this.email,
-    required this.google,
-    required this.facebook,
-    required this.apple,
-    required this.avatar,
-    required this.name,
-    required this.country,
-    required this.phone,
-    required this.language,
-    required this.birthday,
-    required this.requestPassword,
-    required this.isActivated,
-    required this.isPhoneActivated,
-    required this.requireNote,
-    this.timezone,
-    required this.phoneAuth,
-    required this.isPhoneAuthActivated,
-    required this.studySchedule,
-    required this.canSendMessage,
-    required this.isPublicRecord,
-    required this.caredByStaffId,
-    required this.createdAt,
-    required this.updatedAt,
-    required this.deletedAt,
-    required this.studentGroupId,
-    required this.id,
-    required this.userId,
-    required this.video,
-    required this.bio,
-    required this.education,
-    required this.experience,
-    required this.profession,
-    required this.accent,
-    required this.targetStudent,
-    required this.interests,
-    required this.languages,
-    required this.specialties,
-    required this.resume,
-    required this.rating,
-    required this.isNative,
-    required this.price,
-    required this.isOnline,
-    this.feedbacks,
-  });
+  Tutor(
+      {required this.level,
+      required this.email,
+      required this.google,
+      required this.facebook,
+      required this.apple,
+      required this.avatar,
+      required this.name,
+      required this.country,
+      required this.phone,
+      required this.language,
+      required this.birthday,
+      required this.requestPassword,
+      required this.isActivated,
+      required this.isPhoneActivated,
+      required this.requireNote,
+      this.timezone,
+      required this.phoneAuth,
+      required this.isPhoneAuthActivated,
+      required this.studySchedule,
+      required this.canSendMessage,
+      required this.isPublicRecord,
+      required this.caredByStaffId,
+      required this.createdAt,
+      required this.updatedAt,
+      required this.deletedAt,
+      required this.studentGroupId,
+      required this.id,
+      required this.userId,
+      required this.video,
+      required this.bio,
+      required this.education,
+      required this.experience,
+      required this.profession,
+      required this.accent,
+      required this.targetStudent,
+      required this.interests,
+      required this.languages,
+      required this.specialties,
+      required this.resume,
+      required this.rating,
+      required this.isNative,
+      required this.price,
+      required this.isOnline,
+      this.feedbacks,
+      this.isFavoriteTutor});
 
   Map<String, dynamic> toMap() {
     return {
@@ -140,6 +141,7 @@ class Tutor extends Equatable {
       'price': this.price,
       'isOnline': this.isOnline,
       'feedbacks': this.feedbacks,
+      'isFavoriteTutor': this.isFavoriteTutor
     };
   }
 
@@ -188,11 +190,14 @@ class Tutor extends Equatable {
       isNative: map['isNative'] as dynamic,
       price: map['price'] ?? 0,
       isOnline: map['isOnline'] ?? false,
-      feedbacks: map['feedbacks'] == null ? null : List<Feedback>.from(
-        map['feedbacks'].map<Feedback>(
-          (x) => Feedback.fromMap(x as Map<String, dynamic>),
-        ),
-      ),
+      isFavoriteTutor: map['isfavoritetutor'] != null ? true : null,
+      feedbacks: map['feedbacks'] == null
+          ? null
+          : List<Feedback>.from(
+              map['feedbacks'].map<Feedback>(
+                (x) => Feedback.fromMap(x as Map<String, dynamic>),
+              ),
+            ),
     );
   }
 

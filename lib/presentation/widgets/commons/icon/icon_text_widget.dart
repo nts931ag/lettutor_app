@@ -7,12 +7,14 @@ import 'package:lettutor_app/config/theme/text_theme.dart';
 class IconText extends StatelessWidget {
   String title;
   IconData iconData;
-  Color? color;
+  Color? colorIcon;
+  Color? colorText;
   IconText({
     Key? key,
     required this.title,
     required this.iconData,
-    this.color
+    this.colorIcon,
+    this.colorText
   }) : super(key: key);
 
   @override
@@ -22,11 +24,11 @@ class IconText extends StatelessWidget {
         Icon(
           iconData,
           size: 30,
-          color: color??primaryColor,
+          color: colorIcon??primaryColor,
         ),
         Text(
           title,
-          style: text16.copyWith(color: color ?? primaryColor),
+          style: text16.copyWith(color: colorText ?? primaryColor),
         )
       ],
     );

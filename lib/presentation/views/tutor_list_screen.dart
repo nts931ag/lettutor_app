@@ -22,7 +22,7 @@ class TutorListScreen extends HookWidget {
 
     useEffect(() {
       scrollController.onScrollEndsListener(() {
-        tutorListCubit.getTutorWithPagination();
+        tutorListCubit.searchTutorsWithPagination();
       });
 
       return scrollController.dispose;
@@ -75,7 +75,7 @@ Widget _buildTutors(
       SliverList(
         delegate: SliverChildBuilderDelegate(
           (context, index) =>
-              InformationTutorContainer(tutor: tutors[index], countRating: 2),
+              InformationTutorContainer(tutor: tutors[index], ),
           childCount: tutors.length,
         ),
       ),

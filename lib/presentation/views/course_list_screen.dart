@@ -36,7 +36,7 @@ class CourseListScreen extends HookWidget {
       return scrollController.dispose;
     }, const []);
 
-    return BlocBuilder<CourseListCubit, CourseListState>(
+    /*return BlocBuilder<CourseListCubit, CourseListState>(
       builder: (_, state) {
         switch (state.runtimeType) {
           case CourseListLoading:
@@ -54,6 +54,134 @@ class CourseListScreen extends HookWidget {
             return const SizedBox();
         }
       },
+    );*/
+    return _buildCommonCustomScrollView(context, scrollController);
+  }
+
+  Widget _buildCommonCustomScrollView(
+    BuildContext context,
+    ScrollController scrollController,
+  ) {
+    return CustomScrollView(
+      controller: scrollController,
+      slivers: [
+        SliverToBoxAdapter(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SizedBox(
+                height: 25.h,
+              ),
+              // const InformationCourse(),
+              // HeaderItem(
+              //   img: Assets.svg.schedule.iconSchedule
+              //       .svg(height: 80.w, width: 80.w),
+              //   lowerContent: AppLocalizations.of(context)!.schedule_title,
+              //   upperContent: AppLocalizations.of(context)!.schedule,
+              //   lowerSubContent:
+              //       AppLocalizations.of(context)!.schedule_sub_title,
+              // ),
+            ],
+          ),
+        ),
+        BlocBuilder<CourseListCubit, CourseListState>(
+          builder: (_, state) {
+            switch (state.runtimeType) {
+              case CourseListLoading:
+                return const SliverToBoxAdapter(
+                    child: Center(child: CupertinoActivityIndicator()));
+              case CourseListFailed:
+                return const SliverToBoxAdapter(
+                    child: Center(child: Icon(Ionicons.refresh)));
+              case CourseListSuccess:
+                return _buildCourseCustom(
+                  context,
+                  state.courses,
+                  state.noMoreData,
+                );
+              default:
+                return const SizedBox();
+            }
+          },
+        ),
+
+/*
+        if (!noMoreData)
+          const SliverToBoxAdapter(
+            child: Padding(
+              padding: EdgeInsets.only(top: 14, bottom: 32),
+              child: CupertinoActivityIndicator(),
+            ),
+          )
+*/
+      ],
+    );
+  }
+
+  Widget _buildCourseCustom(
+    BuildContext context,
+    List<Course> courses,
+    bool noMoreData,
+  ) {
+    return SliverList(
+      delegate: SliverChildBuilderDelegate(
+        childCount: courses.length,
+        (context, index) => Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            SizedBox(
+              height: 30.h,
+            ),
+            BoxShadowContainer(
+              onTap: () {
+                Navigator.pushNamed(context, MyRouter.courseDetail,
+                    arguments: CourseDetailArguments(course: courses[index]));
+              },
+              width: 280.w,
+              padding: EdgeInsets.only(bottom: 20.h),
+              child: CourseItem(
+                mainTitle: courses[index].name,
+                subTitle: courses[index].description,
+                bottomWidget: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Text(courses[index].level, style: text14),
+                    SizedBox(
+                      width: 5.w,
+                    ),
+                    Container(
+                      width: 10.w,
+                      height: 10.w,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: Colors.grey,
+                        border: Border.fromBorderSide(
+                          BorderSide(color: Colors.white, width: 3.w),
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      width: 5.w,
+                    ),
+                    Text(courses[index].topics!.length.toString(),
+                        style: text14),
+                    Text(
+                      AppLocalizations.of(context)!.course_lessons,
+                      style: text14,
+                    ),
+                  ],
+                ),
+                image: Image.network(
+                  courses[index].imageUrl,
+                  errorBuilder: (context, exception, stackTrace) {
+                    return Assets.images.imgCourse1.image(fit: BoxFit.cover);
+                  },
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 

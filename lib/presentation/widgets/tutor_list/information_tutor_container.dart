@@ -16,11 +16,9 @@ import 'package:lettutor_app/utils/utils.dart';
 
 class InformationTutorContainer extends StatelessWidget {
   final Tutor tutor;
-  double countRating;
 
-  InformationTutorContainer({
+  const InformationTutorContainer({
     Key? key,
-    required this.countRating,
     required this.tutor,
   }) : super(key: key);
 
@@ -161,12 +159,16 @@ class InformationTutorContainer extends StatelessWidget {
             Positioned(
               right: 30.w,
               top: 30.h,
-              child: const Icon(
-                Icons.favorite,
-                color: Colors.red,
-                size: 25,
-              ),
-            )
+              child: tutor.isFavoriteTutor == null
+                  ? const Icon(
+                      Icons.favorite_border,
+                      color: Colors.blue,
+                    )
+                  : const Icon(
+                      Icons.favorite,
+                      color: Colors.redAccent,
+                    ),
+            ),
           ],
         ),
       ],

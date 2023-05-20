@@ -1,4 +1,5 @@
 import 'package:lettutor_app/domain/models/User.dart';
+import 'package:lettutor_app/domain/models/requests/TutorSearchRequest.dart';
 import 'package:lettutor_app/domain/models/responses/CoursesDataResponse.dart';
 import 'package:lettutor_app/domain/models/responses/SchedulesDataResponse.dart';
 import 'package:lettutor_app/domain/models/responses/TutorsDataResponse.dart';
@@ -15,6 +16,9 @@ abstract class ApiRepository {
   Future<DataState<TutorsDataResponse>> getTutorsWithPagination(
       {required int perPage, required int page});
 
+  Future<DataState<TutorsDataResponse>> searchTutorsWithPagination(
+      TutorSearchRequest tutorSearchRequest);
+
   Future<DataState<CoursesDataResponse>> getCoursesWithPagination(
       {required int page, required int size});
 
@@ -26,9 +30,11 @@ abstract class ApiRepository {
     required sortBy,
   });
 
-  Future<DataState<UserDataResponse>> updateUserInformation(User user, List<Specialities> specialities);
+  Future<DataState<UserDataResponse>> updateUserInformation(
+      User user, List<Specialities> specialities);
 
-  Future<DataState<SchedulesDataResponse>> getListHistoryScheduleWithPagination({
+  Future<DataState<SchedulesDataResponse>>
+      getListHistoryScheduleWithPagination({
     required perPage,
     required page,
     required dateTimeLte,

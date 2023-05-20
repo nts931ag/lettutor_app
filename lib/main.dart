@@ -88,7 +88,7 @@ class _MyAppState extends State<MyApp> {
                   BlocProvider(
                     create: (context) => TutorListCubit(
                       locator<ApiRepository>(),
-                    )..getTutorWithPagination(),
+                    )..searchTutorsWithPagination(),
                   ),
                   BlocProvider(
                     create: (context) => CourseListCubit(

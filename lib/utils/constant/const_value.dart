@@ -10,24 +10,6 @@ class NavigationIndex {
   static const settingsScreen = 4;
 }
 
-// class Specialities {
-//   static List<TestPreparation> specialities = [
-//     TestPreparation(id: 1, key: "starters", name: "STARTERS"),
-//     TestPreparation(id: 2, key: "movers", name: "MOVERS"),
-//     TestPreparation(id: 3, key: "flyers", name: "FLYERS"),
-//     TestPreparation(id: 4, key: "ket", name: "KET"),
-//     TestPreparation(id: 5, key: "pet", name: "PET"),
-//     TestPreparation(id: 6, key: "ielts", name: "IELTS"),
-//     TestPreparation(id: 7, key: "toefl", name: "TOEFL"),
-//     TestPreparation(id: 8, key: "toeic", name: "TOEIC"),
-//   ];
-//   static List<LearnTopic> topics = [
-//     LearnTopic(id:3, key: "english-for-kids", name: "English for Kids"),
-//     LearnTopic(id:4, key: "business-english", name: "Business English"),
-//     LearnTopic(id:5, key: "conversational-english", name: "Conversational English"),
-//   ];
-// }
-
 enum SpecialitiesGroup {
   testPreparation,
   topic;

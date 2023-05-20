@@ -13,7 +13,10 @@ abstract class TutorService {
   @GET('tutor/more')
   Future<HttpResponse<TutorsDataResponse>> getListTutorWithPagination(
       @Query("perPage") int perPage,
-      @Query("page") int page,
-      );
+      @Query("page") int page,);
+
+  @POST('tutor/search')
+  Future<HttpResponse<TutorsDataResponse>> searchListTutorWithPagination(
+      @Body() request);
 
 }

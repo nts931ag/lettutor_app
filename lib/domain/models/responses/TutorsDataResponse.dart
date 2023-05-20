@@ -15,14 +15,25 @@ class TutorsDataResponse extends Equatable {
   factory TutorsDataResponse.fromMap(Map<String, dynamic> map) {
     return TutorsDataResponse(
       tutors: List<Tutor>.from(
-        map['tutors']['rows'].map<Tutor>(
+        map['rows'].map<Tutor>(
           (x) => Tutor.fromMap(x as Map<String, dynamic>),
+        ),
+      ),
+      tutorCount: map['count'] as int,
+    );
+  }
+
+  /*factory TutorsDataResponse.fromMap(Map<String, dynamic> map) {
+    return TutorsDataResponse(
+      tutors: List<Tutor>.from(
+        map['tutors']['rows'].map<Tutor>(
+              (x) => Tutor.fromMap(x as Map<String, dynamic>),
         ),
       ),
       tutorCount: map['tutors']['count'] as int,
     );
   }
-
+*/
   @override
   // TODO: implement props
   List<Object?> get props => throw UnimplementedError();

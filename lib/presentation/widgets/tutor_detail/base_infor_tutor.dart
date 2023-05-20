@@ -121,13 +121,37 @@ class BaseInforTutor extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              IconText(
-                iconData: Icons.favorite,
-                title: AppLocalizations.of(context)!.favorite,
+              InkWell(
+                onTap: () {},
+                child: tutor.isFavoriteTutor == true
+                    ? IconText(
+                        iconData: Icons.favorite,
+                        colorIcon: Colors.redAccent,
+                        title: AppLocalizations.of(context)!.favorite,
+                      )
+                    : IconText(
+                        iconData: Icons.favorite_border,
+                        title: AppLocalizations.of(context)!.favorite,
+                      ),
               ),
-              IconText(
-                iconData: Icons.report,
-                title: AppLocalizations.of(context)!.report,
+              InkWell(
+                onTap: () {
+                  showDialog(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return ReportDialog(
+                        title: "Report ${tutor.name}",
+                        onSubmit: (message) {
+                          // provider.reportTutor(message);
+                        },
+                      );
+                    },
+                  );
+                },
+                child: IconText(
+                  iconData: Icons.report_outlined,
+                  title: AppLocalizations.of(context)!.report,
+                ),
               ),
               InkWell(
                 onTap: () {
@@ -139,7 +163,7 @@ class BaseInforTutor extends StatelessWidget {
                   );
                 },
                 child: IconText(
-                  iconData: Icons.star,
+                  iconData: Icons.reviews_outlined,
                   title: AppLocalizations.of(context)!.reviews,
                 ),
               ),
@@ -147,6 +171,42 @@ class BaseInforTutor extends StatelessWidget {
           )
         ],
       ),
+    );
+  }
+}
+
+class ReportDialog extends StatelessWidget {
+  final TextEditingController _textEditingController = TextEditingController();
+  final String title;
+  final Function(String message) onSubmit;
+
+  ReportDialog({required this.title, required this.onSubmit});
+
+  @override
+  Widget build(BuildContext context) {
+    return AlertDialog(
+      title: Text(title),
+      content: TextField(
+        controller: _textEditingController,
+        decoration: const InputDecoration(hintText: 'Enter your report here'),
+        maxLines: null,
+      ),
+      actions: [
+        TextButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          child: const Text('Cancel'),
+        ),
+        ElevatedButton(
+          onPressed: () {
+            String report = _textEditingController.text.trim();
+            onSubmit(report);
+            Navigator.pop(context);
+          },
+          child: const Text('Report'),
+        ),
+      ],
     );
   }
 }

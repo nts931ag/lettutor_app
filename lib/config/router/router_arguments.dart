@@ -27,3 +27,13 @@ class CourseDetailArguments {
     required this.course,
   });
 }
+
+class PdfReaderArguments {
+  final String nameFile;
+  final String name;
+
+  const PdfReaderArguments({
+    required this.nameFile,
+    required this.name,
+  });
+}

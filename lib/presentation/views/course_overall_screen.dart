@@ -1,6 +1,8 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:lettutor_app/config/router/router.dart';
+import 'package:lettutor_app/config/router/router_arguments.dart';
 import 'package:lettutor_app/domain/models/Course.dart';
 import 'package:lettutor_app/presentation/widgets/base/base_scaffold_custom_widget.dart';
 import 'package:lettutor_app/presentation/widgets/commons/box_shadow_container.dart';
@@ -41,12 +43,13 @@ class CourseOverallScreen extends StatelessWidget {
                           // Get.toNamed(AppRoutes.DISCOVERY_COURSE);
                         },
                         isLoading: false,
-                        label:
-                            AppLocalizations.of(context)!.course_detail_discover),
+                        label: AppLocalizations.of(context)!
+                            .course_detail_discover),
                     image: Image.network(
                       course.imageUrl,
                       errorBuilder: (context, exception, stackTrace) {
-                        return Assets.images.imgCourse1.image(fit: BoxFit.cover);
+                        return Assets.images.imgCourse1
+                            .image(fit: BoxFit.cover);
                       },
                     ),
                   ),
@@ -64,9 +67,8 @@ class CourseOverallScreen extends StatelessWidget {
                     height: 10.h,
                   ),
                   OverViewTitle(
-                    title: 'What will you be able to do',
-                    content: course.purpose
-                  ),
+                      title: 'What will you be able to do',
+                      content: course.purpose),
                 ],
               ),
               SizedBox(
@@ -123,7 +125,7 @@ class CourseOverallScreen extends StatelessWidget {
                     child: Wrap(
                       spacing: 6.w,
                       runSpacing: 5.w,
-                      children: [
+                      /*children: [
                         ...course.topics!.map((e) => BoxShadowContainer(
                               borderRadius: BorderRadius.circular(3.r),
                               width: MediaQuery.of(context).size.width / 2 - 28.w,
@@ -144,6 +146,31 @@ class CourseOverallScreen extends StatelessWidget {
                                 ],
                               ),
                             ))
+                      ],*/
+                      children: [
+                        ListView.builder(
+                            padding: EdgeInsets.zero,
+                            shrinkWrap: true,
+                            physics: const NeverScrollableScrollPhysics(),
+                            scrollDirection: Axis.vertical,
+                            itemCount: course.topics?.length,
+                            itemBuilder: (BuildContext context, int index) {
+                              String title =
+                                  "${index + 1}. ${course.topics?[index].name}";
+                              return ChapterCard(
+                                title: title,
+                                clickAction: () {
+                                  Navigator.pushNamed(
+                                    context,
+                                    MyRouter.pdfReader,
+                                    arguments: PdfReaderArguments(
+                                        nameFile:
+                                            course.topics![index].nameFile,
+                                        name: course.topics![index].name),
+                                  );
+                                },
+                              );
+                            }),
                       ],
                     ),
                   )
@@ -157,6 +184,32 @@ class CourseOverallScreen extends StatelessWidget {
         ),
       ),
     );
+  }
+}
+
+class ChapterCard extends StatelessWidget {
+  const ChapterCard(
+      {super.key, required this.title, required this.clickAction});
+
+  final VoidCallback clickAction;
+  final String title;
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+        elevation: 2,
+        clipBehavior: Clip.antiAliasWithSaveLayer,
+        surfaceTintColor: Colors.white,
+        margin: const EdgeInsets.only(bottom: 16),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(15),
+        ),
+        child: ListTile(
+            title: Text(
+              title,
+              style: text14,
+            ),
+            onTap: clickAction));
   }
 }
 

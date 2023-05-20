@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:equatable/equatable.dart';
 import 'package:lettutor_app/domain/models/Tutor.dart';
+import 'package:lettutor_app/domain/models/requests/TutorSearchRequest.dart';
 import 'package:lettutor_app/domain/repositories/api_repository.dart';
 import 'package:lettutor_app/presentation/cubits/base/base_cubit.dart';
 import 'package:lettutor_app/utils/constant/nums.dart';
@@ -33,5 +34,44 @@ class TutorListCubit extends BaseCubit<TutorListState, List<Tutor>> {
         emit(TutorListFailed(error: response.error));
       }
     });
+  }
+
+  Future<void> searchTutorsWithPagination() async {
+    if (isBusy) return;
+
+    await run(() async {
+      final response = await _apiRepository.searchTutorsWithPagination(
+          TutorSearchRequest(
+            search: "",
+            page: _page,
+            perPage: defaultPageSize
+          ));
+
+      if (response is DataSuccess) {
+        final tutors = response.data!.tutors;
+        final noMoreData = response.data!.tutorCount < defaultPageSize;
+
+        data!.addAll(tutors!);
+        _page++;
+
+        emit(TutorListSuccess(tutors: List.of(data!), noMoreData: noMoreData));
+      } else if (response is DataFailed) {
+        emit(TutorListFailed(error: response.error));
+      }
+    });
+  }
+
+  void onReportTutorSuccess(Tutor reportedTutor) {
+
+    emit(
+      TutorListSuccess(),
+    );
+  }
+
+  void onAddTutorFavouriteSuccess(Tutor favouriteTutor) {
+
+    emit(
+      TutorListSuccess(),
+    );
   }
 }

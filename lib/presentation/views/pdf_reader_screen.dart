@@ -1,19 +1,34 @@
 import 'package:flutter/material.dart';
-import 'package:lettutor_app/utils/resource/dimens.dart';
+import 'package:lettutor_app/config/theme/text_theme.dart';
 import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
 
-class PdfReaderScreen extends StatelessWidget {
-  const PdfReaderScreen({Key? key}) : super(key: key);
+class PdfReaderScreen extends StatefulWidget {
+  const PdfReaderScreen({Key? key, required this.nameFile, required this.name, })
+      : super(key: key);
+  final String nameFile;
+  final String name;
 
   @override
+  State<PdfReaderScreen> createState() => _PdfReaderScreenState();
+}
+
+class _PdfReaderScreenState extends State<PdfReaderScreen> {
+  @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Container(
-        height: 500.h,
-        decoration: BoxDecoration(borderRadius: BorderRadius.circular(5.r)),
-        child: SfPdfViewer.network(
-            'https://cdn.syncfusion.com/content/PDFViewer/flutter-succinctly.pdf'),
-      ),
-    );
+    return SafeArea(
+        child: Scaffold(
+            // appBar: PreferredSize(
+            //   preferredSize: Size.fromHeight(70.h),
+            //   child: CustomAppBar(
+            //       appBarName: widget.nameFile,
+            //       backgroundColor: Colors.transparent),
+            // ),
+            appBar: AppBar(
+              title: Text(
+                widget.name,
+                style: text14,
+              ),
+            ),
+            body: SfPdfViewer.network(widget.nameFile)));
   }
 }

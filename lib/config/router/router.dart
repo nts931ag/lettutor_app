@@ -7,6 +7,7 @@ import 'package:lettutor_app/presentation/views/course_list_screen.dart';
 import 'package:lettutor_app/presentation/views/course_overall_screen.dart';
 import 'package:lettutor_app/presentation/views/history_screen.dart';
 import 'package:lettutor_app/presentation/views/meeting_screen.dart';
+import 'package:lettutor_app/presentation/views/pdf_reader_screen.dart';
 import 'package:lettutor_app/presentation/views/profile_screen.dart';
 import 'package:lettutor_app/presentation/views/review_screen.dart';
 import 'package:lettutor_app/presentation/views/schedule_screen.dart';
@@ -51,6 +52,7 @@ class MyRouter {
   static const String account = 'Edit Account';
 
   static const String profile = 'profile';
+  static const String pdfReader = 'PDF reader';
 
   static Route<dynamic> generateRoute(RouteSettings settings) {
     var args = settings.arguments;
@@ -78,6 +80,20 @@ class MyRouter {
               'Input for Tutor detail page is not TutorDetailArguments',
               settings);
         }
+      case pdfReader:
+        if (args is PdfReaderArguments) {
+          return successRoute(
+              PdfReaderScreen(
+                name: args.name,
+                nameFile: args.nameFile,
+              ),
+              settings);
+        } else {
+          return errorRoute(
+              'Input for Tutor detail page is not TutorDetailArguments',
+              settings);
+        }
+
       case learningHistory:
         return successRoute(const HistoryScreen(), settings);
       case schedule:

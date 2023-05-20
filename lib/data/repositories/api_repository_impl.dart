@@ -6,6 +6,7 @@ import 'package:lettutor_app/data/datasources/remote/tutor_service.dart';
 import 'package:lettutor_app/data/datasources/remote/user_service.dart';
 import 'package:lettutor_app/data/repositories/base/base_api_repository.dart';
 import 'package:lettutor_app/domain/models/User.dart';
+import 'package:lettutor_app/domain/models/requests/TutorSearchRequest.dart';
 import 'package:lettutor_app/domain/models/responses/CoursesDataResponse.dart';
 import 'package:lettutor_app/domain/models/responses/SchedulesDataResponse.dart';
 import 'package:lettutor_app/domain/models/responses/TutorsDataResponse.dart';
@@ -122,5 +123,29 @@ class ApiRepositoryImpl extends BaseApiRepository implements ApiRepository {
     });
     return getStateOf<User>(
         request: () => _userService.uploadAvatar(formDataImage));
+  }
+
+  @override
+  Future<DataState<TutorsDataResponse>> searchTutorsWithPagination(
+      TutorSearchRequest tutorSearchRequest) {
+    final searchTutorForm = FormData.fromMap({
+      'search': tutorSearchRequest.search,
+      'page' : tutorSearchRequest.page,
+      'perPage' : tutorSearchRequest.perPage
+    });
+
+    return getStateOf<TutorsDataResponse>(
+        request: () =>
+            _tutorService.searchListTutorWithPagination({
+              "filters": {
+                "specialties": [],
+                "nationality": [],
+                "date": null,
+                "tutoringTimeAvailable": [null, null]
+              },
+              "search": "",
+              "page": "${tutorSearchRequest.page}",
+              "perPage": 10
+            }));
   }
 }
