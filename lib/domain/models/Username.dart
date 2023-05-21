@@ -11,6 +11,10 @@ class Username extends FormzInput<String, UsernameValidationError> {
     r'^[a-zA-Z\d.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z\d-]+(?:\.[a-zA-Z\d-]+)*$',
   );
 
+  String? getMessageError() {
+    return error?.text();
+  }
+
   @override
   UsernameValidationError? validator(String value) {
     if (value.isEmpty) return UsernameValidationError.empty;
@@ -21,7 +25,7 @@ class Username extends FormzInput<String, UsernameValidationError> {
 }
 
 extension on UsernameValidationError {
-  String text() {
+  String? text() {
     switch (this) {
       case UsernameValidationError.empty:
         return 'Please ensure the email entered is valid';

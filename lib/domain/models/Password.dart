@@ -4,6 +4,7 @@ enum PasswordValidationError { empty, invalid }
 
 class Password extends FormzInput<String, PasswordValidationError> {
   const Password.pure() : super.pure('');
+
   const Password.dirty([super.value = '']) : super.dirty();
 
   @override
@@ -11,14 +12,18 @@ class Password extends FormzInput<String, PasswordValidationError> {
     if (value.isEmpty) return PasswordValidationError.empty;
     return null;
   }
+
+  String? getMessageError() {
+    return error?.text();
+  }
 }
 
 extension on PasswordValidationError {
-  String text() {
+  String? text() {
     switch (this) {
       case PasswordValidationError.empty:
       case PasswordValidationError.invalid:
-        return '''Password must be at least 8 characters and contain at least one letter and number''';
+        return '''Password can't be empty''';
     }
   }
 }

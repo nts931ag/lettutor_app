@@ -4,6 +4,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lettutor_app/config/theme/text_theme.dart';
+import 'package:lettutor_app/domain/models/Password.dart';
 import 'package:lettutor_app/presentation/cubits/authentication/login_cubit.dart';
 import 'package:lettutor_app/presentation/widgets/authentication/login_title_area_widget.dart';
 import 'package:lettutor_app/presentation/widgets/authentication/sign_up_area_widget.dart';
@@ -63,12 +64,16 @@ class LoginScreen extends StatelessWidget {
                       buildWhen: (pre, cur) => pre.username != cur.username,
                       builder: (context, state) {
                         return BaseTextField(
-                            onChanged: (value) {
-                              BlocProvider.of<LoginCubit>(context)
-                                  .onUsernameChanged(value);
-                            },
-                            controller: null,
-                            hintText: 'email@example.com',
+                          onChanged: (value) {
+                            BlocProvider.of<LoginCubit>(context)
+                                .onUsernameChanged(value);
+                          },
+                          errorText: state.username.isPure
+                              ? null
+                              : state.username.getMessageError(),
+                          textInputType: TextInputType.emailAddress,
+                          controller: null,
+                          hintText: 'email@example.com',
                         );
                       },
                     ),
@@ -92,6 +97,10 @@ class LoginScreen extends StatelessWidget {
                                   .onPasswordChanged(value);
                             },
                             controller: null,
+                            isObscure: true,
+                            errorText: state.password.isPure
+                                ? null
+                                : state.password.getMessageError(),
                             hintText: '',
                             icon: InkWell(
                               onTap: () {},
@@ -188,7 +197,7 @@ class LoginScreen extends StatelessWidget {
                                   // loginController.changeLogin();
                                 },
                                 child: Text(
-                                  "Login",
+                                  "Sign up",
                                   // TODO: Navigation to changeLogin
                                   // loginController.isLogin.value
                                   //     ? AppLocalizations.of(context)!.sign_up

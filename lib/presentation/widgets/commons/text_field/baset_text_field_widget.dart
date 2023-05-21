@@ -10,14 +10,15 @@ TextFormField BaseTextField(
     void Function()? onTap,
     bool readOnly = false,
     bool isObscure = false,
-    bool isPhone = false,
+    TextInputType? textInputType = TextInputType.text,
     bool isHaveBorder = true,
     int maxLine = 1,
     int? maxLength,
     Widget? icon,
     double radius = 5.0,
     FormFieldValidator<String>? validator,
-    String? initialValue}) {
+    String? initialValue,
+    String? errorText}) {
   return TextFormField(
     onTap: onTap,
     readOnly: readOnly,
@@ -31,7 +32,7 @@ TextFormField BaseTextField(
     textAlign: TextAlign.start,
     validator: validator,
     textCapitalization: TextCapitalization.words,
-    keyboardType: isPhone ? TextInputType.phone : TextInputType.text,
+    keyboardType: textInputType,
     style: text12,
     initialValue: initialValue,
     //focusNode: focusNode,
@@ -42,14 +43,27 @@ TextFormField BaseTextField(
       fillColor: whiteColor,
       hintText: hintText,
       suffixIcon: icon,
-      focusedBorder: isHaveBorder
+      errorText: errorText,
+      errorMaxLines: 2,
+      border: isHaveBorder
           ? underLineIntputBorder(
           width: 2, color: greyBorderColor, radius: radius)
+          : null,
+      focusedBorder: isHaveBorder
+          ? underLineIntputBorder(
+              width: 2, color: greyBorderColor, radius: radius)
           : null,
       enabledBorder: isHaveBorder
           ? underLineIntputBorder(
-          width: 2, color: greyBorderColor, radius: radius)
+              width: 2, color: greyBorderColor, radius: radius)
           : null,
+      errorBorder: isHaveBorder
+          ? underLineIntputBorder(width: 2, color: redColor, radius: radius)
+          : null,
+      focusedErrorBorder: isHaveBorder
+          ? underLineIntputBorder(width: 2, color: redColor, radius: radius)
+          : null,
+
       // contentPadding: isHaveBorder
       //     ? EdgeInsets.symmetric(horizontal: 15.w, vertical: 15.h)
       //     : null,
