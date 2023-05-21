@@ -26,6 +26,7 @@ class _BookingScreenState extends State<BookingScreen> {
   CalendarFormat _calendarFormat = CalendarFormat.month;
   RangeSelectionMode _rangeSelectionMode = RangeSelectionMode
       .disabled; // Can be toggled on/off by longpressing a date
+  int _currentTimestamp = DateTime.now().millisecondsSinceEpoch;
   DateTime _focusedDay = DateTime.now();
   DateTime? _selectedDay;
   late final ApiRepository _apiRepository;
@@ -118,35 +119,36 @@ class _BookingScreenState extends State<BookingScreen> {
                         // color: value[index].isBooked ? greyColor : whiteColor,
                       ),
                       child: ListTile(
-                        enabled: !value[index].isBooked,
-                        onTap: () => showDialog(
-                          context: context,
-                          builder: (BuildContext context) {
-                            return BookingDialog(
-                              title: "Booking class",
-                              onSubmit: (content) {
-                                bookingClass(
-                                    apiRepository: _apiRepository,
-                                    bookingScheduleSelected: value[index],
-                                    content:
-                                        content); /*.then(
+                          enabled: checkBookingScheduleAvailable(value[index]),
+                          onTap: () => showDialog(
+                                context: context,
+                                builder: (BuildContext context) {
+                                  return BookingDialog(
+                                    title: "Booking class",
+                                    onSubmit: (content) {
+                                      bookingClass(
+                                          apiRepository: _apiRepository,
+                                          bookingScheduleSelected: value[index],
+                                          content:
+                                              content); /*.then(
                                   (value) => */
-                              },
-                            );
-                          },
-                        ),
-                        title: Text(
-                          // '${value[index].startTime} - ${value[index].endTime}}',
-                          '${formatHourAndMinuteFromTimestamp(value[index].startTimestamp)} - ${formatHourAndMinuteFromTimestamp(value[index].endTimestamp)}',
-                          style: text18,
-                        ),
-                        subtitle: Text(
-                          value[index].isBooked
-                              ? 'This class is booked'
-                              : 'You can book this class',
-                          style: text14,
-                        ),
-                      ),
+                                    },
+                                  );
+                                },
+                              ),
+                          title: Text(
+                            // '${value[index].startTime} - ${value[index].endTime}}',
+                            '${formatHourAndMinuteFromTimestamp(value[index].startTimestamp)} - ${formatHourAndMinuteFromTimestamp(value[index].endTimestamp)}',
+                            style: text18,
+                          ),
+                          subtitle: Text(
+                            checkBookingScheduleAvailable(value[index])
+                                ? 'You can book this class'
+                                : value[index].isBooked
+                                    ? 'This class is booked'
+                                    : 'This class is time up',
+                            style: text14,
+                          )),
                     );
                   },
                 );
@@ -216,6 +218,14 @@ class _BookingScreenState extends State<BookingScreen> {
       },
     );
     return bookingSchedules;
+  }
+
+  bool checkBookingScheduleAvailable(BookingSchedule bookingSchedule) {
+    if (bookingSchedule.startTimestamp < _currentTimestamp ||
+        bookingSchedule.isBooked) {
+      return false;
+    }
+    return true;
   }
 }
 

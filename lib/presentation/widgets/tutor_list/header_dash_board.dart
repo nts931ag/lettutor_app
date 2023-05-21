@@ -59,7 +59,7 @@ class HeaderDashboard extends StatelessWidget {
                       children: [
                         state.upcomingSchedule != null
                             ? Text(
-                                '${formatDayOfWeekAndDateFromTimestamp(state.upcomingSchedule!.scheduleDetailInfo.startPeriodTimestamp)} ${state.upcomingSchedule!.scheduleDetailInfo.startPeriod} - ${state.upcomingSchedule!.scheduleDetailInfo.endPeriod}',
+                                '${formatDayOfWeekAndDateFromTimestamp(state.upcomingSchedule!.scheduleDetailInfo.startPeriodTimestamp)} ${formatHourAndMinuteFromTimestamp(state.upcomingSchedule!.scheduleDetailInfo.startPeriodTimestamp)} - ${formatHourAndMinuteFromTimestamp(state.upcomingSchedule!.scheduleDetailInfo.endPeriodTimestamp)}',
                                 textAlign: TextAlign.center,
                                 style: text18.copyWith(color: whiteColor),
                               )

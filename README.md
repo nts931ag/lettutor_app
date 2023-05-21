@@ -10,11 +10,17 @@ Requirement 2 & 3: Implement in code (branch "milestone-1-mockup-ui")
 
 ## Milestone 2
 
+Document report: [https://docs.google.com/document/d/milestone2](https://docs.google.com/document/d/1dZM9IWDF-y44bfVIzS8x6ZbcapTtk_ah/edit?usp=drive_link&ouid=116048334761093379848&rtpof=true&sd=true)
 Video demo: [https://youtu.be/wCdQ3jBeFF0](https://youtu.be/wCdQ3jBeFF0)
 
 ## Milestone 3
 
-Video demo: [https://youtu.be/wCdQ3jBeFF0](https://youtu.be/wCdQ3jBeFF0)
+Document report: [https://docs.google.com/document/d/milestone3](https://docs.google.com/document/d/1dZM9IWDF-y44bfVIzS8x6ZbcapTtk_ah/edit?usp=drive_link&ouid=116048334761093379848&rtpof=true&sd=true)
+Video demo: [https://youtu.be/eeHCjlROfxw](https://youtu.be/eeHCjlROfxw)
 
-## Generate resources
-flutter pub run build_runner build --delete-conflicting-outputs
+## How to run application
+
+step 1: open source with IDE
+step 2: executing command: flutter pub get
+step 3: generate resource by executing command: flutter pub run build_runner build --delete-conflicting-outputs
+step 4: connect to emulator/real device and run application.

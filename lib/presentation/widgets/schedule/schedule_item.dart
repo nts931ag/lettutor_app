@@ -51,8 +51,8 @@ class ScheduleItem extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  // '${formatHourAndMinuteFromTimestamp(schedule.scheduleDetailInfo.startPeriodTimestamp)} - ${formatHourAndMinuteFromTimestamp(schedule.scheduleDetailInfo.endPeriodTimestamp)}',
-                  '${schedule.scheduleDetailInfo.startPeriod} - ${schedule.scheduleDetailInfo.endPeriod}',
+                  '${formatHourAndMinuteFromTimestamp(schedule.scheduleDetailInfo.startPeriodTimestamp)} - ${formatHourAndMinuteFromTimestamp(schedule.scheduleDetailInfo.endPeriodTimestamp)}',
+                  // '${schedule.scheduleDetailInfo.startPeriod} - ${schedule.scheduleDetailInfo.endPeriod}',
                   style: text16,
                 ),
                 SizedBox(
@@ -129,7 +129,7 @@ class ScheduleItem extends StatelessWidget {
   void onPressedCancel(BuildContext context, Size size, int startTimestamp,
       String id, ScheduleListCubit scheduleListCubit) {
     if (isAllowedToCancel(
-        DateTime.fromMicrosecondsSinceEpoch(startTimestamp))) {
+        DateTime.fromMillisecondsSinceEpoch(startTimestamp))) {
       final List<DropdownMenuItem<String>> cancelReasonList = [
         const DropdownMenuItem(
             value: 'Reschedule at another time',
