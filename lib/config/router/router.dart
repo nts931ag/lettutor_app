@@ -4,6 +4,7 @@ import 'package:lettutor_app/config/router/error_page.dart';
 import 'package:lettutor_app/config/router/router_arguments.dart';
 import 'package:lettutor_app/presentation/cubits/tutor/feedback_list_cubit.dart';
 import 'package:lettutor_app/presentation/views/base_screen.dart';
+import 'package:lettutor_app/presentation/views/booking_screen.dart';
 import 'package:lettutor_app/presentation/views/course_list_screen.dart';
 import 'package:lettutor_app/presentation/views/course_overall_screen.dart';
 import 'package:lettutor_app/presentation/views/history_screen.dart';
@@ -55,6 +56,7 @@ class MyRouter {
 
   static const String profile = 'profile';
   static const String pdfReader = 'PDF reader';
+  static const String booking = "Booking";
 
   static Route<dynamic> generateRoute(RouteSettings settings) {
     var args = settings.arguments;
@@ -65,7 +67,9 @@ class MyRouter {
         if (args is TutorDetailArguments) {
           return successRoute(
               TutorDetailScreen(
-                  tutor: args.tutor, tutorListCubit: args.tutorListCubit),
+                  tutor: args.tutor,
+                  tutorListCubit: args.tutorListCubit,
+                  scheduleListCubit: args.scheduleListCubit),
               settings);
         } else {
           return errorRoute(
@@ -107,6 +111,18 @@ class MyRouter {
         return successRoute(const SettingsScreen(), settings);
       case profile:
         return successRoute(const ProfileScreen(), settings);
+      case booking:
+        if (args is BookingScreenArguments) {
+          return successRoute(
+              BookingScreen(
+                  tutorId: args.tutorId,
+                  scheduleListCubit: args.scheduleListCubit),
+              settings);
+        } else {
+          return errorRoute(
+              'Input for Tutor detail page is not TutorDetailArguments',
+              settings);
+        }
       case joinMeeting:
         if (args is MeetingArguments) {
           return successRoute(

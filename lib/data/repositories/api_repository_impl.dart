@@ -8,6 +8,8 @@ import 'package:lettutor_app/data/repositories/base/base_api_repository.dart';
 import 'package:lettutor_app/domain/models/Tutor.dart';
 import 'package:lettutor_app/domain/models/User.dart';
 import 'package:lettutor_app/domain/models/requests/TutorSearchRequest.dart';
+import 'package:lettutor_app/domain/models/responses/BookingClassResponse.dart';
+import 'package:lettutor_app/domain/models/responses/BookingSchedulesDataReponse.dart';
 import 'package:lettutor_app/domain/models/responses/CancelBookingDataResponse.dart';
 import 'package:lettutor_app/domain/models/responses/CoursesDataResponse.dart';
 import 'package:lettutor_app/domain/models/responses/FeedbacksDataResponse.dart';
@@ -200,6 +202,26 @@ class ApiRepositoryImpl extends BaseApiRepository implements ApiRepository {
           "scheduleDetailIds": [id],
           "cancelInfo": {"cancelReasonId": reasonId}
         },
+      ),
+    );
+  }
+
+  @override
+  Future<DataState<BookingSchedulesDataReponse>> getBookingScheduleOfTutor(
+      {required String tutorId,
+      required int startTimestamp,
+      required int endTimestamp}) {
+    return getStateOf<BookingSchedulesDataReponse>(
+        request: () => _scheduleService.getBookingScheduleOfTutor(
+            tutorId, startTimestamp, endTimestamp));
+  }
+
+  @override
+  Future<DataState<BookingClassResponse>> bookClass(
+      {required List<String> scheduleDetailId, required String note}) {
+    return getStateOf<BookingClassResponse>(
+      request: () => _scheduleService.bookClass(
+        {"scheduleDetailIds": scheduleDetailId, "note": note},
       ),
     );
   }

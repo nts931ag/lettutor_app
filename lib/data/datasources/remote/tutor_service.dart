@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:lettutor_app/domain/models/Tutor.dart';
+import 'package:lettutor_app/domain/models/responses/BookingSchedulesDataReponse.dart';
 import 'package:lettutor_app/domain/models/responses/FeedbacksDataResponse.dart';
 import 'package:lettutor_app/domain/models/responses/TutorsDataResponse.dart';
 import 'package:lettutor_app/utils/constant/strings.dart';
@@ -35,6 +36,9 @@ abstract class TutorService {
   Future<HttpResponse<void>> reportTutor(@Body() request);
 
   @GET('feedback/v2/{id}')
-  Future<HttpResponse<FeedbacksDataResponse>> getFeedbackByTutorId(@Path() String id,
-      @Query("page") int page, @Query("perPage") int perPage);
+  Future<HttpResponse<FeedbacksDataResponse>> getFeedbackByTutorId(
+      @Path() String id,
+      @Query("page") int page,
+      @Query("perPage") int perPage);
+
 }

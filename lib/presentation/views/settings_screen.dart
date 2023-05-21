@@ -45,7 +45,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 SizedBox(height: 35.h),
                 Text(
                   "Account",
-                  style: text18,
+                  style: text18.copyWith(fontWeight: FontWeight.w700),
                   textAlign: TextAlign.start,
                   softWrap: true,
                 ),
@@ -66,7 +66,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 ),
                 Text(
                   "Application",
-                  style: text18,
+                  style: text18.copyWith(fontWeight: FontWeight.w700),
                   textAlign: TextAlign.start,
                   softWrap: true,
                 ),
@@ -129,7 +129,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 ),
                 Text(
                   "Overview",
-                  style: text18,
+                  style: text18.copyWith(fontWeight: FontWeight.w700),
                   textAlign: TextAlign.start,
                   softWrap: true,
                 ),

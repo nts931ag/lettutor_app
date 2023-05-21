@@ -64,7 +64,8 @@ class BaseInforTutor extends StatelessWidget {
                         allowHalfRating: true,
                         itemCount: 5,
                         itemSize: 20,
-                        itemPadding: const EdgeInsets.symmetric(horizontal: 4.0),
+                        itemPadding:
+                            const EdgeInsets.symmetric(horizontal: 4.0),
                         itemBuilder: (context, _) => const Icon(
                           Icons.star,
                           color: Colors.amber,
@@ -149,7 +150,9 @@ class BaseInforTutor extends StatelessWidget {
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(
                         content: Text(
-                          'Add favourite tutor successfully!', style: text14,)),
+                      'Add favourite tutor successfully!',
+                      style: text14,
+                    )),
                   );
                 },
                 child: BlocBuilder<TutorDetailCubit, TutorDetailState>(
@@ -190,7 +193,9 @@ class BaseInforTutor extends StatelessWidget {
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(
                                 content: Text(
-                                    'Report tutor successfully!', style: text14,)),
+                              'Report tutor successfully!',
+                              style: text14,
+                            )),
                           );
                         },
                       );
@@ -230,7 +235,7 @@ class ReportDialog extends StatelessWidget {
   final String title;
   final Function(String message) onSubmit;
 
-  ReportDialog({required this.title, required this.onSubmit});
+  ReportDialog({super.key, required this.title, required this.onSubmit});
 
   @override
   Widget build(BuildContext context) {

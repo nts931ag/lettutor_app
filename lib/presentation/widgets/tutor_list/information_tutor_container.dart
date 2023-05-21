@@ -9,6 +9,7 @@ import 'package:lettutor_app/config/router/router_arguments.dart';
 import 'package:lettutor_app/domain/models/Tutor.dart';
 import 'package:lettutor_app/domain/repositories/api_repository.dart';
 import 'package:lettutor_app/locator.dart';
+import 'package:lettutor_app/presentation/cubits/schedule/schedule_list_cubit.dart';
 import 'package:lettutor_app/presentation/cubits/tutor/tutor_detail_cubit.dart';
 import 'package:lettutor_app/presentation/cubits/tutor/tutor_list_cubit.dart';
 import 'package:lettutor_app/presentation/widgets/commons/box_shadow_container.dart';
@@ -165,6 +166,9 @@ class InformationTutorContainer extends StatelessWidget {
                                     tutor: tutor,
                                     tutorListCubit:
                                         BlocProvider.of<TutorListCubit>(
+                                            context),
+                                    scheduleListCubit:
+                                        BlocProvider.of<ScheduleListCubit>(
                                             context)),
                               );
                             },

@@ -3,14 +3,18 @@ import 'package:lettutor_app/domain/models/Feedback.dart';
 import 'package:lettutor_app/domain/models/Schedule.dart';
 import 'package:lettutor_app/domain/models/Tutor.dart';
 import 'package:lettutor_app/domain/repositories/api_repository.dart';
+import 'package:lettutor_app/presentation/cubits/schedule/schedule_list_cubit.dart';
 import 'package:lettutor_app/presentation/cubits/tutor/tutor_list_cubit.dart';
 
 class TutorDetailArguments {
   final Tutor tutor;
   final TutorListCubit tutorListCubit;
+  final ScheduleListCubit scheduleListCubit;
 
   const TutorDetailArguments(
-      {required this.tutor, required this.tutorListCubit});
+      {required this.tutor,
+      required this.tutorListCubit,
+      required this.scheduleListCubit});
 }
 
 class ReviewsArguments {
@@ -46,5 +50,15 @@ class MeetingArguments {
 
   const MeetingArguments({
     required this.studentMeetingLink,
+  });
+}
+
+class BookingScreenArguments {
+  final ScheduleListCubit scheduleListCubit;
+  final String tutorId;
+
+  const BookingScreenArguments({
+    required this.scheduleListCubit,
+    required this.tutorId,
   });
 }

@@ -2,8 +2,8 @@ import 'package:equatable/equatable.dart';
 import 'package:lettutor_app/domain/models/ScheduleDetailInfo.dart';
 
 class Schedule extends Equatable {
-  int createdAtTimeStamp;
-  int updatedAtTimeStamp;
+  int? createdAtTimeStamp;
+  int? updatedAtTimeStamp;
   String id;
   String userId;
   String scheduleDetailId;
@@ -26,8 +26,8 @@ class Schedule extends Equatable {
   List<dynamic>? studentMaterials;
 
   Schedule({
-    required this.createdAtTimeStamp,
-    required this.updatedAtTimeStamp,
+    this.createdAtTimeStamp,
+    this.updatedAtTimeStamp,
     required this.id,
     required this.userId,
     required this.scheduleDetailId,
@@ -79,8 +79,8 @@ class Schedule extends Equatable {
 
   factory Schedule.fromMap(Map<String, dynamic> map) {
     return Schedule(
-      createdAtTimeStamp: map['createdAtTimeStamp'] as int,
-      updatedAtTimeStamp: map['updatedAtTimeStamp'] as int,
+      createdAtTimeStamp: map['createdAtTimeStamp'] as int?,
+      updatedAtTimeStamp: map['updatedAtTimeStamp'] as int?,
       id: map['id'] as String,
       userId: map['userId'] as String,
       scheduleDetailId: map['scheduleDetailId'] as String,

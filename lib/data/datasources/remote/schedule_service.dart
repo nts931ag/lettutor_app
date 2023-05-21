@@ -1,4 +1,6 @@
 import 'package:dio/dio.dart';
+import 'package:lettutor_app/domain/models/responses/BookingClassResponse.dart';
+import 'package:lettutor_app/domain/models/responses/BookingSchedulesDataReponse.dart';
 import 'package:lettutor_app/domain/models/responses/CancelBookingDataResponse.dart';
 import 'package:lettutor_app/domain/models/responses/SchedulesDataResponse.dart';
 import 'package:lettutor_app/domain/models/responses/TotalHoursResponse.dart';
@@ -42,4 +44,15 @@ abstract class ScheduleService {
   @DELETE('booking')
   Future<HttpResponse<CancelBookingDataResponse>> cancelBooking(
       @Body() request);
+
+  @GET('schedule')
+  Future<HttpResponse<BookingSchedulesDataReponse>> getBookingScheduleOfTutor(
+      @Query('tutorId') String tutorId,
+      @Query('startTimestamp') int startTimestamp,
+      @Query('endTimestamp') int endTimestamp);
+
+  @POST('booking')
+  Future<HttpResponse<BookingClassResponse>> bookClass(
+    @Body() request,
+  );
 }

@@ -13,13 +13,43 @@ class ScheduleListCubit extends BaseCubit<ScheduleListState, List<Schedule>> {
 
   ScheduleListCubit(this._apiRepository)
       : super(const ScheduleListLoading(), []);
-  final _timestamp = DateTime.now().millisecondsSinceEpoch;
+  int _timestamp = DateTime.now().millisecondsSinceEpoch;
   int _page = 1;
 
   Future<void> getScheduleListWithPagination() async {
     if (isBusy) return;
 
     await run(() async {
+      final response = await _apiRepository.getListScheduleWithPagination(
+          page: _page,
+          perPage: defaultPageSize,
+          dateTimeGte: _timestamp,
+          orderBy: "meeting",
+          sortBy: "asc");
+
+      if (response is DataSuccess) {
+        final courses = response.data!.schedules;
+        final noMoreData = response.data!.scheduleCount < defaultPageSize;
+
+        data!.addAll(courses!);
+        _page++;
+
+        emit(ScheduleListSuccess(
+            schedules: List.of(data!), noMoreData: noMoreData));
+      } else if (response is DataFailed) {
+        emit(ScheduleListFailed(error: response.error));
+      }
+    });
+  }
+
+  Future<void> reloadScheduleListWithPagination() async {
+    if (isBusy) return;
+    await run(() async {
+      _timestamp = DateTime.now().millisecondsSinceEpoch;
+      _page = 1;
+
+      emit(const ScheduleListLoading());
+
       final response = await _apiRepository.getListScheduleWithPagination(
           page: _page,
           perPage: defaultPageSize,
@@ -59,7 +89,7 @@ class ScheduleListCubit extends BaseCubit<ScheduleListState, List<Schedule>> {
         emit(ScheduleListSuccess(
             schedules: List.of(data!), noMoreData: state.noMoreData));
 
-       /* state.schedules.removeWhere((element) => element.id == scheduleId);
+        /* state.schedules.removeWhere((element) => element.id == scheduleId);
         data!.clear();
         data!.addAll(state.schedules);
         emit(ScheduleListSuccess(

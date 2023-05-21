@@ -1,6 +1,8 @@
 import 'package:lettutor_app/domain/models/Tutor.dart';
 import 'package:lettutor_app/domain/models/User.dart';
 import 'package:lettutor_app/domain/models/requests/TutorSearchRequest.dart';
+import 'package:lettutor_app/domain/models/responses/BookingClassResponse.dart';
+import 'package:lettutor_app/domain/models/responses/BookingSchedulesDataReponse.dart';
 import 'package:lettutor_app/domain/models/responses/CancelBookingDataResponse.dart';
 import 'package:lettutor_app/domain/models/responses/CoursesDataResponse.dart';
 import 'package:lettutor_app/domain/models/responses/FeedbacksDataResponse.dart';
@@ -65,4 +67,12 @@ abstract class ApiRepository {
 
   Future<DataState<CancelBookingDataResponse>> cancelBooking(
       {required String id, required int reasonId});
+
+  Future<DataState<BookingSchedulesDataReponse>> getBookingScheduleOfTutor(
+      {required String tutorId,
+      required int startTimestamp,
+      required int endTimestamp});
+
+  Future<DataState<BookingClassResponse>> bookClass(
+      {required List<String> scheduleDetailId, required String note});
 }

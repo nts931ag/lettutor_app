@@ -27,7 +27,7 @@ class _FilterCourseAreaState extends State<FilterCourseArea> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          AppLocalizations.of(context)!.dash_board_find_tutor,
+          AppLocalizations.of(context)!.dash_board_find_course,
           style:
               text28.copyWith(color: primaryColor, fontWeight: FontWeight.w700),
         ),
