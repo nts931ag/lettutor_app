@@ -11,26 +11,29 @@ import 'package:lettutor_app/utils/resource/dimens.dart';
 import 'package:lettutor_app/config/theme/text_theme.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-
 class ItemWidget extends StatelessWidget {
   String date;
   String subTime;
   String name;
+  String? studentMeetingLink;
   bool isDisableButton;
   Widget avatar;
   Widget imgNation;
   Widget child;
+  String nation;
 
-  ItemWidget({
-    Key? key,
-    required this.date,
-    required this.subTime,
-    required this.name,
-    required this.isDisableButton,
-    required this.avatar,
-    required this.imgNation,
-    required this.child,
-  }) : super(key: key);
+  ItemWidget(
+      {Key? key,
+      required this.date,
+      required this.subTime,
+      required this.name,
+      required this.isDisableButton,
+      required this.avatar,
+      required this.imgNation,
+      required this.child,
+      this.studentMeetingLink,
+      this.nation = 'IT'})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -67,7 +70,7 @@ class ItemWidget extends StatelessWidget {
                   InformationArea(
                     img: imgNation,
                     name: name,
-                    nation: 'Việt Nam',
+                    nation: nation,
                     child: Row(
                       children: [
                         Icon(
@@ -104,18 +107,21 @@ class ItemWidget extends StatelessWidget {
                       child: LoadingButtonWidget(
                           primaryColor: primaryColor,
                           submit: () {
-                            _goMeeting(context);
+                            // _goMeeting(context);
+                            Navigator.pushNamed(context, MyRouter.joinMeeting,
+                                arguments: MeetingArguments(
+                                    studentMeetingLink: studentMeetingLink!));
                           },
                           isLoading: false,
-                          label: AppLocalizations.of(context)!.schedule_go_meeting),
+                          label: AppLocalizations.of(context)!
+                              .schedule_go_meeting),
                     ),
                   )
                 : const SizedBox()
           ],
         ));
   }
-
-  _goMeeting(BuildContext context) async {
-    Navigator.pushNamed(context, MyRouter.joinMeeting,);
-  }
+//
+// _goMeeting(BuildContext context, ) async {
+// }
 }

@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:lettutor_app/domain/models/responses/CancelBookingDataResponse.dart';
 import 'package:lettutor_app/domain/models/responses/SchedulesDataResponse.dart';
 import 'package:lettutor_app/domain/models/responses/TotalHoursResponse.dart';
 import 'package:lettutor_app/domain/models/responses/UpcomingSchedulesResponse.dart';
@@ -37,4 +38,8 @@ abstract class ScheduleService {
 
   @GET('call/total')
   Future<HttpResponse<TotalHoursReponse>> getTotalHours();
+
+  @DELETE('booking')
+  Future<HttpResponse<CancelBookingDataResponse>> cancelBooking(
+      @Body() request);
 }

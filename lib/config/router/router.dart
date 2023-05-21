@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lettutor_app/config/router/error_page.dart';
 import 'package:lettutor_app/config/router/router_arguments.dart';
+import 'package:lettutor_app/presentation/cubits/tutor/feedback_list_cubit.dart';
 import 'package:lettutor_app/presentation/views/base_screen.dart';
 import 'package:lettutor_app/presentation/views/course_list_screen.dart';
 import 'package:lettutor_app/presentation/views/course_overall_screen.dart';
@@ -13,6 +15,7 @@ import 'package:lettutor_app/presentation/views/schedule_screen.dart';
 import 'package:lettutor_app/presentation/views/settings_screen.dart';
 import 'package:lettutor_app/presentation/views/tutor_detail_screen.dart';
 import 'package:lettutor_app/presentation/views/tutor_list_screen.dart';
+import 'package:lettutor_app/presentation/widgets/base/base_scaffold_custom_widget.dart';
 
 class MyRouter {
   // Base
@@ -105,13 +108,27 @@ class MyRouter {
       case profile:
         return successRoute(const ProfileScreen(), settings);
       case joinMeeting:
-
-        return successRoute(const Meeting(), settings);
+        if (args is MeetingArguments) {
+          return successRoute(
+              Meeting(studentMeetingLink: args.studentMeetingLink), settings);
+        } else {
+          return errorRoute(
+              'Input for Tutor detail page is not TutorDetailArguments',
+              settings);
+        }
       case reviews:
         if (args is ReviewsArguments) {
           return successRoute(
-              ReviewScreen(
-                feedbacks: args.feedbacks,
+              BlocProvider(
+                create: (context) => FeedbackListCubit(args.apiRepository)
+                  ..getFeedbackTutorWithTutorId(tutorId: args.tutorId),
+                child: SafeArea(
+                  child: BaseScaffoldWidgetCustom(
+                    body: ReviewScreen(
+                      tutorId: args.tutorId,
+                    ),
+                  ),
+                ),
               ),
               settings);
         } else {

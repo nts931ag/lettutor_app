@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:lettutor_app/presentation/widgets/commons/buttons/loading_button_widget.dart';
 import 'package:lettutor_app/presentation/widgets/commons/text/text_container_widget.dart';
 import 'package:lettutor_app/utils/resource/colors/colors_core.dart';
 import 'package:lettutor_app/utils/resource/dimens.dart';
@@ -27,26 +28,25 @@ class FilterTutorArea extends StatelessWidget {
         Row(
           children: [
             Expanded(
-              child: Container(
-                child: TextField(
-                  keyboardType: TextInputType.text,
-                  textAlign: TextAlign.start,
-                  // controller: _txtController,
-                  decoration: const InputDecoration(
-                      suffixIcon: Icon(
-                        FontAwesomeIcons.search,
-                        color: Colors.black12,
-                      ),
-                      contentPadding: EdgeInsets.all(18),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.zero),
-                      ),
-                      hintText: 'Enter tutor name',
-                      hintStyle: TextStyle(color: Colors.black12)),
-                  onChanged: (value) {
-                    // onSearch("$value");
-                  },
-                ),
+              child: TextField(
+                keyboardType: TextInputType.text,
+                textAlign: TextAlign.start,
+                // controller: _txtController,
+                decoration: InputDecoration(
+                    suffixIcon: IconButton(
+                      icon: const Icon(FontAwesomeIcons.search),
+                      onPressed: () {},
+                      color: Colors.black12,
+                    ),
+                    contentPadding: const EdgeInsets.all(18),
+                    border: const OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.zero),
+                    ),
+                    hintText: 'Enter tutor name',
+                    hintStyle: const TextStyle(color: Colors.black12)),
+                onChanged: (value) {
+                  // onSearch("$value");
+                },
               ),
             ),
             SizedBox(
@@ -62,12 +62,16 @@ class FilterTutorArea extends StatelessWidget {
         SizedBox(
           height: 15.h,
         ),
-        TextContainer(
-          title: AppLocalizations.of(context)!.dash_board_reset_filter,
-          color: Colors.white,
-          borderColor: primaryColor,
-          textColor: primaryColor,
-        )
+        TextButton(
+          onPressed: () {},
+          style: TextButton.styleFrom(
+            backgroundColor: primaryColor,
+            foregroundColor: whiteColor,
+            padding: EdgeInsets.all(8.w),
+            textStyle: text14,
+          ),
+          child: Text(AppLocalizations.of(context)!.dash_board_reset_filter),
+        ),
       ],
     );
   }

@@ -59,8 +59,8 @@ class _MyAppState extends State<MyApp> {
         providers: [
           BlocProvider(
             create: (context) => AuthCubit(
-                locator<ApiRepository>(),
-                ),
+              locator<ApiRepository>(),
+            ),
           ),
         ],
         child: MaterialApp(
@@ -85,28 +85,25 @@ class _MyAppState extends State<MyApp> {
                 case AuthenticatedState:
                   return MultiBlocProvider(
                     providers: [
-                  BlocProvider(
-                    create: (context) => TutorListCubit(
-                      locator<ApiRepository>(),
-                    )..searchTutorsWithPagination(),
-                  ),
-                  BlocProvider(
-                    create: (context) => CourseListCubit(
-                      locator<ApiRepository>(),
-                    )..getCourseWithPagination(),
-                  ),
-                  BlocProvider(
-                    create: (context) => ScheduleListCubit(
-                      locator<ApiRepository>(),
-                    )
-                      ..getScheduleListWithPagination()
-                  ),
-                  BlocProvider(
-                    create: (context) => HistoryListCubit(
-                      locator<ApiRepository>(),
-                    )
-                      ..getHistoryScheduleListWithPagination(),
-                  ),
+                      BlocProvider(
+                        create: (context) => TutorListCubit(
+                          locator<ApiRepository>(),
+                        )..searchTutorsWithPagination(),
+                      ),
+                      BlocProvider(
+                        create: (context) => CourseListCubit(
+                          locator<ApiRepository>(),
+                        )..getCourseWithPagination(),
+                      ),
+                      BlocProvider(
+                          create: (context) => ScheduleListCubit(
+                                locator<ApiRepository>(),
+                              )..getScheduleListWithPagination()),
+                      BlocProvider(
+                        create: (context) => HistoryListCubit(
+                          locator<ApiRepository>(),
+                        )..getHistoryScheduleListWithPagination(),
+                      ),
                     ],
                     child: const BaseScreen(),
                   );

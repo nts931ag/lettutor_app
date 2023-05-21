@@ -94,7 +94,7 @@ class CourseListScreen extends HookWidget {
                 return const SliverToBoxAdapter(
                     child: Center(child: Icon(Ionicons.refresh)));
               case CourseListSuccess:
-                return _buildCourseCustom(
+                return _buildCourse(
                   context,
                   state.courses,
                   state.noMoreData,
@@ -118,7 +118,7 @@ class CourseListScreen extends HookWidget {
     );
   }
 
-  Widget _buildCourseCustom(
+  Widget _buildCourse(
     BuildContext context,
     List<Course> courses,
     bool noMoreData,
@@ -145,7 +145,7 @@ class CourseListScreen extends HookWidget {
                 bottomWidget: Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    Text(courses[index].level, style: text14),
+                    Text("Level ${courses[index].level}", style: text14),
                     SizedBox(
                       width: 5.w,
                     ),
@@ -166,7 +166,7 @@ class CourseListScreen extends HookWidget {
                     Text(courses[index].topics!.length.toString(),
                         style: text14),
                     Text(
-                      AppLocalizations.of(context)!.course_lessons,
+                      " ${AppLocalizations.of(context)!.course_lessons}",
                       style: text14,
                     ),
                   ],
@@ -182,190 +182,6 @@ class CourseListScreen extends HookWidget {
           ],
         ),
       ),
-    );
-  }
-
-  Widget _buildCourses(
-    BuildContext context,
-    ScrollController scrollController,
-    List<Course> courses,
-    bool noMoreData,
-  ) {
-    return CustomScrollView(
-      controller: scrollController,
-      slivers: [
-        SliverToBoxAdapter(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              SizedBox(
-                height: 25.h,
-              ),
-              // const InformationCourse(),
-              const HeaderCourse(),
-              SizedBox(
-                height: 20.h,
-              ),
-              Text(
-                AppLocalizations.of(context)!.course_content,
-                style: text15,
-              ),
-              SizedBox(
-                height: 14.h,
-              ),
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Column(
-                    children: [
-                      SizedBox(
-                        width: Get.width / 2 - 25.w,
-                        child: BaseTextField(
-                            onChanged: (value) {},
-                            controller: null,
-                            hintText:
-                                AppLocalizations.of(context)!.course_level,
-                            icon: const Icon(Icons.expand_more)),
-                      ),
-                      SizedBox(
-                        height: 10.h,
-                      ),
-                      SizedBox(
-                        width: Get.width / 2 - 25.w,
-                        child: BaseTextField(
-                            onChanged: (value) {},
-                            controller: null,
-                            hintText:
-                                AppLocalizations.of(context)!.course_sort_lv,
-                            icon: const Icon(Icons.expand_more)),
-                      ),
-                    ],
-                  ),
-                  const Spacer(),
-                  SizedBox(
-                    width: Get.width / 2 - 25.w,
-                    child: BaseTextField(
-                        onChanged: (value) {},
-                        controller: null,
-                        hintText: AppLocalizations.of(context)!.course_category,
-                        icon: const Icon(Icons.expand_more)),
-                  ),
-                ],
-              ),
-              SizedBox(
-                height: 20.h,
-              ),
-              // TabBarview(),
-              Row(
-                children: [
-                  TabBarItem(
-                    // onTap: () {
-                    //   controller.onTapInDexTabBar(0);
-                    // },
-                    // title: LocalString.course,
-                    // isSelecting: 0 == controller.index.value,
-                    title: AppLocalizations.of(context)!.course,
-                    isSelecting: true,
-                  ),
-                  SizedBox(width: 20.w),
-                  TabBarItem(
-                    // onTap: () {
-                    //   controller.onTapInDexTabBar(1);
-                    // },
-                    // title: LocalString.eBook,
-                    // isSelecting: 1 == controller.index.value,
-                    title: AppLocalizations.of(context)!.e_book,
-                    isSelecting: true,
-                  ),
-                  SizedBox(width: 20.w),
-                  TabBarItem(
-                    // onTap: () {
-                    //   controller.onTapInDexTabBar(2);
-                    // },
-                    // title: LocalString.ieBook,
-                    // isSelecting: 2 == controller.index.value,
-                    title: AppLocalizations.of(context)!.i_e_book,
-                    isSelecting: true,
-                  ),
-                ],
-              ),
-              SizedBox(
-                height: 20.h,
-              ),
-            ],
-          ),
-        ),
-        SliverList(
-          delegate: SliverChildBuilderDelegate(
-            childCount: courses.length,
-            (context, index) => Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                SizedBox(
-                  height: 30.h,
-                ),
-                BoxShadowContainer(
-                  onTap: () {
-                    Navigator.pushNamed(context, MyRouter.courseDetail,
-                        arguments:
-                            CourseDetailArguments(course: courses[index]));
-                  },
-                  width: 280.w,
-                  padding: EdgeInsets.only(bottom: 20.h),
-                  child: CourseItem(
-                    mainTitle: courses[index].name,
-                    subTitle: courses[index].description,
-                    bottomWidget: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Text(courses[index].level, style: text14),
-                        SizedBox(
-                          width: 5.w,
-                        ),
-                        Container(
-                          width: 10.w,
-                          height: 10.w,
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            color: Colors.grey,
-                            border: Border.fromBorderSide(
-                              BorderSide(color: Colors.white, width: 3.w),
-                            ),
-                          ),
-                        ),
-                        SizedBox(
-                          width: 5.w,
-                        ),
-                        Text(courses[index].topics!.length.toString(),
-                            style: text14),
-                        Text(
-                          AppLocalizations.of(context)!.course_lessons,
-                          style: text14,
-                        ),
-                      ],
-                    ),
-                    image: Image.network(
-                      courses[index].imageUrl,
-                      errorBuilder: (context, exception, stackTrace) {
-                        return Assets.images.imgCourse1
-                            .image(fit: BoxFit.cover);
-                      },
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ),
-        if (!noMoreData)
-          const SliverToBoxAdapter(
-            child: Padding(
-              padding: EdgeInsets.only(top: 14, bottom: 32),
-              child: CupertinoActivityIndicator(),
-            ),
-          )
-      ],
     );
   }
 }

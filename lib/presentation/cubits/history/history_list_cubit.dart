@@ -26,7 +26,7 @@ class HistoryListCubit extends BaseCubit<HistoryListState, List<Schedule>> {
       await _apiRepository.getListHistoryScheduleWithPagination(
           page: _page,
           perPage: defaultPageSize,
-          dateTimeLte: timestamp,
+          dateTimeLte: DateTime.now().millisecondsSinceEpoch,
           orderBy: "meeting",
           sortBy: "desc");
 

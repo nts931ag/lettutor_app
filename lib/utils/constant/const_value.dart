@@ -122,3 +122,9 @@ List<Specialities> specialitiesCutom = [
     group: SpecialitiesGroup.topic,
   ),
 ];
+
+class ButtonType {
+  static const outlinedButton = "outlinedButton";
+  static const filledButton = "filledButton";
+  static const filledWhiteButton = "filledWhiteButton";
+}

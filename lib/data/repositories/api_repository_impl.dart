@@ -8,7 +8,9 @@ import 'package:lettutor_app/data/repositories/base/base_api_repository.dart';
 import 'package:lettutor_app/domain/models/Tutor.dart';
 import 'package:lettutor_app/domain/models/User.dart';
 import 'package:lettutor_app/domain/models/requests/TutorSearchRequest.dart';
+import 'package:lettutor_app/domain/models/responses/CancelBookingDataResponse.dart';
 import 'package:lettutor_app/domain/models/responses/CoursesDataResponse.dart';
+import 'package:lettutor_app/domain/models/responses/FeedbacksDataResponse.dart';
 import 'package:lettutor_app/domain/models/responses/SchedulesDataResponse.dart';
 import 'package:lettutor_app/domain/models/responses/TotalHoursResponse.dart';
 import 'package:lettutor_app/domain/models/responses/TutorsDataResponse.dart';
@@ -66,11 +68,11 @@ class ApiRepositoryImpl extends BaseApiRepository implements ApiRepository {
   @override
   Future<DataState<SchedulesDataResponse>>
       getListHistoryScheduleWithPagination({
-    required perPage,
-    required page,
-    required dateTimeLte,
-    required orderBy,
-    required sortBy,
+    required int perPage,
+    required int page,
+    required int dateTimeLte,
+    required String orderBy,
+    required String sortBy,
   }) {
     return getStateOf<SchedulesDataResponse>(
         request: () => _scheduleService.getListHistoryScheduleWithPagination(
@@ -79,11 +81,11 @@ class ApiRepositoryImpl extends BaseApiRepository implements ApiRepository {
 
   @override
   Future<DataState<SchedulesDataResponse>> getListScheduleWithPagination({
-    required perPage,
-    required page,
-    required dateTimeGte,
-    required orderBy,
-    required sortBy,
+    required int perPage,
+    required int page,
+    required int dateTimeGte,
+    required String orderBy,
+    required String sortBy,
   }) {
     return getStateOf<SchedulesDataResponse>(
         request: () => _scheduleService.getListScheduleWithPagination(
@@ -183,6 +185,27 @@ class ApiRepositoryImpl extends BaseApiRepository implements ApiRepository {
     return getStateOf<UpcomingSchedulesResponse>(
       request: () => _scheduleService
           .getUpcomingSchedule(DateTime.now().millisecondsSinceEpoch),
+    );
+  }
+
+  @override
+  Future<DataState<FeedbacksDataResponse>> getFeedbacksByTutorId(
+      {required String tutorId, required int page, required int perPage}) {
+    return getStateOf<FeedbacksDataResponse>(
+      request: () => _tutorService.getFeedbackByTutorId(tutorId, page, perPage),
+    );
+  }
+
+  @override
+  Future<DataState<CancelBookingDataResponse>> cancelBooking(
+      {required String id, required int reasonId}) {
+    return getStateOf<CancelBookingDataResponse>(
+      request: () => _scheduleService.cancelBooking(
+        {
+          "scheduleDetailIds": [id],
+          "cancelInfo": {"cancelReasonId": reasonId}
+        },
+      ),
     );
   }
 }

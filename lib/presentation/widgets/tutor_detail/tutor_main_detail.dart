@@ -9,7 +9,6 @@ import 'package:lettutor_app/utils/resource/dimens.dart';
 import 'package:lettutor_app/config/theme/text_theme.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-
 class TutorMainDetail extends StatelessWidget {
   const TutorMainDetail({
     required this.tutor,
@@ -40,21 +39,20 @@ class TutorMainDetail extends StatelessWidget {
             spacing: 5.0.w,
             runSpacing: 5.0.w,
             children: [
-              // TODO list special
-              // ...controller.listSpecial.map(
-              //   (e) => TextContainer(
-              //     title: e,
-              //     color: primaryColor.withOpacity(0.2),
-              //     textColor: primaryColor,
-              //   ),
-              // )
+              ...tutor.specialties.split(',').map(
+                    (e) => TextContainer(
+                      title: e,
+                      color: primaryColor.withOpacity(0.2),
+                      textColor: primaryColor,
+                    ),
+                  )
             ],
           ),
         ),
         SizedBox(
           height: 20.h,
         ),
-        SectionTutorDetail(
+        /*SectionTutorDetail(
           title: AppLocalizations.of(context)!.tutor_detail_suggested_course,
           child: Wrap(
             spacing: 5.0.w,
@@ -70,7 +68,7 @@ class TutorMainDetail extends StatelessWidget {
               // )
             ],
           ),
-        ),
+        ),*/
         SizedBox(
           height: 20.h,
         ),

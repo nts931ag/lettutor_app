@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:ionicons/ionicons.dart';
+import 'package:lettutor_app/config/router/router.dart';
+import 'package:lettutor_app/config/router/router_arguments.dart';
 import 'package:lettutor_app/domain/repositories/api_repository.dart';
 import 'package:lettutor_app/locator.dart';
 import 'package:lettutor_app/presentation/cubits/schedule/upcoming_schedule_cubit.dart';
@@ -136,25 +138,31 @@ class HeaderDashboard extends StatelessWidget {
                     ),
                     Text(
                       "${AppLocalizations.of(context)!.dash_board_total_time}:\n"
-                          "${formatTotalLessonHour(state.totalHours!)}",
+                      "${formatTotalLessonHour(state.totalHours!)}",
                       textAlign: TextAlign.center,
                       style: text18.copyWith(color: Colors.white),
                     ),
                     SizedBox(
                       height: 15.h,
                     ),
-                    Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 25.0.w),
-                      child: LoadingButtonWidget(
-                        submit: () {},
-                        isLoading: false,
-                        height: 35.h,
-                        textColor: primaryColor,
-                        primaryColor: Colors.white,
-                        label:
-                            AppLocalizations.of(context)!.dash_board_enter_room,
+                    if (state.upcomingSchedule != null)
+                      Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 25.0.w),
+                        child: LoadingButtonWidget(
+                          submit: () {
+                            Navigator.pushNamed(context, MyRouter.joinMeeting,
+                                arguments: MeetingArguments(
+                                    studentMeetingLink: state
+                                        .upcomingSchedule!.studentMeetingLink));
+                          },
+                          isLoading: false,
+                          height: 35.h,
+                          textColor: primaryColor,
+                          primaryColor: Colors.white,
+                          label: AppLocalizations.of(context)!
+                              .dash_board_enter_room,
+                        ),
                       ),
-                    ),
                   ],
                 ),
               );

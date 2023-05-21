@@ -1,3 +1,4 @@
+import 'package:country_code_picker/country_code_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
@@ -5,6 +6,8 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:lettutor_app/config/router/router.dart';
 import 'package:lettutor_app/config/router/router_arguments.dart';
 import 'package:lettutor_app/domain/models/Tutor.dart';
+import 'package:lettutor_app/domain/repositories/api_repository.dart';
+import 'package:lettutor_app/locator.dart';
 import 'package:lettutor_app/presentation/cubits/tutor/tutor_detail_cubit.dart';
 import 'package:lettutor_app/presentation/widgets/commons/icon/circle_box_widget.dart';
 import 'package:lettutor_app/presentation/widgets/commons/icon/icon_text_widget.dart';
@@ -29,7 +32,7 @@ class BaseInforTutor extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: 20.0.w),
+            padding: EdgeInsets.symmetric(horizontal: 10.0.w),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -42,46 +45,62 @@ class BaseInforTutor extends StatelessWidget {
                     },
                   ),
                 ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      tutor.name,
-                      style: text20.copyWith(fontWeight: FontWeight.w600),
-                    ),
-                    SizedBox(
-                      height: 10.h,
-                    ),
-                    RatingBar.builder(
-                      initialRating: tutor.rating,
-                      minRating: 0,
-                      maxRating: 5,
-                      direction: Axis.horizontal,
-                      allowHalfRating: true,
-                      itemCount: 5,
-                      itemSize: 20,
-                      itemPadding: const EdgeInsets.symmetric(horizontal: 4.0),
-                      itemBuilder: (context, _) => const Icon(
-                        Icons.star,
-                        color: Colors.amber,
-                        size: 5,
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        tutor.name,
+                        style: text20.copyWith(fontWeight: FontWeight.w600),
                       ),
-                      onRatingUpdate: (rating) {},
-                    ),
-                    SizedBox(
-                      height: 10.h,
-                    ),
-                    Row(
-                      children: [
-                        Assets.svg.common.iconUs.svg(height: 15.w, width: 25.w),
-                        SizedBox(width: 15.w),
-                        Text(
-                          tutor.country,
-                          style: text16,
+                      SizedBox(
+                        height: 10.h,
+                      ),
+                      RatingBar.builder(
+                        initialRating: tutor.rating,
+                        minRating: 0,
+                        maxRating: 5,
+                        direction: Axis.horizontal,
+                        allowHalfRating: true,
+                        itemCount: 5,
+                        itemSize: 20,
+                        itemPadding: const EdgeInsets.symmetric(horizontal: 4.0),
+                        itemBuilder: (context, _) => const Icon(
+                          Icons.star,
+                          color: Colors.amber,
+                          size: 5,
                         ),
-                      ],
-                    ),
-                  ],
+                        onRatingUpdate: (rating) {},
+                      ),
+                      SizedBox(
+                        height: 10.h,
+                      ),
+                      /*Row(
+                        children: [
+                          Assets.svg.common.iconUs.svg(height: 15.w, width: 25.w),
+                          SizedBox(width: 15.w),
+                          Text(
+                            tutor.country,
+                            style: text16,
+                          ),
+                        ],
+                      ),*/
+                      CountryCodePicker(
+                        onChanged: (value) {},
+                        // Initial selection and favorite can be one of code ('IT') OR dial_code('+39')
+                        initialSelection: tutor.country,
+                        // optional. Shows only country name and flag
+                        showCountryOnly: true,
+                        // optional. Shows only country name and flag when popup is closed.
+                        showOnlyCountryWhenClosed: true,
+                        // optional. aligns the flag and the Text left
+                        alignLeft: true,
+                        enabled: false,
+                        textStyle: text14,
+                        padding: EdgeInsets.zero,
+                      ),
+                    ],
+                  ),
                 ),
               ],
             ),
@@ -178,8 +197,9 @@ class BaseInforTutor extends StatelessWidget {
                   Navigator.pushNamed(
                     context,
                     MyRouter.reviews,
-                    arguments:
-                        ReviewsArguments(feedbacks: tutor.feedbacks ?? []),
+                    arguments: ReviewsArguments(
+                        tutorId: tutor.userId,
+                        apiRepository: locator<ApiRepository>()),
                   );
                 },
                 child: IconText(

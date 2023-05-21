@@ -1,50 +1,47 @@
 import 'package:flutter/material.dart';
 import 'package:jitsi_meet_wrapper/jitsi_meet_wrapper.dart';
+import 'package:jwt_decoder/jwt_decoder.dart';
 import 'package:lettutor_app/domain/models/Schedule.dart';
 import 'package:lettutor_app/presentation/widgets/base/base_scaffold_custom_widget.dart';
 
 class Meeting extends StatefulWidget {
-  const Meeting({Key? key}) : super(key: key);
+  const Meeting({Key? key, required this.studentMeetingLink}) : super(key: key);
 
+  final String studentMeetingLink;
 
   @override
   _MeetingState createState() => _MeetingState();
 }
 
 class _MeetingState extends State<Meeting> {
-  final serverText = TextEditingController();
-  final roomText = TextEditingController(text: "jitsi-meet-wrapper-test-room");
-  final subjectText = TextEditingController(text: "My Plugin Test Meeting");
-  final tokenText = TextEditingController();
-  final userDisplayNameText = TextEditingController(text: "Plugin Test User");
-  final userEmailText = TextEditingController(text: "fake@email.com");
-  final userAvatarUrlText = TextEditingController();
-
   bool isAudioMuted = true;
   bool isAudioOnly = false;
   bool isVideoMuted = true;
+  int startTime = 0;
+  int endSession = 0;
+  int timeInRoom = 0;
+  String roomName = '';
+  String imgUrl = '';
+  String name = '';
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
-    setState(() {
-      serverText.text = "";
-      roomText.text = "lettutor";
-      subjectText.text = "";
-      // tokenText.text = TextEditingController();
-      userDisplayNameText.text = "PHHAI0";
-      userEmailText.text = "student@lettutor.com";
-      // userAvatarUrlText.text = TextEditingController();
-    });
+    Map<String, dynamic> decodedToken =
+        JwtDecoder.decode(widget.studentMeetingLink);
+    roomName = decodedToken['roomName'] ?? '';
+    imgUrl = decodedToken['userCall']['avatar'] ?? '';
+    name = decodedToken['userCall']['name'] ?? '';
+    startTime = decodedToken['startTime'] ?? 0;
   }
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-        child: BaseScaffoldWidgetCustom(
-      body: buildMeetConfig(),
-    ),);
+      child: BaseScaffoldWidgetCustom(
+        body: buildMeetConfig(),
+      ),
+    );
   }
 
   Widget buildMeetConfig() {
@@ -52,46 +49,19 @@ class _MeetingState extends State<Meeting> {
       child: Column(
         children: <Widget>[
           const SizedBox(height: 16.0),
-          _buildTextField(
-            labelText: "Server URL",
-            controller: serverText,
-            hintText: "Hint: Leave empty for meet.jitsi.si",
-          ),
-          const SizedBox(height: 16.0),
-          _buildTextField(labelText: "Room", controller: roomText),
-          const SizedBox(height: 16.0),
-          _buildTextField(labelText: "Subject", controller: subjectText),
-          const SizedBox(height: 16.0),
-          _buildTextField(labelText: "Token", controller: tokenText),
-          const SizedBox(height: 16.0),
-          _buildTextField(
-            labelText: "User Display Name",
-            controller: userDisplayNameText,
-          ),
-          const SizedBox(height: 16.0),
-          _buildTextField(
-            labelText: "User Email",
-            controller: userEmailText,
-          ),
-          const SizedBox(height: 16.0),
-          _buildTextField(
-            labelText: "User Avatar URL",
-            controller: userAvatarUrlText,
-          ),
-          const SizedBox(height: 16.0),
-          CheckboxListTile(
+          SwitchListTile(
             title: const Text("Audio Muted"),
             value: isAudioMuted,
             onChanged: _onAudioMutedChanged,
           ),
           const SizedBox(height: 16.0),
-          CheckboxListTile(
+          SwitchListTile(
             title: const Text("Audio Only"),
             value: isAudioOnly,
             onChanged: _onAudioOnlyChanged,
           ),
           const SizedBox(height: 16.0),
-          CheckboxListTile(
+          SwitchListTile(
             title: const Text("Video Muted"),
             value: isVideoMuted,
             onChanged: _onVideoMutedChanged,
@@ -102,13 +72,13 @@ class _MeetingState extends State<Meeting> {
             width: double.maxFinite,
             child: ElevatedButton(
               onPressed: () => _joinMeeting(),
-              child: const Text(
-                "Join Meeting",
-                style: TextStyle(color: Colors.white),
-              ),
               style: ButtonStyle(
                 backgroundColor:
                     MaterialStateColor.resolveWith((states) => Colors.blue),
+              ),
+              child: const Text(
+                "Join Meeting",
+                style: TextStyle(color: Colors.white),
               ),
             ),
           ),
@@ -137,22 +107,16 @@ class _MeetingState extends State<Meeting> {
   }
 
   _joinMeeting() async {
-    String? serverUrl = serverText.text.trim().isEmpty ? null : serverText.text;
-
-    Map<FeatureFlag, Object> featureFlags = {};
 
     // Define meetings options here
     var options = JitsiMeetingOptions(
-      roomNameOrUrl: roomText.text,
-      serverUrl: serverUrl,
-      subject: subjectText.text,
-      token: tokenText.text,
+      roomNameOrUrl: roomName,
+      serverUrl: 'https://meet.lettutor.com',
+      userAvatarUrl: imgUrl,
       isAudioMuted: isAudioMuted,
       isAudioOnly: isAudioOnly,
       isVideoMuted: isVideoMuted,
-      userDisplayName: userDisplayNameText.text,
-      userEmail: userEmailText.text,
-      featureFlags: featureFlags,
+      userDisplayName: name,
     );
 
     debugPrint("JitsiMeetingOptions: $options");
@@ -208,17 +172,4 @@ class _MeetingState extends State<Meeting> {
     );
   }
 
-  Widget _buildTextField({
-    required String labelText,
-    required TextEditingController controller,
-    String? hintText,
-  }) {
-    return TextField(
-      controller: controller,
-      decoration: InputDecoration(
-          border: const OutlineInputBorder(),
-          labelText: labelText,
-          hintText: hintText),
-    );
-  }
 }

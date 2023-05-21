@@ -2,6 +2,7 @@ import 'package:lettutor_app/domain/models/Course.dart';
 import 'package:lettutor_app/domain/models/Feedback.dart';
 import 'package:lettutor_app/domain/models/Schedule.dart';
 import 'package:lettutor_app/domain/models/Tutor.dart';
+import 'package:lettutor_app/domain/repositories/api_repository.dart';
 import 'package:lettutor_app/presentation/cubits/tutor/tutor_list_cubit.dart';
 
 class TutorDetailArguments {
@@ -13,10 +14,12 @@ class TutorDetailArguments {
 }
 
 class ReviewsArguments {
-  final List<Feedback>? feedbacks;
+  final String tutorId;
+  final ApiRepository apiRepository;
 
   const ReviewsArguments({
-    required this.feedbacks,
+    required this.tutorId,
+    required this.apiRepository,
   });
 }
 
@@ -39,9 +42,9 @@ class PdfReaderArguments {
 }
 
 class MeetingArguments {
-  final Schedule schedule;
+  final String studentMeetingLink;
 
   const MeetingArguments({
-    required this.schedule,
+    required this.studentMeetingLink,
   });
 }

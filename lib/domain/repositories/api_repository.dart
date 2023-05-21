@@ -1,7 +1,9 @@
 import 'package:lettutor_app/domain/models/Tutor.dart';
 import 'package:lettutor_app/domain/models/User.dart';
 import 'package:lettutor_app/domain/models/requests/TutorSearchRequest.dart';
+import 'package:lettutor_app/domain/models/responses/CancelBookingDataResponse.dart';
 import 'package:lettutor_app/domain/models/responses/CoursesDataResponse.dart';
+import 'package:lettutor_app/domain/models/responses/FeedbacksDataResponse.dart';
 import 'package:lettutor_app/domain/models/responses/SchedulesDataResponse.dart';
 import 'package:lettutor_app/domain/models/responses/TotalHoursResponse.dart';
 import 'package:lettutor_app/domain/models/responses/TutorsDataResponse.dart';
@@ -28,11 +30,11 @@ abstract class ApiRepository {
       {required int page, required int size});
 
   Future<DataState<SchedulesDataResponse>> getListScheduleWithPagination({
-    required perPage,
-    required page,
-    required dateTimeGte,
-    required orderBy,
-    required sortBy,
+    required int perPage,
+    required int page,
+    required int dateTimeGte,
+    required String orderBy,
+    required String sortBy,
   });
 
   Future<DataState<UserDataResponse>> updateUserInformation(
@@ -40,11 +42,11 @@ abstract class ApiRepository {
 
   Future<DataState<SchedulesDataResponse>>
       getListHistoryScheduleWithPagination({
-    required perPage,
-    required page,
-    required dateTimeLte,
-    required orderBy,
-    required sortBy,
+    required int perPage,
+    required int page,
+    required int dateTimeLte,
+    required String orderBy,
+    required String sortBy,
   });
 
   Future<DataState<UpcomingSchedulesResponse>> getUpcomingSchedule();
@@ -57,4 +59,10 @@ abstract class ApiRepository {
 
   Future<DataState<void>> reportTutor(
       {required String tutorId, required String content});
+
+  Future<DataState<FeedbacksDataResponse>> getFeedbacksByTutorId(
+      {required String tutorId, required int page, required int perPage});
+
+  Future<DataState<CancelBookingDataResponse>> cancelBooking(
+      {required String id, required int reasonId});
 }

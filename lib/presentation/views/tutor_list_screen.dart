@@ -27,25 +27,6 @@ class TutorListScreen extends HookWidget {
 
       return scrollController.dispose;
     }, const []);
-/*
-    return BlocBuilder<TutorListCubit, TutorListState>(
-      builder: (_, state) {
-        switch (state.runtimeType) {
-          case TutorListLoading:
-            return const Center(child: CupertinoActivityIndicator());
-          case TutorListFailed:
-            return const Center(child: Icon(Ionicons.refresh));
-          case TutorListSuccess:
-            return _buildTutors(
-              scrollController,
-              state.tutors,
-              state.noMoreData,
-            );
-          default:
-            return const SizedBox();
-        }
-      },
-    );*/
     return _buildCommonCustomScrollView(context, scrollController);
   }
 }

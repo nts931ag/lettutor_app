@@ -27,6 +27,7 @@ class HistoryItem extends StatelessWidget {
             return Assets.images.img.image(fit: BoxFit.cover);
           },
         ),
+        nation: schedule.scheduleDetailInfo.scheduleInfo.tutorInfo.country,
         date: formatDayOfWeekAndDateFromTimestamp(
             schedule.scheduleDetailInfo.startPeriodTimestamp),
         imgNation: Assets.svg.common.iconUs.svg(height: 22.w, width: 22.w),

@@ -1,7 +1,12 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lettutor_app/config/router/router.dart';
 import 'package:lettutor_app/domain/models/Schedule.dart';
+import 'package:lettutor_app/presentation/cubits/schedule/schedule_list_cubit.dart';
 import 'package:lettutor_app/presentation/widgets/commons/buttons/loading_button_widget.dart';
+import 'package:lettutor_app/presentation/widgets/commons/dialogs/base_dialog/confirm_dialog.dart';
 import 'package:lettutor_app/presentation/widgets/commons/items/item_widget.dart';
 import 'package:lettutor_app/utils/resource/colors/colors_core.dart';
 import 'package:lettutor_app/utils/resource/dimens.dart';
@@ -19,6 +24,8 @@ class ScheduleItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
+
     return ItemWidget(
       avatar: Image.network(
         schedule.scheduleDetailInfo.scheduleInfo.tutorInfo.avatar,
@@ -26,6 +33,8 @@ class ScheduleItem extends StatelessWidget {
           return Assets.images.img.image(fit: BoxFit.cover);
         },
       ),
+      nation: schedule.scheduleDetailInfo.scheduleInfo.tutorInfo.country,
+      studentMeetingLink: schedule.studentMeetingLink,
       date: formatDayOfWeekAndDateFromTimestamp(
           schedule.scheduleDetailInfo.startPeriodTimestamp),
       imgNation: Assets.svg.common.iconUs.svg(height: 22.w, width: 22.w),
@@ -50,7 +59,14 @@ class ScheduleItem extends StatelessWidget {
                   width: 80.w,
                   height: 30.h,
                   child: LoadingButtonWidget(
-                    submit: () {},
+                    submit: () {
+                      onPressedCancel(
+                          context,
+                          size,
+                          schedule.scheduleDetailInfo.startPeriodTimestamp,
+                          schedule.id,
+                          BlocProvider.of<ScheduleListCubit>(context));
+                    },
                     isLoading: false,
                     primaryColor: Colors.red,
                     label: AppLocalizations.of(context)!.cancel,
@@ -92,7 +108,9 @@ class ScheduleItem extends StatelessWidget {
                   Container(
                     padding: EdgeInsets.all(10.w),
                     child: Text(
-                      schedule.studentRequest ?? AppLocalizations.of(context)!.schedule_request_content,
+                      schedule.studentRequest ??
+                          AppLocalizations.of(context)!
+                              .schedule_request_content,
                       style: text14.copyWith(color: Colors.black),
                     ),
                   ),
@@ -106,5 +124,90 @@ class ScheduleItem extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  void onPressedCancel(BuildContext context, Size size, int startTimestamp,
+      String id, ScheduleListCubit scheduleListCubit) {
+    if (isAllowedToCancel(
+        DateTime.fromMicrosecondsSinceEpoch(startTimestamp))) {
+      final List<DropdownMenuItem<String>> cancelReasonList = [
+        const DropdownMenuItem(
+            value: 'Reschedule at another time',
+            child: Text('Reschedule at another time')),
+        const DropdownMenuItem(
+            value: 'Busy at that time', child: Text('Busy at that time')),
+        const DropdownMenuItem(
+            value: 'Asked by the tutor', child: Text('Asked by the tutor')),
+        const DropdownMenuItem(value: 'Other', child: Text('Other')),
+      ];
+      String? selectedValue = cancelReasonList.first.value;
+
+      //Dialogs
+      showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            int reasonId = 1;
+            return ConfirmDialog(
+              content: null,
+              title: AppLocalizations.of(context)!.cancelLesson,
+              widget: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(AppLocalizations.of(context)!.doYouWantToCancel),
+                  Container(
+                      margin: const EdgeInsets.symmetric(vertical: 16),
+                      child: DropdownButtonFormField(
+                        items: cancelReasonList,
+                        value: selectedValue,
+                        decoration: InputDecoration(
+                          focusedBorder: OutlineInputBorder(
+                            borderSide:
+                                const BorderSide(color: Colors.blue, width: 2),
+                            borderRadius: BorderRadius.circular(5),
+                          ),
+                          border: OutlineInputBorder(
+                            borderSide:
+                                const BorderSide(color: Colors.black, width: 2),
+                            borderRadius: BorderRadius.circular(5),
+                          ),
+                        ),
+                        onChanged: (String? value) {
+                          reasonId = cancelReasonList.indexWhere(
+                                  (element) => element.value == selectedValue) +
+                              1;
+                          /*setState(() {
+                            selectedValue = value;
+                          });*/
+                        },
+                      )),
+                ],
+              ),
+              size: size,
+              onRightButton: () {
+                scheduleListCubit.cancelBookingByScheduleId(
+                    scheduleId: id, reasonId: reasonId);
+                Navigator.of(context).pop();
+              },
+              onLeftButton: () {
+                Navigator.of(context).pop();
+              },
+              leftButton: AppLocalizations.of(context)!.cancel,
+              rightButton: AppLocalizations.of(context)!.confirm,
+              hasLeftButton: true,
+            );
+          });
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+            content: Text(
+                'Classes can only be canceled within 2 hours before starting.')),
+      );
+    }
+  }
+
+  bool isAllowedToCancel(DateTime lessonStart) {
+    var timeToLesson = DateTime.now().difference(lessonStart);
+    return timeToLesson.compareTo(const Duration(hours: 2)) > 0;
   }
 }

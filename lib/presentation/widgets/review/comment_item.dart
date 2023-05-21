@@ -25,56 +25,6 @@ class CommentItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // return Row(
-    //   crossAxisAlignment: CrossAxisAlignment.start,
-    //   children: [
-    //     CircleBox(size: 40.w, child: image),
-    //     SizedBox(width: 10.w),
-    //     Column(
-    //       crossAxisAlignment: CrossAxisAlignment.start,
-    //       children: [
-    //         Row(
-    //           children: [
-    //             Text(
-    //               name,
-    //               style: text15.copyWith(fontWeight: FontWeight.w600),
-    //             ),
-    //             SizedBox(width: 5.w),
-    //             Text(
-    //               time,
-    //               style: text13.copyWith(color: Colors.grey),
-    //             )
-    //           ],
-    //         ),
-    //         RatingBar.builder(
-    //           initialRating: rating,
-    //           minRating: rating,
-    //           maxRating: rating,
-    //           direction: Axis.horizontal,
-    //           allowHalfRating: true,
-    //           itemCount: 5,
-    //           itemSize: 15,
-    //           itemPadding: const EdgeInsets.symmetric(horizontal: 3.0),
-    //           itemBuilder: (context, _) => const Icon(
-    //             Icons.star,
-    //             color: Colors.amber,
-    //             size: 5,
-    //           ),
-    //           onRatingUpdate: (rating) {},
-    //         ),
-    //         SizedBox(
-    //           width: Get.width - 100.w,
-    //           child: Text(
-    //             message,
-    //             style: text13,
-    //             overflow: TextOverflow.ellipsis,
-    //             maxLines: 4,
-    //           ),
-    //         ),
-    //       ],
-    //     )
-    //   ],
-    // );
     return Container(
       margin: EdgeInsets.symmetric(horizontal: 5.h),
       padding: EdgeInsets.symmetric(horizontal: 15.h, vertical: 10.w),
@@ -92,74 +42,69 @@ class CommentItem extends StatelessWidget {
         children: <Widget>[
           Container(
               child: Row(
+            children: <Widget>[
+              CircleBox(size: 40.w, child: image),
+              SizedBox(
+                width: 10.w,
+              ),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  CircleBox(size: 40.w, child: image),
-                  SizedBox(
-                    width: 10.w,
-                  ),
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Row(
-                        children: [
-                          Text(
-                            name,
-                            style: text15.copyWith(fontWeight: FontWeight.w600),
-                          ),
-                          SizedBox(
-                            width: 10.w,
-                          ),
-                          Text(
-                            timeUntil(time),
-                            style: text13.copyWith(color: Colors.grey),
-                          ),
-                        ],
+                  Row(
+                    children: [
+                      Text(
+                        name,
+                        style: text15.copyWith(fontWeight: FontWeight.w600),
                       ),
-                      Row(
-                        children: [
-                          Text(
-                            '${rating}',
-                            style: TextStyle(color: Colors.amber),
-                          ),
-                          SizedBox(
-                            width: 5.w,
-                          ),
-                          Container(
-                            width: 100.w,
-                            child: RatingBar.builder(
-                              initialRating: rating,
-                              minRating: rating,
-                              maxRating: rating,
-                              direction: Axis.horizontal,
-                              allowHalfRating: true,
-                              itemCount: 5,
-                              itemSize: 15,
-                              itemPadding:
-                              const EdgeInsets.symmetric(horizontal: 3.0),
-                              itemBuilder: (context, _) =>
-                              const Icon(
-                                Icons.star,
-                                color: Colors.amber,
-                                size: 5,
-                              ),
-                              onRatingUpdate: (rating) {},
-                            ),
-                          ),
-                        ],
-                      )
+                      SizedBox(
+                        width: 10.w,
+                      ),
+                      Text(
+                        timeUntil(time),
+                        style: text13.copyWith(color: Colors.grey),
+                      ),
                     ],
                   ),
+                  Row(
+                    children: [
+                      Text(
+                        '${rating}',
+                        style: const TextStyle(color: Colors.amber),
+                      ),
+                      SizedBox(
+                        width: 5.w,
+                      ),
+                      Container(
+                        width: 110.w,
+                        child: RatingBar.builder(
+                          initialRating: rating,
+                          minRating: rating,
+                          maxRating: rating,
+                          direction: Axis.horizontal,
+                          allowHalfRating: true,
+                          itemCount: 5,
+                          itemSize: 15,
+                          itemPadding: EdgeInsets.symmetric(horizontal: 1.5.w),
+                          itemBuilder: (context, _) => const Icon(
+                            Icons.star,
+                            color: Colors.amber,
+                            size: 5,
+                          ),
+                          onRatingUpdate: (rating) {},
+                        ),
+                      ),
+                    ],
+                  )
                 ],
-              )),
+              ),
+            ],
+          )),
           SizedBox(
             height: 5.h,
           ),
           SizedBox(
-            width: MediaQuery
-                .of(context)
-                .size
-                .width - 100.w,
+            width: MediaQuery.of(context).size.width - 100.w,
             child: Text(
               message,
               style: text13,

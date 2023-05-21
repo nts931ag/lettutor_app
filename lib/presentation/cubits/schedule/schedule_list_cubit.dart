@@ -13,18 +13,17 @@ class ScheduleListCubit extends BaseCubit<ScheduleListState, List<Schedule>> {
 
   ScheduleListCubit(this._apiRepository)
       : super(const ScheduleListLoading(), []);
-  int _timestamp = DateTime.now().millisecondsSinceEpoch;
+  final _timestamp = DateTime.now().millisecondsSinceEpoch;
   int _page = 1;
 
   Future<void> getScheduleListWithPagination() async {
     if (isBusy) return;
 
     await run(() async {
-      final response =
-      await _apiRepository.getListScheduleWithPagination(
+      final response = await _apiRepository.getListScheduleWithPagination(
           page: _page,
           perPage: defaultPageSize,
-          dateTimeGte: _timestamp,
+          dateTimeGte: DateTime.now().millisecondsSinceEpoch,
           orderBy: "meeting",
           sortBy: "asc");
 
@@ -40,6 +39,35 @@ class ScheduleListCubit extends BaseCubit<ScheduleListState, List<Schedule>> {
       } else if (response is DataFailed) {
         emit(ScheduleListFailed(error: response.error));
       }
+    });
+  }
+
+  Future<void> cancelBookingByScheduleId(
+      {required String scheduleId, required reasonId}) async {
+    if (isBusy) return;
+
+    await run(() async {
+      final response = await _apiRepository.cancelBooking(
+          id: scheduleId, reasonId: reasonId);
+
+      if (response is DataSuccess) {
+        final schedules = List<Schedule>.of(data!);
+        final indexOfOldTutor =
+        schedules.removeWhere((element) => element.id == scheduleId);
+        data!.clear();
+        data!.addAll(schedules);
+
+        emit(ScheduleListSuccess(
+            schedules: List.of(data!), noMoreData: state.noMoreData));
+
+       /* state.schedules.removeWhere((element) => element.id == scheduleId);
+        data!.clear();
+        data!.addAll(state.schedules);
+        emit(ScheduleListSuccess(
+            schedules: List.of(data!), noMoreData: state.noMoreData));*/
+      } /*else if (response is DataFailed) {
+        emit(ScheduleListFailed(error: response.error));
+      }*/
     });
   }
 }
