@@ -22,8 +22,8 @@ class Schedule extends Equatable {
   bool isDeleted;
   ScheduleDetailInfo scheduleDetailInfo;
   dynamic classReview;
-  bool showRecordUrl;
-  List<dynamic> studentMaterials;
+  bool? showRecordUrl;
+  List<dynamic>? studentMaterials;
 
   Schedule({
     required this.createdAtTimeStamp,
@@ -46,8 +46,8 @@ class Schedule extends Equatable {
     required this.isDeleted,
     required this.scheduleDetailInfo,
     required this.classReview,
-    required this.showRecordUrl,
-    required this.studentMaterials,
+    this.showRecordUrl,
+    this.studentMaterials,
   });
 
   Map<String, dynamic> toMap() {
@@ -99,8 +99,8 @@ class Schedule extends Equatable {
       isDeleted: map['isDeleted'] as bool,
       scheduleDetailInfo: ScheduleDetailInfo.fromMap(map['scheduleDetailInfo']),
       classReview: map['classReview'] as dynamic,
-      showRecordUrl: map['showRecordUrl'] as bool,
-      studentMaterials: map['studentMaterials'] as List<dynamic>,
+      showRecordUrl: map['showRecordUrl'] as bool?,
+      studentMaterials: map['studentMaterials'] as List<dynamic>?,
     );
   }
 

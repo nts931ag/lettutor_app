@@ -35,26 +35,26 @@ class _BaseScreenState extends State<BaseScreen> {
     return SafeArea(
       child: BaseScaffoldWidgetCustom(
         resizeToAvoidBottomInset: true,
-        actions: [
-          circleIconNation(),
-          // if (controller.isHaveDrawer)
-          //   SizedBox(
-          //     width: 15.w,
-          //   ),
-          // if (controller.isHaveDrawer)
-          //   CircleIconWidget(
-          //     backgroundColor: ColorName.disabledColor,
-          //     borderColor: ColorName.disabledColor,
-          //     padding: 10.w,
-          //     onTap: () {
-          //       controller.handleOnTapDrawer();
-          //     },
-          //     child: Icon(
-          //       Icons.list,
-          //       size: 20.w,
-          //     ),
-          //   )
-        ],
+        // actions: [
+        //   circleIconNation(),
+        //   // if (controller.isHaveDrawer)
+        //   //   SizedBox(
+        //   //     width: 15.w,
+        //   //   ),
+        //   // if (controller.isHaveDrawer)
+        //   //   CircleIconWidget(
+        //   //     backgroundColor: ColorName.disabledColor,
+        //   //     borderColor: ColorName.disabledColor,
+        //   //     padding: 10.w,
+        //   //     onTap: () {
+        //   //       controller.handleOnTapDrawer();
+        //   //     },
+        //   //     child: Icon(
+        //   //       Icons.list,
+        //   //       size: 20.w,
+        //   //     ),
+        //   //   )
+        // ],
         body: IndexedStack(
           index: selectedIndex,
           children: const [

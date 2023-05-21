@@ -4,6 +4,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:lettutor_app/config/router/router.dart';
 import 'package:lettutor_app/config/router/router_arguments.dart';
 import 'package:lettutor_app/domain/models/Course.dart';
+import 'package:lettutor_app/presentation/views/course_list_screen.dart';
 import 'package:lettutor_app/presentation/widgets/base/base_scaffold_custom_widget.dart';
 import 'package:lettutor_app/presentation/widgets/commons/box_shadow_container.dart';
 import 'package:lettutor_app/presentation/widgets/commons/buttons/loading_button_widget.dart';

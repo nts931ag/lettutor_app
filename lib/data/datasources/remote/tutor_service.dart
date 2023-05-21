@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:lettutor_app/domain/models/Tutor.dart';
 import 'package:lettutor_app/domain/models/responses/TutorsDataResponse.dart';
 import 'package:lettutor_app/utils/constant/strings.dart';
 import 'package:retrofit/retrofit.dart';
@@ -15,8 +16,20 @@ abstract class TutorService {
       @Query("perPage") int perPage,
       @Query("page") int page,);
 
+  @GET('tutor')
+  Future<HttpResponse<Tutor>> getTutorDetailByTutorId(
+      @Query("tutorId") String tutorId,);
+
   @POST('tutor/search')
   Future<HttpResponse<TutorsDataResponse>> searchListTutorWithPagination(
+      @Body() request);
+
+  @POST('user/manageFavoriteTutor')
+  Future<HttpResponse<void>> manageFavoriteTutor(
+      @Body() request,);
+
+  @POST('report')
+  Future<HttpResponse<void>> reportTutor(
       @Body() request);
 
 }

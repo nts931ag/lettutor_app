@@ -1,22 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:jitsi_meet_wrapper/jitsi_meet_wrapper.dart';
-
-void main() => runApp(const MyApp());
-
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return const MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Meeting(),
-    );
-  }
-}
+import 'package:lettutor_app/domain/models/Schedule.dart';
+import 'package:lettutor_app/presentation/widgets/base/base_scaffold_custom_widget.dart';
 
 class Meeting extends StatefulWidget {
   const Meeting({Key? key}) : super(key: key);
+
 
   @override
   _MeetingState createState() => _MeetingState();
@@ -36,16 +25,26 @@ class _MeetingState extends State<Meeting> {
   bool isVideoMuted = true;
 
   @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    setState(() {
+      serverText.text = "";
+      roomText.text = "lettutor";
+      subjectText.text = "";
+      // tokenText.text = TextEditingController();
+      userDisplayNameText.text = "PHHAI0";
+      userEmailText.text = "student@lettutor.com";
+      // userAvatarUrlText.text = TextEditingController();
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(title: const Text('Jitsi Meet Wrapper Test')),
-        body: Container(
-          padding: const EdgeInsets.symmetric(horizontal: 16.0),
-          child: buildMeetConfig(),
-        ),
-      ),
-    );
+    return SafeArea(
+        child: BaseScaffoldWidgetCustom(
+      body: buildMeetConfig(),
+    ),);
   }
 
   Widget buildMeetConfig() {
@@ -109,7 +108,7 @@ class _MeetingState extends State<Meeting> {
               ),
               style: ButtonStyle(
                 backgroundColor:
-                MaterialStateColor.resolveWith((states) => Colors.blue),
+                    MaterialStateColor.resolveWith((states) => Colors.blue),
               ),
             ),
           ),
@@ -179,13 +178,13 @@ class _MeetingState extends State<Meeting> {
         onScreenShareToggled: (participantId, isSharing) {
           debugPrint(
             "onScreenShareToggled: participantId: $participantId, "
-                "isSharing: $isSharing",
+            "isSharing: $isSharing",
           );
         },
         onParticipantJoined: (email, name, role, participantId) {
           debugPrint(
             "onParticipantJoined: email: $email, name: $name, role: $role, "
-                "participantId: $participantId",
+            "participantId: $participantId",
           );
         },
         onParticipantLeft: (participantId) {
@@ -194,13 +193,13 @@ class _MeetingState extends State<Meeting> {
         onParticipantsInfoRetrieved: (participantsInfo, requestId) {
           debugPrint(
             "onParticipantsInfoRetrieved: participantsInfo: $participantsInfo, "
-                "requestId: $requestId",
+            "requestId: $requestId",
           );
         },
         onChatMessageReceived: (senderId, message, isPrivate) {
           debugPrint(
             "onChatMessageReceived: senderId: $senderId, message: $message, "
-                "isPrivate: $isPrivate",
+            "isPrivate: $isPrivate",
           );
         },
         onChatToggled: (isOpen) => debugPrint("onChatToggled: isOpen: $isOpen"),

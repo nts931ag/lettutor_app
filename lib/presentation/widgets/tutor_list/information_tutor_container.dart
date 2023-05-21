@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:lettutor_app/config/router/router.dart';
 import 'package:lettutor_app/config/router/router_arguments.dart';
 import 'package:lettutor_app/domain/models/Tutor.dart';
+import 'package:lettutor_app/domain/repositories/api_repository.dart';
+import 'package:lettutor_app/locator.dart';
+import 'package:lettutor_app/presentation/cubits/tutor/tutor_detail_cubit.dart';
+import 'package:lettutor_app/presentation/cubits/tutor/tutor_list_cubit.dart';
 import 'package:lettutor_app/presentation/widgets/commons/box_shadow_container.dart';
 import 'package:lettutor_app/presentation/widgets/commons/buttons/loading_button_widget.dart';
 import 'package:lettutor_app/presentation/widgets/commons/icon/circle_box_widget.dart';
@@ -140,7 +145,11 @@ class InformationTutorContainer extends StatelessWidget {
                               Navigator.pushNamed(
                                 context,
                                 MyRouter.tutorDetail,
-                                arguments: TutorDetailArguments(tutor: tutor),
+                                arguments: TutorDetailArguments(
+                                    tutor: tutor,
+                                    tutorListCubit:
+                                        BlocProvider.of<TutorListCubit>(
+                                            context)),
                               );
                             },
                             height: 30.h,
@@ -159,7 +168,7 @@ class InformationTutorContainer extends StatelessWidget {
             Positioned(
               right: 30.w,
               top: 30.h,
-              child: tutor.isFavoriteTutor == null
+              child: !tutor.isFavoriteTutor
                   ? const Icon(
                       Icons.favorite_border,
                       color: Colors.blue,

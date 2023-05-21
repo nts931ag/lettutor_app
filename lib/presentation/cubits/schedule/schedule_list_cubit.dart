@@ -13,36 +13,8 @@ class ScheduleListCubit extends BaseCubit<ScheduleListState, List<Schedule>> {
 
   ScheduleListCubit(this._apiRepository)
       : super(const ScheduleListLoading(), []);
-
+  int _timestamp = DateTime.now().millisecondsSinceEpoch;
   int _page = 1;
-  int timestamp = DateTime.now().millisecondsSinceEpoch;
-
-  Future<void> getHistoryScheduleListWithPagination() async {
-    if (isBusy) return;
-
-    await run(() async {
-      final response =
-          await _apiRepository.getListHistoryScheduleWithPagination(
-              page: _page,
-              perPage: defaultPageSize,
-              dateTimeLte: timestamp,
-              orderBy: "meeting",
-              sortBy: "asc");
-
-      if (response is DataSuccess) {
-        final courses = response.data!.schedules;
-        final noMoreData = response.data!.scheduleCount < defaultPageSize;
-
-        data!.addAll(courses!);
-        _page++;
-
-        emit(ScheduleListSuccess(
-            schedules: List.of(data!), noMoreData: noMoreData));
-      } else if (response is DataFailed) {
-        emit(ScheduleListFailed(error: response.error));
-      }
-    });
-  }
 
   Future<void> getScheduleListWithPagination() async {
     if (isBusy) return;
@@ -52,7 +24,7 @@ class ScheduleListCubit extends BaseCubit<ScheduleListState, List<Schedule>> {
       await _apiRepository.getListScheduleWithPagination(
           page: _page,
           perPage: defaultPageSize,
-          dateTimeGte: timestamp,
+          dateTimeGte: _timestamp,
           orderBy: "meeting",
           sortBy: "asc");
 

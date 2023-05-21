@@ -65,7 +65,7 @@
 
   "dash_board_up_coming": "Upcoming lesson",
   "dash_board_enter_room": "Enter lesson room",
-  "dash_board_total_time": "Total lesson time is 154 hours 10 minutes",
+  "dash_board_total_time": "Total lesson time is ",
   "dash_board_find_tutor": "Find a tutor",
   "dash_board_enter_tutor_name": "Enter tutor name",
   "dash_board_tutor_nation": "Select tutor nation",
@@ -76,6 +76,7 @@
   "dash_board_recommend_tutor": "Recommended Tutors",
   "dash_board_no_review": "No reviews yet",
   "dash_board_select_available_time": "Select available tutoring time:",
+  "dash_board_no_upcoming": "You don't have upcoming class",
 
   "change_password_new": "New Password",
   "change_password_confirm": "Confirm Password",

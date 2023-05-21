@@ -46,3 +46,9 @@ String formatYearMonthDayFromDateTime(DateTime dateTime) {
 DateTime parseStringToDateTime(String string) {
   return DateFormat('yyyy-MM-dd').parse(string);
 }
+
+String formatTotalLessonHour(int minutes) {
+  int hour = minutes ~/ 60;
+  int minute = minutes - hour * 60;
+  return "$hour hours $minute minutes";
+}

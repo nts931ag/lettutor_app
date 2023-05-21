@@ -42,7 +42,8 @@ class ScheduleItem extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  '${formatHourAndMinuteFromTimestamp(schedule.scheduleDetailInfo.startPeriodTimestamp)} - ${formatHourAndMinuteFromTimestamp(schedule.scheduleDetailInfo.endPeriodTimestamp)}',
+                  // '${formatHourAndMinuteFromTimestamp(schedule.scheduleDetailInfo.startPeriodTimestamp)} - ${formatHourAndMinuteFromTimestamp(schedule.scheduleDetailInfo.endPeriodTimestamp)}',
+                  '${schedule.scheduleDetailInfo.startPeriod} - ${schedule.scheduleDetailInfo.endPeriod}',
                   style: text16,
                 ),
                 SizedBox(

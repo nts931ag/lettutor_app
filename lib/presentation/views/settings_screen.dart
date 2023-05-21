@@ -27,7 +27,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisSize: MainAxisSize.min,
               children: [
-                const HeaderProfile(),
+                // const HeaderProfile(),
                 SizedBox(height: 35.h),
                 Text(
                   "Account",

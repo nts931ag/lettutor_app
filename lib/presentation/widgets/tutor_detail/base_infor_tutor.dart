@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:lettutor_app/config/router/router.dart';
 import 'package:lettutor_app/config/router/router_arguments.dart';
 import 'package:lettutor_app/domain/models/Tutor.dart';
+import 'package:lettutor_app/presentation/cubits/tutor/tutor_detail_cubit.dart';
 import 'package:lettutor_app/presentation/widgets/commons/icon/circle_box_widget.dart';
 import 'package:lettutor_app/presentation/widgets/commons/icon/icon_text_widget.dart';
 import 'package:lettutor_app/utils/resource/dimens.dart';
@@ -20,6 +22,7 @@ class BaseInforTutor extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final tutorDetailCubit = BlocProvider.of<TutorDetailCubit>(context);
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 35.h),
       child: Column(
@@ -122,8 +125,24 @@ class BaseInforTutor extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               InkWell(
-                onTap: () {},
-                child: tutor.isFavoriteTutor == true
+                onTap: () {
+                  tutorDetailCubit.onAddTutorFavourite();
+                },
+                child: BlocBuilder<TutorDetailCubit, TutorDetailState>(
+                  buildWhen: (pre, cur) =>
+                      pre.tutor.isFavoriteTutor != cur.tutor.isFavoriteTutor,
+                  builder: (context, state) {
+                    return IconText(
+                      iconData: state.tutor.isFavoriteTutor == true
+                          ? Icons.favorite
+                          : Icons.favorite_border,
+                      colorIcon: state.tutor.isFavoriteTutor == true
+                          ? Colors.redAccent
+                          : null,
+                      title: AppLocalizations.of(context)!.favorite,
+                    );
+                  },
+                ), /*tutor.isFavoriteTutor == true
                     ? IconText(
                         iconData: Icons.favorite,
                         colorIcon: Colors.redAccent,
@@ -132,7 +151,7 @@ class BaseInforTutor extends StatelessWidget {
                     : IconText(
                         iconData: Icons.favorite_border,
                         title: AppLocalizations.of(context)!.favorite,
-                      ),
+                      ),*/
               ),
               InkWell(
                 onTap: () {
@@ -141,7 +160,8 @@ class BaseInforTutor extends StatelessWidget {
                     builder: (BuildContext context) {
                       return ReportDialog(
                         title: "Report ${tutor.name}",
-                        onSubmit: (message) {
+                        onSubmit: (content) {
+                          tutorDetailCubit.onReportTutor(content);
                           // provider.reportTutor(message);
                         },
                       );

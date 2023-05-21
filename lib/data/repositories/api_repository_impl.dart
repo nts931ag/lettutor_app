@@ -5,11 +5,14 @@ import 'package:lettutor_app/data/datasources/remote/schedule_service.dart';
 import 'package:lettutor_app/data/datasources/remote/tutor_service.dart';
 import 'package:lettutor_app/data/datasources/remote/user_service.dart';
 import 'package:lettutor_app/data/repositories/base/base_api_repository.dart';
+import 'package:lettutor_app/domain/models/Tutor.dart';
 import 'package:lettutor_app/domain/models/User.dart';
 import 'package:lettutor_app/domain/models/requests/TutorSearchRequest.dart';
 import 'package:lettutor_app/domain/models/responses/CoursesDataResponse.dart';
 import 'package:lettutor_app/domain/models/responses/SchedulesDataResponse.dart';
+import 'package:lettutor_app/domain/models/responses/TotalHoursResponse.dart';
 import 'package:lettutor_app/domain/models/responses/TutorsDataResponse.dart';
+import 'package:lettutor_app/domain/models/responses/UpcomingSchedulesResponse.dart';
 import 'package:lettutor_app/domain/models/responses/UserDataResponse.dart';
 import 'package:lettutor_app/domain/repositories/api_repository.dart';
 import 'package:lettutor_app/utils/constant/const_value.dart';
@@ -130,13 +133,12 @@ class ApiRepositoryImpl extends BaseApiRepository implements ApiRepository {
       TutorSearchRequest tutorSearchRequest) {
     final searchTutorForm = FormData.fromMap({
       'search': tutorSearchRequest.search,
-      'page' : tutorSearchRequest.page,
-      'perPage' : tutorSearchRequest.perPage
+      'page': tutorSearchRequest.page,
+      'perPage': tutorSearchRequest.perPage
     });
 
     return getStateOf<TutorsDataResponse>(
-        request: () =>
-            _tutorService.searchListTutorWithPagination({
+        request: () => _tutorService.searchListTutorWithPagination({
               "filters": {
                 "specialties": [],
                 "nationality": [],
@@ -147,5 +149,40 @@ class ApiRepositoryImpl extends BaseApiRepository implements ApiRepository {
               "page": "${tutorSearchRequest.page}",
               "perPage": 10
             }));
+  }
+
+  @override
+  Future<DataState<Tutor>> getTutorDetailByTutorId({required String tutorId}) {
+    // TODO: implement getTutorDetail
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<DataState<void>> manageFavoriteTutor({required String tutorId}) {
+    return getStateOf<void>(
+        request: () => _tutorService.manageFavoriteTutor({'tutorId': tutorId}));
+  }
+
+  @override
+  Future<DataState<void>> reportTutor(
+      {required String tutorId, required String content}) {
+    return getStateOf<void>(
+        request: () => _tutorService
+            .reportTutor({'tutorId': tutorId, 'content': content}));
+  }
+
+  @override
+  Future<DataState<TotalHoursReponse>> getTotalHours() {
+    return getStateOf<TotalHoursReponse>(
+      request: () => _scheduleService.getTotalHours(),
+    );
+  }
+
+  @override
+  Future<DataState<UpcomingSchedulesResponse>> getUpcomingSchedule() {
+    return getStateOf<UpcomingSchedulesResponse>(
+      request: () => _scheduleService
+          .getUpcomingSchedule(DateTime.now().millisecondsSinceEpoch),
+    );
   }
 }

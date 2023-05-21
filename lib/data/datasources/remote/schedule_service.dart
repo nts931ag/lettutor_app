@@ -1,5 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:lettutor_app/domain/models/responses/SchedulesDataResponse.dart';
+import 'package:lettutor_app/domain/models/responses/TotalHoursResponse.dart';
+import 'package:lettutor_app/domain/models/responses/UpcomingSchedulesResponse.dart';
 import 'package:lettutor_app/utils/constant/strings.dart';
 import 'package:retrofit/retrofit.dart';
 
@@ -27,4 +29,12 @@ abstract class ScheduleService {
     @Query("orderBy") String orderBy,
     @Query("sortBy") String sortBy,
   );
+
+  @GET('booking/next')
+  Future<HttpResponse<UpcomingSchedulesResponse>> getUpcomingSchedule(
+    @Query("dateTime") int dateTime,
+  );
+
+  @GET('call/total')
+  Future<HttpResponse<TotalHoursReponse>> getTotalHours();
 }

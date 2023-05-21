@@ -42,16 +42,13 @@ class TutorListCubit extends BaseCubit<TutorListState, List<Tutor>> {
     await run(() async {
       final response = await _apiRepository.searchTutorsWithPagination(
           TutorSearchRequest(
-            search: "",
-            page: _page,
-            perPage: defaultPageSize
-          ));
+              search: "", page: _page, perPage: defaultPageSize));
 
       if (response is DataSuccess) {
         final tutors = response.data!.tutors;
         final noMoreData = response.data!.tutorCount < defaultPageSize;
 
-        data!.addAll(tutors!);
+        data!.addAll(sortTutorsByFavouriteAndRating(tutors!));
         _page++;
 
         emit(TutorListSuccess(tutors: List.of(data!), noMoreData: noMoreData));
@@ -61,17 +58,35 @@ class TutorListCubit extends BaseCubit<TutorListState, List<Tutor>> {
     });
   }
 
+  List<Tutor> sortTutorsByFavouriteAndRating(List<Tutor> tutors) {
+    final tutorsSorted = List<Tutor>.from(tutors);
+
+    tutorsSorted.sort(
+          (a, b) {
+        int favouriteA = a.isFavoriteTutor ? 1 : 0;
+        int favouriteB = b.isFavoriteTutor ? 1 : 0;
+        int favouriteCompare = favouriteB.compareTo(favouriteA);
+        if (favouriteCompare == 0) {
+          return -a.rating.compareTo(b.rating);
+        }
+        return favouriteCompare;
+      },
+    );
+    return tutorsSorted;
+  }
+
   void onReportTutorSuccess(Tutor reportedTutor) {
 
-    emit(
-      TutorListSuccess(),
-    );
   }
 
   void onAddTutorFavouriteSuccess(Tutor favouriteTutor) {
-
+    final tutors = List<Tutor>.of(data!);
+    final indexOfOldTutor =
+    state.tutors.indexWhere((element) => element.id == favouriteTutor.id);
+    tutors[indexOfOldTutor] = favouriteTutor;
+    data!.clear();
+    data!.addAll(sortTutorsByFavouriteAndRating(tutors));
     emit(
-      TutorListSuccess(),
-    );
+        TutorListSuccess(tutors: List.of(data!), noMoreData: state.noMoreData));
   }
 }

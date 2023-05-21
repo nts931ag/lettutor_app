@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lettutor_app/config/router/router.dart';
+import 'package:lettutor_app/config/router/router_arguments.dart';
 import 'package:lettutor_app/presentation/widgets/commons/buttons/loading_button_widget.dart';
 import 'package:lettutor_app/presentation/widgets/commons/icon/circle_box_widget.dart';
 import 'package:lettutor_app/presentation/widgets/commons/information_area.dart';
@@ -115,6 +116,6 @@ class ItemWidget extends StatelessWidget {
   }
 
   _goMeeting(BuildContext context) async {
-    Navigator.pushNamed(context, MyRouter.joinMeeting);
+    Navigator.pushNamed(context, MyRouter.joinMeeting,);
   }
 }

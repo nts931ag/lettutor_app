@@ -27,7 +27,7 @@ class TutorListScreen extends HookWidget {
 
       return scrollController.dispose;
     }, const []);
-
+/*
     return BlocBuilder<TutorListCubit, TutorListState>(
       builder: (_, state) {
         switch (state.runtimeType) {
@@ -45,8 +45,80 @@ class TutorListScreen extends HookWidget {
             return const SizedBox();
         }
       },
-    );
+    );*/
+    return _buildCommonCustomScrollView(context, scrollController);
   }
+}
+
+Widget _buildCommonCustomScrollView(
+  BuildContext context,
+  ScrollController scrollController,
+) {
+  return CustomScrollView(
+    controller: scrollController,
+    slivers: [
+      SliverToBoxAdapter(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            const HeaderDashboard(),
+            SizedBox(
+              height: 33.h,
+            ),
+            const FilterTutorArea(),
+            SizedBox(
+              height: 33.h,
+            ),
+          ],
+        ),
+      ),
+      BlocBuilder<TutorListCubit, TutorListState>(
+        builder: (_, state) {
+          switch (state.runtimeType) {
+            case TutorListLoading:
+              return const SliverToBoxAdapter(
+                  child: Center(child: CupertinoActivityIndicator()));
+            case TutorListFailed:
+              return const SliverToBoxAdapter(
+                  child: Center(child: Icon(Ionicons.refresh)));
+            case TutorListSuccess:
+              return _buildTutorCustom(
+                context,
+                state.tutors,
+                state.noMoreData,
+              );
+            default:
+              return const SizedBox();
+          }
+        },
+      ),
+
+/*
+        if (!noMoreData)
+          const SliverToBoxAdapter(
+            child: Padding(
+              padding: EdgeInsets.only(top: 14, bottom: 32),
+              child: CupertinoActivityIndicator(),
+            ),
+          )
+*/
+    ],
+  );
+}
+
+Widget _buildTutorCustom(
+  BuildContext context,
+  List<Tutor> tutors,
+  bool noMoreData,
+) {
+  return SliverList(
+    delegate: SliverChildBuilderDelegate(
+      childCount: tutors.length,
+      (context, index) => InformationTutorContainer(
+        tutor: tutors[index],
+      ),
+    ),
+  );
 }
 
 Widget _buildTutors(
@@ -74,8 +146,9 @@ Widget _buildTutors(
       ),
       SliverList(
         delegate: SliverChildBuilderDelegate(
-          (context, index) =>
-              InformationTutorContainer(tutor: tutors[index], ),
+          (context, index) => InformationTutorContainer(
+            tutor: tutors[index],
+          ),
           childCount: tutors.length,
         ),
       ),
