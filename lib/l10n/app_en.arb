@@ -57,7 +57,7 @@
   "dash_board_up_coming": "Upcoming lesson",
   "dash_board_enter_room": "Enter lesson room",
   "dash_board_total_time": "Total lesson time is ",
-  "dash_board_find_tutor": "Find a tutor",
+  "dash_board_find_tutor": "Search tutor",
   "dash_board_enter_tutor_name": "Enter tutor name",
   "dash_board_tutor_nation": "Select tutor nation",
   "dash_board_select_day": "Select a day",
@@ -111,7 +111,6 @@
   "tutorCategory_ielts": "IELTS",
   "tutorCategory_toefl": "TOEFL",
   "tutorCategory_toeic": "TOEIC",
-
   "tutorCategory_fl": "Foreign Languages",
   "tutorCategory_mt": "Marketing",
   "tutorCategory_of": "Office Information",
@@ -127,5 +126,6 @@
   "tutorCategory_t4": "TOEIC 4 skills",
   "cancelLesson": "Cancel lesson",
   "doYouWantToCancel": "Do you want to cancel this lesson?",
-  "leaveReasonWhyCancel": "Leave the reason why you cancel this lesson..."
+  "leaveReasonWhyCancel": "Leave the reason why you cancel this lesson...",
+  "dash_board_find_course": "Search course"
 }

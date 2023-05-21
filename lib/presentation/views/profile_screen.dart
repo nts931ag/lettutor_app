@@ -121,6 +121,11 @@ class ProfileScreen extends StatelessWidget {
     );
     if (pickedFile != null) {
       BlocProvider.of<ProfileCubit>(context).onUploadAvatar(pickedFile.path);
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+            content: Text(
+              'Upload avatar successfully!', style: text14,)),
+      );
     }
   }
 }

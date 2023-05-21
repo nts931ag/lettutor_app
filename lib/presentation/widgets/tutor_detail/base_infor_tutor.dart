@@ -146,6 +146,11 @@ class BaseInforTutor extends StatelessWidget {
               InkWell(
                 onTap: () {
                   tutorDetailCubit.onAddTutorFavourite();
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                        content: Text(
+                          'Add favourite tutor successfully!', style: text14,)),
+                  );
                 },
                 child: BlocBuilder<TutorDetailCubit, TutorDetailState>(
                   buildWhen: (pre, cur) =>
@@ -182,6 +187,11 @@ class BaseInforTutor extends StatelessWidget {
                         onSubmit: (content) {
                           tutorDetailCubit.onReportTutor(content);
                           // provider.reportTutor(message);
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                                content: Text(
+                                    'Report tutor successfully!', style: text14,)),
+                          );
                         },
                       );
                     },

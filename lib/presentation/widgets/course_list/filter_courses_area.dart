@@ -2,28 +2,27 @@ import 'package:awesome_select/awesome_select.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:lettutor_app/presentation/cubits/tutor/tutor_list_cubit.dart';
+import 'package:lettutor_app/presentation/cubits/course/course_list_cubit.dart';
 import 'package:lettutor_app/utils/resource/colors/colors_core.dart';
 import 'package:lettutor_app/utils/resource/dimens.dart';
 import 'package:lettutor_app/config/theme/text_theme.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-class FilterTutorArea extends StatefulWidget {
-  const FilterTutorArea({
+class FilterCourseArea extends StatefulWidget {
+  const FilterCourseArea({
     Key? key,
   }) : super(key: key);
 
   @override
-  State<FilterTutorArea> createState() => _FilterTutorAreaState();
+  State<FilterCourseArea> createState() => _FilterCourseAreaState();
 }
 
-class _FilterTutorAreaState extends State<FilterTutorArea> {
+class _FilterCourseAreaState extends State<FilterCourseArea> {
   TextEditingController textEditingController = TextEditingController();
-  List<String> specialitiesSelected = [''];
 
   @override
   Widget build(BuildContext context) {
-    TutorListCubit tutorListCubit = BlocProvider.of<TutorListCubit>(context);
+    CourseListCubit courseListCubit = BlocProvider.of<CourseListCubit>(context);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -43,11 +42,8 @@ class _FilterTutorAreaState extends State<FilterTutorArea> {
               suffixIcon: IconButton(
                 icon: const Icon(FontAwesomeIcons.search),
                 onPressed: () {
-                  tutorListCubit.searchTutorsWithPagination(
-                      page: 1,
-                      searchKey: textEditingController.text,
-                      specialitiesSelected: specialitiesSelected
-                  );
+                  courseListCubit.getCourseWithPagination(
+                      page: 1, searchKey: textEditingController.text);
                 },
                 color: Colors.black12,
               ),
@@ -55,46 +51,8 @@ class _FilterTutorAreaState extends State<FilterTutorArea> {
               border: const OutlineInputBorder(
                 borderRadius: BorderRadius.all(Radius.circular(5.0)),
               ),
-              hintText: 'Enter tutor name',
+              hintText: 'Enter course\'s name',
               hintStyle: const TextStyle(color: Colors.black12)),
-        ),
-        SizedBox(
-          height: 10.h,
-        ),
-        Card(
-          elevation: 3,
-          // margin: const EdgeInsets.all(5),
-          shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.all(Radius.circular(5.0)),
-          ),
-          child: Row(
-            children: <Widget>[
-              Expanded(
-                child: SmartSelect<String>.multiple(
-                  title: 'Specialities',
-                  selectedValue: specialitiesSelected,
-                  choiceItems: categories,
-                  onChange: (selected) {
-                    setState(() => specialitiesSelected = selected.value);
-                    tutorListCubit.searchTutorsWithPagination(
-                        page: 1,
-                        searchKey: textEditingController.text,
-                        specialitiesSelected: specialitiesSelected
-                    );
-                  },
-                  modalType: S2ModalType.bottomSheet,
-                  modalHeader: false,
-                  tileBuilder: (context, state) {
-                    return S2Tile.fromState(
-                      state,
-                      trailing: const Icon(Icons.arrow_drop_down),
-                      isTwoLine: true,
-                    );
-                  },
-                ),
-              ),
-            ],
-          ),
         ),
         SizedBox(
           height: 10.h,
@@ -102,14 +60,10 @@ class _FilterTutorAreaState extends State<FilterTutorArea> {
         TextButton(
           onPressed: () {
             setState(() {
-              specialitiesSelected = [''];
               textEditingController.text = '';
             });
-            tutorListCubit.searchTutorsWithPagination(
-              page: 1,
-              searchKey: textEditingController.text,
-              specialitiesSelected: specialitiesSelected
-            );
+            courseListCubit.getCourseWithPagination(
+                page: 1, searchKey: textEditingController.text);
           },
           style: TextButton.styleFrom(
             backgroundColor: primaryColor,

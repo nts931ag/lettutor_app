@@ -27,7 +27,7 @@ abstract class ApiRepository {
       TutorSearchRequest tutorSearchRequest);
 
   Future<DataState<CoursesDataResponse>> getCoursesWithPagination(
-      {required int page, required int size});
+      {required int page, required int size, required String searchKey});
 
   Future<DataState<SchedulesDataResponse>> getListScheduleWithPagination({
     required int perPage,

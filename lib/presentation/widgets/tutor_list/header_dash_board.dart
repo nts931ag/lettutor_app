@@ -26,68 +26,6 @@ class HeaderDashboard extends StatelessWidget {
         locator<ApiRepository>(),
       )..getUpcomingSchedule(),
       child: BlocBuilder<UpcomingScheduleCubit, UpcomingScheduleState>(
-        // builder: (context, state) {
-        //   return Container(
-        //     width: double.infinity,
-        //     padding: EdgeInsets.symmetric(horizontal: 10.0.w, vertical: 15.0.h),
-        //     decoration: BoxDecoration(
-        //         color: primaryColor,
-        //         borderRadius: BorderRadius.only(
-        //           bottomLeft: Radius.circular(20.r),
-        //           bottomRight: Radius.circular(20.r),
-        //         )),
-        //     child: Column(
-        //       crossAxisAlignment: CrossAxisAlignment.center,
-        //       children: [
-        //         Text(
-        //           AppLocalizations.of(context)!.dash_board_up_coming,
-        //           style: text28.copyWith(
-        //               fontWeight: FontWeight.w700, color: Colors.white),
-        //         ),
-        //         SizedBox(
-        //           height: 10.h,
-        //         ),
-        //         Wrap(
-        //           alignment: WrapAlignment.center,
-        //           children: [
-        //             Text(
-        //               'T4, 19 Thg 10 22 00:00 - 00:25',
-        //               textAlign: TextAlign.center,
-        //               style: text18.copyWith(color: whiteColor),
-        //             ),
-        //             Text(
-        //               '(còn 06:51:34)',
-        //               style: text16.copyWith(color: yellowColor),
-        //             ),
-        //           ],
-        //         ),
-        //         SizedBox(
-        //           height: 15.h,
-        //         ),
-        //         Text(
-        //           AppLocalizations.of(context)!.dash_board_total_time,
-        //           textAlign: TextAlign.center,
-        //           style: text18.copyWith(color: Colors.white),
-        //         ),
-        //         SizedBox(
-        //           height: 15.h,
-        //         ),
-        //         Padding(
-        //           padding: EdgeInsets.symmetric(horizontal: 25.0.w),
-        //           child: LoadingButtonWidget(
-        //             submit: () {},
-        //             isLoading: false,
-        //             height: 35.h,
-        //             textColor: primaryColor,
-        //             primaryColor: Colors.white,
-        //             label: AppLocalizations.of(context)!.dash_board_enter_room,
-        //           ),
-        //         ),
-        //       ],
-        //     ),
-        //   );
-        // },
-
         builder: (_, state) {
           switch (state.runtimeType) {
             case UpcomingScheduleLoading:
@@ -114,7 +52,7 @@ class HeaderDashboard extends StatelessWidget {
                           fontWeight: FontWeight.w700, color: Colors.white),
                     ),
                     SizedBox(
-                      height: 10.h,
+                      height: 5.h,
                     ),
                     Wrap(
                       alignment: WrapAlignment.center,
@@ -134,7 +72,7 @@ class HeaderDashboard extends StatelessWidget {
                       ],
                     ),
                     SizedBox(
-                      height: 15.h,
+                      height: 5.h,
                     ),
                     Text(
                       "${AppLocalizations.of(context)!.dash_board_total_time}:\n"
@@ -143,7 +81,7 @@ class HeaderDashboard extends StatelessWidget {
                       style: text18.copyWith(color: Colors.white),
                     ),
                     SizedBox(
-                      height: 15.h,
+                      height: 5.h,
                     ),
                     if (state.upcomingSchedule != null)
                       Padding(

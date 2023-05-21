@@ -3,7 +3,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:ionicons/ionicons.dart';
+import 'package:lettutor_app/config/theme/text_theme.dart';
 import 'package:lettutor_app/domain/models/Tutor.dart';
 import 'package:lettutor_app/presentation/cubits/tutor/tutor_list_cubit.dart';
 import 'package:lettutor_app/presentation/widgets/tutor_list/filter_area.dart';
@@ -22,7 +24,7 @@ class TutorListScreen extends HookWidget {
 
     useEffect(() {
       scrollController.onScrollEndsListener(() {
-        tutorListCubit.searchTutorsWithPagination();
+        tutorListCubit.searchTutorsWithPagination(isScrollToLoadmore: true);
       });
 
       return scrollController.dispose;
@@ -44,11 +46,11 @@ Widget _buildCommonCustomScrollView(
           children: [
             const HeaderDashboard(),
             SizedBox(
-              height: 33.h,
+              height: 15.h,
             ),
             const FilterTutorArea(),
             SizedBox(
-              height: 33.h,
+              height: 15.h,
             ),
           ],
         ),
@@ -62,6 +64,14 @@ Widget _buildCommonCustomScrollView(
             case TutorListFailed:
               return const SliverToBoxAdapter(
                   child: Center(child: Icon(Ionicons.refresh)));
+            case TutorListEmptySuccess:
+              return SliverToBoxAdapter(
+                  child: Center(child: Column(
+                    children: [
+                      const Icon(Icons.search_off_rounded),
+                      Text('No matched tutor!', style: text14,)
+                    ],
+                  )));
             case TutorListSuccess:
               return _buildTutorCustom(
                 context,
@@ -99,47 +109,5 @@ Widget _buildTutorCustom(
         tutor: tutors[index],
       ),
     ),
-  );
-}
-
-Widget _buildTutors(
-  ScrollController scrollController,
-  List<Tutor> tutors,
-  bool noMoreData,
-) {
-  return CustomScrollView(
-    controller: scrollController,
-    slivers: [
-      SliverToBoxAdapter(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            const HeaderDashboard(),
-            SizedBox(
-              height: 33.h,
-            ),
-            const FilterTutorArea(),
-            SizedBox(
-              height: 33.h,
-            ),
-          ],
-        ),
-      ),
-      SliverList(
-        delegate: SliverChildBuilderDelegate(
-          (context, index) => InformationTutorContainer(
-            tutor: tutors[index],
-          ),
-          childCount: tutors.length,
-        ),
-      ),
-      if (!noMoreData)
-        const SliverToBoxAdapter(
-          child: Padding(
-            padding: EdgeInsets.only(top: 14, bottom: 32),
-            child: CupertinoActivityIndicator(),
-          ),
-        )
-    ],
   );
 }

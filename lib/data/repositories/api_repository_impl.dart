@@ -60,9 +60,10 @@ class ApiRepositoryImpl extends BaseApiRepository implements ApiRepository {
 
   @override
   Future<DataState<CoursesDataResponse>> getCoursesWithPagination(
-      {required int page, required int size}) {
+      {required int page, required int size, required searchKey}) {
     return getStateOf<CoursesDataResponse>(
-        request: () => _courseService.getListCourseWithPagination(page, size));
+        request: () =>
+            _courseService.getListCourseWithPagination(page, size, searchKey));
   }
 
   @override
@@ -133,23 +134,17 @@ class ApiRepositoryImpl extends BaseApiRepository implements ApiRepository {
   @override
   Future<DataState<TutorsDataResponse>> searchTutorsWithPagination(
       TutorSearchRequest tutorSearchRequest) {
-    final searchTutorForm = FormData.fromMap({
-      'search': tutorSearchRequest.search,
-      'page': tutorSearchRequest.page,
-      'perPage': tutorSearchRequest.perPage
-    });
-
     return getStateOf<TutorsDataResponse>(
         request: () => _tutorService.searchListTutorWithPagination({
               "filters": {
-                "specialties": [],
+                "specialties": tutorSearchRequest.filters != null
+                    ? tutorSearchRequest.filters!.specialties
+                    : [],
                 "nationality": [],
-                "date": null,
-                "tutoringTimeAvailable": [null, null]
               },
-              "search": "",
+              "search": tutorSearchRequest.search,
               "page": "${tutorSearchRequest.page}",
-              "perPage": 10
+              "perPage": tutorSearchRequest.perPage
             }));
   }
 

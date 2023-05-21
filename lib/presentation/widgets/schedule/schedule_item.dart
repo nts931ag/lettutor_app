@@ -187,6 +187,11 @@ class ScheduleItem extends StatelessWidget {
               onRightButton: () {
                 scheduleListCubit.cancelBookingByScheduleId(
                     scheduleId: id, reasonId: reasonId);
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                      content: Text(
+                          'Cancel booking successfully!', style: text14,)),
+                );
                 Navigator.of(context).pop();
               },
               onLeftButton: () {
@@ -199,9 +204,9 @@ class ScheduleItem extends StatelessWidget {
           });
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
+        SnackBar(
             content: Text(
-                'Classes can only be canceled within 2 hours before starting.')),
+                'Classes can only be canceled within 2 hours before starting.', style: text14,)),
       );
     }
   }

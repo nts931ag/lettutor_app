@@ -15,5 +15,6 @@ abstract class CourseService {
   Future<HttpResponse<CoursesDataResponse>> getListCourseWithPagination(
       @Query("page") int perPage,
       @Query("size") int page,
+      @Query("q") String? searchKey,
       );
 }

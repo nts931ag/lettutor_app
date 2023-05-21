@@ -29,7 +29,7 @@ class InformationArea extends StatelessWidget {
         SizedBox(
           height: 10.h,
         ),
-        Row(
+        /*Row(
           children: [
             img,
             SizedBox(width: 5.w),
@@ -41,7 +41,7 @@ class InformationArea extends StatelessWidget {
         ),
         SizedBox(
           height: 10.h,
-        ),
+        ),*/
         child
       ],
     );

@@ -14,6 +14,7 @@ import 'package:lettutor_app/presentation/widgets/commons/box_shadow_container.d
 import 'package:lettutor_app/presentation/widgets/commons/course_item.dart';
 import 'package:lettutor_app/presentation/widgets/commons/tab_bar/tab_bar_item.dart';
 import 'package:lettutor_app/presentation/widgets/commons/text_field/baset_text_field_widget.dart';
+import 'package:lettutor_app/presentation/widgets/course_list/filter_courses_area.dart';
 import 'package:lettutor_app/presentation/widgets/course_list/header_course.dart';
 import 'package:lettutor_app/utils/extensions/scroll_controller_extensions.dart';
 import 'package:lettutor_app/utils/resource/dimens.dart';
@@ -30,7 +31,7 @@ class CourseListScreen extends HookWidget {
 
     useEffect(() {
       scrollController.onScrollEndsListener(() {
-        courseListCubit.getCourseWithPagination();
+        courseListCubit.getCourseWithPagination(isScrollToLoadMore: true);
       });
 
       return scrollController.dispose;
@@ -72,15 +73,10 @@ class CourseListScreen extends HookWidget {
               SizedBox(
                 height: 25.h,
               ),
-              // const InformationCourse(),
-              // HeaderItem(
-              //   img: Assets.svg.schedule.iconSchedule
-              //       .svg(height: 80.w, width: 80.w),
-              //   lowerContent: AppLocalizations.of(context)!.schedule_title,
-              //   upperContent: AppLocalizations.of(context)!.schedule,
-              //   lowerSubContent:
-              //       AppLocalizations.of(context)!.schedule_sub_title,
-              // ),
+              const FilterCourseArea(),
+              SizedBox(
+                height: 25.h,
+              ),
             ],
           ),
         ),
@@ -93,6 +89,14 @@ class CourseListScreen extends HookWidget {
               case CourseListFailed:
                 return const SliverToBoxAdapter(
                     child: Center(child: Icon(Ionicons.refresh)));
+              case CourseListEmptySuccess:
+                return SliverToBoxAdapter(
+                    child: Center(child: Column(
+                      children: [
+                        const Icon(Icons.search_off_rounded),
+                        Text('No matched course!', style: text14,)
+                      ],
+                    )));
               case CourseListSuccess:
                 return _buildCourse(
                   context,

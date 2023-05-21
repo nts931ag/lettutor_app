@@ -23,6 +23,11 @@ class CourseListSuccess extends CourseListState {
   const CourseListSuccess({super.courses, super.noMoreData});
 }
 
+class CourseListEmptySuccess extends CourseListState {
+  const CourseListEmptySuccess();
+}
+
+
 class CourseListFailed extends CourseListState {
   const CourseListFailed({super.error});
 }

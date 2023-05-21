@@ -23,7 +23,7 @@ class ScheduleListCubit extends BaseCubit<ScheduleListState, List<Schedule>> {
       final response = await _apiRepository.getListScheduleWithPagination(
           page: _page,
           perPage: defaultPageSize,
-          dateTimeGte: DateTime.now().millisecondsSinceEpoch,
+          dateTimeGte: _timestamp,
           orderBy: "meeting",
           sortBy: "asc");
 
@@ -52,7 +52,6 @@ class ScheduleListCubit extends BaseCubit<ScheduleListState, List<Schedule>> {
 
       if (response is DataSuccess) {
         final schedules = List<Schedule>.of(data!);
-        final indexOfOldTutor =
         schedules.removeWhere((element) => element.id == scheduleId);
         data!.clear();
         data!.addAll(schedules);

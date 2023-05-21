@@ -12,8 +12,7 @@ part 'history_list_state.dart';
 class HistoryListCubit extends BaseCubit<HistoryListState, List<Schedule>> {
   final ApiRepository _apiRepository;
 
-  HistoryListCubit(this._apiRepository)
-      : super(const HistoryListLoading(), []);
+  HistoryListCubit(this._apiRepository) : super(const HistoryListLoading(), []);
 
   int _page = 1;
   int timestamp = DateTime.now().millisecondsSinceEpoch;
@@ -23,12 +22,12 @@ class HistoryListCubit extends BaseCubit<HistoryListState, List<Schedule>> {
 
     await run(() async {
       final response =
-      await _apiRepository.getListHistoryScheduleWithPagination(
-          page: _page,
-          perPage: defaultPageSize,
-          dateTimeLte: DateTime.now().millisecondsSinceEpoch,
-          orderBy: "meeting",
-          sortBy: "desc");
+          await _apiRepository.getListHistoryScheduleWithPagination(
+              page: _page,
+              perPage: defaultPageSize,
+              dateTimeLte: timestamp,
+              orderBy: "meeting",
+              sortBy: "desc");
 
       if (response is DataSuccess) {
         final courses = response.data!.schedules;

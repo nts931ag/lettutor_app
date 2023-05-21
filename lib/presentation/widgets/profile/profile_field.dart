@@ -4,6 +4,7 @@ import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:lettutor_app/config/theme/text_theme.dart';
 import 'package:lettutor_app/domain/models/TestPreparation.dart';
 import 'package:lettutor_app/domain/models/User.dart';
 import 'package:lettutor_app/presentation/cubits/authentication/auth_cubit.dart';
@@ -338,6 +339,13 @@ class _ProfileFieldState extends State<ProfileField> {
               child: LoadingButtonWidget(
                   submit: () {
                     profileCubit.onEditUserInformation();
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                          content: Text(
+                        'Update profile successfully!',
+                        style: text14,
+                      )),
+                    );
                   },
                   isLoading: false,
                   label: AppLocalizations.of(context)!.save),

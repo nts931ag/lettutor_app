@@ -12,6 +12,7 @@ class TutorSearchRequest extends Equatable {
     this.search = '',
     this.page = 1,
     this.perPage = defaultPageSize,
+    this.filters,
   });
 
 

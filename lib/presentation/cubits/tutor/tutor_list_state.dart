@@ -23,6 +23,10 @@ class TutorListSuccess extends TutorListState {
   const TutorListSuccess({super.tutors, super.noMoreData});
 }
 
+class TutorListEmptySuccess extends TutorListState {
+  const TutorListEmptySuccess();
+}
+
 class TutorListFailed extends TutorListState {
   const TutorListFailed({super.error});
 }
