@@ -27,7 +27,7 @@ class CircleNetworkImage extends StatelessWidget {
         child: const Center(child: CircularProgressIndicator()),
       ),
       errorWidget: (context, url, error) =>
-          Assets.images.img.image(fit: BoxFit.contain),
+          Assets.images.img.image(fit: BoxFit.cover),
     );
   }
 }

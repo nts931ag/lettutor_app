@@ -38,7 +38,6 @@ class _ProfileFieldState extends State<ProfileField> {
   final _formKey = GlobalKey<FormState>();
 
   final _txtBirthdayController = TextEditingController();
-  List<Specialities> _selectedSpecialities = [];
   late bool isInitValue = false;
   late User userModel;
 
@@ -240,6 +239,8 @@ class _ProfileFieldState extends State<ProfileField> {
                       .toList(),
                   value: state.level,
                   onChanged: (value) {
+                    BlocProvider.of<ProfileCubit>(context)
+                        .onLevelChanged(value!);
                     //Do something when changing the item if you want.
                   },
                   onSaved: (value) {
@@ -305,7 +306,7 @@ class _ProfileFieldState extends State<ProfileField> {
                           trailing: const Icon(Icons.add_circle_outline),
                           body: S2TileChips(
                             chipLength: state.selected.length,
-                                // profileCubit.state.specialities!.length,
+                            // profileCubit.state.specialities!.length,
                             chipLabelBuilder: (context, i) {
                               return Text(
                                   state.selected.choice?[i].title ?? '');

@@ -8,7 +8,7 @@ abstract class AuthState extends Equatable {
   final Tokens? tokens;
 
   @override
-  List<Object?> get props => [authStatus];
+  List<Object?> get props => [user, tokens, authStatus];
 
   const AuthState({
     this.authStatus = AuthStatus.Unknown,

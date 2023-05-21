@@ -91,20 +91,24 @@ class User extends Equatable {
           : null,
       requireNote: map['requireNote'] as String?,
       level: map['level'] as String?,
-      testPreparations: map['testPreparations'] != null ?List<TestPreparation>.from(
-        map['testPreparations'].map<TestPreparation>(
-          (x) => TestPreparation.fromMap(x as Map<String, dynamic>),
-        ),
-      ) : null,
+      testPreparations: map['testPreparations'] != null
+          ? List<TestPreparation>.from(
+              map['testPreparations'].map<TestPreparation>(
+                (x) => TestPreparation.fromMap(x as Map<String, dynamic>),
+              ),
+            )
+          : null,
       isPhoneActivated: map['isPhoneActivated'] as bool?,
       timezone: map['timezone'] as int?,
       studySchedule: map['studySchedule'] as String?,
       canSendMessage: map['canSendMessage'] as bool?,
-      learnTopics: map['learnTopics'] != null ? List<LearnTopic>.from(
-        map['learnTopics'].map<LearnTopic>(
-          (x) => LearnTopic.fromMap(x as Map<String, dynamic>),
-        ),
-      ) : null,
+      learnTopics: map['learnTopics'] != null
+          ? List<LearnTopic>.from(
+              map['learnTopics'].map<LearnTopic>(
+                (x) => LearnTopic.fromMap(x as Map<String, dynamic>),
+              ),
+            )
+          : null,
       courses: map['courses'] != null
           ? List<Course>.from(
               map['courses'].map<Course>(
@@ -116,7 +120,6 @@ class User extends Equatable {
   }
 
   @override
-  // TODO: implement props
   List<Object?> get props => [
         id,
         email,
@@ -127,18 +130,18 @@ class User extends Equatable {
         roles,
         language,
         birthday,
+        isActivated,
         walletInfo,
-        courses,
         requireNote,
         level,
-        learnTopics,
         testPreparations,
+        isPhoneActivated,
         timezone,
         studySchedule,
-        canSendMessage
+        canSendMessage,
+        learnTopics,
+        courses,
       ];
-
-
 
   @override
   String toString() {
@@ -167,7 +170,6 @@ class User extends Equatable {
     List<LearnTopic>? learnTopics,
     List<Course>? courses,
   }) {
-    var temp = 0;
     return User(
       id: id ?? this.id,
       email: email ?? this.email,

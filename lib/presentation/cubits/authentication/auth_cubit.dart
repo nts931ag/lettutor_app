@@ -21,7 +21,7 @@ class AuthCubit extends Cubit<AuthState> {
     emit(AuthenticatedState(user: user, tokens: tokens));
   }
 
-  Future<void> onSuccessUpdateUserInformation(User updatedUser) async {
+  void onSuccessUpdateUserInformation(User updatedUser) {
     User user = state.user!.copyWith(
       name: updatedUser.name,
       country: updatedUser.country,

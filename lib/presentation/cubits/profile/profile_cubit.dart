@@ -30,6 +30,7 @@ class ProfileCubit extends BaseCubit<ProfileState, UserDataResponse> {
       birthday: state.birthday,
       country: state.country,
       specialities: state.specialities,
+      avatar: state.avatar,
     ));
   }
 
@@ -42,6 +43,7 @@ class ProfileCubit extends BaseCubit<ProfileState, UserDataResponse> {
       birthday: state.birthday,
       country: state.country,
       specialities: state.specialities,
+      avatar: state.avatar,
     ));
   }
 
@@ -54,6 +56,7 @@ class ProfileCubit extends BaseCubit<ProfileState, UserDataResponse> {
       birthday: state.birthday,
       country: state.country,
       specialities: state.specialities,
+      avatar: state.avatar,
     ));
   }
 
@@ -66,6 +69,7 @@ class ProfileCubit extends BaseCubit<ProfileState, UserDataResponse> {
       birthday: state.birthday,
       country: state.country,
       specialities: state.specialities,
+      avatar: state.avatar,
     ));
   }
 
@@ -78,6 +82,7 @@ class ProfileCubit extends BaseCubit<ProfileState, UserDataResponse> {
       birthday: value,
       country: state.country,
       specialities: state.specialities,
+      avatar: state.avatar,
     ));
   }
 
@@ -90,6 +95,7 @@ class ProfileCubit extends BaseCubit<ProfileState, UserDataResponse> {
       birthday: state.birthday,
       country: value,
       specialities: state.specialities,
+      avatar: state.avatar,
     ));
   }
 
@@ -102,6 +108,7 @@ class ProfileCubit extends BaseCubit<ProfileState, UserDataResponse> {
       birthday: state.birthday,
       country: state.country,
       specialities: value,
+      avatar: state.avatar,
     ));
   }
 
@@ -115,6 +122,7 @@ class ProfileCubit extends BaseCubit<ProfileState, UserDataResponse> {
       birthday: state.birthday,
       country: state.country,
       specialities: state.specialities!,
+      avatar: state.avatar,
     ));
   }
 
@@ -213,9 +221,10 @@ class ProfileCubit extends BaseCubit<ProfileState, UserDataResponse> {
             birthday: updatedUser.birthday,
             country: updatedUser.country,
             level: updatedUser.level,
+            avatar: state.avatar,
           ),
         );
-        await _authCubit.onSuccessUpdateUserInformation(updatedUser);
+        _authCubit.onSuccessUpdateUserInformation(updatedUser);
       }
     });
   }
