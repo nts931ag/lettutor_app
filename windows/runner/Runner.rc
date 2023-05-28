@@ -90,12 +90,12 @@ BEGIN
         BLOCK "040904e4"
         BEGIN
             VALUE "CompanyName", "com.hcmus.it.clc" "\0"
-            VALUE "FileDescription", "lettutor_app" "\0"
+            VALUE "FileDescription", "Learning F2f" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
-            VALUE "InternalName", "lettutor_app" "\0"
+            VALUE "InternalName", "Learning F2f" "\0"
             VALUE "LegalCopyright", "Copyright (C) 2023 com.hcmus.it.clc. All rights reserved." "\0"
             VALUE "OriginalFilename", "lettutor_app.exe" "\0"
-            VALUE "ProductName", "lettutor_app" "\0"
+            VALUE "ProductName", "Learning F2f" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END
