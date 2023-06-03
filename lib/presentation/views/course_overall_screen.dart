@@ -24,6 +24,7 @@ class CourseOverallScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: BaseScaffoldWidgetCustom(
+        ishaveTrailing: true,
         body: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,

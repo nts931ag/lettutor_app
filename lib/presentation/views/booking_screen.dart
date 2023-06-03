@@ -71,6 +71,7 @@ class _BookingScreenState extends State<BookingScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: BaseScaffoldWidgetCustom(
+        ishaveTrailing: true,
           body: Column(
         children: [
           TableCalendar<BookingSchedule>(

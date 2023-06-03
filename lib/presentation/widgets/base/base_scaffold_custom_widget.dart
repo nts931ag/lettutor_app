@@ -17,6 +17,7 @@ class BaseScaffoldWidgetCustom extends StatelessWidget {
   final EdgeInsetsGeometry? marginCustom;
   final EdgeInsetsGeometry? paddingCustom;
   final List<Widget> actions;
+  final bool ishaveTrailing;
   const BaseScaffoldWidgetCustom(
       {Key? key,
         required this.body,
@@ -31,7 +32,8 @@ class BaseScaffoldWidgetCustom extends StatelessWidget {
         this.appbar,
         this.marginCustom,
         this.paddingCustom,
-        this.actions = const []})
+        this.actions = const [],
+        this.ishaveTrailing = false})
       : super(key: key);
 
   @override
@@ -39,6 +41,7 @@ class BaseScaffoldWidgetCustom extends StatelessWidget {
     return MediaQuery(
       data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
       child: Scaffold(
+
         resizeToAvoidBottomInset: resizeToAvoidBottomInset,
         backgroundColor: background,
         body: isPaddingDefault
@@ -52,7 +55,7 @@ class BaseScaffoldWidgetCustom extends StatelessWidget {
         bottomSheet: bottomSheet,
         bottomNavigationBar: bottomNavigationBar,
         appBar: appbar ??
-            MainAppBar(actions: actions),
+            MainAppBar(actions: actions, isHaveTrailing: ishaveTrailing,),
         floatingActionButton: floatingActionButton,
       ),
     );

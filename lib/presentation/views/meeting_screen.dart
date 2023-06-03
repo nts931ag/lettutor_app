@@ -39,6 +39,7 @@ class _MeetingState extends State<Meeting> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: BaseScaffoldWidgetCustom(
+        ishaveTrailing: true,
         body: buildMeetConfig(),
       ),
     );

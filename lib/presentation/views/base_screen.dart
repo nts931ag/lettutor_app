@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:lettutor_app/config/router/router.dart';
 import 'package:lettutor_app/presentation/widgets/base/base_scaffold_custom_widget.dart';
 import 'package:lettutor_app/presentation/widgets/commons/icon/circle_icon_widget.dart';
 import 'package:lettutor_app/presentation/views/course_list_screen.dart';
@@ -23,18 +24,25 @@ class BaseScreen extends StatefulWidget {
 
 class _BaseScreenState extends State<BaseScreen> {
   late int selectedIndex;
+
   @override
   void initState() {
     // TODO: implement initState
     selectedIndex = 0;
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
-
     return SafeArea(
       child: BaseScaffoldWidgetCustom(
         resizeToAvoidBottomInset: true,
+        /*floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            Navigator.of(context).pushNamed(MyRouter.chatGPT);
+          },
+          child: const Icon(Icons.message_rounded),
+        ),*/
         // actions: [
         //   circleIconNation(),
         //   // if (controller.isHaveDrawer)

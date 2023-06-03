@@ -6,9 +6,11 @@ class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
   const MainAppBar({
     Key? key,
     required this.actions,
+    required this.isHaveTrailing,
   }) : super(key: key);
 
   final List<Widget> actions;
+  final bool isHaveTrailing;
 
   @override
   Size get preferredSize => Size.fromHeight(80.h);
@@ -16,12 +18,7 @@ class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.only(
-          left: 10.w,
-          right: 10.w,
-          top: 5.h,
-          bottom: 5.h
-      ),
+      padding: EdgeInsets.only(left: 10.w, right: 10.w, top: 5.h, bottom: 5.h),
       decoration: BoxDecoration(
         color: Colors.white,
         boxShadow: [
@@ -34,11 +31,18 @@ class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
         ],
       ),
       child: Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
+        if (isHaveTrailing)
+          IconButton(
+            icon: const Icon(Icons.arrow_back),
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+          ),
         Container(
-            height: 39.h,
+            height: 40.h,
             width: 170.w,
             color: Colors.white,
-            child: Assets.svg.app.logoApp.svg(height: 39.h, width: 170.w)),
+            child: Assets.svg.app.logoApp.svg(height: 40.h, width: 170.w)),
         const Spacer(),
         ...actions
       ]),

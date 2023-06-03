@@ -23,11 +23,12 @@ class LoginScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // BlocProvider.of<LoginCubit>(context).onUsernameChanged('student@lettutor.com');
-    // BlocProvider.of<LoginCubit>(context).onPasswordChanged('123456');
-    // BlocProvider.of<LoginCubit>(context).loginManually();
+    BlocProvider.of<LoginCubit>(context).onUsernameChanged('student@lettutor.com');
+    BlocProvider.of<LoginCubit>(context).onPasswordChanged('123456');
+    BlocProvider.of<LoginCubit>(context).loginManually();
     return SafeArea(
       child: BaseScaffoldWidgetCustom(
+        resizeToAvoidBottomInset: true,
         body: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,

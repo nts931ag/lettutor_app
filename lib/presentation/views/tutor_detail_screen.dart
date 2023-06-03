@@ -47,6 +47,7 @@ class TutorDetailScreen extends StatelessWidget {
           tutor: tutor),
       child: SafeArea(
         child: BaseScaffoldWidgetCustom(
+          ishaveTrailing: true,
           body: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,

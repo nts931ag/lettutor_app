@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lettutor_app/config/router/error_page.dart';
 import 'package:lettutor_app/config/router/router_arguments.dart';
+import 'package:lettutor_app/presentation/Chat/chat_screen.dart';
+import 'package:lettutor_app/presentation/chat/providers/chats_provider.dart';
 import 'package:lettutor_app/presentation/cubits/tutor/feedback_list_cubit.dart';
 import 'package:lettutor_app/presentation/views/base_screen.dart';
 import 'package:lettutor_app/presentation/views/booking_screen.dart';
@@ -17,6 +19,7 @@ import 'package:lettutor_app/presentation/views/settings_screen.dart';
 import 'package:lettutor_app/presentation/views/tutor_detail_screen.dart';
 import 'package:lettutor_app/presentation/views/tutor_list_screen.dart';
 import 'package:lettutor_app/presentation/widgets/base/base_scaffold_custom_widget.dart';
+import 'package:provider/provider.dart';
 
 class MyRouter {
   // Base
@@ -57,6 +60,7 @@ class MyRouter {
   static const String profile = 'profile';
   static const String pdfReader = 'PDF reader';
   static const String booking = "Booking";
+  static const String chatGPT = "ChatGPT";
 
   static Route<dynamic> generateRoute(RouteSettings settings) {
     var args = settings.arguments;
@@ -123,6 +127,12 @@ class MyRouter {
               'Input for Tutor detail page is not TutorDetailArguments',
               settings);
         }
+      case chatGPT:
+        return successRoute(
+            ChangeNotifierProvider(
+                create: (_) => ChatProvider(), child: ChatScreen()),
+            settings);
+
       case joinMeeting:
         if (args is MeetingArguments) {
           return successRoute(
@@ -140,6 +150,7 @@ class MyRouter {
                   ..getFeedbackTutorWithTutorId(tutorId: args.tutorId),
                 child: SafeArea(
                   child: BaseScaffoldWidgetCustom(
+                    ishaveTrailing: true,
                     body: ReviewScreen(
                       tutorId: args.tutorId,
                     ),

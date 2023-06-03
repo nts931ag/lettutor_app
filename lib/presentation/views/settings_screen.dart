@@ -70,7 +70,11 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   textAlign: TextAlign.start,
                   softWrap: true,
                 ),
-                MenuWidget(title: 'Notifications', callback: () {}),
+                MenuWidget(
+                    title: 'ChatGPT',
+                    callback: () {
+                      Navigator.of(context).pushNamed(MyRouter.chatGPT);
+                    }),
                 MenuWidget(
                     title: 'Language',
                     callback: () async {

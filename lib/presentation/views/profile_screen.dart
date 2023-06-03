@@ -6,8 +6,8 @@ import 'package:lettutor_app/domain/repositories/api_repository.dart';
 import 'package:lettutor_app/locator.dart';
 import 'package:lettutor_app/presentation/cubits/authentication/auth_cubit.dart';
 import 'package:lettutor_app/presentation/cubits/profile/profile_cubit.dart';
+import 'package:lettutor_app/presentation/widgets/base/base_scaffold_custom_widget.dart';
 import 'package:lettutor_app/presentation/widgets/commons/circle_network_image.dart';
-import 'package:lettutor_app/presentation/widgets/profile/header_profile.dart';
 import 'package:lettutor_app/presentation/widgets/profile/profile_field.dart';
 import 'package:lettutor_app/utils/resource/colors/colors_core.dart';
 import 'package:lettutor_app/utils/resource/dimens.dart';
@@ -21,91 +21,95 @@ class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) =>
-      ProfileCubit(
+      create: (context) => ProfileCubit(
           locator<ApiRepository>(), BlocProvider.of<AuthCubit>(context))
         ..getInformationOfCurrentUser(),
-      child: Scaffold(
-        body: SingleChildScrollView(
-          child: Container(
-            margin: EdgeInsets.only(top: 30.h),
-            decoration: BoxDecoration(
-                color: ColorName.white,
-                borderRadius: BorderRadius.all(Radius.circular(10.0.r)),
-                border: Border.all(color: ColorName.greyColor, width: 2.0)),
-            width: double.infinity,
-            child: Column(
-              children: [
-                Container(
-                  height: 5.0,
-                  decoration: BoxDecoration(
-                      color: primaryColor,
-                      borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(5.0.r),
-                        topRight: Radius.circular(5.0.r),
-                      )),
-                ),
-                SizedBox(height: 35.h),
-                Row(
-                  mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Stack(
-                      alignment: Alignment.bottomCenter,
-                      children: [
-                        Container(
-                          padding: const EdgeInsets.all(2),
-                          decoration: const BoxDecoration(
-                            shape: BoxShape.circle,
-                            color: Colors.blue,
-                          ),
-                          child: BlocBuilder<ProfileCubit, ProfileState>(
-                            buildWhen: (pre, cur) => pre.avatar != cur.avatar,
-                            builder: (context, state) {
-                              return CircleNetworkImage(
-                                  url: state.avatar, size: 150.w);
-                            },
-                          ),
-                        ),
-                        Container(
-                            decoration: BoxDecoration(
-                                color: Colors.white,
-                                shape: BoxShape.circle,
-                                border:
-                                Border.all(color: Colors.blue, width: 2)),
-                            margin: const EdgeInsets.only(left: 100),
-                            child: BlocBuilder<ProfileCubit, ProfileState>(
-                              builder: (context, state) {
-                                return IconButton(
-                                  onPressed: () {
-                                    _getFromGallery(context);
-                                  },
-                                  icon: const Icon(
-                                    Icons.photo_camera,
-                                    color: Colors.blue,
-                                  ),
-                                  iconSize: 24,
-                                );
-                              },
-                            )),
-                      ],
-                    ),
-                  ],
-                ),
-                SizedBox(height: 35.h),
-                Container(
-                  height: 46.h,
-                  color: ColorName.greyColor,
-                  alignment: Alignment.centerLeft,
-                  padding: EdgeInsets.all(12.0.w),
-                  child: Text(
-                    AppLocalizations.of(context)!.account,
-                    style: text14,
+      child: SafeArea(
+        child: BaseScaffoldWidgetCustom(
+          ishaveTrailing: true,
+          resizeToAvoidBottomInset: true,
+          isPaddingDefault: false,
+          body: SingleChildScrollView(
+            child: Container(
+              margin: EdgeInsets.only(top: 30.h),
+              decoration: BoxDecoration(
+                  color: ColorName.white,
+                  borderRadius: BorderRadius.all(Radius.circular(10.0.r)),
+                  border: Border.all(color: ColorName.greyColor, width: 2.0)),
+              width: double.infinity,
+              child: Column(
+                children: [
+                  Container(
+                    height: 5.0,
+                    decoration: BoxDecoration(
+                        color: primaryColor,
+                        borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(5.0.r),
+                          topRight: Radius.circular(5.0.r),
+                        )),
                   ),
-                ),
-                const ProfileField()
-              ],
+                  SizedBox(height: 35.h),
+                  Row(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Stack(
+                        alignment: Alignment.bottomCenter,
+                        children: [
+                          Container(
+                            padding: const EdgeInsets.all(2),
+                            decoration: const BoxDecoration(
+                              shape: BoxShape.circle,
+                              color: Colors.blue,
+                            ),
+                            child: BlocBuilder<ProfileCubit, ProfileState>(
+                              buildWhen: (pre, cur) => pre.avatar != cur.avatar,
+                              builder: (context, state) {
+                                return CircleNetworkImage(
+                                    url: state.avatar, size: 150.w);
+                              },
+                            ),
+                          ),
+                          Container(
+                              decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  shape: BoxShape.circle,
+                                  border:
+                                      Border.all(color: Colors.blue, width: 2)),
+                              margin: const EdgeInsets.only(left: 100),
+                              child: BlocBuilder<ProfileCubit, ProfileState>(
+                                builder: (context, state) {
+                                  return IconButton(
+                                    onPressed: () {
+                                      _getFromGallery(context);
+                                    },
+                                    icon: const Icon(
+                                      Icons.photo_camera,
+                                      color: Colors.blue,
+                                    ),
+                                    iconSize: 24,
+                                  );
+                                },
+                              )),
+                        ],
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 35.h),
+                  Container(
+                    height: 46.h,
+                    color: ColorName.greyColor,
+                    alignment: Alignment.centerLeft,
+                    padding: EdgeInsets.all(12.0.w),
+                    child: Text(
+                      AppLocalizations.of(context)!.account,
+                      style: text14,
+                    ),
+                  ),
+                  const ProfileField()
+                ],
+              ),
             ),
           ),
         ),
@@ -124,7 +128,9 @@ class ProfileScreen extends StatelessWidget {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
             content: Text(
-              'Upload avatar successfully!', style: text14,)),
+          'Upload avatar successfully!',
+          style: text14,
+        )),
       );
     }
   }
