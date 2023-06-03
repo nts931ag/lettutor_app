@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:equatable/equatable.dart';
+import 'package:flutter/foundation.dart';
 import 'package:lettutor_app/domain/models/Tutor.dart';
 import 'package:lettutor_app/domain/models/requests/Filter.dart';
 import 'package:lettutor_app/domain/models/requests/TutorSearchRequest.dart';
@@ -68,6 +69,7 @@ class TutorListCubit extends BaseCubit<TutorListState, List<Tutor>> {
     bool isScrollToLoadmore = false,
   }) async {
     if (isBusy) return;
+    if (_searchKey == searchKey && listEquals(_specialitiesSelected, specialitiesSelected)) return;
 
     await run(() async {
       if (!isScrollToLoadmore) {

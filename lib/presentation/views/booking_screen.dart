@@ -71,93 +71,99 @@ class _BookingScreenState extends State<BookingScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: BaseScaffoldWidgetCustom(
-        ishaveTrailing: true,
+          ishaveTrailing: true,
           body: Column(
-        children: [
-          TableCalendar<BookingSchedule>(
-            firstDay: kFirstDay,
-            lastDay: kLastDay,
-            focusedDay: _focusedDay,
-            selectedDayPredicate: (day) => isSameDay(_selectedDay, day),
-            calendarFormat: _calendarFormat,
-            rangeSelectionMode: _rangeSelectionMode,
-            eventLoader: _getEventsForDay,
-            startingDayOfWeek: StartingDayOfWeek.monday,
-            calendarStyle: const CalendarStyle(
-              // Use `CalendarStyle` to customize the UI
-              outsideDaysVisible: false,
-              markersMaxCount: 0,
-            ),
-            onDaySelected: _onDaySelected,
-            // onRangeSelected: _onRangeSelected,
-            onFormatChanged: (format) {
-              if (_calendarFormat != format) {
-                setState(() {
-                  _calendarFormat = format;
-                });
-              }
-            },
-            onPageChanged: (focusedDay) {
-              _focusedDay = focusedDay;
-            },
-          ),
-          const SizedBox(height: 8.0),
-          Expanded(
-            child: ValueListenableBuilder<List<BookingSchedule>>(
-              valueListenable: _selectedEvents,
-              builder: (context, value, _) {
-                return ListView.builder(
-                  itemCount: value.length,
-                  itemBuilder: (context, index) {
-                    return Container(
-                      margin: const EdgeInsets.symmetric(
-                        horizontal: 12.0,
-                        vertical: 4.0,
-                      ),
-                      decoration: BoxDecoration(
-                        border: Border.all(),
-                        borderRadius: BorderRadius.circular(12.0),
-                        // color: value[index].isBooked ? greyColor : whiteColor,
-                      ),
-                      child: ListTile(
-                          enabled: checkBookingScheduleAvailable(value[index]),
-                          onTap: () => showDialog(
-                                context: context,
-                                builder: (BuildContext context) {
-                                  return BookingDialog(
-                                    title: "Booking class",
-                                    onSubmit: (content) {
-                                      bookingClass(
-                                          apiRepository: _apiRepository,
-                                          bookingScheduleSelected: value[index],
-                                          content:
-                                              content); /*.then(
+            children: [
+              TableCalendar<BookingSchedule>(
+                firstDay: kFirstDay,
+                lastDay: kLastDay,
+                focusedDay: _focusedDay,
+                selectedDayPredicate: (day) => isSameDay(_selectedDay, day),
+                calendarFormat: _calendarFormat,
+                rangeSelectionMode: _rangeSelectionMode,
+                eventLoader: _getEventsForDay,
+                startingDayOfWeek: StartingDayOfWeek.monday,
+                calendarStyle: const CalendarStyle(
+                  // Use `CalendarStyle` to customize the UI
+                  outsideDaysVisible: false,
+                  markersMaxCount: 0,
+                ),
+                onDaySelected: _onDaySelected,
+                // onRangeSelected: _onRangeSelected,
+                onFormatChanged: (format) {
+                  if (_calendarFormat != format) {
+                    setState(() {
+                      _calendarFormat = format;
+                    });
+                  }
+                },
+                onPageChanged: (focusedDay) {
+                  _focusedDay = focusedDay;
+                },
+              ),
+              const SizedBox(height: 8.0),
+              Expanded(
+                child: ValueListenableBuilder<List<BookingSchedule>>(
+                  valueListenable: _selectedEvents,
+                  builder: (context, value, _) {
+                    return value.isEmpty
+                        ? Center(child: Text("This tutor don't have class today", style: text16,))
+                        : ListView.builder(
+                      itemCount: value.length,
+                      itemBuilder: (context, index) {
+                        return Container(
+                                margin: const EdgeInsets.symmetric(
+                                  horizontal: 12.0,
+                                  vertical: 4.0,
+                                ),
+                                decoration: BoxDecoration(
+                                  border: Border.all(),
+                                  borderRadius: BorderRadius.circular(12.0),
+                                  // color: value[index].isBooked ? greyColor : whiteColor,
+                                ),
+                                child: ListTile(
+                                    enabled: checkBookingScheduleAvailable(
+                                        value[index]),
+                                    onTap: () => showDialog(
+                                          context: context,
+                                          builder: (BuildContext context) {
+                                            return BookingDialog(
+                                              title: "Booking class",
+                                              onSubmit: (content) {
+                                                bookingClass(
+                                                    apiRepository:
+                                                        _apiRepository,
+                                                    bookingScheduleSelected:
+                                                        value[index],
+                                                    content:
+                                                        content); /*.then(
                                   (value) => */
-                                    },
-                                  );
-                                },
-                              ),
-                          title: Text(
-                            // '${value[index].startTime} - ${value[index].endTime}}',
-                            '${formatHourAndMinuteFromTimestamp(value[index].startTimestamp)} - ${formatHourAndMinuteFromTimestamp(value[index].endTimestamp)}',
-                            style: text18,
-                          ),
-                          subtitle: Text(
-                            checkBookingScheduleAvailable(value[index])
-                                ? 'You can book this class'
-                                : value[index].isBooked
-                                    ? 'This class is booked'
-                                    : 'This class is time up',
-                            style: text14,
-                          )),
+                                              },
+                                            );
+                                          },
+                                        ),
+                                    title: Text(
+                                      // '${value[index].startTime} - ${value[index].endTime}}',
+                                      '${formatHourAndMinuteFromTimestamp(value[index].startTimestamp)} - ${formatHourAndMinuteFromTimestamp(value[index].endTimestamp)}',
+                                      style: text18,
+                                    ),
+                                    subtitle: Text(
+                                      checkBookingScheduleAvailable(
+                                              value[index])
+                                          ? 'You can book this class'
+                                          : value[index].isBooked
+                                              ? 'This class is booked'
+                                              : 'This class is time up',
+                                      style: text14,
+                                    )),
+                              );
+                      },
                     );
                   },
-                );
-              },
-            ),
-          ),
-        ],
-      )),
+                ),
+              ),
+            ],
+          )),
     );
   }
 
