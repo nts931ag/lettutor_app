@@ -25,8 +25,11 @@ Link all document: [https://drive.google.com/drive/folders/10PpRoypbi6a_tXfy0q06
 ## How to run application
 
 step 1: open source with IDE
+
 step 2: executing command: 
     flutter pub get
+
 step 3: generate resource by executing command: 
     flutter pub run build_runner build --delete-conflicting-outputs
+
 step 4: connect to emulator/real device and run application.

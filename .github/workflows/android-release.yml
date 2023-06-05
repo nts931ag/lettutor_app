@@ -7,9 +7,9 @@ name: Dart
 
 on:
   push:
-    branches: [ "master" ]
+    branches: [ "advance-online-app" ]
   pull_request:
-    branches: [ "master" ]
+    branches: [ "advance-online-app" ]
 
 jobs:
   build:
