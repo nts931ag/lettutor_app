@@ -18,6 +18,10 @@ Video demo: [https://youtu.be/wCdQ3jBeFF0](https://youtu.be/wCdQ3jBeFF0)
 Document report: [https://docs.google.com/document/d/milestone3](https://drive.google.com/drive/folders/10PpRoypbi6a_tXfy0q06lUt7MsT-ordG?usp=sharing)
 Video demo: [https://youtu.be/eeHCjlROfxw](https://youtu.be/eeHCjlROfxw)
 
+## Report
+
+Link all document: [https://drive.google.com/drive/folders/10PpRoypbi6a_tXfy0q06lUt7MsT-ordG?usp=drive_link](https://drive.google.com/drive/folders/10PpRoypbi6a_tXfy0q06lUt7MsT-ordG?usp=drive_link)
+
 ## How to run application
 
 step 1: open source with IDE
