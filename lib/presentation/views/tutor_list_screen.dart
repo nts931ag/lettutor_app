@@ -66,12 +66,16 @@ Widget _buildCommonCustomScrollView(
                   child: Center(child: Icon(Ionicons.refresh)));
             case TutorListEmptySuccess:
               return SliverToBoxAdapter(
-                  child: Center(child: Column(
-                    children: [
-                      const Icon(Icons.search_off_rounded),
-                      Text('No matched tutor!', style: text14,)
-                    ],
-                  )));
+                  child: Center(
+                      child: Column(
+                children: [
+                  const Icon(Icons.search_off_rounded),
+                  Text(
+                    'No matched tutor!',
+                    style: text14,
+                  )
+                ],
+              )));
             case TutorListSuccess:
               return _buildTutorCustom(
                 context,
@@ -83,16 +87,30 @@ Widget _buildCommonCustomScrollView(
           }
         },
       ),
-
-/*
-        if (!noMoreData)
+      BlocBuilder<TutorListCubit, TutorListState>(
+        builder: (_, state) {
+          switch (state.runtimeType) {
+            case TutorListSuccess:
+              return (!state.noMoreData)
+                  ? const SliverToBoxAdapter(
+                      child: Padding(
+                        padding: EdgeInsets.only(top: 14, bottom: 32),
+                        child: CupertinoActivityIndicator(),
+                      ),
+                    )
+                  : const SliverToBoxAdapter();
+            default:
+              return const SliverToBoxAdapter();
+          }
+        },
+      ),
+/*        if (!noMoreData)
           const SliverToBoxAdapter(
             child: Padding(
               padding: EdgeInsets.only(top: 14, bottom: 32),
               child: CupertinoActivityIndicator(),
             ),
-          )
-*/
+          )*/
     ],
   );
 }

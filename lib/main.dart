@@ -9,6 +9,7 @@ import 'package:lettutor_app/presentation/cubits/authentication/login_cubit.dart
 import 'package:lettutor_app/presentation/cubits/course/course_list_cubit.dart';
 import 'package:lettutor_app/presentation/cubits/history/history_list_cubit.dart';
 import 'package:lettutor_app/presentation/cubits/schedule/schedule_list_cubit.dart';
+import 'package:lettutor_app/presentation/cubits/schedule/upcoming_schedule_cubit.dart';
 import 'package:lettutor_app/presentation/cubits/tutor/tutor_list_cubit.dart';
 import 'package:lettutor_app/presentation/views/base_screen.dart';
 import 'package:lettutor_app/presentation/views/login_screen.dart';
@@ -103,6 +104,11 @@ class _MyAppState extends State<MyApp> {
                         create: (context) => HistoryListCubit(
                           locator<ApiRepository>(),
                         )..getHistoryScheduleListWithPagination(),
+                      ),
+                      BlocProvider(
+                        create: (context) => UpcomingScheduleCubit(
+                          locator<ApiRepository>(),
+                        )..getUpcomingSchedule(),
                       ),
                     ],
                     child: const BaseScreen(),

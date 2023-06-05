@@ -4,6 +4,7 @@ import 'package:lettutor_app/domain/models/BookingSchedule.dart';
 import 'package:lettutor_app/domain/repositories/api_repository.dart';
 import 'package:lettutor_app/locator.dart';
 import 'package:lettutor_app/presentation/cubits/schedule/schedule_list_cubit.dart';
+import 'package:lettutor_app/presentation/cubits/schedule/upcoming_schedule_cubit.dart';
 import 'package:lettutor_app/presentation/widgets/base/base_scaffold_custom_widget.dart';
 import 'package:lettutor_app/utils/resource/data_state.dart';
 import 'package:lettutor_app/utils/utils.dart';
@@ -11,11 +12,12 @@ import 'package:table_calendar/table_calendar.dart';
 
 class BookingScreen extends StatefulWidget {
   const BookingScreen(
-      {Key? key, required this.scheduleListCubit, required this.tutorId})
+      {Key? key, required this.scheduleListCubit, required this.tutorId, required this.upcomingScheduleCubit})
       : super(key: key);
 
   final ScheduleListCubit scheduleListCubit;
   final String tutorId;
+  final UpcomingScheduleCubit upcomingScheduleCubit;
 
   @override
   State<BookingScreen> createState() => _BookingScreenState();

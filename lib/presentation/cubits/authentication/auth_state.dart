@@ -18,9 +18,13 @@ abstract class AuthState extends Equatable {
 }
 
 class UnknownState extends AuthState {
-  const UnknownState({super.user, super.tokens});
+  const UnknownState({user, tokens, authStatus = AuthStatus.Unknown})
+      : super(user: user, tokens: tokens, authStatus: authStatus);
 }
 
 class AuthenticatedState extends AuthState {
-  const AuthenticatedState({required super.user, required super.tokens, super.authStatus = AuthStatus.Authenticated});
+  const AuthenticatedState(
+      {required super.user,
+      required super.tokens,
+      super.authStatus = AuthStatus.Authenticated});
 }

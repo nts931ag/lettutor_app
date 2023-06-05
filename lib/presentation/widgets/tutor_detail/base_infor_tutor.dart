@@ -9,6 +9,7 @@ import 'package:lettutor_app/domain/models/Tutor.dart';
 import 'package:lettutor_app/domain/repositories/api_repository.dart';
 import 'package:lettutor_app/locator.dart';
 import 'package:lettutor_app/presentation/cubits/tutor/tutor_detail_cubit.dart';
+import 'package:lettutor_app/presentation/widgets/commons/circle_network_image.dart';
 import 'package:lettutor_app/presentation/widgets/commons/icon/circle_box_widget.dart';
 import 'package:lettutor_app/presentation/widgets/commons/icon/icon_text_widget.dart';
 import 'package:lettutor_app/utils/resource/dimens.dart';
@@ -36,7 +37,7 @@ class BaseInforTutor extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                CircleBox(
+                /*CircleBox(
                   size: 110.w,
                   child: Image.network(
                     tutor.avatar,
@@ -44,7 +45,9 @@ class BaseInforTutor extends StatelessWidget {
                       return Assets.images.img.image(fit: BoxFit.cover);
                     },
                   ),
-                ),
+                ),*/
+                CircleNetworkImage(size: 110.w, url: tutor.avatar,),
+                SizedBox(width: 10.w,),
                 Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,

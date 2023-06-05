@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:lettutor_app/presentation/cubits/authentication/auth_cubit.dart';
 import 'package:lettutor_app/utils/resource/gen/assets.gen.dart';
 import 'package:lettutor_app/config/router/router.dart';
 import 'package:lettutor_app/config/theme/text_theme.dart';
@@ -128,6 +130,11 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       }),
                 ),
                 MenuWidget(title: 'Application information', callback: () {}),
+                MenuWidget(
+                    title: 'Log out',
+                    callback: () {
+                      BlocProvider.of<AuthCubit>(context).onLogout();
+                    }),
                 const SizedBox(
                   height: 16,
                 ),

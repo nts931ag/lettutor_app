@@ -21,6 +21,11 @@ class AuthCubit extends Cubit<AuthState> {
     emit(AuthenticatedState(user: user, tokens: tokens));
   }
 
+  void onLogout() {
+    emit(const UnknownState(
+        user: null, tokens: null, authStatus: AuthStatus.Unknown));
+  }
+
   void onSuccessUpdateUserInformation(User updatedUser) {
     User user = state.user!.copyWith(
       name: updatedUser.name,
@@ -37,9 +42,7 @@ class AuthCubit extends Cubit<AuthState> {
   }
 
   Future<void> onSuccessUploadAvatarUser(String avatarUrl) async {
-    User user = state.user!.copyWith(
-      avatar: avatarUrl
-    );
+    User user = state.user!.copyWith(avatar: avatarUrl);
     emit(
       AuthenticatedState(user: user, tokens: state.tokens),
     );

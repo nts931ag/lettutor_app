@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lettutor_app/config/router/error_page.dart';
 import 'package:lettutor_app/config/router/router_arguments.dart';
-import 'package:lettutor_app/presentation/Chat/chat_screen.dart';
+import 'package:lettutor_app/presentation/chat/chat_screen.dart';
 import 'package:lettutor_app/presentation/chat/providers/chats_provider.dart';
 import 'package:lettutor_app/presentation/cubits/tutor/feedback_list_cubit.dart';
 import 'package:lettutor_app/presentation/views/base_screen.dart';
@@ -71,9 +71,11 @@ class MyRouter {
         if (args is TutorDetailArguments) {
           return successRoute(
               TutorDetailScreen(
-                  tutor: args.tutor,
-                  tutorListCubit: args.tutorListCubit,
-                  scheduleListCubit: args.scheduleListCubit),
+                tutor: args.tutor,
+                tutorListCubit: args.tutorListCubit,
+                scheduleListCubit: args.scheduleListCubit,
+                upcomingScheduleCubit: args.upcomingScheduleCubit,
+              ),
               settings);
         } else {
           return errorRoute(
@@ -119,8 +121,10 @@ class MyRouter {
         if (args is BookingScreenArguments) {
           return successRoute(
               BookingScreen(
-                  tutorId: args.tutorId,
-                  scheduleListCubit: args.scheduleListCubit),
+                tutorId: args.tutorId,
+                scheduleListCubit: args.scheduleListCubit,
+                upcomingScheduleCubit: args.upcomingScheduleCubit,
+              ),
               settings);
         } else {
           return errorRoute(
@@ -130,7 +134,7 @@ class MyRouter {
       case chatGPT:
         return successRoute(
             ChangeNotifierProvider(
-                create: (_) => ChatProvider(), child: ChatScreen()),
+                create: (_) => ChatProvider(), child: const ChatScreen()),
             settings);
 
       case joinMeeting:

@@ -61,6 +61,20 @@ String formatTotalLessonHour(int minutes) {
   return "$hour hours $minute minutes";
 }
 
+format(Duration d) => d.toString().split('.').first.padLeft(8, "0");
+
+String formatFullTimeFromSeconds(int value) {
+  int h, m, s;
+
+  h = value ~/ 3600;
+
+  m = ((value - h * 3600)) ~/ 60;
+
+  s = value - (h * 3600) - (m * 60);
+
+  return format(Duration(hours: h, minutes: m, seconds: s));
+}
+
 TextStyle? headLineSmall(BuildContext context) {
   return Theme.of(context).textTheme.headlineSmall?.copyWith(
       fontWeight: FontWeight.w500,

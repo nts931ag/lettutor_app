@@ -91,16 +91,23 @@ class HistoryScreen extends HookWidget {
             }
           },
         ),
-
-/*
-        if (!noMoreData)
-          const SliverToBoxAdapter(
-            child: Padding(
-              padding: EdgeInsets.only(top: 14, bottom: 32),
-              child: CupertinoActivityIndicator(),
-            ),
-          )
-*/
+        BlocBuilder<HistoryListCubit, HistoryListState>(
+          builder: (_, state) {
+            switch (state.runtimeType) {
+              case HistoryListSuccess:
+                return (!state.noMoreData)
+                    ? const SliverToBoxAdapter(
+                        child: Padding(
+                          padding: EdgeInsets.only(top: 14, bottom: 32),
+                          child: CupertinoActivityIndicator(),
+                        ),
+                      )
+                    : const SliverToBoxAdapter();
+              default:
+                return const SliverToBoxAdapter();
+            }
+          },
+        ),
       ],
     );
   }

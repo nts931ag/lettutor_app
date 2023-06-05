@@ -91,12 +91,16 @@ class CourseListScreen extends HookWidget {
                     child: Center(child: Icon(Ionicons.refresh)));
               case CourseListEmptySuccess:
                 return SliverToBoxAdapter(
-                    child: Center(child: Column(
-                      children: [
-                        const Icon(Icons.search_off_rounded),
-                        Text('No matched course!', style: text14,)
-                      ],
-                    )));
+                    child: Center(
+                        child: Column(
+                  children: [
+                    const Icon(Icons.search_off_rounded),
+                    Text(
+                      'No matched course!',
+                      style: text14,
+                    )
+                  ],
+                )));
               case CourseListSuccess:
                 return _buildCourse(
                   context,
@@ -108,16 +112,23 @@ class CourseListScreen extends HookWidget {
             }
           },
         ),
-
-/*
-        if (!noMoreData)
-          const SliverToBoxAdapter(
-            child: Padding(
-              padding: EdgeInsets.only(top: 14, bottom: 32),
-              child: CupertinoActivityIndicator(),
-            ),
-          )
-*/
+        BlocBuilder<CourseListCubit, CourseListState>(
+          builder: (_, state) {
+            switch (state.runtimeType) {
+              case CourseListSuccess:
+                return (!state.noMoreData)
+                    ? const SliverToBoxAdapter(
+                        child: Padding(
+                          padding: EdgeInsets.only(top: 14, bottom: 32),
+                          child: CupertinoActivityIndicator(),
+                        ),
+                      )
+                    : const SliverToBoxAdapter();
+              default:
+                return const SliverToBoxAdapter();
+            }
+          },
+        ),
       ],
     );
   }

@@ -10,12 +10,12 @@ Requirement 2 & 3: Implement in code (branch "milestone-1-mockup-ui")
 
 ## Milestone 2
 
-Document report: [https://docs.google.com/document/d/milestone2](https://docs.google.com/document/d/1dZM9IWDF-y44bfVIzS8x6ZbcapTtk_ah/edit?usp=drive_link&ouid=116048334761093379848&rtpof=true&sd=true)
+Document report: [https://docs.google.com/document/d/milestone2](https://drive.google.com/drive/folders/10PpRoypbi6a_tXfy0q06lUt7MsT-ordG?usp=sharing)
 Video demo: [https://youtu.be/wCdQ3jBeFF0](https://youtu.be/wCdQ3jBeFF0)
 
 ## Milestone 3
 
-Document report: [https://docs.google.com/document/d/milestone3](https://docs.google.com/document/d/1dZM9IWDF-y44bfVIzS8x6ZbcapTtk_ah/edit?usp=drive_link&ouid=116048334761093379848&rtpof=true&sd=true)
+Document report: [https://docs.google.com/document/d/milestone3](https://drive.google.com/drive/folders/10PpRoypbi6a_tXfy0q06lUt7MsT-ordG?usp=sharing)
 Video demo: [https://youtu.be/eeHCjlROfxw](https://youtu.be/eeHCjlROfxw)
 
 ## How to run application

@@ -94,16 +94,23 @@ class ScheduleScreen extends HookWidget {
             }
           },
         ),
-
-/*
-        if (!noMoreData)
-          const SliverToBoxAdapter(
-            child: Padding(
-              padding: EdgeInsets.only(top: 14, bottom: 32),
-              child: CupertinoActivityIndicator(),
-            ),
-          )
-*/
+        BlocBuilder<ScheduleListCubit, ScheduleListState>(
+          builder: (_, state) {
+            switch (state.runtimeType) {
+              case ScheduleListSuccess:
+                return (!state.noMoreData)
+                    ? const SliverToBoxAdapter(
+                        child: Padding(
+                          padding: EdgeInsets.only(top: 14, bottom: 32),
+                          child: CupertinoActivityIndicator(),
+                        ),
+                      )
+                    : const SliverToBoxAdapter();
+              default:
+                return const SliverToBoxAdapter();
+            }
+          },
+        ),
       ],
     );
   }

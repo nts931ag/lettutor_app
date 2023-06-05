@@ -213,6 +213,6 @@ class ScheduleItem extends StatelessWidget {
 
   bool isAllowedToCancel(DateTime lessonStart) {
     var timeToLesson = DateTime.now().difference(lessonStart);
-    return timeToLesson.compareTo(const Duration(hours: 2)) > 0;
+    return timeToLesson.compareTo(const Duration(hours: 2)) < 0;
   }
 }

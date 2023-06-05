@@ -23,9 +23,10 @@ class LoginScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    BlocProvider.of<LoginCubit>(context).onUsernameChanged('student@lettutor.com');
-    BlocProvider.of<LoginCubit>(context).onPasswordChanged('123456');
-    BlocProvider.of<LoginCubit>(context).loginManually();
+    // BlocProvider.of<LoginCubit>(context)
+    //     .onUsernameChanged('student@lettutor.com');
+    // BlocProvider.of<LoginCubit>(context).onPasswordChanged('123456');
+    // BlocProvider.of<LoginCubit>(context).loginManually();
     return SafeArea(
       child: BaseScaffoldWidgetCustom(
         resizeToAvoidBottomInset: true,
@@ -73,7 +74,8 @@ class LoginScreen extends StatelessWidget {
                               ? null
                               : state.username.getMessageError(),
                           textInputType: TextInputType.emailAddress,
-                          controller: null,
+                          controller: BlocProvider.of<LoginCubit>(context)
+                              .emailTextController,
                           hintText: 'email@example.com',
                         );
                       },
@@ -97,7 +99,8 @@ class LoginScreen extends StatelessWidget {
                               BlocProvider.of<LoginCubit>(context)
                                   .onPasswordChanged(value);
                             },
-                            controller: null,
+                            controller: BlocProvider.of<LoginCubit>(context)
+                                .passwordTextController,
                             isObscure: true,
                             errorText: state.password.isPure
                                 ? null
@@ -113,10 +116,7 @@ class LoginScreen extends StatelessWidget {
                       height: 10.h,
                     ),
                     InkWell(
-                      onTap: () {
-                        // TODO: Navigation to FORGOT PASSWORD
-                        log("hello");
-                      },
+                      onTap: () {},
                       child: Text(
                         AppLocalizations.of(context)!.forgot_password,
                         style: text14.copyWith(
@@ -126,16 +126,28 @@ class LoginScreen extends StatelessWidget {
                     SizedBox(
                       height: 15.h,
                     ),
-                    LoadingButtonWidget(
-                        submit: () {
-                          // TODO: Navigation to DASHBOARD
-                          BlocProvider.of<LoginCubit>(context).loginManually();
-                        },
-                        isLoading: false,
-                        // TODO: Navigation to DASHBOARD
-                        label: /*loginController.isLogin.value*/ true
-                            ? AppLocalizations.of(context)!.login
-                            : AppLocalizations.of(context)!.sign_up),
+                    BlocBuilder<LoginCubit, LoginState>(
+                      buildWhen: (pre, cur) =>
+                          pre.authenticationType != cur.authenticationType,
+                      builder: (context, state) {
+                        return LoadingButtonWidget(
+                            submit: () {
+                              // TODO: Navigation to DASHBOARD
+                              final cubit =
+                                  BlocProvider.of<LoginCubit>(context);
+                              state.authenticationType ==
+                                      AuthenticationType.Login
+                                  ? cubit.loginManually()
+                                  : cubit.registerManually();
+                            },
+                            isLoading: false,
+                            // TODO: Navigation to DASHBOARD
+                            label: state.authenticationType ==
+                                    AuthenticationType.Login
+                                ? AppLocalizations.of(context)!.login
+                                : AppLocalizations.of(context)!.sign_up);
+                      },
+                    ),
                     SizedBox(
                       height: 25.h,
                     ),
@@ -182,32 +194,53 @@ class LoginScreen extends StatelessWidget {
                           SizedBox(
                             height: 25.h,
                           ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                AppLocalizations.of(context)!.login_not_member,
-                                style: text14,
-                              ),
-                              SizedBox(
-                                width: 1.w,
-                              ),
-                              InkWell(
-                                onTap: () {
-                                  // TODO: Navigation to changeLogin();
-                                  // loginController.changeLogin();
-                                },
-                                child: Text(
-                                  "Sign up",
-                                  // TODO: Navigation to changeLogin
-                                  // loginController.isLogin.value
-                                  //     ? AppLocalizations.of(context)!.sign_up
-                                  //     : AppLocalizations.of(context)!.login,
-                                  style: text14.copyWith(
-                                      color: ColorName.primaryColor),
-                                ),
-                              ),
-                            ],
+                          BlocBuilder<LoginCubit, LoginState>(
+                            buildWhen: (pre, cur) =>
+                                pre.authenticationType !=
+                                cur.authenticationType,
+                            builder: (context, state) {
+                              return Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    BlocProvider.of<LoginCubit>(context)
+                                                .state
+                                                .authenticationType !=
+                                            AuthenticationType.Signup
+                                        ? AppLocalizations.of(context)!
+                                            .login_not_member
+                                        : AppLocalizations.of(context)!
+                                            .login_already_have_account,
+                                    style: text14,
+                                  ),
+                                  SizedBox(
+                                    width: 1.w,
+                                  ),
+                                  InkWell(
+                                    onTap: () {
+                                      final cubit =
+                                          BlocProvider.of<LoginCubit>(context);
+                                      cubit.onTypeAuthenticationChanged(
+                                          cubit.state.authenticationType ==
+                                                  AuthenticationType.Login
+                                              ? AuthenticationType.Signup
+                                              : AuthenticationType.Login);
+                                    },
+                                    child: Text(
+                                      BlocProvider.of<LoginCubit>(context)
+                                                  .state
+                                                  .authenticationType !=
+                                              AuthenticationType.Signup
+                                          ? AppLocalizations.of(context)!
+                                              .sign_up
+                                          : AppLocalizations.of(context)!.login,
+                                      style: text14.copyWith(
+                                          color: ColorName.primaryColor),
+                                    ),
+                                  ),
+                                ],
+                              );
+                            },
                           )
                         ],
                       ),

@@ -7,6 +7,7 @@ import 'package:lettutor_app/domain/models/Tutor.dart';
 import 'package:lettutor_app/domain/repositories/api_repository.dart';
 import 'package:lettutor_app/locator.dart';
 import 'package:lettutor_app/presentation/cubits/schedule/schedule_list_cubit.dart';
+import 'package:lettutor_app/presentation/cubits/schedule/upcoming_schedule_cubit.dart';
 import 'package:lettutor_app/presentation/cubits/tutor/tutor_detail_cubit.dart';
 import 'package:lettutor_app/presentation/cubits/tutor/tutor_list_cubit.dart';
 import 'package:lettutor_app/presentation/widgets/base/base_scaffold_custom_widget.dart';
@@ -22,11 +23,12 @@ class TutorDetailScreen extends StatelessWidget {
       {Key? key,
       required this.tutor,
       required this.tutorListCubit,
-      required this.scheduleListCubit})
+      required this.scheduleListCubit, required this.upcomingScheduleCubit})
       : super(key: key);
   final Tutor tutor;
   final TutorListCubit tutorListCubit;
   final ScheduleListCubit scheduleListCubit;
+  final UpcomingScheduleCubit upcomingScheduleCubit;
 
   @override
   Widget build(BuildContext context) {
@@ -77,7 +79,8 @@ class TutorDetailScreen extends StatelessWidget {
                         MyRouter.booking,
                         arguments: BookingScreenArguments(
                             scheduleListCubit: scheduleListCubit,
-                            tutorId: tutor.userId),
+                            tutorId: tutor.userId,
+                            upcomingScheduleCubit: upcomingScheduleCubit),
                       );
                     },
                     isLoading: false,

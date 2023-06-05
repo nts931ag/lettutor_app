@@ -3,6 +3,10 @@ import 'package:jitsi_meet_wrapper/jitsi_meet_wrapper.dart';
 import 'package:jwt_decoder/jwt_decoder.dart';
 import 'package:lettutor_app/domain/models/Schedule.dart';
 import 'package:lettutor_app/presentation/widgets/base/base_scaffold_custom_widget.dart';
+import 'package:timer_count_down/timer_count_down.dart';
+
+import '../../config/theme/text_theme.dart';
+import '../../utils/utils.dart';
 
 class Meeting extends StatefulWidget {
   const Meeting({Key? key, required this.studentMeetingLink}) : super(key: key);
@@ -67,6 +71,21 @@ class _MeetingState extends State<Meeting> {
             value: isVideoMuted,
             onChanged: _onVideoMutedChanged,
           ),
+          const SizedBox(height: 16.0),
+          ListTile(
+            title: Text('Starts in: '),
+            trailing: Countdown(
+              seconds: 10,
+              build: (_, time) => Text(
+                formatFullTimeFromSeconds(time.toInt()),
+                style: text16.copyWith(color: Colors.black),
+              ),
+              interval: const Duration(seconds: 1),
+              onFinished: () {
+                _joinMeeting();
+              },
+            ),
+          ),
           const Divider(height: 48.0, thickness: 2.0),
           SizedBox(
             height: 64.0,
@@ -108,7 +127,6 @@ class _MeetingState extends State<Meeting> {
   }
 
   _joinMeeting() async {
-
     // Define meetings options here
     var options = JitsiMeetingOptions(
       roomNameOrUrl: roomName,
@@ -172,5 +190,4 @@ class _MeetingState extends State<Meeting> {
       ),
     );
   }
-
 }

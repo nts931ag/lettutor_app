@@ -75,4 +75,7 @@ abstract class ApiRepository {
 
   Future<DataState<BookingClassResponse>> bookClass(
       {required List<String> scheduleDetailId, required String note});
+
+  Future<DataState<UserDataResponse>> registerAccount(
+      {required String email, required String password});
 }

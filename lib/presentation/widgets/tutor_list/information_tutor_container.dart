@@ -10,6 +10,7 @@ import 'package:lettutor_app/domain/models/Tutor.dart';
 import 'package:lettutor_app/domain/repositories/api_repository.dart';
 import 'package:lettutor_app/locator.dart';
 import 'package:lettutor_app/presentation/cubits/schedule/schedule_list_cubit.dart';
+import 'package:lettutor_app/presentation/cubits/schedule/upcoming_schedule_cubit.dart';
 import 'package:lettutor_app/presentation/cubits/tutor/tutor_detail_cubit.dart';
 import 'package:lettutor_app/presentation/cubits/tutor/tutor_list_cubit.dart';
 import 'package:lettutor_app/presentation/widgets/commons/box_shadow_container.dart';
@@ -21,6 +22,8 @@ import 'package:lettutor_app/utils/resource/dimens.dart';
 import 'package:lettutor_app/utils/resource/gen/assets.gen.dart';
 import 'package:lettutor_app/config/theme/text_theme.dart';
 import 'package:lettutor_app/utils/utils.dart';
+
+import '../commons/circle_network_image.dart';
 
 class InformationTutorContainer extends StatelessWidget {
   final Tutor tutor;
@@ -49,14 +52,9 @@ class InformationTutorContainer extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Center(
-                      child: CircleBox(
+                      child: CircleNetworkImage(
                         size: 80.w,
-                        child: Image.network(
-                          tutor.avatar,
-                          errorBuilder: (context, exception, stackTrace) {
-                            return Assets.images.img.image(fit: BoxFit.cover);
-                          },
-                        ),
+                        url: tutor.avatar,
                       ),
                     ),
                     SizedBox(
@@ -169,6 +167,9 @@ class InformationTutorContainer extends StatelessWidget {
                                             context),
                                     scheduleListCubit:
                                         BlocProvider.of<ScheduleListCubit>(
+                                            context),
+                                    upcomingScheduleCubit:
+                                        BlocProvider.of<UpcomingScheduleCubit>(
                                             context)),
                               );
                             },

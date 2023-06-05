@@ -225,4 +225,11 @@ class ApiRepositoryImpl extends BaseApiRepository implements ApiRepository {
       ),
     );
   }
+
+  @override
+  Future<DataState<UserDataResponse>> registerAccount(
+      {required String email, required String password}) {
+    return getStateOf<UserDataResponse>(
+        request: () => _authenticationService.registerAccount(email, password, null));
+  }
 }
